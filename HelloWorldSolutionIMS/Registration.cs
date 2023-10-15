@@ -5,6 +5,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Data.SqlClient;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -47,6 +48,108 @@ namespace HelloWorldSolutionIMS
             {
                 MainClass.con.Close();
                 MessageBox.Show(ex.Message);
+            }
+        }
+        private void SearchCustomer(DataGridView dgv, DataGridViewColumn id, DataGridViewColumn file, DataGridViewColumn name, DataGridViewColumn familyname, DataGridViewColumn start, DataGridViewColumn end, DataGridViewColumn nutritionist)
+        {
+            string file_no = fileno.Text;
+            string searchname = firstname.Text;
+            if (file_no != "" && searchname != "")
+            {
+                try
+                {
+                    MainClass.con.Open();
+
+                    SqlCommand cmd = new SqlCommand("SELECT ID, FileNo, FirstName, FamilyName, SubscriptionStartDate, SubscriptionEndDate, NutritionistName FROM Customer WHERE FileNo LIKE @FileNo AND FirstName LIKE @FirstName", MainClass.con);
+
+                    cmd.Parameters.AddWithValue("@FileNo", "%" + file_no + "%");
+                    cmd.Parameters.AddWithValue("@FirstName", "%" + searchname + "%");
+
+                    SqlDataAdapter da = new SqlDataAdapter(cmd);
+                    DataTable dt = new DataTable();
+                    da.Fill(dt);
+                    id.DataPropertyName = dt.Columns["ID"].ToString();
+                    file.DataPropertyName = dt.Columns["FileNo"].ToString();
+                    name.DataPropertyName = dt.Columns["FirstName"].ToString();
+                    familyname.DataPropertyName = dt.Columns["FamilyName"].ToString();
+                    start.DataPropertyName = dt.Columns["SubscriptionStartDate"].ToString();
+                    end.DataPropertyName = dt.Columns["SubscriptionEndDate"].ToString();
+                    nutritionist.DataPropertyName = dt.Columns["NutritionistName"].ToString();
+                    dgv.DataSource = dt;
+                    MainClass.con.Close();
+                }
+
+                catch (Exception ex)
+                {
+                    MainClass.con.Close();
+                    MessageBox.Show(ex.Message);
+                }
+            }else if(file_no == "" && searchname != "")
+            {
+                try
+                {
+                    MainClass.con.Open();
+
+                    SqlCommand cmd = new SqlCommand("SELECT ID, FileNo, FirstName, FamilyName, SubscriptionStartDate, SubscriptionEndDate, NutritionistName FROM Customer WHERE FirstName LIKE @FirstName", MainClass.con);
+
+                    cmd.Parameters.AddWithValue("@FileNo", "%" + file_no + "%");
+                    cmd.Parameters.AddWithValue("@FirstName", "%" + searchname + "%");
+
+                    SqlDataAdapter da = new SqlDataAdapter(cmd);
+                    DataTable dt = new DataTable();
+                    da.Fill(dt);
+                    id.DataPropertyName = dt.Columns["ID"].ToString();
+                    file.DataPropertyName = dt.Columns["FileNo"].ToString();
+                    name.DataPropertyName = dt.Columns["FirstName"].ToString();
+                    familyname.DataPropertyName = dt.Columns["FamilyName"].ToString();
+                    start.DataPropertyName = dt.Columns["SubscriptionStartDate"].ToString();
+                    end.DataPropertyName = dt.Columns["SubscriptionEndDate"].ToString();
+                    nutritionist.DataPropertyName = dt.Columns["NutritionistName"].ToString();
+                    dgv.DataSource = dt;
+                    MainClass.con.Close();
+                }
+
+                catch (Exception ex)
+                {
+                    MainClass.con.Close();
+                    MessageBox.Show(ex.Message);
+                }
+            }
+            else if (file_no != "" && searchname == "")
+            {
+                try
+                {
+                    MainClass.con.Open();
+
+                    SqlCommand cmd = new SqlCommand("SELECT ID, FileNo, FirstName, FamilyName, SubscriptionStartDate, SubscriptionEndDate, NutritionistName FROM Customer WHERE FileNo LIKE @FileNo", MainClass.con);
+
+                    cmd.Parameters.AddWithValue("@FileNo", "%" + file_no + "%");
+                    cmd.Parameters.AddWithValue("@FirstName", "%" + searchname + "%");
+
+                    SqlDataAdapter da = new SqlDataAdapter(cmd);
+                    DataTable dt = new DataTable();
+                    da.Fill(dt);
+                    id.DataPropertyName = dt.Columns["ID"].ToString();
+                    file.DataPropertyName = dt.Columns["FileNo"].ToString();
+                    name.DataPropertyName = dt.Columns["FirstName"].ToString();
+                    familyname.DataPropertyName = dt.Columns["FamilyName"].ToString();
+                    start.DataPropertyName = dt.Columns["SubscriptionStartDate"].ToString();
+                    end.DataPropertyName = dt.Columns["SubscriptionEndDate"].ToString();
+                    nutritionist.DataPropertyName = dt.Columns["NutritionistName"].ToString();
+                    dgv.DataSource = dt;
+                    MainClass.con.Close();
+                }
+
+                catch (Exception ex)
+                {
+                    MainClass.con.Close();
+                    MessageBox.Show(ex.Message);
+                }
+            }
+            else
+            {
+                ShowCustomer(guna2DataGridView1, IDDGV, FILENODGV, firstnamedgv, familynamedgv, subscriptionstartdatedgv, subscriptionenddatedgv, nutritionistnamedgv);
+                MessageBox.Show("Fill File No or First Name");
             }
         }
 
@@ -272,50 +375,9 @@ namespace HelloWorldSolutionIMS
 
         private void Search_Click(object sender, EventArgs e)
         {
-            string file_no = fileno.Text.ToString();
 
-            try
-            {
-                string fileNoToSearch = fileno.Text;
-                MainClass.con.Open();
-                SqlCommand cmd = new SqlCommand("SELECT * FROM Customer WHERE FileNo = @FileNo", MainClass.con);
-                cmd.Parameters.AddWithValue("@FileNo", fileNoToSearch);
+            SearchCustomer(guna2DataGridView1, IDDGV, FILENODGV, firstnamedgv, familynamedgv, subscriptionstartdatedgv, subscriptionenddatedgv, nutritionistnamedgv);
 
-                SqlDataReader reader = cmd.ExecuteReader();
-                if (reader.HasRows)
-                {
-                    while (reader.Read())
-                    {
-                        // Set the retrieved data into input boxes
-                        fileno.Text = reader["FileNo"].ToString();
-                        firstname.Text = reader["FirstName"].ToString();
-                        familyname.Text = reader["FamilyName"].ToString();
-                        gender.Text = reader["Gender"].ToString();
-                        dob.Value = Convert.ToDateTime(reader["DOB"]);
-                        age.Text = reader["Age"].ToString();
-                        mobileno.Text = reader["MobileNo"].ToString();
-                        landline.Text = reader["Landline"].ToString();
-                        email.Text = reader["Email"].ToString();
-                        subscriptionstatus.Text = reader["SubscriptionStatus"].ToString();
-                        startdate.Value = Convert.ToDateTime(reader["SubscriptionStartDate"]);
-                        enddate.Value = Convert.ToDateTime(reader["SubscriptionEndDate"]);
-                        branch.Text = reader["Branch"].ToString();
-                        lastvisitdate.Value = Convert.ToDateTime(reader["LastVisitDate"]);
-                        nutritionistname.Text = reader["NutritionistName"].ToString();
-                    }
-                }
-                else
-                {
-                    MessageBox.Show("Customer not found with FILE NO : " + fileNoToSearch);
-                }
-
-                MainClass.con.Close();
-            }
-            catch (Exception ex)
-            {
-                MainClass.con.Close();
-                MessageBox.Show(ex.Message);
-            }
         }
     }
 }
