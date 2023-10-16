@@ -94,14 +94,14 @@
             this.fileno.ForeColor = System.Drawing.Color.Black;
             this.fileno.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.fileno.HoverState.Parent = this.fileno;
-            this.fileno.Location = new System.Drawing.Point(304, 79);
+            this.fileno.Location = new System.Drawing.Point(178, 77);
             this.fileno.Margin = new System.Windows.Forms.Padding(5, 6, 5, 6);
             this.fileno.Name = "fileno";
             this.fileno.PasswordChar = '\0';
             this.fileno.PlaceholderText = "";
             this.fileno.SelectedText = "";
             this.fileno.ShadowDecoration.Parent = this.fileno;
-            this.fileno.Size = new System.Drawing.Size(519, 38);
+            this.fileno.Size = new System.Drawing.Size(344, 38);
             this.fileno.TabIndex = 0;
             // 
             // firstname
@@ -119,14 +119,14 @@
             this.firstname.ForeColor = System.Drawing.Color.Black;
             this.firstname.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.firstname.HoverState.Parent = this.firstname;
-            this.firstname.Location = new System.Drawing.Point(304, 129);
+            this.firstname.Location = new System.Drawing.Point(178, 127);
             this.firstname.Margin = new System.Windows.Forms.Padding(5, 6, 5, 6);
             this.firstname.Name = "firstname";
             this.firstname.PasswordChar = '\0';
             this.firstname.PlaceholderText = "";
             this.firstname.SelectedText = "";
             this.firstname.ShadowDecoration.Parent = this.firstname;
-            this.firstname.Size = new System.Drawing.Size(519, 38);
+            this.firstname.Size = new System.Drawing.Size(344, 38);
             this.firstname.TabIndex = 1;
             // 
             // familyname
@@ -144,14 +144,14 @@
             this.familyname.ForeColor = System.Drawing.Color.Black;
             this.familyname.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.familyname.HoverState.Parent = this.familyname;
-            this.familyname.Location = new System.Drawing.Point(304, 179);
+            this.familyname.Location = new System.Drawing.Point(178, 177);
             this.familyname.Margin = new System.Windows.Forms.Padding(5, 6, 5, 6);
             this.familyname.Name = "familyname";
             this.familyname.PasswordChar = '\0';
             this.familyname.PlaceholderText = "";
             this.familyname.SelectedText = "";
             this.familyname.ShadowDecoration.Parent = this.familyname;
-            this.familyname.Size = new System.Drawing.Size(519, 38);
+            this.familyname.Size = new System.Drawing.Size(344, 38);
             this.familyname.TabIndex = 2;
             // 
             // age
@@ -169,14 +169,14 @@
             this.age.ForeColor = System.Drawing.Color.Black;
             this.age.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.age.HoverState.Parent = this.age;
-            this.age.Location = new System.Drawing.Point(304, 329);
+            this.age.Location = new System.Drawing.Point(178, 327);
             this.age.Margin = new System.Windows.Forms.Padding(5, 6, 5, 6);
             this.age.Name = "age";
             this.age.PasswordChar = '\0';
             this.age.PlaceholderText = "";
             this.age.SelectedText = "";
             this.age.ShadowDecoration.Parent = this.age;
-            this.age.Size = new System.Drawing.Size(519, 38);
+            this.age.Size = new System.Drawing.Size(344, 38);
             this.age.TabIndex = 5;
             // 
             // mobileno
@@ -194,14 +194,14 @@
             this.mobileno.ForeColor = System.Drawing.Color.Black;
             this.mobileno.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.mobileno.HoverState.Parent = this.mobileno;
-            this.mobileno.Location = new System.Drawing.Point(304, 379);
+            this.mobileno.Location = new System.Drawing.Point(178, 377);
             this.mobileno.Margin = new System.Windows.Forms.Padding(5, 6, 5, 6);
             this.mobileno.Name = "mobileno";
             this.mobileno.PasswordChar = '\0';
             this.mobileno.PlaceholderText = "";
             this.mobileno.SelectedText = "";
             this.mobileno.ShadowDecoration.Parent = this.mobileno;
-            this.mobileno.Size = new System.Drawing.Size(519, 38);
+            this.mobileno.Size = new System.Drawing.Size(344, 38);
             this.mobileno.TabIndex = 6;
             // 
             // landline
@@ -219,14 +219,14 @@
             this.landline.ForeColor = System.Drawing.Color.Black;
             this.landline.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.landline.HoverState.Parent = this.landline;
-            this.landline.Location = new System.Drawing.Point(304, 429);
+            this.landline.Location = new System.Drawing.Point(178, 427);
             this.landline.Margin = new System.Windows.Forms.Padding(5, 6, 5, 6);
             this.landline.Name = "landline";
             this.landline.PasswordChar = '\0';
             this.landline.PlaceholderText = "";
             this.landline.SelectedText = "";
             this.landline.ShadowDecoration.Parent = this.landline;
-            this.landline.Size = new System.Drawing.Size(519, 38);
+            this.landline.Size = new System.Drawing.Size(344, 38);
             this.landline.TabIndex = 7;
             // 
             // email
@@ -244,14 +244,14 @@
             this.email.ForeColor = System.Drawing.Color.Black;
             this.email.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.email.HoverState.Parent = this.email;
-            this.email.Location = new System.Drawing.Point(304, 479);
+            this.email.Location = new System.Drawing.Point(178, 477);
             this.email.Margin = new System.Windows.Forms.Padding(5, 6, 5, 6);
             this.email.Name = "email";
             this.email.PasswordChar = '\0';
             this.email.PlaceholderText = "";
             this.email.SelectedText = "";
             this.email.ShadowDecoration.Parent = this.email;
-            this.email.Size = new System.Drawing.Size(519, 38);
+            this.email.Size = new System.Drawing.Size(344, 38);
             this.email.TabIndex = 8;
             // 
             // nutritionistname
@@ -269,15 +269,15 @@
             this.nutritionistname.ForeColor = System.Drawing.Color.Black;
             this.nutritionistname.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.nutritionistname.HoverState.Parent = this.nutritionistname;
-            this.nutritionistname.Location = new System.Drawing.Point(1064, 329);
+            this.nutritionistname.Location = new System.Drawing.Point(769, 327);
             this.nutritionistname.Margin = new System.Windows.Forms.Padding(5, 6, 5, 6);
             this.nutritionistname.Name = "nutritionistname";
             this.nutritionistname.PasswordChar = '\0';
             this.nutritionistname.PlaceholderText = "";
             this.nutritionistname.SelectedText = "";
             this.nutritionistname.ShadowDecoration.Parent = this.nutritionistname;
-            this.nutritionistname.Size = new System.Drawing.Size(451, 38);
-            this.nutritionistname.TabIndex = 13;
+            this.nutritionistname.Size = new System.Drawing.Size(276, 38);
+            this.nutritionistname.TabIndex = 14;
             // 
             // branch
             // 
@@ -294,21 +294,21 @@
             this.branch.ForeColor = System.Drawing.Color.Black;
             this.branch.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.branch.HoverState.Parent = this.branch;
-            this.branch.Location = new System.Drawing.Point(1064, 226);
+            this.branch.Location = new System.Drawing.Point(769, 224);
             this.branch.Margin = new System.Windows.Forms.Padding(5, 6, 5, 6);
             this.branch.Name = "branch";
             this.branch.PasswordChar = '\0';
             this.branch.PlaceholderText = "";
             this.branch.SelectedText = "";
             this.branch.ShadowDecoration.Parent = this.branch;
-            this.branch.Size = new System.Drawing.Size(451, 38);
-            this.branch.TabIndex = 11;
+            this.branch.Size = new System.Drawing.Size(276, 38);
+            this.branch.TabIndex = 12;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F);
-            this.label1.Location = new System.Drawing.Point(190, 79);
+            this.label1.Location = new System.Drawing.Point(64, 77);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(76, 24);
             this.label1.TabIndex = 16;
@@ -318,7 +318,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F);
-            this.label2.Location = new System.Drawing.Point(165, 129);
+            this.label2.Location = new System.Drawing.Point(39, 127);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(101, 24);
             this.label2.TabIndex = 17;
@@ -328,7 +328,7 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F);
-            this.label3.Location = new System.Drawing.Point(145, 179);
+            this.label3.Location = new System.Drawing.Point(19, 177);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(121, 24);
             this.label3.TabIndex = 18;
@@ -338,7 +338,7 @@
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F);
-            this.label4.Location = new System.Drawing.Point(192, 229);
+            this.label4.Location = new System.Drawing.Point(66, 227);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(74, 24);
             this.label4.TabIndex = 19;
@@ -348,7 +348,7 @@
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F);
-            this.label5.Location = new System.Drawing.Point(206, 279);
+            this.label5.Location = new System.Drawing.Point(80, 277);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(60, 24);
             this.label5.TabIndex = 20;
@@ -358,7 +358,7 @@
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F);
-            this.label6.Location = new System.Drawing.Point(221, 329);
+            this.label6.Location = new System.Drawing.Point(95, 327);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(45, 24);
             this.label6.TabIndex = 21;
@@ -368,7 +368,7 @@
             // 
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F);
-            this.label7.Location = new System.Drawing.Point(165, 379);
+            this.label7.Location = new System.Drawing.Point(39, 377);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(102, 24);
             this.label7.TabIndex = 22;
@@ -378,7 +378,7 @@
             // 
             this.label10.AutoSize = true;
             this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F);
-            this.label10.Location = new System.Drawing.Point(178, 429);
+            this.label10.Location = new System.Drawing.Point(52, 427);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(88, 24);
             this.label10.TabIndex = 25;
@@ -388,7 +388,7 @@
             // 
             this.label11.AutoSize = true;
             this.label11.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F);
-            this.label11.Location = new System.Drawing.Point(206, 479);
+            this.label11.Location = new System.Drawing.Point(80, 477);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(57, 24);
             this.label11.TabIndex = 26;
@@ -398,7 +398,7 @@
             // 
             this.label12.AutoSize = true;
             this.label12.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F);
-            this.label12.Location = new System.Drawing.Point(872, 79);
+            this.label12.Location = new System.Drawing.Point(577, 77);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(169, 24);
             this.label12.TabIndex = 27;
@@ -408,7 +408,7 @@
             // 
             this.label13.AutoSize = true;
             this.label13.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F);
-            this.label13.Location = new System.Drawing.Point(844, 129);
+            this.label13.Location = new System.Drawing.Point(549, 127);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(198, 24);
             this.label13.TabIndex = 28;
@@ -418,7 +418,7 @@
             // 
             this.label14.AutoSize = true;
             this.label14.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F);
-            this.label14.Location = new System.Drawing.Point(844, 179);
+            this.label14.Location = new System.Drawing.Point(549, 177);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(197, 24);
             this.label14.TabIndex = 29;
@@ -428,7 +428,7 @@
             // 
             this.label15.AutoSize = true;
             this.label15.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F);
-            this.label15.Location = new System.Drawing.Point(971, 229);
+            this.label15.Location = new System.Drawing.Point(676, 227);
             this.label15.Name = "label15";
             this.label15.Size = new System.Drawing.Size(70, 24);
             this.label15.TabIndex = 30;
@@ -438,7 +438,7 @@
             // 
             this.label16.AutoSize = true;
             this.label16.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F);
-            this.label16.Location = new System.Drawing.Point(920, 279);
+            this.label16.Location = new System.Drawing.Point(625, 277);
             this.label16.Name = "label16";
             this.label16.Size = new System.Drawing.Size(125, 24);
             this.label16.TabIndex = 31;
@@ -448,7 +448,7 @@
             // 
             this.label17.AutoSize = true;
             this.label17.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F);
-            this.label17.Location = new System.Drawing.Point(889, 329);
+            this.label17.Location = new System.Drawing.Point(594, 327);
             this.label17.Name = "label17";
             this.label17.Size = new System.Drawing.Size(152, 24);
             this.label17.TabIndex = 32;
@@ -465,11 +465,11 @@
             this.New.Font = new System.Drawing.Font("Segoe UI", 11F);
             this.New.ForeColor = System.Drawing.Color.White;
             this.New.HoverState.Parent = this.New;
-            this.New.Location = new System.Drawing.Point(304, 542);
+            this.New.Location = new System.Drawing.Point(178, 540);
             this.New.Name = "New";
             this.New.ShadowDecoration.Parent = this.New;
             this.New.Size = new System.Drawing.Size(220, 45);
-            this.New.TabIndex = 14;
+            this.New.TabIndex = 15;
             this.New.Text = "Save Client";
             this.New.Click += new System.EventHandler(this.New_Click);
             // 
@@ -483,29 +483,29 @@
             this.Search.Font = new System.Drawing.Font("Segoe UI", 11F);
             this.Search.ForeColor = System.Drawing.Color.White;
             this.Search.HoverState.Parent = this.Search;
-            this.Search.Location = new System.Drawing.Point(1295, 379);
+            this.Search.Location = new System.Drawing.Point(777, 390);
             this.Search.Name = "Search";
             this.Search.ShadowDecoration.Parent = this.Search;
             this.Search.Size = new System.Drawing.Size(220, 45);
-            this.Search.TabIndex = 36;
+            this.Search.TabIndex = 16;
             this.Search.Text = "Search Client";
             this.Search.Click += new System.EventHandler(this.Search_Click);
             // 
             // startdate
             // 
             this.startdate.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.startdate.Location = new System.Drawing.Point(1064, 131);
+            this.startdate.Location = new System.Drawing.Point(769, 129);
             this.startdate.Name = "startdate";
-            this.startdate.Size = new System.Drawing.Size(451, 22);
-            this.startdate.TabIndex = 38;
+            this.startdate.Size = new System.Drawing.Size(276, 22);
+            this.startdate.TabIndex = 10;
             // 
             // enddate
             // 
             this.enddate.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.enddate.Location = new System.Drawing.Point(1064, 179);
+            this.enddate.Location = new System.Drawing.Point(769, 177);
             this.enddate.Name = "enddate";
-            this.enddate.Size = new System.Drawing.Size(451, 22);
-            this.enddate.TabIndex = 39;
+            this.enddate.Size = new System.Drawing.Size(276, 22);
+            this.enddate.TabIndex = 11;
             // 
             // gender
             // 
@@ -524,19 +524,19 @@
             "Female",
             "Other"});
             this.gender.ItemsAppearance.Parent = this.gender;
-            this.gender.Location = new System.Drawing.Point(304, 226);
+            this.gender.Location = new System.Drawing.Point(178, 224);
             this.gender.Name = "gender";
             this.gender.ShadowDecoration.Parent = this.gender;
-            this.gender.Size = new System.Drawing.Size(519, 36);
-            this.gender.TabIndex = 40;
+            this.gender.Size = new System.Drawing.Size(344, 36);
+            this.gender.TabIndex = 3;
             // 
             // dob
             // 
             this.dob.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dob.Location = new System.Drawing.Point(304, 281);
+            this.dob.Location = new System.Drawing.Point(178, 279);
             this.dob.Name = "dob";
-            this.dob.Size = new System.Drawing.Size(519, 22);
-            this.dob.TabIndex = 41;
+            this.dob.Size = new System.Drawing.Size(344, 22);
+            this.dob.TabIndex = 4;
             // 
             // subscriptionstatus
             // 
@@ -555,22 +555,24 @@
             "No",
             "Freezed"});
             this.subscriptionstatus.ItemsAppearance.Parent = this.subscriptionstatus;
-            this.subscriptionstatus.Location = new System.Drawing.Point(1064, 76);
+            this.subscriptionstatus.Location = new System.Drawing.Point(769, 74);
             this.subscriptionstatus.Name = "subscriptionstatus";
             this.subscriptionstatus.ShadowDecoration.Parent = this.subscriptionstatus;
-            this.subscriptionstatus.Size = new System.Drawing.Size(451, 36);
-            this.subscriptionstatus.TabIndex = 42;
+            this.subscriptionstatus.Size = new System.Drawing.Size(276, 36);
+            this.subscriptionstatus.TabIndex = 9;
             // 
             // lastvisitdate
             // 
             this.lastvisitdate.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.lastvisitdate.Location = new System.Drawing.Point(1064, 279);
+            this.lastvisitdate.Location = new System.Drawing.Point(769, 277);
             this.lastvisitdate.Name = "lastvisitdate";
-            this.lastvisitdate.Size = new System.Drawing.Size(451, 22);
-            this.lastvisitdate.TabIndex = 43;
+            this.lastvisitdate.Size = new System.Drawing.Size(276, 22);
+            this.lastvisitdate.TabIndex = 13;
             // 
             // guna2DataGridView1
             // 
+            this.guna2DataGridView1.AllowUserToAddRows = false;
+            this.guna2DataGridView1.AllowUserToDeleteRows = false;
             dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(239)))), ((int)(((byte)(212)))));
             this.guna2DataGridView1.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.guna2DataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
@@ -606,14 +608,15 @@
             this.guna2DataGridView1.DefaultCellStyle = dataGridViewCellStyle3;
             this.guna2DataGridView1.EnableHeadersVisualStyles = false;
             this.guna2DataGridView1.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(187)))), ((int)(((byte)(238)))), ((int)(((byte)(208)))));
-            this.guna2DataGridView1.Location = new System.Drawing.Point(210, 681);
+            this.guna2DataGridView1.Location = new System.Drawing.Point(84, 609);
             this.guna2DataGridView1.Name = "guna2DataGridView1";
+            this.guna2DataGridView1.ReadOnly = true;
             this.guna2DataGridView1.RowHeadersVisible = false;
             this.guna2DataGridView1.RowHeadersWidth = 51;
             this.guna2DataGridView1.RowTemplate.Height = 24;
             this.guna2DataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.guna2DataGridView1.Size = new System.Drawing.Size(1305, 150);
-            this.guna2DataGridView1.TabIndex = 44;
+            this.guna2DataGridView1.Size = new System.Drawing.Size(1054, 207);
+            this.guna2DataGridView1.TabIndex = 17;
             this.guna2DataGridView1.Theme = Guna.UI2.WinForms.Enums.DataGridViewPresetThemes.Emerald;
             this.guna2DataGridView1.ThemeStyle.AlternatingRowsStyle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(239)))), ((int)(((byte)(212)))));
             this.guna2DataGridView1.ThemeStyle.AlternatingRowsStyle.Font = null;
@@ -628,7 +631,7 @@
             this.guna2DataGridView1.ThemeStyle.HeaderStyle.ForeColor = System.Drawing.Color.White;
             this.guna2DataGridView1.ThemeStyle.HeaderStyle.HeaightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.EnableResizing;
             this.guna2DataGridView1.ThemeStyle.HeaderStyle.Height = 52;
-            this.guna2DataGridView1.ThemeStyle.ReadOnly = false;
+            this.guna2DataGridView1.ThemeStyle.ReadOnly = true;
             this.guna2DataGridView1.ThemeStyle.RowsStyle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(213)))), ((int)(((byte)(244)))), ((int)(((byte)(226)))));
             this.guna2DataGridView1.ThemeStyle.RowsStyle.BorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
             this.guna2DataGridView1.ThemeStyle.RowsStyle.Font = new System.Drawing.Font("Segoe UI", 10.5F);
@@ -642,6 +645,7 @@
             this.IDDGV.HeaderText = "Column1";
             this.IDDGV.MinimumWidth = 6;
             this.IDDGV.Name = "IDDGV";
+            this.IDDGV.ReadOnly = true;
             this.IDDGV.Visible = false;
             // 
             // FILENODGV
@@ -649,36 +653,42 @@
             this.FILENODGV.HeaderText = "FILE NO";
             this.FILENODGV.MinimumWidth = 6;
             this.FILENODGV.Name = "FILENODGV";
+            this.FILENODGV.ReadOnly = true;
             // 
             // firstnamedgv
             // 
             this.firstnamedgv.HeaderText = "FIRST NAME";
             this.firstnamedgv.MinimumWidth = 6;
             this.firstnamedgv.Name = "firstnamedgv";
+            this.firstnamedgv.ReadOnly = true;
             // 
             // familynamedgv
             // 
             this.familynamedgv.HeaderText = "FAMILY NAME";
             this.familynamedgv.MinimumWidth = 6;
             this.familynamedgv.Name = "familynamedgv";
+            this.familynamedgv.ReadOnly = true;
             // 
             // subscriptionstartdatedgv
             // 
             this.subscriptionstartdatedgv.HeaderText = "SUBSCRIPTION START DATE";
             this.subscriptionstartdatedgv.MinimumWidth = 6;
             this.subscriptionstartdatedgv.Name = "subscriptionstartdatedgv";
+            this.subscriptionstartdatedgv.ReadOnly = true;
             // 
             // subscriptionenddatedgv
             // 
             this.subscriptionenddatedgv.HeaderText = "SUBSCRIPTION END DATE";
             this.subscriptionenddatedgv.MinimumWidth = 6;
             this.subscriptionenddatedgv.Name = "subscriptionenddatedgv";
+            this.subscriptionenddatedgv.ReadOnly = true;
             // 
             // nutritionistnamedgv
             // 
             this.nutritionistnamedgv.HeaderText = "NUTRITIONIST";
             this.nutritionistnamedgv.MinimumWidth = 6;
             this.nutritionistnamedgv.Name = "nutritionistnamedgv";
+            this.nutritionistnamedgv.ReadOnly = true;
             // 
             // contextMenuStrip1
             // 
@@ -707,7 +717,8 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1504, 1102);
+            this.BackColor = System.Drawing.Color.White;
+            this.ClientSize = new System.Drawing.Size(1161, 834);
             this.Controls.Add(this.guna2DataGridView1);
             this.Controls.Add(this.lastvisitdate);
             this.Controls.Add(this.subscriptionstatus);

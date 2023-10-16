@@ -7,6 +7,7 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms.DataVisualization.Charting;
 using System.Windows.Forms;
 
 namespace HelloWorldSolutionIMS
@@ -16,6 +17,52 @@ namespace HelloWorldSolutionIMS
         public Ingredient()
         {
             InitializeComponent();
+            calories.TextChanged += UpdateChart;
+            fats.TextChanged += UpdateChart;
+            protein.TextChanged += UpdateChart;
+            fibers.TextChanged += UpdateChart;
+        }
+        private void UpdateChart(object sender, EventArgs e)
+        {
+            // Create a sample DataTable with data (replace this with your data source).
+            DataTable dt = new DataTable();
+            dt.Columns.Add("Nutrient", typeof(string));
+            dt.Columns.Add("Value", typeof(double));
+
+            if(calories.Text != "")
+            {
+                dt.Rows.Add("Calories", double.Parse(calories.Text));
+
+            }
+            if (fats.Text != "")
+            {
+                dt.Rows.Add("Fats", double.Parse(fats.Text));
+
+            }
+            if(protein.Text != "")
+            {
+                dt.Rows.Add("Protein", double.Parse(protein.Text));
+
+            }
+            if(fibers.Text != "")
+            {
+                dt.Rows.Add("Fibers", double.Parse(fibers.Text));
+            }
+
+            // Set up the Chart control.
+            chart1.Series.Clear();
+            chart1.Palette = ChartColorPalette.Pastel;
+
+            Series series = new Series("Series1");
+            series.Points.DataBind(dt.AsEnumerable(), "Nutrient", "Value", "");
+
+            series.ChartType = SeriesChartType.Pie;
+            chart1.Series.Add(series);
+            chart1.Series[0].Label = "#PERCENT{P0}";
+            chart1.Series[0].LegendText = "#VALX";
+
+            // Refresh the chart.
+            chart1.Refresh();
         }
         static string ingredientIDToEdit;
         static int edit = 0;
@@ -178,6 +225,8 @@ namespace HelloWorldSolutionIMS
         private void Ingredient_Load(object sender, EventArgs e)
         {
             ShowIngredients(guna2DataGridView1, nodgv, classificationdgv, ingredientardgv, calloriesdgv, proteindgv, fatsdgv, carbohydratedgv, calciumdgv, fibersdgv, sodiumdgv);
+
+            chart1.Series.Clear();
         }
         private void New_Click(object sender, EventArgs e)
         {
@@ -334,7 +383,7 @@ namespace HelloWorldSolutionIMS
             edit = 1;
             try
             {
-                ingredientIDToEdit = guna2DataGridView1.CurrentRow.Cells[0].Value.ToString();
+                ingredientIDToEdit = guna2DataGridView1.CurrentRow.Cells[1].Value.ToString();
                 MainClass.con.Open();
                 SqlCommand cmd = new SqlCommand("SELECT * FROM Ingredient WHERE ID = @IngredientID", MainClass.con);
                 cmd.Parameters.AddWithValue("@IngredientID", ingredientIDToEdit);
@@ -384,14 +433,36 @@ namespace HelloWorldSolutionIMS
         }
         private void deleteToolStripMenuItem_Click(object sender, EventArgs e)
         {
+
             if (guna2DataGridView1 != null)
             {
                 if (guna2DataGridView1.Rows.Count > 0)
                 {
                     if (guna2DataGridView1.SelectedRows.Count == 1)
                     {
+                        ingredientar.Text = "";
+                        ingredienten.Text = "";
+                        groupar.Text = "";
+                        groupen.Text = "";
+                        classification.Text = "";
+                        calories.Text = "";
+                        fats.Text = "";
+                        fibers.Text = "";
+                        potassium.Text = "";
+                        water.Text = "";
+                        sugar.Text = "";
+                        calcium.Text = "";
+                        abox.Text = "";
+                        protein.Text = "";
+                        carbohydrates.Text = "";
+                        sodium.Text = "";
+                        phosphor.Text = "";
+                        magnesium.Text = "";
+                        iron.Text = "";
+                        iodine.Text = "";
+                        bbox.Text = "";
                         // Get the Ingredient ID to display in the confirmation message
-                        string ingredientIDToDelete = guna2DataGridView1.CurrentRow.Cells[2].Value.ToString(); // Assuming the Ingredient ID is in the first cell of the selected row.
+                        string ingredientIDToDelete = guna2DataGridView1.CurrentRow.Cells[3].Value.ToString(); // Assuming the Ingredient ID is in the first cell of the selected row.
 
                         // Ask for confirmation
                         DialogResult result = MessageBox.Show("Are you sure you want to delete Ingredient : " + ingredientIDToDelete + "?", "Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
@@ -402,7 +473,7 @@ namespace HelloWorldSolutionIMS
                             {
                                 MainClass.con.Open();
                                 SqlCommand cmd = new SqlCommand("DELETE FROM Ingredient WHERE ID = @IngredientID", MainClass.con);
-                                cmd.Parameters.AddWithValue("@IngredientID", guna2DataGridView1.CurrentRow.Cells[0].Value.ToString()); // Assuming the Ingredient ID is in the first cell of the selected row.
+                                cmd.Parameters.AddWithValue("@IngredientID", guna2DataGridView1.CurrentRow.Cells[1].Value.ToString()); // Assuming the Ingredient ID is in the first cell of the selected row.
                                 cmd.ExecuteNonQuery();
                                 MessageBox.Show("Ingredient removed successfully");
                                 MainClass.con.Close();
@@ -423,6 +494,11 @@ namespace HelloWorldSolutionIMS
         private void Search_Click(object sender, EventArgs e)
         {
             SearchIngredients(guna2DataGridView1, nodgv, classificationdgv, ingredientardgv, calloriesdgv, proteindgv, fatsdgv, carbohydratedgv, calciumdgv, fibersdgv, sodiumdgv);
+
+        }
+
+        private void chart1_Click(object sender, EventArgs e)
+        {
 
         }
     }

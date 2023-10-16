@@ -41,15 +41,15 @@
             this.instructionbox = new Guna.UI2.WinForms.Guna2TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.guna2DataGridView1 = new Guna.UI2.WinForms.Guna2DataGridView();
+            this.nodgv = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.instructionnamedgv = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.nutritionistnamedgv = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.datedgv = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.editToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.deleteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.New = new Guna.UI2.WinForms.Guna2Button();
             this.Search = new Guna.UI2.WinForms.Guna2Button();
-            this.nodgv = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.instructionnamedgv = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.nutritionistnamedgv = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.datedgv = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.guna2DataGridView1)).BeginInit();
             this.contextMenuStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -178,6 +178,8 @@
             // 
             // guna2DataGridView1
             // 
+            this.guna2DataGridView1.AllowUserToAddRows = false;
+            this.guna2DataGridView1.AllowUserToDeleteRows = false;
             dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(239)))), ((int)(((byte)(212)))));
             this.guna2DataGridView1.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.guna2DataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
@@ -193,7 +195,7 @@
             dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.guna2DataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
-            this.guna2DataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.guna2DataGridView1.ColumnHeadersHeight = 27;
             this.guna2DataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.nodgv,
             this.instructionnamedgv,
@@ -212,11 +214,12 @@
             this.guna2DataGridView1.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(187)))), ((int)(((byte)(238)))), ((int)(((byte)(208)))));
             this.guna2DataGridView1.Location = new System.Drawing.Point(188, 422);
             this.guna2DataGridView1.Name = "guna2DataGridView1";
+            this.guna2DataGridView1.ReadOnly = true;
             this.guna2DataGridView1.RowHeadersVisible = false;
             this.guna2DataGridView1.RowHeadersWidth = 51;
             this.guna2DataGridView1.RowTemplate.Height = 24;
             this.guna2DataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.guna2DataGridView1.Size = new System.Drawing.Size(889, 233);
+            this.guna2DataGridView1.Size = new System.Drawing.Size(889, 299);
             this.guna2DataGridView1.TabIndex = 46;
             this.guna2DataGridView1.Theme = Guna.UI2.WinForms.Enums.DataGridViewPresetThemes.Emerald;
             this.guna2DataGridView1.ThemeStyle.AlternatingRowsStyle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(239)))), ((int)(((byte)(212)))));
@@ -230,9 +233,9 @@
             this.guna2DataGridView1.ThemeStyle.HeaderStyle.BorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
             this.guna2DataGridView1.ThemeStyle.HeaderStyle.Font = new System.Drawing.Font("Segoe UI", 10.5F);
             this.guna2DataGridView1.ThemeStyle.HeaderStyle.ForeColor = System.Drawing.Color.White;
-            this.guna2DataGridView1.ThemeStyle.HeaderStyle.HeaightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.guna2DataGridView1.ThemeStyle.HeaderStyle.HeaightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.EnableResizing;
             this.guna2DataGridView1.ThemeStyle.HeaderStyle.Height = 27;
-            this.guna2DataGridView1.ThemeStyle.ReadOnly = false;
+            this.guna2DataGridView1.ThemeStyle.ReadOnly = true;
             this.guna2DataGridView1.ThemeStyle.RowsStyle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(213)))), ((int)(((byte)(244)))), ((int)(((byte)(226)))));
             this.guna2DataGridView1.ThemeStyle.RowsStyle.BorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
             this.guna2DataGridView1.ThemeStyle.RowsStyle.Font = new System.Drawing.Font("Segoe UI", 10.5F);
@@ -240,6 +243,38 @@
             this.guna2DataGridView1.ThemeStyle.RowsStyle.Height = 24;
             this.guna2DataGridView1.ThemeStyle.RowsStyle.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(115)))), ((int)(((byte)(221)))), ((int)(((byte)(160)))));
             this.guna2DataGridView1.ThemeStyle.RowsStyle.SelectionForeColor = System.Drawing.Color.Black;
+            // 
+            // nodgv
+            // 
+            this.nodgv.FillWeight = 104.2909F;
+            this.nodgv.HeaderText = "NO";
+            this.nodgv.MinimumWidth = 6;
+            this.nodgv.Name = "nodgv";
+            this.nodgv.ReadOnly = true;
+            // 
+            // instructionnamedgv
+            // 
+            this.instructionnamedgv.FillWeight = 95.2524F;
+            this.instructionnamedgv.HeaderText = "INSTRUCTION NAME";
+            this.instructionnamedgv.MinimumWidth = 6;
+            this.instructionnamedgv.Name = "instructionnamedgv";
+            this.instructionnamedgv.ReadOnly = true;
+            // 
+            // nutritionistnamedgv
+            // 
+            this.nutritionistnamedgv.FillWeight = 95.2524F;
+            this.nutritionistnamedgv.HeaderText = "NUTRITIONIST NAME";
+            this.nutritionistnamedgv.MinimumWidth = 6;
+            this.nutritionistnamedgv.Name = "nutritionistnamedgv";
+            this.nutritionistnamedgv.ReadOnly = true;
+            // 
+            // datedgv
+            // 
+            this.datedgv.FillWeight = 95.2524F;
+            this.datedgv.HeaderText = "DATE";
+            this.datedgv.MinimumWidth = 6;
+            this.datedgv.Name = "datedgv";
+            this.datedgv.ReadOnly = true;
             // 
             // contextMenuStrip1
             // 
@@ -301,39 +336,12 @@
             this.Search.Text = "Search Instruction";
             this.Search.Click += new System.EventHandler(this.Search_Click);
             // 
-            // nodgv
-            // 
-            this.nodgv.FillWeight = 104.2909F;
-            this.nodgv.HeaderText = "NO";
-            this.nodgv.MinimumWidth = 6;
-            this.nodgv.Name = "nodgv";
-            // 
-            // instructionnamedgv
-            // 
-            this.instructionnamedgv.FillWeight = 95.2524F;
-            this.instructionnamedgv.HeaderText = "INSTRUCTION NAME";
-            this.instructionnamedgv.MinimumWidth = 6;
-            this.instructionnamedgv.Name = "instructionnamedgv";
-            // 
-            // nutritionistnamedgv
-            // 
-            this.nutritionistnamedgv.FillWeight = 95.2524F;
-            this.nutritionistnamedgv.HeaderText = "NUTRITIONIST NAME";
-            this.nutritionistnamedgv.MinimumWidth = 6;
-            this.nutritionistnamedgv.Name = "nutritionistnamedgv";
-            // 
-            // datedgv
-            // 
-            this.datedgv.FillWeight = 95.2524F;
-            this.datedgv.HeaderText = "DATE";
-            this.datedgv.MinimumWidth = 6;
-            this.datedgv.Name = "datedgv";
-            // 
             // Instruction
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1184, 715);
+            this.BackColor = System.Drawing.Color.White;
+            this.ClientSize = new System.Drawing.Size(1120, 751);
             this.Controls.Add(this.Search);
             this.Controls.Add(this.New);
             this.Controls.Add(this.guna2DataGridView1);
