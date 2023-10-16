@@ -29,7 +29,6 @@
         private void InitializeComponent()
         {
             this.guna2GradientPanel1 = new Guna.UI2.WinForms.Guna2GradientPanel();
-            this.mainpanel = new Guna.UI2.WinForms.Guna2Panel();
             this.guna2TileButton1 = new Guna.UI2.WinForms.Guna2TileButton();
             this.guna2TileButton10 = new Guna.UI2.WinForms.Guna2TileButton();
             this.guna2TileButton5 = new Guna.UI2.WinForms.Guna2TileButton();
@@ -42,6 +41,7 @@
             this.guna2TileButton12 = new Guna.UI2.WinForms.Guna2TileButton();
             this.guna2TileButton6 = new Guna.UI2.WinForms.Guna2TileButton();
             this.guna2TileButton9 = new Guna.UI2.WinForms.Guna2TileButton();
+            this.mainpanel = new Guna.UI2.WinForms.Guna2Panel();
             this.guna2GradientPanel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -67,15 +67,6 @@
             this.guna2GradientPanel1.ShadowDecoration.Parent = this.guna2GradientPanel1;
             this.guna2GradientPanel1.Size = new System.Drawing.Size(343, 736);
             this.guna2GradientPanel1.TabIndex = 0;
-            // 
-            // mainpanel
-            // 
-            this.mainpanel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.mainpanel.Location = new System.Drawing.Point(343, 0);
-            this.mainpanel.Name = "mainpanel";
-            this.mainpanel.ShadowDecoration.Parent = this.mainpanel;
-            this.mainpanel.Size = new System.Drawing.Size(1086, 736);
-            this.mainpanel.TabIndex = 1;
             // 
             // guna2TileButton1
             // 
@@ -287,6 +278,7 @@
             this.guna2TileButton12.TabIndex = 11;
             this.guna2TileButton12.Text = "Ingredients";
             this.guna2TileButton12.TextOffset = new System.Drawing.Point(0, -15);
+            this.guna2TileButton12.Click += new System.EventHandler(this.guna2TileButton12_Click);
             // 
             // guna2TileButton6
             // 
@@ -331,6 +323,15 @@
             this.guna2TileButton9.Text = "Registration";
             this.guna2TileButton9.TextOffset = new System.Drawing.Point(0, -15);
             this.guna2TileButton9.Click += new System.EventHandler(this.guna2TileButton9_Click);
+            // 
+            // mainpanel
+            // 
+            this.mainpanel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.mainpanel.Location = new System.Drawing.Point(343, 0);
+            this.mainpanel.Name = "mainpanel";
+            this.mainpanel.ShadowDecoration.Parent = this.mainpanel;
+            this.mainpanel.Size = new System.Drawing.Size(1086, 736);
+            this.mainpanel.TabIndex = 1;
             // 
             // MainPage
             // 

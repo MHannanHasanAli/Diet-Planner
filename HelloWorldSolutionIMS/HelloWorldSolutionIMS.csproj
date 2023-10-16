@@ -362,6 +362,12 @@
     <Compile Include="Expenses.Designer.cs">
       <DependentUpon>Expenses.cs</DependentUpon>
     </Compile>
+    <Compile Include="Ingredient.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Ingredient.Designer.cs">
+      <DependentUpon>Ingredient.cs</DependentUpon>
+    </Compile>
     <Compile Include="Instruction.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -565,6 +571,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Expenses.resx">
       <DependentUpon>Expenses.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Ingredient.resx">
+      <DependentUpon>Ingredient.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Instruction.resx">
       <DependentUpon>Instruction.cs</DependentUpon>
