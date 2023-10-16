@@ -51,7 +51,7 @@ namespace HelloWorldSolutionIMS
 
         private void guna2TileButton2_Click(object sender, EventArgs e)
         {
-            loadform(new Instructions());
+            loadform(new Instruction());
 
         }
     }
