@@ -258,6 +258,7 @@
             this.guna2TileButton8.TabIndex = 7;
             this.guna2TileButton8.Text = "Meals";
             this.guna2TileButton8.TextOffset = new System.Drawing.Point(0, -15);
+            this.guna2TileButton8.Click += new System.EventHandler(this.guna2TileButton8_Click);
             // 
             // guna2TileButton12
             // 

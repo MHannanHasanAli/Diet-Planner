@@ -411,6 +411,18 @@
     <Compile Include="MDI.Designer.cs">
       <DependentUpon>MDI.cs</DependentUpon>
     </Compile>
+    <Compile Include="Meal.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Meal.Designer.cs">
+      <DependentUpon>Meal.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MealAction.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MealAction.Designer.cs">
+      <DependentUpon>MealAction.cs</DependentUpon>
+    </Compile>
     <Compile Include="OpeningBalance.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -595,6 +607,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="MDI.resx">
       <DependentUpon>MDI.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Meal.resx">
+      <DependentUpon>Meal.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MealAction.resx">
+      <DependentUpon>MealAction.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="OpeningBalance.resx">
       <DependentUpon>OpeningBalance.cs</DependentUpon>
