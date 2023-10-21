@@ -34,8 +34,41 @@ namespace HelloWorldSolutionIMS
         static int titlecheck = 0;
         static int edit = 0;
         static int removeflag = 0;
-       
-        
+        static int dropdown = 0;
+
+        private void ShowMeals(DataGridView dgv, DataGridViewColumn no, DataGridViewColumn mealar, DataGridViewColumn mealen, DataGridViewColumn calories, DataGridViewColumn protein, DataGridViewColumn fats, DataGridViewColumn carbohydrates, DataGridViewColumn fibers, DataGridViewColumn calcium, DataGridViewColumn sodium)
+        {
+            SqlCommand cmd;
+            try
+            {
+                MainClass.con.Open();
+
+                cmd = new SqlCommand("SELECT ID, MealAr, MealEn,PROTEIN, CALORIES, FATS, CARBOHYDRATES, FIBERS, CALCIUM, SODIUM FROM Meal", MainClass.con);
+
+                SqlDataAdapter da = new SqlDataAdapter(cmd);
+                DataTable dt = new DataTable();
+                da.Fill(dt);
+
+                no.DataPropertyName = dt.Columns["ID"].ToString();
+                mealar.DataPropertyName = dt.Columns["MealAr"].ToString();
+                mealen.DataPropertyName = dt.Columns["MealEn"].ToString();
+                calories.DataPropertyName = dt.Columns["CALORIES"].ToString();
+                fats.DataPropertyName = dt.Columns["FATS"].ToString();
+                carbohydrates.DataPropertyName = dt.Columns["CARBOHYDRATES"].ToString();
+                fibers.DataPropertyName = dt.Columns["FIBERS"].ToString();
+                calcium.DataPropertyName = dt.Columns["CALCIUM"].ToString();
+                sodium.DataPropertyName = dt.Columns["SODIUM"].ToString();
+                protein.DataPropertyName = dt.Columns["PROTEIN"].ToString();
+
+                dgv.DataSource = dt;
+                MainClass.con.Close();
+            }
+            catch (Exception ex)
+            {
+                MainClass.con.Close();
+                MessageBox.Show(ex.Message);
+            }
+        }
         private void UpdateChart(object sender, EventArgs e)
         {
             // Create a sample DataTable with data (replace this with your data source).
@@ -97,7 +130,10 @@ namespace HelloWorldSolutionIMS
             chart1.Series.Clear();
             MainClass.HideAllTabsOnTabControl(tabControl1);
             save.Visible = false;
-        }  
+            tabControl1.SelectedIndex = 2;
+            ShowMeals(guna2DataGridView2, iddgv, mealardgv, mealendgv, caloriesdgv, proteinmaindgv, fatsmaindgv, carbohydratesmaindgv, calciummaindgv, fibermaindgv, sodiummaindgv);
+            //ShowMeals(guna2DataGridView2, iddgv, mealardgv, mealendgv, caloriedgv, proteindgv, fatsdgv, carbohydratesdgv, calciumdgv, fiberdgv, sodiumdgv);
+        }
         private List<Ingredients> GetIngredients()
         {
             try
@@ -164,7 +200,13 @@ namespace HelloWorldSolutionIMS
 
             // Create a DataGridViewComboBoxCell for the second cell.
             DataGridViewComboBoxCell comboCell = new DataGridViewComboBoxCell();
-            comboCell.DataSource = GetIngredients();
+            
+            if(dropdown == 0)
+            {
+                comboCell.DataSource = GetIngredients();
+                dropdown = 1;
+            }
+            
             comboCell.DisplayMember = "Name";
             comboCell.ValueMember = "ID";
 
@@ -180,7 +222,6 @@ namespace HelloWorldSolutionIMS
             // Add the row to the DataGridView.
             guna2DataGridView1.Rows.Add(row);
         }
-
         private void guna2DataGridView1_CellValueChanged(object sender, DataGridViewCellEventArgs e)
         {
             if (e.RowIndex >= 0 && e.ColumnIndex == 3) // Check if the "Quantity" cell value changed.
@@ -334,7 +375,6 @@ namespace HelloWorldSolutionIMS
 
             return ID;
         }
-
         private void save_Click(object sender, EventArgs e)
         {
             if (edit == 0)
@@ -344,8 +384,8 @@ namespace HelloWorldSolutionIMS
                     try
                     {
                         MainClass.con.Open();
-                        SqlCommand cmd = new SqlCommand("INSERT INTO Meal (MealAr, MealEn, GroupNAr, GroupNEn, GroupCAr, GroupCEn, CLASSIFICATION, CALORIES, FATS, FIBERS, POTASSIUM, WATER, SUGAR, CALCIUM, A, PROTEIN, CARBOHYDRATES, SODIUM, PHOSPHOR, MAGNESIUM, IRON, IODINE, B) " +
-                            "VALUES (@MealAr, @MealEn, @GroupNAr, @GroupNEn, @GroupCAr, @GroupCEn, @CLASSIFICATION, @CALORIES, @FATS, @FIBERS, @POTASSIUM, @WATER, @SUGAR, @CALCIUM, @A, @PROTEIN, @CARBOHYDRATES, @SODIUM, @PHOSPHOR, @MAGNESIUM, @IRON, @IODINE, @B)", MainClass.con);
+                        SqlCommand cmd = new SqlCommand("INSERT INTO Meal (MealAr, MealEn, GroupNAr, GroupNEn, GroupCAr, GroupCEn, CLASSIFICATION, CALORIES, FATS, FIBERS, POTASSIUM, WATER, SUGAR, CALCIUM, A, PROTEIN, CARBOHYDRATES, SODIUM, PHOSPHOR, MAGNESIUM, IRON, IODINE, B, Category) " +
+                            "VALUES (@MealAr, @MealEn, @GroupNAr, @GroupNEn, @GroupCAr, @GroupCEn, @CLASSIFICATION, @CALORIES, @FATS, @FIBERS, @POTASSIUM, @WATER, @SUGAR, @CALCIUM, @A, @PROTEIN, @CARBOHYDRATES, @SODIUM, @PHOSPHOR, @MAGNESIUM, @IRON, @IODINE, @B, @Category)", MainClass.con);
 
                         cmd.Parameters.AddWithValue("@MealAr", mealar.Text);
                         cmd.Parameters.AddWithValue("@MealEn", mealen.Text);
@@ -353,6 +393,7 @@ namespace HelloWorldSolutionIMS
                         cmd.Parameters.AddWithValue("@GroupNEn", groupnen.Text);
                         cmd.Parameters.AddWithValue("@GroupCAr", groupcar.Text);
                         cmd.Parameters.AddWithValue("@GroupCEn", groupcen.Text);
+                        cmd.Parameters.AddWithValue("@Category", category.Text);
                         cmd.Parameters.AddWithValue("@CLASSIFICATION", classification.Text);
                         cmd.Parameters.AddWithValue("@CALORIES", Convert.ToDouble(calories.Text));
                         cmd.Parameters.AddWithValue("@FATS", Convert.ToDouble(fats.Text));
@@ -382,6 +423,7 @@ namespace HelloWorldSolutionIMS
                         groupcar.Text = "";
                         groupcen.Text = "";
                         classification.Text = "";
+                        category.Text = "";
                         calories.Text = "";
                         fats.Text = "";
                         fibers.Text = "";
@@ -489,7 +531,7 @@ namespace HelloWorldSolutionIMS
                     try
                     {
                         MainClass.con.Open();
-                        SqlCommand cmd = new SqlCommand("UPDATE Meal SET MealAr = @MealAr, MealEn = @MealEn, GroupNAr = @GroupNAr, GroupNEn = @GroupNEn, GroupCAr = @GroupCAr, GroupCEn = @GroupCEn, CLASSIFICATION = @CLASSIFICATION, CALORIES = @CALORIES, FATS = @FATS, FIBERS = @FIBERS, POTASSIUM = @POTASSIUM, WATER = @WATER, SUGAR = @SUGAR, CALCIUM = @CALCIUM, A = @A, PROTEIN = @PROTEIN, CARBOHYDRATES = @CARBOHYDRATES, SODIUM = @SODIUM, PHOSPHOR = @PHOSPHOR, MAGNESIUM = @MAGNESIUM, IRON = @IRON, IODINE = @IODINE, B = @B WHERE ID = @ID", MainClass.con);
+                        SqlCommand cmd = new SqlCommand("UPDATE Meal SET MealAr = @MealAr, MealEn = @MealEn, GroupNAr = @GroupNAr, GroupNEn = @GroupNEn, GroupCAr = @GroupCAr, GroupCEn = @GroupCEn, CLASSIFICATION = @CLASSIFICATION, CALORIES = @CALORIES, FATS = @FATS, FIBERS = @FIBERS, POTASSIUM = @POTASSIUM, WATER = @WATER, SUGAR = @SUGAR, CALCIUM = @CALCIUM, A = @A, PROTEIN = @PROTEIN, CARBOHYDRATES = @CARBOHYDRATES, SODIUM = @SODIUM, PHOSPHOR = @PHOSPHOR, MAGNESIUM = @MAGNESIUM, IRON = @IRON, IODINE = @IODINE, B = @B, Category = @Category WHERE ID = @ID", MainClass.con);
 
                         //cmd.Parameters.AddWithValue("@ID", mealIDToEdit);
                         cmd.Parameters.AddWithValue("@MealAr", mealar.Text);
@@ -498,6 +540,7 @@ namespace HelloWorldSolutionIMS
                         cmd.Parameters.AddWithValue("@GroupNEn", groupnen.Text);
                         cmd.Parameters.AddWithValue("@GroupCAr", groupcar.Text);
                         cmd.Parameters.AddWithValue("@GroupCEn", groupcen.Text);
+                        cmd.Parameters.AddWithValue("@Category", category.Text);
                         cmd.Parameters.AddWithValue("@CLASSIFICATION", classification.Text);
                         cmd.Parameters.AddWithValue("@CALORIES", Convert.ToDouble(calories.Text));
                         cmd.Parameters.AddWithValue("@FATS", Convert.ToDouble(fats.Text));
@@ -527,6 +570,7 @@ namespace HelloWorldSolutionIMS
                         groupcar.Text = "";
                         groupcen.Text = "";
                         classification.Text = "";
+                        category.Text = "";
                         calories.Text = "";
                         fats.Text = "";
                         fibers.Text = "";
@@ -559,20 +603,91 @@ namespace HelloWorldSolutionIMS
             }
 
         }
-
         private void Ingredienttab_Click(object sender, EventArgs e)
         {
             tabControl1.SelectedIndex = 1;
         }
-
         private void Backtomeal_Click(object sender, EventArgs e)
         {
             tabControl1.SelectedIndex = 0;
         }
-
         private void AddIngredient_Click_1(object sender, EventArgs e)
         {
 
+        }
+
+
+        private void Add_Click(object sender, EventArgs e)
+        {
+            tabControl1.SelectedIndex = 0;
+        }
+
+        private void deleteToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (guna2DataGridView2 != null)
+            {
+                if (guna2DataGridView2.Rows.Count > 0)
+                {
+                    if (guna2DataGridView2.SelectedRows.Count == 1)
+                    {
+                        mealar.Text = "";
+                        mealen.Text = "";
+                        groupnar.Text = "";
+                        groupnen.Text = "";
+                        groupcar.Text = "";
+                        groupcen.Text = "";
+                        classification.Text = "";
+                        calories.Text = "";
+                        fats.Text = "";
+                        fibers.Text = "";
+                        potassium.Text = "";
+                        water.Text = "";
+                        sugar.Text = "";
+                        calcium.Text = "";
+                        abox.Text = "";
+                        protein.Text = "";
+                        carbohydrates.Text = "";
+                        sodium.Text = "";
+                        phosphor.Text = "";
+                        magnesium.Text = "";
+                        iron.Text = "";
+                        iodine.Text = "";
+                        bbox.Text = "";
+                        // Get the Ingredient ID to display in the confirmation message
+                        string ingredientIDToDelete = guna2DataGridView2.CurrentRow.Cells[1].Value.ToString(); // Assuming the Ingredient ID is in the first cell of the selected row.
+
+                        // Ask for confirmation
+                        DialogResult result = MessageBox.Show("Are you sure you want to delete Meal : " + ingredientIDToDelete + "?", "Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+
+                        if (result == DialogResult.Yes)
+                        {
+                            string id = guna2DataGridView2.CurrentRow.Cells[0].Value.ToString();
+                            try
+                            {
+                                MainClass.con.Open();
+                                SqlCommand cmd = new SqlCommand("DELETE FROM Meal WHERE ID = @MealID", MainClass.con);
+                                cmd.Parameters.AddWithValue("@MealID", guna2DataGridView2.CurrentRow.Cells[0].Value.ToString()); // Assuming the Ingredient ID is in the first cell of the selected row.
+                                cmd.ExecuteNonQuery();
+                                MainClass.con.Close();
+
+                                MainClass.con.Open();
+                                SqlCommand cmdingredients = new SqlCommand("DELETE FROM MealIngredients WHERE MealID = @MealID", MainClass.con);
+                                cmdingredients.Parameters.AddWithValue("@MealID", id); // Assuming the Ingredient ID is in the first cell of the selected row.
+                                cmdingredients.ExecuteNonQuery();
+                                MessageBox.Show("Meal removed successfully");
+                                MainClass.con.Close();
+
+                                ShowMeals(guna2DataGridView2, iddgv, mealardgv, mealendgv, caloriedgv, proteindgv, fatsdgv, carbohydratesdgv, calciumdgv, fiberdgv, sodiumdgv);
+                            }
+                            catch (Exception ex)
+                            {
+                                MainClass.con.Close();
+                                MessageBox.Show(ex.Message);
+                            }
+                        }
+                    }
+                }
+            }
         }
     }
 }

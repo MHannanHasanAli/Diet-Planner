@@ -26,7 +26,10 @@ namespace HelloWorldSolutionIMS
 
             loadform(new Registration());
         }
-
+        public void formloader(object Form)
+        {
+            loadform(Form);
+        }
         public void loadform(object Form)
         {
              if(this.mainpanel.Controls.Count > 0 )

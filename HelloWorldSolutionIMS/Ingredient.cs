@@ -73,7 +73,7 @@ namespace HelloWorldSolutionIMS
             {
                 MainClass.con.Open();
 
-                cmd = new SqlCommand("SELECT ID, CLASSIFICATION, INGREDIENT_AR, CALORIES, FATS, CARBOHYDRATES, FIBERS, CALCIUM, SODIUM FROM Ingredient", MainClass.con);
+                cmd = new SqlCommand("SELECT ID, CLASSIFICATION, INGREDIENT_AR, CALORIES, FATS, CARBOHYDRATES, FIBERS, CALCIUM, SODIUM, PROTEIN FROM Ingredient", MainClass.con);
 
                 SqlDataAdapter da = new SqlDataAdapter(cmd);
                 DataTable dt = new DataTable();
@@ -88,6 +88,8 @@ namespace HelloWorldSolutionIMS
                 fibers.DataPropertyName = dt.Columns["FIBERS"].ToString();
                 calcium.DataPropertyName = dt.Columns["CALCIUM"].ToString();
                 sodium.DataPropertyName = dt.Columns["SODIUM"].ToString();
+                protein.DataPropertyName = dt.Columns["PROTEIN"].ToString();
+
 
                 dgv.DataSource = dt;
                 MainClass.con.Close();
