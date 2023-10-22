@@ -93,6 +93,7 @@
             this.label26 = new System.Windows.Forms.Label();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.Meals = new Guna.UI2.WinForms.Guna2Button();
             this.Ingredienttab = new Guna.UI2.WinForms.Guna2Button();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.Backtomeal = new Guna.UI2.WinForms.Guna2Button();
@@ -137,11 +138,10 @@
             this.deleteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.Add = new Guna.UI2.WinForms.Guna2Button();
             this.search = new Guna.UI2.WinForms.Guna2Button();
-            this.guna2TextBox1 = new Guna.UI2.WinForms.Guna2TextBox();
+            this.groupnarsearch = new Guna.UI2.WinForms.Guna2TextBox();
             this.label27 = new System.Windows.Forms.Label();
-            this.guna2TextBox2 = new Guna.UI2.WinForms.Guna2TextBox();
+            this.mealarsearch = new Guna.UI2.WinForms.Guna2TextBox();
             this.label28 = new System.Windows.Forms.Label();
-            this.Meals = new Guna.UI2.WinForms.Guna2Button();
             ((System.ComponentModel.ISupportInitialize)(this.chart1)).BeginInit();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
@@ -1150,6 +1150,25 @@
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "tabPage1";
             // 
+            // Meals
+            // 
+            this.Meals.AutoRoundedCorners = true;
+            this.Meals.BorderRadius = 21;
+            this.Meals.CausesValidation = false;
+            this.Meals.CheckedState.Parent = this.Meals;
+            this.Meals.CustomImages.Parent = this.Meals;
+            this.Meals.FillColor = System.Drawing.Color.MediumSeaGreen;
+            this.Meals.Font = new System.Drawing.Font("Segoe UI", 11F);
+            this.Meals.ForeColor = System.Drawing.Color.White;
+            this.Meals.HoverState.Parent = this.Meals;
+            this.Meals.Location = new System.Drawing.Point(23, 585);
+            this.Meals.Name = "Meals";
+            this.Meals.ShadowDecoration.Parent = this.Meals;
+            this.Meals.Size = new System.Drawing.Size(199, 45);
+            this.Meals.TabIndex = 203;
+            this.Meals.Text = "Meals";
+            this.Meals.Click += new System.EventHandler(this.Meals_Click);
+            // 
             // Ingredienttab
             // 
             this.Ingredienttab.AutoRoundedCorners = true;
@@ -1301,6 +1320,7 @@
             this.guna2DataGridView1.ThemeStyle.RowsStyle.Height = 24;
             this.guna2DataGridView1.ThemeStyle.RowsStyle.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(115)))), ((int)(((byte)(221)))), ((int)(((byte)(160)))));
             this.guna2DataGridView1.ThemeStyle.RowsStyle.SelectionForeColor = System.Drawing.Color.Black;
+            this.guna2DataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.guna2DataGridView1_CellContentClick);
             this.guna2DataGridView1.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.guna2DataGridView1_CellValueChanged);
             // 
             // unitdgv
@@ -1468,9 +1488,9 @@
             this.panel1.Controls.Add(this.guna2DataGridView2);
             this.panel1.Controls.Add(this.Add);
             this.panel1.Controls.Add(this.search);
-            this.panel1.Controls.Add(this.guna2TextBox1);
+            this.panel1.Controls.Add(this.groupnarsearch);
             this.panel1.Controls.Add(this.label27);
-            this.panel1.Controls.Add(this.guna2TextBox2);
+            this.panel1.Controls.Add(this.mealarsearch);
             this.panel1.Controls.Add(this.label28);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel1.Location = new System.Drawing.Point(3, 3);
@@ -1681,31 +1701,32 @@
             this.search.Size = new System.Drawing.Size(199, 45);
             this.search.TabIndex = 216;
             this.search.Text = "Search";
+            this.search.Click += new System.EventHandler(this.search_Click);
             // 
-            // guna2TextBox1
+            // groupnarsearch
             // 
-            this.guna2TextBox1.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.guna2TextBox1.DefaultText = "";
-            this.guna2TextBox1.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
-            this.guna2TextBox1.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
-            this.guna2TextBox1.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.guna2TextBox1.DisabledState.Parent = this.guna2TextBox1;
-            this.guna2TextBox1.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.guna2TextBox1.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.guna2TextBox1.FocusedState.Parent = this.guna2TextBox1;
-            this.guna2TextBox1.Font = new System.Drawing.Font("Segoe UI", 11F);
-            this.guna2TextBox1.ForeColor = System.Drawing.Color.Black;
-            this.guna2TextBox1.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.guna2TextBox1.HoverState.Parent = this.guna2TextBox1;
-            this.guna2TextBox1.Location = new System.Drawing.Point(158, 69);
-            this.guna2TextBox1.Margin = new System.Windows.Forms.Padding(5, 6, 5, 6);
-            this.guna2TextBox1.Name = "guna2TextBox1";
-            this.guna2TextBox1.PasswordChar = '\0';
-            this.guna2TextBox1.PlaceholderText = "";
-            this.guna2TextBox1.SelectedText = "";
-            this.guna2TextBox1.ShadowDecoration.Parent = this.guna2TextBox1;
-            this.guna2TextBox1.Size = new System.Drawing.Size(222, 29);
-            this.guna2TextBox1.TabIndex = 214;
+            this.groupnarsearch.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.groupnarsearch.DefaultText = "";
+            this.groupnarsearch.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
+            this.groupnarsearch.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
+            this.groupnarsearch.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.groupnarsearch.DisabledState.Parent = this.groupnarsearch;
+            this.groupnarsearch.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.groupnarsearch.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.groupnarsearch.FocusedState.Parent = this.groupnarsearch;
+            this.groupnarsearch.Font = new System.Drawing.Font("Segoe UI", 11F);
+            this.groupnarsearch.ForeColor = System.Drawing.Color.Black;
+            this.groupnarsearch.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.groupnarsearch.HoverState.Parent = this.groupnarsearch;
+            this.groupnarsearch.Location = new System.Drawing.Point(158, 69);
+            this.groupnarsearch.Margin = new System.Windows.Forms.Padding(5, 6, 5, 6);
+            this.groupnarsearch.Name = "groupnarsearch";
+            this.groupnarsearch.PasswordChar = '\0';
+            this.groupnarsearch.PlaceholderText = "";
+            this.groupnarsearch.SelectedText = "";
+            this.groupnarsearch.ShadowDecoration.Parent = this.groupnarsearch;
+            this.groupnarsearch.Size = new System.Drawing.Size(222, 29);
+            this.groupnarsearch.TabIndex = 214;
             // 
             // label27
             // 
@@ -1717,30 +1738,30 @@
             this.label27.TabIndex = 215;
             this.label27.Text = "Group N (AR)";
             // 
-            // guna2TextBox2
+            // mealarsearch
             // 
-            this.guna2TextBox2.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.guna2TextBox2.DefaultText = "";
-            this.guna2TextBox2.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
-            this.guna2TextBox2.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
-            this.guna2TextBox2.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.guna2TextBox2.DisabledState.Parent = this.guna2TextBox2;
-            this.guna2TextBox2.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.guna2TextBox2.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.guna2TextBox2.FocusedState.Parent = this.guna2TextBox2;
-            this.guna2TextBox2.Font = new System.Drawing.Font("Segoe UI", 11F);
-            this.guna2TextBox2.ForeColor = System.Drawing.Color.Black;
-            this.guna2TextBox2.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.guna2TextBox2.HoverState.Parent = this.guna2TextBox2;
-            this.guna2TextBox2.Location = new System.Drawing.Point(158, 28);
-            this.guna2TextBox2.Margin = new System.Windows.Forms.Padding(5, 6, 5, 6);
-            this.guna2TextBox2.Name = "guna2TextBox2";
-            this.guna2TextBox2.PasswordChar = '\0';
-            this.guna2TextBox2.PlaceholderText = "";
-            this.guna2TextBox2.SelectedText = "";
-            this.guna2TextBox2.ShadowDecoration.Parent = this.guna2TextBox2;
-            this.guna2TextBox2.Size = new System.Drawing.Size(222, 29);
-            this.guna2TextBox2.TabIndex = 212;
+            this.mealarsearch.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.mealarsearch.DefaultText = "";
+            this.mealarsearch.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
+            this.mealarsearch.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
+            this.mealarsearch.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.mealarsearch.DisabledState.Parent = this.mealarsearch;
+            this.mealarsearch.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.mealarsearch.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.mealarsearch.FocusedState.Parent = this.mealarsearch;
+            this.mealarsearch.Font = new System.Drawing.Font("Segoe UI", 11F);
+            this.mealarsearch.ForeColor = System.Drawing.Color.Black;
+            this.mealarsearch.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.mealarsearch.HoverState.Parent = this.mealarsearch;
+            this.mealarsearch.Location = new System.Drawing.Point(158, 28);
+            this.mealarsearch.Margin = new System.Windows.Forms.Padding(5, 6, 5, 6);
+            this.mealarsearch.Name = "mealarsearch";
+            this.mealarsearch.PasswordChar = '\0';
+            this.mealarsearch.PlaceholderText = "";
+            this.mealarsearch.SelectedText = "";
+            this.mealarsearch.ShadowDecoration.Parent = this.mealarsearch;
+            this.mealarsearch.Size = new System.Drawing.Size(222, 29);
+            this.mealarsearch.TabIndex = 212;
             // 
             // label28
             // 
@@ -1751,25 +1772,6 @@
             this.label28.Size = new System.Drawing.Size(94, 24);
             this.label28.TabIndex = 213;
             this.label28.Text = "Meal (AR)";
-            // 
-            // Meals
-            // 
-            this.Meals.AutoRoundedCorners = true;
-            this.Meals.BorderRadius = 21;
-            this.Meals.CausesValidation = false;
-            this.Meals.CheckedState.Parent = this.Meals;
-            this.Meals.CustomImages.Parent = this.Meals;
-            this.Meals.FillColor = System.Drawing.Color.MediumSeaGreen;
-            this.Meals.Font = new System.Drawing.Font("Segoe UI", 11F);
-            this.Meals.ForeColor = System.Drawing.Color.White;
-            this.Meals.HoverState.Parent = this.Meals;
-            this.Meals.Location = new System.Drawing.Point(23, 585);
-            this.Meals.Name = "Meals";
-            this.Meals.ShadowDecoration.Parent = this.Meals;
-            this.Meals.Size = new System.Drawing.Size(199, 45);
-            this.Meals.TabIndex = 203;
-            this.Meals.Text = "Meals";
-            this.Meals.Click += new System.EventHandler(this.Meals_Click);
             // 
             // MealAction
             // 
@@ -1884,9 +1886,9 @@
         private System.Windows.Forms.Panel panel1;
         private Guna.UI2.WinForms.Guna2Button Add;
         private Guna.UI2.WinForms.Guna2Button search;
-        private Guna.UI2.WinForms.Guna2TextBox guna2TextBox1;
+        private Guna.UI2.WinForms.Guna2TextBox groupnarsearch;
         private System.Windows.Forms.Label label27;
-        private Guna.UI2.WinForms.Guna2TextBox guna2TextBox2;
+        private Guna.UI2.WinForms.Guna2TextBox mealarsearch;
         private System.Windows.Forms.Label label28;
         private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
         private System.Windows.Forms.ToolStripMenuItem editToolStripMenuItem;
