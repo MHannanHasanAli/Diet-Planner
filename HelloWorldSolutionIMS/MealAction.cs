@@ -27,6 +27,163 @@ namespace HelloWorldSolutionIMS
 
         }
 
+        public void extrafunc()
+        {
+            int count = GetIngredientsForMeal();
+
+            for (int i = 0; i < count; i++)
+            {
+                MainClass.con.Open();
+                //int selectedIngredientID = Convert.ToInt32(guna2DataGridView1.Rows[i].Cells[1].Value);
+
+                //// Get the new quantity value from the "Quantity" cell.
+                //int newQuantity = Convert.ToInt32(guna2DataGridView1.Rows[i].Cells[3].Value);
+
+                // Fetch additional data based on the selected Ingredient ID and new quantity from your database.
+                // You can use a SQL query to retrieve data for other cells.
+                string query = "SELECT Quantity,CALORIES, FATS, CARBOHYDRATES, FIBERS, CALCIUM, PROTEIN, SODIUM, UNIT, POTASSIUM, PHOSPHOR, WATER, MAGNESIUM, SUGER, IRON, IODINE, A, B, IngredientEn, IngredientAr FROM MealIngredients WHERE MealID = @MealID";
+
+                using (SqlCommand cmdtwo = new SqlCommand(query, MainClass.con))
+                {
+                    cmdtwo.Parameters.AddWithValue("@MealID", mealIDToEdit);
+                    
+                    SqlDataReader reader5 = cmdtwo.ExecuteReader();
+
+                    if (reader5.Read())
+                    {
+                        // Calculate the values for other cells in the row based on the fetched data and the new quantity.
+                        double calories = Convert.ToDouble(reader5["CALORIES"]);
+                        double fats = Convert.ToDouble(reader5["FATS"]);
+                        double carbohydrates = Convert.ToDouble(reader5["CARBOHYDRATES"]);
+                        double fibers = Convert.ToDouble(reader5["FIBERS"]);
+                        double Protein = Convert.ToDouble(reader5["PROTEIN"]);
+                        double calcium = Convert.ToDouble(reader5["CALCIUM"]);
+                        double sodium = Convert.ToDouble(reader5["SODIUM"]);
+                        double potassium = Convert.ToDouble(reader5["POTASSIUM"]);
+                        double iodine = Convert.ToDouble(reader5["IODINE"]);
+                        double a = Convert.ToDouble(reader5["A"]);
+                        double b = Convert.ToDouble(reader5["B"]);
+                        double iron = Convert.ToDouble(reader5["IRON"]);
+                        double water = Convert.ToDouble(reader5["WATER"]);
+                        double suger = Convert.ToDouble(reader5["SUGER"]);
+                        double magnesium = Convert.ToDouble(reader5["MAGNESIUM"]);
+                        double phosphor = Convert.ToDouble(reader5["PHOSPHOR"]);
+                        string ingredienten = reader5["IngredientEn"].ToString();
+                        int ingredientar = int.Parse(reader5["IngredientAr"].ToString());
+                        int Quantity = int.Parse(reader5["Quantity"].ToString());
+                        string unit = (reader5["UNIT"]).ToString();
+
+
+                        MainClass.con.Close();
+                        DataGridViewRow row = new DataGridViewRow();
+
+                        // Create a DataGridViewComboBoxCell for the second cell.
+                        DataGridViewComboBoxCell comboCell = new DataGridViewComboBoxCell();
+
+                        // Clear the items in the combo cell to avoid duplicates
+                        comboCell.Items.Clear();
+
+                        comboCell.DataSource = GetIngredients(ingredientar);
+                        comboCell.DisplayMember = "Name";
+                        comboCell.ValueMember = "ID";
+
+                        // Set the default selected value for the combo box.
+                        comboCell.Value = GetIngredients(ingredientar)[0].ID; // Replace with the desired default value.
+
+                        // Create a DataGridViewTextBoxCell for the first cell.
+                        DataGridViewTextBoxCell cell1 = new DataGridViewTextBoxCell();
+
+                        row.Cells.Add(cell1);
+                        row.Cells.Add(comboCell);
+
+                        // Add the row to the DataGridView.
+                        guna2DataGridView1.Rows.Add(row);
+                        // Set the calculated values for other cells in the row.
+                        guna2DataGridView1.Rows[i].Cells[2].Value = ingredienten;
+                        guna2DataGridView1.Rows[i].Cells[3].Value = Quantity;
+                        guna2DataGridView1.Rows[i].Cells[4].Value = calories;
+                        guna2DataGridView1.Rows[i].Cells[5].Value = Protein;
+                        guna2DataGridView1.Rows[i].Cells[6].Value = fats;
+                        guna2DataGridView1.Rows[i].Cells[7].Value = carbohydrates;
+                        guna2DataGridView1.Rows[i].Cells[8].Value = calcium;
+                        guna2DataGridView1.Rows[i].Cells[9].Value = fibers;
+                        guna2DataGridView1.Rows[i].Cells[10].Value = sodium;
+                        guna2DataGridView1.Rows[i].Cells[11].Value = potassium;
+                        guna2DataGridView1.Rows[i].Cells[12].Value = phosphor;
+                        guna2DataGridView1.Rows[i].Cells[13].Value = water;
+                        guna2DataGridView1.Rows[i].Cells[14].Value = magnesium;
+                        guna2DataGridView1.Rows[i].Cells[15].Value = suger;
+                        guna2DataGridView1.Rows[i].Cells[16].Value = iron;
+                        guna2DataGridView1.Rows[i].Cells[17].Value = iodine;
+                        guna2DataGridView1.Rows[i].Cells[18].Value = a;
+                        guna2DataGridView1.Rows[i].Cells[19].Value = b;
+                        guna2DataGridView1.Rows[i].Cells[0].Value = unit;
+                    }
+
+                    reader5.Close();
+                    double totalCalories = 0;
+                    double totalProteins = 0;
+                    double totalFats = 0;
+                    double totalCarbohydrates = 0;
+                    double totalCalcium = 0;
+                    double totalFibers = 0;
+                    double totalSodium = 0;
+                    double totalPotassium = 0;
+                    double totalPhosphor = 0;
+                    double totalWater = 0;
+                    double totalMagnesium = 0;
+                    double totalSuger = 0;
+                    double totalIron = 0;
+                    double totalIodine = 0;
+                    double totala = 0;
+                    double totalb = 0;
+
+                    foreach (DataGridViewRow row in guna2DataGridView1.Rows)
+                    {
+                        if (row.Cells[4].Value != null)
+                        {
+                            totalCalories += Convert.ToDouble(row.Cells[4].Value);
+                            totalProteins += Convert.ToDouble(row.Cells[5].Value);
+                            totalFats += Convert.ToDouble(row.Cells[6].Value);
+                            totalCarbohydrates += Convert.ToDouble(row.Cells[7].Value);
+                            totalCalcium += Convert.ToDouble(row.Cells[8].Value);
+                            totalFibers += Convert.ToDouble(row.Cells[9].Value);
+                            totalSodium += Convert.ToDouble(row.Cells[10].Value);
+                            totalPotassium += Convert.ToDouble(row.Cells[11].Value);
+                            totalPhosphor += Convert.ToDouble(row.Cells[12].Value);
+                            totalWater += Convert.ToDouble(row.Cells[13].Value);
+                            totalMagnesium += Convert.ToDouble(row.Cells[14].Value);
+                            totalSuger += Convert.ToDouble(row.Cells[15].Value);
+                            totalIron += Convert.ToDouble(row.Cells[16].Value);
+                            totalIodine += Convert.ToDouble(row.Cells[17].Value);
+                            totala += Convert.ToDouble(row.Cells[18].Value);
+                            totalb += Convert.ToDouble(row.Cells[19].Value);
+                        }
+                    }
+
+                    calories.Text = totalCalories.ToString();
+                    protein.Text = totalProteins.ToString();
+                    fats.Text = totalFats.ToString();
+                    carbohydrates.Text = totalCarbohydrates.ToString();
+                    calcium.Text = totalCalcium.ToString();
+                    fibers.Text = totalFibers.ToString();
+                    sodium.Text = totalSodium.ToString();
+                    potassium.Text = totalPotassium.ToString();
+                    phosphor.Text = totalPhosphor.ToString();
+                    water.Text = totalWater.ToString();
+                    magnesium.Text = totalMagnesium.ToString();
+                    sugar.Text = totalSuger.ToString();
+                    iron.Text = totalIron.ToString();
+                    iodine.Text = totalIodine.ToString();
+                    abox.Text = totala.ToString();
+                    bbox.Text = totalb.ToString();
+
+                    
+                }
+            }
+
+           
+        }
         public class Ingredients
         {
             public int ID { get; set; }
@@ -179,21 +336,67 @@ namespace HelloWorldSolutionIMS
             ShowMeals(guna2DataGridView2, iddgv, mealardgv, mealendgv, caloriesdgv, proteinmaindgv, fatsmaindgv, carbohydratesmaindgv, calciummaindgv, fibermaindgv, sodiummaindgv);
             //ShowMeals(guna2DataGridView2, iddgv, mealardgv, mealendgv, caloriedgv, proteindgv, fatsdgv, carbohydratesdgv, calciumdgv, fiberdgv, sodiumdgv);
         }
-        private List<Ingredients> GetIngredientsForShow()
+
+        static int counter = 0;
+        private int GetIngredientsForMeal()
         {
             try
             {
+                MainClass.con.Open();
                 ingredientsList.Clear();
-                SqlCommand cmd = new SqlCommand("SELECT ID, INGREDIENT_AR FROM Ingredient", MainClass.con);
-                SqlDataReader reader = cmd.ExecuteReader();
+                SqlCommand cmdthree = new SqlCommand("SELECT ID FROM MealIngredients WHERE MealID = @Mealid", MainClass.con);
+                cmdthree.Parameters.AddWithValue("@Mealid", mealIDToEdit);
+                SqlDataReader reader6 = cmdthree.ExecuteReader();
 
-                while (reader.Read())
+                while (reader6.Read())
                 {
-                    int id = Convert.ToInt32(reader["ID"]);
-                    string ingredientAr = reader["INGREDIENT_AR"].ToString();
+                    counter++;
+                }
+                MainClass.con.Close();
+            }
+            catch (Exception ex)
+            {
+                MainClass.con.Close();
+                MessageBox.Show(ex.Message);
+            }
+            return counter;
+        }
+        private List<Ingredients> GetIngredients(int id_ar)
+        {
+            try
+            {
+                MainClass.con.Open();
+                ingredientsList.Clear();
+                SqlCommand cmdfour = new SqlCommand("SELECT ID, INGREDIENT_AR FROM Ingredient WHERE ID = @id", MainClass.con);
+                cmdfour.Parameters.AddWithValue("@id", id_ar);
+                SqlDataReader reader3 = cmdfour.ExecuteReader();
+                ingredientsList.Clear();
+              
+                while (reader3.Read())
+                {
+                    int id = Convert.ToInt32(reader3["ID"]);
+                    string ingredientAr = reader3["INGREDIENT_AR"].ToString();
                     ingredientsList.Add(new Ingredients { ID = id, Name = ingredientAr });
                 }
+                reader3.Close();
+                MainClass.con.Close();
 
+                MainClass.con.Open();
+                SqlCommand cmdfive = new SqlCommand("SELECT ID, INGREDIENT_AR FROM Ingredient", MainClass.con);
+                SqlDataReader reader2 = cmdfive.ExecuteReader();
+
+                while (reader2.Read())
+                {
+                    int id = Convert.ToInt32(reader2["ID"]);
+                    if(id == id_ar)
+                    {
+                        continue;
+                    }
+                    string ingredientAr = reader2["INGREDIENT_AR"].ToString();
+                    ingredientsList.Add(new Ingredients { ID = id, Name = ingredientAr });
+                }
+                reader2.Close();
+                MainClass.con.Close();
             }
             catch (Exception ex)
             {
@@ -227,6 +430,137 @@ namespace HelloWorldSolutionIMS
             }
             return ingredientsList;
          }
+
+        private void LineAdder()
+        {
+            save.Visible = true;
+
+            if (removeflag != 1)
+            {
+                DataGridViewButtonColumn buttonColumn = new DataGridViewButtonColumn();
+                buttonColumn.Name = "RemoveColumn";
+                buttonColumn.HeaderText = "Action";
+                buttonColumn.Text = "Remove";
+                buttonColumn.UseColumnTextForButtonValue = true;
+                guna2DataGridView1.Columns.Add(buttonColumn);
+                removeflag = 1;
+
+                // Set the custom cell style for the button cells
+                DataGridViewCellStyle cellStyle = new DataGridViewCellStyle();
+                cellStyle.BackColor = Color.Red; // Set the background color to red
+                buttonColumn.DefaultCellStyle = cellStyle;
+
+                // Handle the click event for the "Remove" button
+                guna2DataGridView1.CellContentClick += (s, args) =>
+                {
+                    if (args.RowIndex >= 0 && args.ColumnIndex == guna2DataGridView1.Columns["RemoveColumn"].Index)
+                    {
+                        var caloriesu = int.Parse(guna2DataGridView1.Rows[args.RowIndex].Cells[4].Value.ToString());
+                        var proteinu = int.Parse(guna2DataGridView1.Rows[args.RowIndex].Cells[5].Value.ToString());
+                        var fatsu = int.Parse(guna2DataGridView1.Rows[args.RowIndex].Cells[6].Value.ToString());
+                        var carbsu = int.Parse(guna2DataGridView1.Rows[args.RowIndex].Cells[7].Value.ToString());
+                        var calciumu = int.Parse(guna2DataGridView1.Rows[args.RowIndex].Cells[8].Value.ToString());
+                        var fiberu = int.Parse(guna2DataGridView1.Rows[args.RowIndex].Cells[9].Value.ToString());
+                        var sodiumu = int.Parse(guna2DataGridView1.Rows[args.RowIndex].Cells[10].Value.ToString());
+                        var potassiumu = int.Parse(guna2DataGridView1.Rows[args.RowIndex].Cells[11].Value.ToString());
+                        var phosphoru = int.Parse(guna2DataGridView1.Rows[args.RowIndex].Cells[12].Value.ToString());
+                        var wateru = int.Parse(guna2DataGridView1.Rows[args.RowIndex].Cells[13].Value.ToString());
+                        var magnesiumu = int.Parse(guna2DataGridView1.Rows[args.RowIndex].Cells[14].Value.ToString());
+                        var sugaru = int.Parse(guna2DataGridView1.Rows[args.RowIndex].Cells[15].Value.ToString());
+                        var ironu = int.Parse(guna2DataGridView1.Rows[args.RowIndex].Cells[16].Value.ToString());
+                        var iodineu = int.Parse(guna2DataGridView1.Rows[args.RowIndex].Cells[17].Value.ToString());
+                        var au = int.Parse(guna2DataGridView1.Rows[args.RowIndex].Cells[18].Value.ToString());
+                        var bu = int.Parse(guna2DataGridView1.Rows[args.RowIndex].Cells[19].Value.ToString());
+
+                        double currentCalories = double.Parse(calories.Text);
+                        double currentProteins = double.Parse(protein.Text);
+                        double currentFats = double.Parse(fats.Text);
+                        double currentCarbohydrates = double.Parse(carbohydrates.Text);
+                        double currentCalcium = double.Parse(calcium.Text);
+                        double currentFibers = double.Parse(fibers.Text);
+                        double currentSodium = double.Parse(sodium.Text);
+                        double currentPotassium = double.Parse(potassium.Text);
+                        double currentPhosphor = double.Parse(phosphor.Text);
+                        double currentWater = double.Parse(water.Text);
+                        double currentMagnesium = double.Parse(magnesium.Text);
+                        double currentSuger = double.Parse(sugar.Text);
+                        double currentIron = double.Parse(iron.Text);
+                        double currentIodine = double.Parse(iodine.Text);
+                        double currenta = double.Parse(abox.Text);
+                        double currentb = double.Parse(bbox.Text);
+
+                        double updatedCalories = currentCalories - caloriesu;
+                        double updatedProteins = currentProteins - proteinu;
+                        double updatedFats = currentFats - fatsu;
+                        double updatedCarbohydrates = currentCarbohydrates - carbsu;
+                        double updatedCalcium = currentCalcium - calciumu;
+                        double updatedFibers = currentFibers - fiberu;
+                        double updatedSodium = currentSodium - sodiumu;
+                        double updatedPotassium = currentPotassium - potassiumu;
+                        double updatedPhosphor = currentPhosphor - phosphoru;
+                        double updatedWater = currentWater - wateru;
+                        double updatedMagnesium = currentMagnesium - magnesiumu;
+                        double updatedSuger = currentSuger - sugaru;
+                        double updatedIron = currentIron - ironu;
+                        double updatedIodine = currentIodine - iodineu;
+                        double updateda = currenta - au;
+                        double updatedb = currentb - bu;
+
+                        // Update the textboxes with the new values
+                        calories.Text = updatedCalories.ToString();
+                        protein.Text = updatedProteins.ToString();
+                        fats.Text = updatedFats.ToString();
+                        carbohydrates.Text = updatedCarbohydrates.ToString();
+                        calcium.Text = updatedCalcium.ToString();
+                        fibers.Text = updatedFibers.ToString();
+                        sodium.Text = updatedSodium.ToString();
+                        potassium.Text = updatedPotassium.ToString();
+                        phosphor.Text = updatedPhosphor.ToString();
+                        water.Text = updatedWater.ToString();
+                        magnesium.Text = updatedMagnesium.ToString();
+                        sugar.Text = updatedSuger.ToString();
+                        iron.Text = updatedIron.ToString();
+                        iodine.Text = updatedIodine.ToString();
+                        abox.Text = updateda.ToString();
+                        bbox.Text = updatedb.ToString();
+
+                        guna2DataGridView1.Rows.RemoveAt(args.RowIndex);
+                        if (guna2DataGridView1.Rows.Count == 0)
+                        {
+                            save.Visible = false;
+                        }
+                        else
+                        {
+                            save.Visible = true;
+                        }
+                    }
+                };
+            }
+
+            DataGridViewRow row = new DataGridViewRow();
+
+            // Create a DataGridViewComboBoxCell for the second cell.
+            DataGridViewComboBoxCell comboCell = new DataGridViewComboBoxCell();
+
+            // Clear the items in the combo cell to avoid duplicates
+            comboCell.Items.Clear();
+
+            comboCell.DataSource = GetIngredients();
+            comboCell.DisplayMember = "Name";
+            comboCell.ValueMember = "ID";
+
+            // Set the default selected value for the combo box.
+            comboCell.Value = GetIngredients()[0].ID; // Replace with the desired default value.
+
+            // Create a DataGridViewTextBoxCell for the first cell.
+            DataGridViewTextBoxCell cell1 = new DataGridViewTextBoxCell();
+
+            row.Cells.Add(cell1);
+            row.Cells.Add(comboCell);
+
+            // Add the row to the DataGridView.
+            guna2DataGridView1.Rows.Add(row);
+        }
         private void AddIngredient_Click(object sender, EventArgs e)
         {
             save.Visible = true;
@@ -956,8 +1290,10 @@ namespace HelloWorldSolutionIMS
                     }
                     reader.Close(); // Close the first DataReader
 
-                    ShowIngredients(guna2DataGridView1, unitdgv, ingredientardgv, ingredientendgv,quantitydgv, caloriedgv, proteindgv, fatsdgv, carbohydratesdgv, calciumdgv, fiberdgv, sodiumdgv, potassiumdgv, phosphordgv,waterdgv,magnesiumdgv,sugerdgv,irondgv,iodinedgv,adgv,bdgv);
+                    //ShowIngredients(guna2DataGridView1, unitdgv, ingredientardgv, ingredientendgv,quantitydgv, caloriedgv, proteindgv, fatsdgv, carbohydratesdgv, calciumdgv, fiberdgv, sodiumdgv, potassiumdgv, phosphordgv,waterdgv,magnesiumdgv,sugerdgv,irondgv,iodinedgv,adgv,bdgv);
                     MainClass.con.Close();
+                    extrafunc();
+                    
                     tabControl1.SelectedIndex = 0;
                 }
                 else
