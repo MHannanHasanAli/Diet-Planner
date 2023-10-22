@@ -20,6 +20,7 @@ namespace HelloWorldSolutionIMS
         public MealAction()
         {
             InitializeComponent();
+            //tabControl1.SelectedIndex = 2;
             calories.TextChanged += UpdateChart;
             fats.TextChanged += UpdateChart;
             protein.TextChanged += UpdateChart;
@@ -529,7 +530,7 @@ namespace HelloWorldSolutionIMS
             chart1.Series.Clear();
             MainClass.HideAllTabsOnTabControl(tabControl1);
             save.Visible = false;
-            tabControl1.SelectedIndex = 2;
+            
             ShowMeals(guna2DataGridView2, iddgv, mealardgv, mealendgv, caloriesdgv, proteinmaindgv, fatsmaindgv, carbohydratesmaindgv, calciummaindgv, fibermaindgv, sodiummaindgv);
             //ShowMeals(guna2DataGridView2, iddgv, mealardgv, mealendgv, caloriedgv, proteindgv, fatsdgv, carbohydratesdgv, calciumdgv, fiberdgv, sodiumdgv);
         }
@@ -991,7 +992,7 @@ namespace HelloWorldSolutionIMS
 
                         
                         MainClass.con.Close();
-                        tabControl1.SelectedIndex = 2;
+                        tabControl1.SelectedIndex = 0;
                         ShowMeals(guna2DataGridView2, iddgv, mealardgv, mealendgv, caloriesdgv, proteinmaindgv, fatsmaindgv, carbohydratesmaindgv, calciummaindgv, fibermaindgv, sodiummaindgv);
 
 
@@ -1066,7 +1067,7 @@ namespace HelloWorldSolutionIMS
                             }
                         }
                         guna2DataGridView1.Rows.Clear();
-                        tabControl1.SelectedIndex = 2;
+                        tabControl1.SelectedIndex = 0;
                         ShowMeals(guna2DataGridView2, iddgv, mealardgv, mealendgv, caloriesdgv, proteinmaindgv, fatsmaindgv, carbohydratesmaindgv, calciummaindgv, fibermaindgv, sodiummaindgv);
 
                     }
@@ -1229,7 +1230,7 @@ namespace HelloWorldSolutionIMS
                         guna2DataGridView1.Rows.Clear();
 
                         guna2DataGridView1.Rows.Clear();
-                        tabControl1.SelectedIndex = 2;
+                        tabControl1.SelectedIndex = 0;
 
                     }
                     catch (Exception ex)
@@ -1251,7 +1252,7 @@ namespace HelloWorldSolutionIMS
         }
         private void Backtomeal_Click(object sender, EventArgs e)
         {
-            tabControl1.SelectedIndex = 0;
+            tabControl1.SelectedIndex = 2;
         }
         private void AddIngredient_Click_1(object sender, EventArgs e)
         {
@@ -1259,7 +1260,7 @@ namespace HelloWorldSolutionIMS
         }
         private void Add_Click(object sender, EventArgs e)
         {
-            tabControl1.SelectedIndex = 0;
+            tabControl1.SelectedIndex = 2;
         }
         private void deleteToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -1377,7 +1378,7 @@ namespace HelloWorldSolutionIMS
                     MainClass.con.Close();
                     extrafunc();
                     
-                    tabControl1.SelectedIndex = 0;
+                    tabControl1.SelectedIndex = 2;
                 }
                 else
                 {
@@ -1396,7 +1397,7 @@ namespace HelloWorldSolutionIMS
         }
         private void Meals_Click(object sender, EventArgs e)
         {
-            tabControl1.SelectedIndex = 2;
+            tabControl1.SelectedIndex = 0;
         }
 
         private void search_Click(object sender, EventArgs e)
