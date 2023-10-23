@@ -67,5 +67,10 @@ namespace HelloWorldSolutionIMS
         {
             loadform(new MealAction());
         }
+
+        private void guna2TileButton11_Click(object sender, EventArgs e)
+        {
+            loadform(new Payment());
+        }
     }
 }

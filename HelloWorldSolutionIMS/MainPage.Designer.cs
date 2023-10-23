@@ -152,6 +152,7 @@
             this.guna2TileButton11.TabIndex = 10;
             this.guna2TileButton11.Text = "Payment";
             this.guna2TileButton11.TextOffset = new System.Drawing.Point(0, -15);
+            this.guna2TileButton11.Click += new System.EventHandler(this.guna2TileButton11_Click);
             // 
             // guna2TileButton7
             // 
