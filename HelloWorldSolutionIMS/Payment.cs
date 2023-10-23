@@ -12,6 +12,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using static HelloWorldSolutionIMS.MealAction;
 using Win32Interop.Enums;
+using System.Drawing.Printing;
 
 namespace HelloWorldSolutionIMS
 {
@@ -24,6 +25,7 @@ namespace HelloWorldSolutionIMS
 
         static int edit = 0;
         static string PaymentIDToEdit;
+        
         private void ShowPayments(DataGridView dgv, DataGridViewColumn no, DataGridViewColumn pay, DataGridViewColumn first, DataGridViewColumn family, DataGridViewColumn amount, DataGridViewColumn amountpro, DataGridViewColumn promopercent, DataGridViewColumn date)
         {
             SqlCommand cmd;
@@ -56,7 +58,130 @@ namespace HelloWorldSolutionIMS
                 MainClass.con.Close();
                 MessageBox.Show(ex.Message);
             }
-        }       
+        }
+        private void SearchPayments(DataGridView dgv, DataGridViewColumn no, DataGridViewColumn pay, DataGridViewColumn first, DataGridViewColumn family, DataGridViewColumn amount, DataGridViewColumn amountpro, DataGridViewColumn promopercent, DataGridViewColumn date)
+        {
+            string ingredientName = filenosearch.Text;
+            string groupArName = firstnamesearch.Text;
+
+            if (ingredientName != "" && groupArName != "")
+            {
+                try
+                {
+                    MainClass.con.Open();
+
+                    SqlCommand cmd = new SqlCommand("SELECT FILENO, FIRSTNAME, FAMILYNAME, PAYMENTNAME, AMOUNT, AMOUNTAFTERPROMOTION, PROMOTIONPERCENTAGE, DATE FROM Payment " +
+                        "WHERE (FILENO LIKE @IngredientName) AND (FIRSTNAME LIKE @GroupArName)", MainClass.con);
+
+                    cmd.Parameters.AddWithValue("@IngredientName", "%" + ingredientName + "%");
+                    cmd.Parameters.AddWithValue("@GroupArName", "%" + groupArName + "%");
+
+                    SqlDataAdapter da = new SqlDataAdapter(cmd);
+                    DataTable dt = new DataTable();
+                    da.Fill(dt);
+
+                    // Modify the column names to match your data grid view
+                    no.DataPropertyName = dt.Columns["FILENO"].ToString();
+                    pay.DataPropertyName = dt.Columns["PAYMENTNAME"].ToString();
+                    first.DataPropertyName = dt.Columns["FIRSTNAME"].ToString();
+                    family.DataPropertyName = dt.Columns["FAMILYNAME"].ToString();
+                    amount.DataPropertyName = dt.Columns["AMOUNT"].ToString();
+                    amountpro.DataPropertyName = dt.Columns["AMOUNTAFTERPROMOTION"].ToString();
+                    promopercent.DataPropertyName = dt.Columns["PROMOTIONPERCENTAGE"].ToString();
+                    date.DataPropertyName = dt.Columns["DATE"].ToString();
+
+
+
+
+                    dgv.DataSource = dt;
+                    MainClass.con.Close();
+                }
+                catch (Exception ex)
+                {
+                    MainClass.con.Close();
+                    MessageBox.Show(ex.Message);
+                }
+            }
+            else if (ingredientName == "" && groupArName != "")
+            {
+                try
+                {
+                    MainClass.con.Open();
+
+                    SqlCommand cmd = new SqlCommand("SELECT FILENO, FIRSTNAME, FAMILYNAME, PAYMENTNAME, AMOUNT, AMOUNTAFTERPROMOTION, PROMOTIONPERCENTAGE, DATE FROM Payment " +
+                        "WHERE FIRSTNAME LIKE @GroupArName", MainClass.con);
+
+                    cmd.Parameters.AddWithValue("@GroupArName", "%" + groupArName + "%");
+
+                    SqlDataAdapter da = new SqlDataAdapter(cmd);
+                    DataTable dt = new DataTable();
+                    da.Fill(dt);
+
+                    // Modify the column names to match your data grid view
+                    no.DataPropertyName = dt.Columns["FILENO"].ToString();
+                    pay.DataPropertyName = dt.Columns["PAYMENTNAME"].ToString();
+                    first.DataPropertyName = dt.Columns["FIRSTNAME"].ToString();
+                    family.DataPropertyName = dt.Columns["FAMILYNAME"].ToString();
+                    amount.DataPropertyName = dt.Columns["AMOUNT"].ToString();
+                    amountpro.DataPropertyName = dt.Columns["AMOUNTAFTERPROMOTION"].ToString();
+                    promopercent.DataPropertyName = dt.Columns["PROMOTIONPERCENTAGE"].ToString();
+                    date.DataPropertyName = dt.Columns["DATE"].ToString();
+                 
+
+
+
+                    dgv.DataSource = dt;
+                    MainClass.con.Close();
+                }
+                catch (Exception ex)
+                {
+                    MainClass.con.Close();
+                    MessageBox.Show(ex.Message);
+                }
+            }
+            else if (ingredientName != "" && groupArName == "")
+            {
+                try
+                {
+                    MainClass.con.Open();
+
+                    SqlCommand cmd = new SqlCommand("SELECT FILENO, FIRSTNAME, FAMILYNAME, PAYMENTNAME, AMOUNT, AMOUNTAFTERPROMOTION, PROMOTIONPERCENTAGE, DATE FROM Payment " +
+                        "WHERE FILENO LIKE @IngredientName", MainClass.con);
+
+                    cmd.Parameters.AddWithValue("@IngredientName", "%" + ingredientName + "%");
+
+                    SqlDataAdapter da = new SqlDataAdapter(cmd);
+                    DataTable dt = new DataTable();
+                    da.Fill(dt);
+
+                    // Modify the column names to match your data grid view
+                    no.DataPropertyName = dt.Columns["FILENO"].ToString();
+                    pay.DataPropertyName = dt.Columns["PAYMENTNAME"].ToString();
+                    first.DataPropertyName = dt.Columns["FIRSTNAME"].ToString();
+                    family.DataPropertyName = dt.Columns["FAMILYNAME"].ToString();
+                    amount.DataPropertyName = dt.Columns["AMOUNT"].ToString();
+                    amountpro.DataPropertyName = dt.Columns["AMOUNTAFTERPROMOTION"].ToString();
+                    promopercent.DataPropertyName = dt.Columns["PROMOTIONPERCENTAGE"].ToString();
+                    date.DataPropertyName = dt.Columns["DATE"].ToString();
+
+
+
+
+                    dgv.DataSource = dt;
+                    MainClass.con.Close();
+                }
+                catch (Exception ex)
+                {
+                    MainClass.con.Close();
+                    MessageBox.Show(ex.Message);
+                }
+            }
+            else
+            {
+                ShowPayments(guna2DataGridView1, filenodgv, paymentnamedgv, firstnamedgv, familynamedgv, amountdgv, amountaftrpromotiondgv, promotionpercentagedgv, datedgv);
+                MessageBox.Show("Fill File No or First Name");
+            }
+        }
         private void save_Click(object sender, EventArgs e)
         {
             if (edit == 0)
@@ -187,7 +312,34 @@ namespace HelloWorldSolutionIMS
         {
             MainClass.HideAllTabsOnTabControl(tabControl1);
             ShowPayments(guna2DataGridView1, filenodgv, paymentnamedgv, firstnamedgv, familynamedgv, amountdgv, amountaftrpromotiondgv, promotionpercentagedgv, datedgv);
+            total();
+        }
+        private void total()
+        {
+            decimal sum = 0;
 
+            // Replace "guna2DataGridView1" with the actual name of your Guna2 DataGridView control
+            Guna.UI2.WinForms.Guna2DataGridView dataGridView = guna2DataGridView1;
+
+            // Replace "columnIndex" with the index of the column you want to sum (0-based index)
+            int columnIndex = 5;
+
+            foreach (DataGridViewRow row in dataGridView.Rows)
+            {
+                if (row.Cells[columnIndex].Value != null)
+                {
+                    decimal cellValue;
+                    if (decimal.TryParse(row.Cells[columnIndex].Value.ToString(), out cellValue))
+                    {
+                        sum += cellValue;
+                    }
+                }
+            }
+
+            // "sum" now contains the sum of values in the specified column
+
+            // Assuming "sumLabel" is the name of your label control
+            totalvalues.Text = "Amount Sum: " + sum + "/-";
         }
         private void deleteToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -308,6 +460,14 @@ namespace HelloWorldSolutionIMS
 
                 amountafterpromotion.Text = amountupdate.ToString();
             }
+        }
+        private void search_Click(object sender, EventArgs e)
+        {
+            SearchPayments(guna2DataGridView1, filenodgv, paymentnamedgv, firstnamedgv, familynamedgv, amountdgv, amountaftrpromotiondgv, promotionpercentagedgv, datedgv);
+        }
+        private void printToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            
         }
     }
 }
