@@ -23,6 +23,7 @@ namespace HelloWorldSolutionIMS
         }
 
         static int edit = 0;
+        static string PaymentIDToEdit;
         private void ShowPayments(DataGridView dgv, DataGridViewColumn no, DataGridViewColumn pay, DataGridViewColumn first, DataGridViewColumn family, DataGridViewColumn amount, DataGridViewColumn amountpro, DataGridViewColumn promopercent, DataGridViewColumn date)
         {
             SqlCommand cmd;
@@ -106,7 +107,7 @@ namespace HelloWorldSolutionIMS
                         // Refresh the DataGridView to display the updated data.
                         // Replace the arguments with your actual DataGridView and column names.
                         ShowPayments(guna2DataGridView1, filenodgv, paymentnamedgv, firstnamedgv, familynamedgv, amountdgv, amountaftrpromotiondgv, promotionpercentagedgv, datedgv);
-
+                        tabControl1.SelectedIndex = 0;
                     }
                     catch (Exception ex)
                     {
@@ -126,9 +127,9 @@ namespace HelloWorldSolutionIMS
                     try
                     {
                         MainClass.con.Open();
-                        SqlCommand cmd = new SqlCommand("UPDATE Payment SET FirstName = @FirstName, FamilyName = @FamilyName, Gender = @Gender, Age = @Age, MobileNo = @MobileNo, PaymentName = @PaymentName, Amount = @Amount, Date = @Date, AmountAfterPromotion = @AmountAfterPromotion, PromotionPercentage = @PromotionPercentage, PromotionCode = @PromotionCode, PromotionName = @PromotionName, PromotionDetails = @PromotionDetails WHERE ID = @ID", MainClass.con);
+                        SqlCommand cmd = new SqlCommand("UPDATE Payment SET FirstName = @FirstName, FamilyName = @FamilyName, Gender = @Gender, Age = @Age, MobileNo = @MobileNo, PaymentName = @PaymentName, Amount = @Amount, Date = @Date, AmountAfterPromotion = @AmountAfterPromotion, PromotionPercentage = @PromotionPercentage, PromotionCode = @PromotionCode, PromotionName = @PromotionName, PromotionDetails = @PromotionDetails WHERE FILENO = @ID", MainClass.con);
 
-                        //cmd.Parameters.AddWithValue("@ID", customerIDToEdit);
+                        cmd.Parameters.AddWithValue("@ID", PaymentIDToEdit);
                         cmd.Parameters.AddWithValue("@FirstName", firstname.Text);
                         cmd.Parameters.AddWithValue("@FamilyName", familyname.Text);
                         cmd.Parameters.AddWithValue("@Gender", gender.Text);
@@ -167,6 +168,7 @@ namespace HelloWorldSolutionIMS
                         // Refresh the DataGridView to display the updated data.
                         // Replace the arguments with your actual DataGridView and column names.
                         ShowPayments(guna2DataGridView1, filenodgv, paymentnamedgv, firstnamedgv, familynamedgv, amountdgv, amountaftrpromotiondgv, promotionpercentagedgv, datedgv);
+                        tabControl1.SelectedIndex = 0;
                     }
                     catch (Exception ex)
                     {
@@ -187,7 +189,6 @@ namespace HelloWorldSolutionIMS
             ShowPayments(guna2DataGridView1, filenodgv, paymentnamedgv, firstnamedgv, familynamedgv, amountdgv, amountaftrpromotiondgv, promotionpercentagedgv, datedgv);
 
         }
-
         private void deleteToolStripMenuItem_Click(object sender, EventArgs e)
         {
             if (guna2DataGridView1 != null)
@@ -238,6 +239,74 @@ namespace HelloWorldSolutionIMS
                         }
                     }
                 }
+            }
+        }
+        private void editToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            edit = 1;
+            try
+            {
+                PaymentIDToEdit = guna2DataGridView1.CurrentRow.Cells[1].Value.ToString(); // Assuming the ID is in the first cell
+                MainClass.con.Open();
+                SqlCommand cmd = new SqlCommand("SELECT * FROM Payment WHERE FILENO = @paymentID", MainClass.con);
+                cmd.Parameters.AddWithValue("@paymentID", PaymentIDToEdit);
+
+                SqlDataReader reader = cmd.ExecuteReader();
+                if (reader.HasRows)
+                {
+                    while (reader.Read())
+                    {
+                        // Set the retrieved data into input controls
+                        fileno.Text = reader["FileNo"].ToString();
+                        firstname.Text = reader["FirstName"].ToString();
+                        familyname.Text = reader["FamilyName"].ToString();
+                        gender.Text = reader["Gender"].ToString();
+                        age.Text = reader["Age"].ToString();
+                        mobileno.Text = reader["MobileNo"].ToString();
+                        paymentname.Text = reader["PaymentName"].ToString();
+                        amount.Text = reader["Amount"].ToString();
+                        date.Text = reader["Date"].ToString();
+                        amountafterpromotion.Text = reader["AmountAfterPromotion"].ToString();
+                        promotionpercentage.Text = reader["PromotionPercentage"].ToString();
+                        promotioncode.Text = reader["PromotionCode"].ToString();
+                        promotionname.Text = reader["PromotionName"].ToString();
+                        promotiondetails.Text = reader["PromotionDetails"].ToString();
+                    }
+                    tabControl1.SelectedIndex = 1;
+                }
+                else
+                {
+                    MessageBox.Show("Payment data not found with ID: " + PaymentIDToEdit);
+                }
+
+                MainClass.con.Close();
+            }
+            catch (Exception ex)
+            {
+                MainClass.con.Close();
+                MessageBox.Show(ex.Message);
+            }
+
+        }
+        private void Backtomeal_Click(object sender, EventArgs e)
+        {
+            tabControl1.SelectedIndex = 0;
+        }
+        private void Add_Click(object sender, EventArgs e)
+        {
+            tabControl1.SelectedIndex = 1;
+        }
+        private void promotionpercentage_Leave(object sender, EventArgs e)
+        {
+            float percentage = float.Parse(promotionpercentage.Text);
+
+            if (amount.Text != "")
+            {
+                int amountvalue = int.Parse(amount.Text);
+
+                var amountupdate = (percentage / 100.00) * amountvalue;
+
+                amountafterpromotion.Text = amountupdate.ToString();
             }
         }
     }
