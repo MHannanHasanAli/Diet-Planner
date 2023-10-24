@@ -66,7 +66,7 @@
             this.guna2GradientPanel1.Location = new System.Drawing.Point(0, 0);
             this.guna2GradientPanel1.Name = "guna2GradientPanel1";
             this.guna2GradientPanel1.ShadowDecoration.Parent = this.guna2GradientPanel1;
-            this.guna2GradientPanel1.Size = new System.Drawing.Size(343, 700);
+            this.guna2GradientPanel1.Size = new System.Drawing.Size(343, 796);
             this.guna2GradientPanel1.TabIndex = 0;
             // 
             // guna2TileButton1
@@ -110,6 +110,7 @@
             this.guna2TileButton10.TabIndex = 9;
             this.guna2TileButton10.Text = "Special Deals";
             this.guna2TileButton10.TextOffset = new System.Drawing.Point(0, -15);
+            this.guna2TileButton10.Click += new System.EventHandler(this.guna2TileButton10_Click);
             // 
             // guna2TileButton5
             // 
@@ -335,14 +336,14 @@
             this.mainpanel.Location = new System.Drawing.Point(343, 0);
             this.mainpanel.Name = "mainpanel";
             this.mainpanel.ShadowDecoration.Parent = this.mainpanel;
-            this.mainpanel.Size = new System.Drawing.Size(639, 700);
+            this.mainpanel.Size = new System.Drawing.Size(639, 796);
             this.mainpanel.TabIndex = 1;
             // 
             // MainPage
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(982, 700);
+            this.ClientSize = new System.Drawing.Size(982, 796);
             this.Controls.Add(this.mainpanel);
             this.Controls.Add(this.guna2GradientPanel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;

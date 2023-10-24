@@ -30,7 +30,7 @@ namespace HelloWorldSolutionIMS
             {
                 MainClass.con.Open();
 
-                cmd = new SqlCommand("SELECT ID, PromotionName, PromotionCode, PromotionPercentage, StartDate, EndDate, NutritionistName, Branch, PromotionDetails FROM SpecialDeals", MainClass.con);
+                cmd = new SqlCommand("SELECT ID, PromotionName, PromotionCode, PromotionPercentage, StartDate, EndDate, NutritionistName, Branch FROM SpecialDeals", MainClass.con);
 
                 SqlDataAdapter da = new SqlDataAdapter(cmd);
                 DataTable dt = new DataTable();
@@ -222,7 +222,8 @@ namespace HelloWorldSolutionIMS
 
                         // Refresh the DataGridView to display the updated data.
                         // Replace the arguments with your actual DataGridView and column names.
-                        //ShowSpecialDeals(dataGridView, promotionNameColumn, promotionCodeColumn, promotionPercentageColumn, startDateColumn, endDateColumn, nutritionistNameColumn, branchColumn, promotionDetailsColumn);
+                        ShowSpecialDeals(guna2DataGridView1, iddgv, promotionnamedgv, promotioncodedgv, promotionpercentagedgv, startdatedgv, enddatedgv, nutritionistdgv, branchdgv);
+                        tabControl1.SelectedIndex = 0;
                     }
                     catch (Exception ex)
                     {
@@ -271,7 +272,8 @@ namespace HelloWorldSolutionIMS
 
                         // Refresh the DataGridView to display the updated data.
                         // Replace the arguments with your actual DataGridView and column names.
-                        //ShowSpecialDeals(dataGridView, promotionNameColumn, promotionCodeColumn, promotionPercentageColumn, startDateColumn, endDateColumn, nutritionistNameColumn, branchColumn, promotionDetailsColumn);
+                        ShowSpecialDeals(guna2DataGridView1, iddgv, promotionnamedgv, promotioncodedgv, promotionpercentagedgv, startdatedgv, enddatedgv, nutritionistdgv, branchdgv);
+                        tabControl1.SelectedIndex = 0;
                     }
                     catch (Exception ex)
                     {
