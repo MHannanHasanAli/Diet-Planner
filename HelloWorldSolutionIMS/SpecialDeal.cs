@@ -5,9 +5,11 @@ using System.Data;
 using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
+using System.Runtime.InteropServices.ComTypes;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Win32Interop.Enums;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.TreeView;
 
 namespace HelloWorldSolutionIMS
@@ -50,6 +52,128 @@ namespace HelloWorldSolutionIMS
             {
                 MainClass.con.Close();
                 MessageBox.Show(ex.Message);
+            }
+        }
+        private void SearchSpecialDeals(DataGridView dgv, DataGridViewColumn no, DataGridViewColumn name, DataGridViewColumn code, DataGridViewColumn percentage, DataGridViewColumn start, DataGridViewColumn end, DataGridViewColumn nutritionist, DataGridViewColumn branch)
+        {
+            string ingredientName = promotionnamesearch.Text;
+            string groupArName = promotioncodesearch.Text;
+
+            if (ingredientName != "" && groupArName != "")
+            {
+                try
+                {
+                    MainClass.con.Open();
+
+                    SqlCommand cmd = new SqlCommand("SELECT ID, PromotionName, PromotionCode, PromotionPercentage, StartDate, EndDate, NutritionistName, Branch FROM SpecialDeals " +
+               "WHERE (PromotionName LIKE @IngredientName) AND (PromotionCode LIKE @GroupArName)", MainClass.con);
+
+
+                    cmd.Parameters.AddWithValue("@IngredientName", "%" + ingredientName + "%");
+                    cmd.Parameters.AddWithValue("@GroupArName", "%" + groupArName + "%");
+
+                    SqlDataAdapter da = new SqlDataAdapter(cmd);
+                    DataTable dt = new DataTable();
+                    da.Fill(dt);
+
+                    // Modify the column names to match your data grid view
+                    no.DataPropertyName = dt.Columns["ID"].ToString();
+                    name.DataPropertyName = dt.Columns["PromotionName"].ToString();
+                    code.DataPropertyName = dt.Columns["PromotionCode"].ToString();
+                    percentage.DataPropertyName = dt.Columns["PromotionPercentage"].ToString();
+                    start.DataPropertyName = dt.Columns["StartDate"].ToString();
+                    end.DataPropertyName = dt.Columns["EndDate"].ToString();
+                    nutritionist.DataPropertyName = dt.Columns["NutritionistName"].ToString();
+                    branch.DataPropertyName = dt.Columns["Branch"].ToString();
+
+
+
+                    dgv.DataSource = dt;
+                    MainClass.con.Close();
+                }
+                catch (Exception ex)
+                {
+                    MainClass.con.Close();
+                    MessageBox.Show(ex.Message);
+                }
+            }
+            else if (ingredientName == "" && groupArName != "")
+            {
+                try
+                {
+                    MainClass.con.Open();
+
+                    SqlCommand cmd = new SqlCommand("SELECT ID, PromotionName, PromotionCode, PromotionPercentage, StartDate, EndDate, NutritionistName, Branch FROM SpecialDeals " +
+                        "WHERE PromotionCode LIKE @GroupArName", MainClass.con);
+
+                    cmd.Parameters.AddWithValue("@GroupArName", "%" + groupArName + "%");
+
+                    SqlDataAdapter da = new SqlDataAdapter(cmd);
+                    DataTable dt = new DataTable();
+                    da.Fill(dt);
+
+                    // Modify the column names to match your data grid view
+                    no.DataPropertyName = dt.Columns["ID"].ToString();
+                    name.DataPropertyName = dt.Columns["PromotionName"].ToString();
+                    code.DataPropertyName = dt.Columns["PromotionCode"].ToString();
+                    percentage.DataPropertyName = dt.Columns["PromotionPercentage"].ToString();
+                    start.DataPropertyName = dt.Columns["StartDate"].ToString();
+                    end.DataPropertyName = dt.Columns["EndDate"].ToString();
+                    nutritionist.DataPropertyName = dt.Columns["NutritionistName"].ToString();
+                    branch.DataPropertyName = dt.Columns["Branch"].ToString();
+
+
+
+
+                    dgv.DataSource = dt;
+                    MainClass.con.Close();
+                }
+                catch (Exception ex)
+                {
+                    MainClass.con.Close();
+                    MessageBox.Show(ex.Message);
+                }
+            }
+            else if (ingredientName != "" && groupArName == "")
+            {
+                try
+                {
+                    MainClass.con.Open();
+
+                    SqlCommand cmd = new SqlCommand("SELECT ID, PromotionName, PromotionCode, PromotionPercentage, StartDate, EndDate, NutritionistName, Branch FROM SpecialDeals " +
+                        "WHERE PromotionName LIKE @IngredientName", MainClass.con);
+
+                    cmd.Parameters.AddWithValue("@IngredientName", "%" + ingredientName + "%");
+
+                    SqlDataAdapter da = new SqlDataAdapter(cmd);
+                    DataTable dt = new DataTable();
+                    da.Fill(dt);
+
+                    // Modify the column names to match your data grid view
+                    no.DataPropertyName = dt.Columns["ID"].ToString();
+                    name.DataPropertyName = dt.Columns["PromotionName"].ToString();
+                    code.DataPropertyName = dt.Columns["PromotionCode"].ToString();
+                    percentage.DataPropertyName = dt.Columns["PromotionPercentage"].ToString();
+                    start.DataPropertyName = dt.Columns["StartDate"].ToString();
+                    end.DataPropertyName = dt.Columns["EndDate"].ToString();
+                    nutritionist.DataPropertyName = dt.Columns["NutritionistName"].ToString();
+                    branch.DataPropertyName = dt.Columns["Branch"].ToString();
+
+
+
+                    dgv.DataSource = dt;
+                    MainClass.con.Close();
+                }
+                catch (Exception ex)
+                {
+                    MainClass.con.Close();
+                    MessageBox.Show(ex.Message);
+                }
+            }
+            else
+            {
+                ShowSpecialDeals(guna2DataGridView1, iddgv, promotionnamedgv, promotioncodedgv, promotionpercentagedgv, startdatedgv, enddatedgv, nutritionistdgv, branchdgv);
+                MessageBox.Show("Fill Promotion Name or Code");
             }
         }
         private void Add_Click(object sender, EventArgs e)
@@ -260,6 +384,10 @@ namespace HelloWorldSolutionIMS
         private void printToolStripMenuItem_Click(object sender, EventArgs e)
         {
 
+        }
+        private void search_Click(object sender, EventArgs e)
+        {
+            SearchSpecialDeals(guna2DataGridView1, iddgv, promotionnamedgv, promotioncodedgv, promotionpercentagedgv, startdatedgv, enddatedgv, nutritionistdgv, branchdgv);
         }
     }
 }

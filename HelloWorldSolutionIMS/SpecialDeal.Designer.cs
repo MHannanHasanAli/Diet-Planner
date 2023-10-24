@@ -29,32 +29,18 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle16 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle17 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle18 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
-            this.tabPage2 = new System.Windows.Forms.TabPage();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.panel2 = new System.Windows.Forms.Panel();
-            this.label13 = new System.Windows.Forms.Label();
-            this.promotionname = new Guna.UI2.WinForms.Guna2TextBox();
-            this.label12 = new System.Windows.Forms.Label();
-            this.promotioncode = new Guna.UI2.WinForms.Guna2TextBox();
-            this.label11 = new System.Windows.Forms.Label();
-            this.promotionpercentage = new Guna.UI2.WinForms.Guna2TextBox();
-            this.label10 = new System.Windows.Forms.Label();
-            this.enddate = new System.Windows.Forms.DateTimePicker();
-            this.startdate = new System.Windows.Forms.DateTimePicker();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.promotiondetails = new Guna.UI2.WinForms.Guna2TextBox();
-            this.branch = new Guna.UI2.WinForms.Guna2TextBox();
-            this.label3 = new System.Windows.Forms.Label();
-            this.nutritionist = new Guna.UI2.WinForms.Guna2TextBox();
-            this.label4 = new System.Windows.Forms.Label();
-            this.Backtodeal = new Guna.UI2.WinForms.Guna2Button();
-            this.save = new Guna.UI2.WinForms.Guna2Button();
+            this.Add = new Guna.UI2.WinForms.Guna2Button();
+            this.search = new Guna.UI2.WinForms.Guna2Button();
+            this.promotionnamesearch = new Guna.UI2.WinForms.Guna2TextBox();
+            this.label5 = new System.Windows.Forms.Label();
+            this.promotioncodesearch = new Guna.UI2.WinForms.Guna2TextBox();
+            this.label6 = new System.Windows.Forms.Label();
             this.guna2DataGridView1 = new Guna.UI2.WinForms.Guna2DataGridView();
             this.iddgv = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.promotionnamedgv = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -64,22 +50,36 @@
             this.enddatedgv = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.nutritionistdgv = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.branchdgv = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.guna2TextBox3 = new Guna.UI2.WinForms.Guna2TextBox();
-            this.label5 = new System.Windows.Forms.Label();
-            this.guna2TextBox4 = new Guna.UI2.WinForms.Guna2TextBox();
-            this.label6 = new System.Windows.Forms.Label();
-            this.Add = new Guna.UI2.WinForms.Guna2Button();
-            this.search = new Guna.UI2.WinForms.Guna2Button();
+            this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.Backtodeal = new Guna.UI2.WinForms.Guna2Button();
+            this.save = new Guna.UI2.WinForms.Guna2Button();
+            this.branch = new Guna.UI2.WinForms.Guna2TextBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.nutritionist = new Guna.UI2.WinForms.Guna2TextBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.promotiondetails = new Guna.UI2.WinForms.Guna2TextBox();
+            this.enddate = new System.Windows.Forms.DateTimePicker();
+            this.startdate = new System.Windows.Forms.DateTimePicker();
+            this.label1 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label13 = new System.Windows.Forms.Label();
+            this.promotionname = new Guna.UI2.WinForms.Guna2TextBox();
+            this.label12 = new System.Windows.Forms.Label();
+            this.promotioncode = new Guna.UI2.WinForms.Guna2TextBox();
+            this.label11 = new System.Windows.Forms.Label();
+            this.promotionpercentage = new Guna.UI2.WinForms.Guna2TextBox();
+            this.label10 = new System.Windows.Forms.Label();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.editToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.deleteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.printToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
-            this.tabPage2.SuspendLayout();
             this.panel1.SuspendLayout();
-            this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.guna2DataGridView1)).BeginInit();
+            this.tabPage2.SuspendLayout();
+            this.panel2.SuspendLayout();
             this.contextMenuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -104,6 +104,246 @@
             this.tabPage1.Text = "tabPage1";
             this.tabPage1.UseVisualStyleBackColor = true;
             // 
+            // panel1
+            // 
+            this.panel1.BackColor = System.Drawing.Color.White;
+            this.panel1.Controls.Add(this.Add);
+            this.panel1.Controls.Add(this.search);
+            this.panel1.Controls.Add(this.promotionnamesearch);
+            this.panel1.Controls.Add(this.label5);
+            this.panel1.Controls.Add(this.promotioncodesearch);
+            this.panel1.Controls.Add(this.label6);
+            this.panel1.Controls.Add(this.guna2DataGridView1);
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel1.Location = new System.Drawing.Point(3, 3);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(1131, 594);
+            this.panel1.TabIndex = 0;
+            // 
+            // Add
+            // 
+            this.Add.AutoRoundedCorners = true;
+            this.Add.BorderRadius = 21;
+            this.Add.CausesValidation = false;
+            this.Add.CheckedState.Parent = this.Add;
+            this.Add.CustomImages.Parent = this.Add;
+            this.Add.FillColor = System.Drawing.Color.MediumSeaGreen;
+            this.Add.Font = new System.Drawing.Font("Segoe UI", 11F);
+            this.Add.ForeColor = System.Drawing.Color.White;
+            this.Add.HoverState.Parent = this.Add;
+            this.Add.Location = new System.Drawing.Point(905, 86);
+            this.Add.Name = "Add";
+            this.Add.ShadowDecoration.Parent = this.Add;
+            this.Add.Size = new System.Drawing.Size(199, 45);
+            this.Add.TabIndex = 269;
+            this.Add.Text = "Add";
+            this.Add.Click += new System.EventHandler(this.Add_Click);
+            // 
+            // search
+            // 
+            this.search.AutoRoundedCorners = true;
+            this.search.BorderRadius = 21;
+            this.search.CausesValidation = false;
+            this.search.CheckedState.Parent = this.search;
+            this.search.CustomImages.Parent = this.search;
+            this.search.FillColor = System.Drawing.Color.MediumSeaGreen;
+            this.search.Font = new System.Drawing.Font("Segoe UI", 11F);
+            this.search.ForeColor = System.Drawing.Color.White;
+            this.search.HoverState.Parent = this.search;
+            this.search.Location = new System.Drawing.Point(554, 86);
+            this.search.Name = "search";
+            this.search.ShadowDecoration.Parent = this.search;
+            this.search.Size = new System.Drawing.Size(199, 45);
+            this.search.TabIndex = 268;
+            this.search.Text = "Search";
+            this.search.Click += new System.EventHandler(this.search_Click);
+            // 
+            // promotionnamesearch
+            // 
+            this.promotionnamesearch.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.promotionnamesearch.DefaultText = "";
+            this.promotionnamesearch.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
+            this.promotionnamesearch.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
+            this.promotionnamesearch.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.promotionnamesearch.DisabledState.Parent = this.promotionnamesearch;
+            this.promotionnamesearch.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.promotionnamesearch.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.promotionnamesearch.FocusedState.Parent = this.promotionnamesearch;
+            this.promotionnamesearch.Font = new System.Drawing.Font("Segoe UI", 11F);
+            this.promotionnamesearch.ForeColor = System.Drawing.Color.Black;
+            this.promotionnamesearch.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.promotionnamesearch.HoverState.Parent = this.promotionnamesearch;
+            this.promotionnamesearch.Location = new System.Drawing.Point(239, 55);
+            this.promotionnamesearch.Margin = new System.Windows.Forms.Padding(5, 6, 5, 6);
+            this.promotionnamesearch.Name = "promotionnamesearch";
+            this.promotionnamesearch.PasswordChar = '\0';
+            this.promotionnamesearch.PlaceholderText = "";
+            this.promotionnamesearch.SelectedText = "";
+            this.promotionnamesearch.ShadowDecoration.Parent = this.promotionnamesearch;
+            this.promotionnamesearch.Size = new System.Drawing.Size(284, 32);
+            this.promotionnamesearch.TabIndex = 267;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F);
+            this.label5.Location = new System.Drawing.Point(32, 55);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(152, 24);
+            this.label5.TabIndex = 266;
+            this.label5.Text = "Promotion Name";
+            // 
+            // promotioncodesearch
+            // 
+            this.promotioncodesearch.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.promotioncodesearch.DefaultText = "";
+            this.promotioncodesearch.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
+            this.promotioncodesearch.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
+            this.promotioncodesearch.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.promotioncodesearch.DisabledState.Parent = this.promotioncodesearch;
+            this.promotioncodesearch.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.promotioncodesearch.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.promotioncodesearch.FocusedState.Parent = this.promotioncodesearch;
+            this.promotioncodesearch.Font = new System.Drawing.Font("Segoe UI", 11F);
+            this.promotioncodesearch.ForeColor = System.Drawing.Color.Black;
+            this.promotioncodesearch.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.promotioncodesearch.HoverState.Parent = this.promotioncodesearch;
+            this.promotioncodesearch.Location = new System.Drawing.Point(239, 99);
+            this.promotioncodesearch.Margin = new System.Windows.Forms.Padding(5, 6, 5, 6);
+            this.promotioncodesearch.Name = "promotioncodesearch";
+            this.promotioncodesearch.PasswordChar = '\0';
+            this.promotioncodesearch.PlaceholderText = "";
+            this.promotioncodesearch.SelectedText = "";
+            this.promotioncodesearch.ShadowDecoration.Parent = this.promotioncodesearch;
+            this.promotioncodesearch.Size = new System.Drawing.Size(284, 32);
+            this.promotioncodesearch.TabIndex = 265;
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F);
+            this.label6.Location = new System.Drawing.Point(32, 99);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(147, 24);
+            this.label6.TabIndex = 264;
+            this.label6.Text = "Promotion Code";
+            // 
+            // guna2DataGridView1
+            // 
+            dataGridViewCellStyle4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(239)))), ((int)(((byte)(212)))));
+            this.guna2DataGridView1.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle4;
+            this.guna2DataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.guna2DataGridView1.BackgroundColor = System.Drawing.Color.White;
+            this.guna2DataGridView1.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.guna2DataGridView1.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
+            this.guna2DataGridView1.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(204)))), ((int)(((byte)(113)))));
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("Segoe UI", 10.5F);
+            dataGridViewCellStyle5.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.guna2DataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
+            this.guna2DataGridView1.ColumnHeadersHeight = 52;
+            this.guna2DataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.iddgv,
+            this.promotionnamedgv,
+            this.promotioncodedgv,
+            this.promotionpercentagedgv,
+            this.startdatedgv,
+            this.enddatedgv,
+            this.nutritionistdgv,
+            this.branchdgv});
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(213)))), ((int)(((byte)(244)))), ((int)(((byte)(226)))));
+            dataGridViewCellStyle6.Font = new System.Drawing.Font("Segoe UI", 10.5F);
+            dataGridViewCellStyle6.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(115)))), ((int)(((byte)(221)))), ((int)(((byte)(160)))));
+            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.guna2DataGridView1.DefaultCellStyle = dataGridViewCellStyle6;
+            this.guna2DataGridView1.EnableHeadersVisualStyles = false;
+            this.guna2DataGridView1.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(187)))), ((int)(((byte)(238)))), ((int)(((byte)(208)))));
+            this.guna2DataGridView1.Location = new System.Drawing.Point(31, 158);
+            this.guna2DataGridView1.Name = "guna2DataGridView1";
+            this.guna2DataGridView1.RowHeadersVisible = false;
+            this.guna2DataGridView1.RowHeadersWidth = 51;
+            this.guna2DataGridView1.RowTemplate.Height = 24;
+            this.guna2DataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.guna2DataGridView1.Size = new System.Drawing.Size(1073, 385);
+            this.guna2DataGridView1.TabIndex = 0;
+            this.guna2DataGridView1.Theme = Guna.UI2.WinForms.Enums.DataGridViewPresetThemes.Emerald;
+            this.guna2DataGridView1.ThemeStyle.AlternatingRowsStyle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(239)))), ((int)(((byte)(212)))));
+            this.guna2DataGridView1.ThemeStyle.AlternatingRowsStyle.Font = null;
+            this.guna2DataGridView1.ThemeStyle.AlternatingRowsStyle.ForeColor = System.Drawing.Color.Empty;
+            this.guna2DataGridView1.ThemeStyle.AlternatingRowsStyle.SelectionBackColor = System.Drawing.Color.Empty;
+            this.guna2DataGridView1.ThemeStyle.AlternatingRowsStyle.SelectionForeColor = System.Drawing.Color.Empty;
+            this.guna2DataGridView1.ThemeStyle.BackColor = System.Drawing.Color.White;
+            this.guna2DataGridView1.ThemeStyle.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(187)))), ((int)(((byte)(238)))), ((int)(((byte)(208)))));
+            this.guna2DataGridView1.ThemeStyle.HeaderStyle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(204)))), ((int)(((byte)(113)))));
+            this.guna2DataGridView1.ThemeStyle.HeaderStyle.BorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
+            this.guna2DataGridView1.ThemeStyle.HeaderStyle.Font = new System.Drawing.Font("Segoe UI", 10.5F);
+            this.guna2DataGridView1.ThemeStyle.HeaderStyle.ForeColor = System.Drawing.Color.White;
+            this.guna2DataGridView1.ThemeStyle.HeaderStyle.HeaightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.EnableResizing;
+            this.guna2DataGridView1.ThemeStyle.HeaderStyle.Height = 52;
+            this.guna2DataGridView1.ThemeStyle.ReadOnly = false;
+            this.guna2DataGridView1.ThemeStyle.RowsStyle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(213)))), ((int)(((byte)(244)))), ((int)(((byte)(226)))));
+            this.guna2DataGridView1.ThemeStyle.RowsStyle.BorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
+            this.guna2DataGridView1.ThemeStyle.RowsStyle.Font = new System.Drawing.Font("Segoe UI", 10.5F);
+            this.guna2DataGridView1.ThemeStyle.RowsStyle.ForeColor = System.Drawing.Color.Black;
+            this.guna2DataGridView1.ThemeStyle.RowsStyle.Height = 24;
+            this.guna2DataGridView1.ThemeStyle.RowsStyle.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(115)))), ((int)(((byte)(221)))), ((int)(((byte)(160)))));
+            this.guna2DataGridView1.ThemeStyle.RowsStyle.SelectionForeColor = System.Drawing.Color.Black;
+            // 
+            // iddgv
+            // 
+            this.iddgv.HeaderText = "ID";
+            this.iddgv.MinimumWidth = 6;
+            this.iddgv.Name = "iddgv";
+            // 
+            // promotionnamedgv
+            // 
+            this.promotionnamedgv.HeaderText = "PROMOTION NAME";
+            this.promotionnamedgv.MinimumWidth = 6;
+            this.promotionnamedgv.Name = "promotionnamedgv";
+            // 
+            // promotioncodedgv
+            // 
+            this.promotioncodedgv.HeaderText = "PROMOTION CODE";
+            this.promotioncodedgv.MinimumWidth = 6;
+            this.promotioncodedgv.Name = "promotioncodedgv";
+            // 
+            // promotionpercentagedgv
+            // 
+            this.promotionpercentagedgv.HeaderText = "PROMOTION PERCENTAGE";
+            this.promotionpercentagedgv.MinimumWidth = 6;
+            this.promotionpercentagedgv.Name = "promotionpercentagedgv";
+            // 
+            // startdatedgv
+            // 
+            this.startdatedgv.HeaderText = "START DATE";
+            this.startdatedgv.MinimumWidth = 6;
+            this.startdatedgv.Name = "startdatedgv";
+            // 
+            // enddatedgv
+            // 
+            this.enddatedgv.HeaderText = "END DATE";
+            this.enddatedgv.MinimumWidth = 6;
+            this.enddatedgv.Name = "enddatedgv";
+            // 
+            // nutritionistdgv
+            // 
+            this.nutritionistdgv.HeaderText = "NUTRITIONIST";
+            this.nutritionistdgv.MinimumWidth = 6;
+            this.nutritionistdgv.Name = "nutritionistdgv";
+            // 
+            // branchdgv
+            // 
+            this.branchdgv.HeaderText = "BRANCH";
+            this.branchdgv.MinimumWidth = 6;
+            this.branchdgv.Name = "branchdgv";
+            // 
             // tabPage2
             // 
             this.tabPage2.Controls.Add(this.panel2);
@@ -114,22 +354,6 @@
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "tabPage2";
             this.tabPage2.UseVisualStyleBackColor = true;
-            // 
-            // panel1
-            // 
-            this.panel1.BackColor = System.Drawing.Color.White;
-            this.panel1.Controls.Add(this.Add);
-            this.panel1.Controls.Add(this.search);
-            this.panel1.Controls.Add(this.guna2TextBox3);
-            this.panel1.Controls.Add(this.label5);
-            this.panel1.Controls.Add(this.guna2TextBox4);
-            this.panel1.Controls.Add(this.label6);
-            this.panel1.Controls.Add(this.guna2DataGridView1);
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel1.Location = new System.Drawing.Point(3, 3);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1131, 594);
-            this.panel1.TabIndex = 0;
             // 
             // panel2
             // 
@@ -157,6 +381,174 @@
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(1131, 594);
             this.panel2.TabIndex = 0;
+            // 
+            // Backtodeal
+            // 
+            this.Backtodeal.AutoRoundedCorners = true;
+            this.Backtodeal.BorderRadius = 21;
+            this.Backtodeal.CausesValidation = false;
+            this.Backtodeal.CheckedState.Parent = this.Backtodeal;
+            this.Backtodeal.CustomImages.Parent = this.Backtodeal;
+            this.Backtodeal.FillColor = System.Drawing.Color.MediumSeaGreen;
+            this.Backtodeal.Font = new System.Drawing.Font("Segoe UI", 11F);
+            this.Backtodeal.ForeColor = System.Drawing.Color.White;
+            this.Backtodeal.HoverState.Parent = this.Backtodeal;
+            this.Backtodeal.Location = new System.Drawing.Point(22, 293);
+            this.Backtodeal.Name = "Backtodeal";
+            this.Backtodeal.ShadowDecoration.Parent = this.Backtodeal;
+            this.Backtodeal.Size = new System.Drawing.Size(199, 45);
+            this.Backtodeal.TabIndex = 276;
+            this.Backtodeal.Text = "Back To Deals";
+            this.Backtodeal.Click += new System.EventHandler(this.Backtodeal_Click);
+            // 
+            // save
+            // 
+            this.save.AutoRoundedCorners = true;
+            this.save.BorderRadius = 21;
+            this.save.CausesValidation = false;
+            this.save.CheckedState.Parent = this.save;
+            this.save.CustomImages.Parent = this.save;
+            this.save.FillColor = System.Drawing.Color.MediumSeaGreen;
+            this.save.Font = new System.Drawing.Font("Segoe UI", 11F);
+            this.save.ForeColor = System.Drawing.Color.White;
+            this.save.HoverState.Parent = this.save;
+            this.save.Location = new System.Drawing.Point(877, 302);
+            this.save.Name = "save";
+            this.save.ShadowDecoration.Parent = this.save;
+            this.save.Size = new System.Drawing.Size(199, 45);
+            this.save.TabIndex = 275;
+            this.save.Text = "Save Deal";
+            this.save.Click += new System.EventHandler(this.save_Click);
+            // 
+            // branch
+            // 
+            this.branch.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.branch.DefaultText = "";
+            this.branch.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
+            this.branch.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
+            this.branch.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.branch.DisabledState.Parent = this.branch;
+            this.branch.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.branch.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.branch.FocusedState.Parent = this.branch;
+            this.branch.Font = new System.Drawing.Font("Segoe UI", 11F);
+            this.branch.ForeColor = System.Drawing.Color.Black;
+            this.branch.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.branch.HoverState.Parent = this.branch;
+            this.branch.Location = new System.Drawing.Point(776, 47);
+            this.branch.Margin = new System.Windows.Forms.Padding(5, 6, 5, 6);
+            this.branch.Name = "branch";
+            this.branch.PasswordChar = '\0';
+            this.branch.PlaceholderText = "";
+            this.branch.SelectedText = "";
+            this.branch.ShadowDecoration.Parent = this.branch;
+            this.branch.Size = new System.Drawing.Size(300, 32);
+            this.branch.TabIndex = 274;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F);
+            this.label3.Location = new System.Drawing.Point(550, 47);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(70, 24);
+            this.label3.TabIndex = 273;
+            this.label3.Text = "Branch";
+            // 
+            // nutritionist
+            // 
+            this.nutritionist.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.nutritionist.DefaultText = "";
+            this.nutritionist.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
+            this.nutritionist.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
+            this.nutritionist.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.nutritionist.DisabledState.Parent = this.nutritionist;
+            this.nutritionist.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.nutritionist.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.nutritionist.FocusedState.Parent = this.nutritionist;
+            this.nutritionist.Font = new System.Drawing.Font("Segoe UI", 11F);
+            this.nutritionist.ForeColor = System.Drawing.Color.Black;
+            this.nutritionist.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.nutritionist.HoverState.Parent = this.nutritionist;
+            this.nutritionist.Location = new System.Drawing.Point(776, 91);
+            this.nutritionist.Margin = new System.Windows.Forms.Padding(5, 6, 5, 6);
+            this.nutritionist.Name = "nutritionist";
+            this.nutritionist.PasswordChar = '\0';
+            this.nutritionist.PlaceholderText = "";
+            this.nutritionist.SelectedText = "";
+            this.nutritionist.ShadowDecoration.Parent = this.nutritionist;
+            this.nutritionist.Size = new System.Drawing.Size(300, 32);
+            this.nutritionist.TabIndex = 272;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F);
+            this.label4.Location = new System.Drawing.Point(550, 91);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(96, 24);
+            this.label4.TabIndex = 271;
+            this.label4.Text = "Nutritionist";
+            // 
+            // promotiondetails
+            // 
+            this.promotiondetails.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.promotiondetails.DefaultText = "";
+            this.promotiondetails.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
+            this.promotiondetails.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
+            this.promotiondetails.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.promotiondetails.DisabledState.Parent = this.promotiondetails;
+            this.promotiondetails.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.promotiondetails.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.promotiondetails.FocusedState.Parent = this.promotiondetails;
+            this.promotiondetails.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.promotiondetails.HoverState.Parent = this.promotiondetails;
+            this.promotiondetails.Location = new System.Drawing.Point(776, 133);
+            this.promotiondetails.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.promotiondetails.Multiline = true;
+            this.promotiondetails.Name = "promotiondetails";
+            this.promotiondetails.PasswordChar = '\0';
+            this.promotiondetails.PlaceholderText = "";
+            this.promotiondetails.SelectedText = "";
+            this.promotiondetails.ShadowDecoration.Parent = this.promotiondetails;
+            this.promotiondetails.Size = new System.Drawing.Size(300, 119);
+            this.promotiondetails.TabIndex = 270;
+            // 
+            // enddate
+            // 
+            this.enddate.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.enddate.Location = new System.Drawing.Point(243, 230);
+            this.enddate.Name = "enddate";
+            this.enddate.Size = new System.Drawing.Size(276, 22);
+            this.enddate.TabIndex = 267;
+            // 
+            // startdate
+            // 
+            this.startdate.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.startdate.Location = new System.Drawing.Point(243, 182);
+            this.startdate.Name = "startdate";
+            this.startdate.Size = new System.Drawing.Size(276, 22);
+            this.startdate.TabIndex = 266;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F);
+            this.label1.Location = new System.Drawing.Point(36, 228);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(88, 24);
+            this.label1.TabIndex = 269;
+            this.label1.Text = "End Date";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F);
+            this.label2.Location = new System.Drawing.Point(36, 180);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(89, 24);
+            this.label2.TabIndex = 268;
+            this.label2.Text = "Start Date";
             // 
             // label13
             // 
@@ -273,397 +665,6 @@
             this.label10.TabIndex = 258;
             this.label10.Text = "Promotion Percentage";
             // 
-            // enddate
-            // 
-            this.enddate.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.enddate.Location = new System.Drawing.Point(243, 230);
-            this.enddate.Name = "enddate";
-            this.enddate.Size = new System.Drawing.Size(276, 22);
-            this.enddate.TabIndex = 267;
-            // 
-            // startdate
-            // 
-            this.startdate.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.startdate.Location = new System.Drawing.Point(243, 182);
-            this.startdate.Name = "startdate";
-            this.startdate.Size = new System.Drawing.Size(276, 22);
-            this.startdate.TabIndex = 266;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F);
-            this.label1.Location = new System.Drawing.Point(36, 228);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(88, 24);
-            this.label1.TabIndex = 269;
-            this.label1.Text = "End Date";
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F);
-            this.label2.Location = new System.Drawing.Point(36, 180);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(89, 24);
-            this.label2.TabIndex = 268;
-            this.label2.Text = "Start Date";
-            // 
-            // promotiondetails
-            // 
-            this.promotiondetails.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.promotiondetails.DefaultText = "";
-            this.promotiondetails.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
-            this.promotiondetails.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
-            this.promotiondetails.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.promotiondetails.DisabledState.Parent = this.promotiondetails;
-            this.promotiondetails.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.promotiondetails.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.promotiondetails.FocusedState.Parent = this.promotiondetails;
-            this.promotiondetails.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.promotiondetails.HoverState.Parent = this.promotiondetails;
-            this.promotiondetails.Location = new System.Drawing.Point(776, 133);
-            this.promotiondetails.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.promotiondetails.Multiline = true;
-            this.promotiondetails.Name = "promotiondetails";
-            this.promotiondetails.PasswordChar = '\0';
-            this.promotiondetails.PlaceholderText = "";
-            this.promotiondetails.SelectedText = "";
-            this.promotiondetails.ShadowDecoration.Parent = this.promotiondetails;
-            this.promotiondetails.Size = new System.Drawing.Size(300, 119);
-            this.promotiondetails.TabIndex = 270;
-            // 
-            // branch
-            // 
-            this.branch.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.branch.DefaultText = "";
-            this.branch.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
-            this.branch.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
-            this.branch.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.branch.DisabledState.Parent = this.branch;
-            this.branch.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.branch.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.branch.FocusedState.Parent = this.branch;
-            this.branch.Font = new System.Drawing.Font("Segoe UI", 11F);
-            this.branch.ForeColor = System.Drawing.Color.Black;
-            this.branch.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.branch.HoverState.Parent = this.branch;
-            this.branch.Location = new System.Drawing.Point(776, 47);
-            this.branch.Margin = new System.Windows.Forms.Padding(5, 6, 5, 6);
-            this.branch.Name = "branch";
-            this.branch.PasswordChar = '\0';
-            this.branch.PlaceholderText = "";
-            this.branch.SelectedText = "";
-            this.branch.ShadowDecoration.Parent = this.branch;
-            this.branch.Size = new System.Drawing.Size(300, 32);
-            this.branch.TabIndex = 274;
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F);
-            this.label3.Location = new System.Drawing.Point(550, 47);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(70, 24);
-            this.label3.TabIndex = 273;
-            this.label3.Text = "Branch";
-            // 
-            // nutritionist
-            // 
-            this.nutritionist.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.nutritionist.DefaultText = "";
-            this.nutritionist.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
-            this.nutritionist.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
-            this.nutritionist.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.nutritionist.DisabledState.Parent = this.nutritionist;
-            this.nutritionist.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.nutritionist.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.nutritionist.FocusedState.Parent = this.nutritionist;
-            this.nutritionist.Font = new System.Drawing.Font("Segoe UI", 11F);
-            this.nutritionist.ForeColor = System.Drawing.Color.Black;
-            this.nutritionist.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.nutritionist.HoverState.Parent = this.nutritionist;
-            this.nutritionist.Location = new System.Drawing.Point(776, 91);
-            this.nutritionist.Margin = new System.Windows.Forms.Padding(5, 6, 5, 6);
-            this.nutritionist.Name = "nutritionist";
-            this.nutritionist.PasswordChar = '\0';
-            this.nutritionist.PlaceholderText = "";
-            this.nutritionist.SelectedText = "";
-            this.nutritionist.ShadowDecoration.Parent = this.nutritionist;
-            this.nutritionist.Size = new System.Drawing.Size(300, 32);
-            this.nutritionist.TabIndex = 272;
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F);
-            this.label4.Location = new System.Drawing.Point(550, 91);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(96, 24);
-            this.label4.TabIndex = 271;
-            this.label4.Text = "Nutritionist";
-            // 
-            // Backtodeal
-            // 
-            this.Backtodeal.AutoRoundedCorners = true;
-            this.Backtodeal.BorderRadius = 21;
-            this.Backtodeal.CausesValidation = false;
-            this.Backtodeal.CheckedState.Parent = this.Backtodeal;
-            this.Backtodeal.CustomImages.Parent = this.Backtodeal;
-            this.Backtodeal.FillColor = System.Drawing.Color.MediumSeaGreen;
-            this.Backtodeal.Font = new System.Drawing.Font("Segoe UI", 11F);
-            this.Backtodeal.ForeColor = System.Drawing.Color.White;
-            this.Backtodeal.HoverState.Parent = this.Backtodeal;
-            this.Backtodeal.Location = new System.Drawing.Point(22, 293);
-            this.Backtodeal.Name = "Backtodeal";
-            this.Backtodeal.ShadowDecoration.Parent = this.Backtodeal;
-            this.Backtodeal.Size = new System.Drawing.Size(199, 45);
-            this.Backtodeal.TabIndex = 276;
-            this.Backtodeal.Text = "Back To Deals";
-            this.Backtodeal.Click += new System.EventHandler(this.Backtodeal_Click);
-            // 
-            // save
-            // 
-            this.save.AutoRoundedCorners = true;
-            this.save.BorderRadius = 21;
-            this.save.CausesValidation = false;
-            this.save.CheckedState.Parent = this.save;
-            this.save.CustomImages.Parent = this.save;
-            this.save.FillColor = System.Drawing.Color.MediumSeaGreen;
-            this.save.Font = new System.Drawing.Font("Segoe UI", 11F);
-            this.save.ForeColor = System.Drawing.Color.White;
-            this.save.HoverState.Parent = this.save;
-            this.save.Location = new System.Drawing.Point(877, 302);
-            this.save.Name = "save";
-            this.save.ShadowDecoration.Parent = this.save;
-            this.save.Size = new System.Drawing.Size(199, 45);
-            this.save.TabIndex = 275;
-            this.save.Text = "Save Deal";
-            this.save.Click += new System.EventHandler(this.save_Click);
-            // 
-            // guna2DataGridView1
-            // 
-            dataGridViewCellStyle16.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(239)))), ((int)(((byte)(212)))));
-            this.guna2DataGridView1.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle16;
-            this.guna2DataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.guna2DataGridView1.BackgroundColor = System.Drawing.Color.White;
-            this.guna2DataGridView1.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.guna2DataGridView1.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
-            this.guna2DataGridView1.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle17.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle17.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(204)))), ((int)(((byte)(113)))));
-            dataGridViewCellStyle17.Font = new System.Drawing.Font("Segoe UI", 10.5F);
-            dataGridViewCellStyle17.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle17.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle17.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle17.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.guna2DataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle17;
-            this.guna2DataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.guna2DataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.iddgv,
-            this.promotionnamedgv,
-            this.promotioncodedgv,
-            this.promotionpercentagedgv,
-            this.startdatedgv,
-            this.enddatedgv,
-            this.nutritionistdgv,
-            this.branchdgv});
-            dataGridViewCellStyle18.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle18.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(213)))), ((int)(((byte)(244)))), ((int)(((byte)(226)))));
-            dataGridViewCellStyle18.Font = new System.Drawing.Font("Segoe UI", 10.5F);
-            dataGridViewCellStyle18.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle18.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(115)))), ((int)(((byte)(221)))), ((int)(((byte)(160)))));
-            dataGridViewCellStyle18.SelectionForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle18.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.guna2DataGridView1.DefaultCellStyle = dataGridViewCellStyle18;
-            this.guna2DataGridView1.EnableHeadersVisualStyles = false;
-            this.guna2DataGridView1.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(187)))), ((int)(((byte)(238)))), ((int)(((byte)(208)))));
-            this.guna2DataGridView1.Location = new System.Drawing.Point(31, 158);
-            this.guna2DataGridView1.Name = "guna2DataGridView1";
-            this.guna2DataGridView1.RowHeadersVisible = false;
-            this.guna2DataGridView1.RowHeadersWidth = 51;
-            this.guna2DataGridView1.RowTemplate.Height = 24;
-            this.guna2DataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.guna2DataGridView1.Size = new System.Drawing.Size(1073, 385);
-            this.guna2DataGridView1.TabIndex = 0;
-            this.guna2DataGridView1.Theme = Guna.UI2.WinForms.Enums.DataGridViewPresetThemes.Emerald;
-            this.guna2DataGridView1.ThemeStyle.AlternatingRowsStyle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(239)))), ((int)(((byte)(212)))));
-            this.guna2DataGridView1.ThemeStyle.AlternatingRowsStyle.Font = null;
-            this.guna2DataGridView1.ThemeStyle.AlternatingRowsStyle.ForeColor = System.Drawing.Color.Empty;
-            this.guna2DataGridView1.ThemeStyle.AlternatingRowsStyle.SelectionBackColor = System.Drawing.Color.Empty;
-            this.guna2DataGridView1.ThemeStyle.AlternatingRowsStyle.SelectionForeColor = System.Drawing.Color.Empty;
-            this.guna2DataGridView1.ThemeStyle.BackColor = System.Drawing.Color.White;
-            this.guna2DataGridView1.ThemeStyle.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(187)))), ((int)(((byte)(238)))), ((int)(((byte)(208)))));
-            this.guna2DataGridView1.ThemeStyle.HeaderStyle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(204)))), ((int)(((byte)(113)))));
-            this.guna2DataGridView1.ThemeStyle.HeaderStyle.BorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            this.guna2DataGridView1.ThemeStyle.HeaderStyle.Font = new System.Drawing.Font("Segoe UI", 10.5F);
-            this.guna2DataGridView1.ThemeStyle.HeaderStyle.ForeColor = System.Drawing.Color.White;
-            this.guna2DataGridView1.ThemeStyle.HeaderStyle.HeaightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.guna2DataGridView1.ThemeStyle.HeaderStyle.Height = 52;
-            this.guna2DataGridView1.ThemeStyle.ReadOnly = false;
-            this.guna2DataGridView1.ThemeStyle.RowsStyle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(213)))), ((int)(((byte)(244)))), ((int)(((byte)(226)))));
-            this.guna2DataGridView1.ThemeStyle.RowsStyle.BorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
-            this.guna2DataGridView1.ThemeStyle.RowsStyle.Font = new System.Drawing.Font("Segoe UI", 10.5F);
-            this.guna2DataGridView1.ThemeStyle.RowsStyle.ForeColor = System.Drawing.Color.Black;
-            this.guna2DataGridView1.ThemeStyle.RowsStyle.Height = 24;
-            this.guna2DataGridView1.ThemeStyle.RowsStyle.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(115)))), ((int)(((byte)(221)))), ((int)(((byte)(160)))));
-            this.guna2DataGridView1.ThemeStyle.RowsStyle.SelectionForeColor = System.Drawing.Color.Black;
-            // 
-            // iddgv
-            // 
-            this.iddgv.HeaderText = "ID";
-            this.iddgv.MinimumWidth = 6;
-            this.iddgv.Name = "iddgv";
-            // 
-            // promotionnamedgv
-            // 
-            this.promotionnamedgv.HeaderText = "PROMOTION NAME";
-            this.promotionnamedgv.MinimumWidth = 6;
-            this.promotionnamedgv.Name = "promotionnamedgv";
-            // 
-            // promotioncodedgv
-            // 
-            this.promotioncodedgv.HeaderText = "PROMOTION CODE";
-            this.promotioncodedgv.MinimumWidth = 6;
-            this.promotioncodedgv.Name = "promotioncodedgv";
-            // 
-            // promotionpercentagedgv
-            // 
-            this.promotionpercentagedgv.HeaderText = "PROMOTION PERCENTAGE";
-            this.promotionpercentagedgv.MinimumWidth = 6;
-            this.promotionpercentagedgv.Name = "promotionpercentagedgv";
-            // 
-            // startdatedgv
-            // 
-            this.startdatedgv.HeaderText = "START DATE";
-            this.startdatedgv.MinimumWidth = 6;
-            this.startdatedgv.Name = "startdatedgv";
-            // 
-            // enddatedgv
-            // 
-            this.enddatedgv.HeaderText = "END DATE";
-            this.enddatedgv.MinimumWidth = 6;
-            this.enddatedgv.Name = "enddatedgv";
-            // 
-            // nutritionistdgv
-            // 
-            this.nutritionistdgv.HeaderText = "NUTRITIONIST";
-            this.nutritionistdgv.MinimumWidth = 6;
-            this.nutritionistdgv.Name = "nutritionistdgv";
-            // 
-            // branchdgv
-            // 
-            this.branchdgv.HeaderText = "BRANCH";
-            this.branchdgv.MinimumWidth = 6;
-            this.branchdgv.Name = "branchdgv";
-            // 
-            // guna2TextBox3
-            // 
-            this.guna2TextBox3.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.guna2TextBox3.DefaultText = "";
-            this.guna2TextBox3.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
-            this.guna2TextBox3.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
-            this.guna2TextBox3.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.guna2TextBox3.DisabledState.Parent = this.guna2TextBox3;
-            this.guna2TextBox3.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.guna2TextBox3.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.guna2TextBox3.FocusedState.Parent = this.guna2TextBox3;
-            this.guna2TextBox3.Font = new System.Drawing.Font("Segoe UI", 11F);
-            this.guna2TextBox3.ForeColor = System.Drawing.Color.Black;
-            this.guna2TextBox3.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.guna2TextBox3.HoverState.Parent = this.guna2TextBox3;
-            this.guna2TextBox3.Location = new System.Drawing.Point(239, 55);
-            this.guna2TextBox3.Margin = new System.Windows.Forms.Padding(5, 6, 5, 6);
-            this.guna2TextBox3.Name = "guna2TextBox3";
-            this.guna2TextBox3.PasswordChar = '\0';
-            this.guna2TextBox3.PlaceholderText = "";
-            this.guna2TextBox3.SelectedText = "";
-            this.guna2TextBox3.ShadowDecoration.Parent = this.guna2TextBox3;
-            this.guna2TextBox3.Size = new System.Drawing.Size(284, 32);
-            this.guna2TextBox3.TabIndex = 267;
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F);
-            this.label5.Location = new System.Drawing.Point(32, 55);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(152, 24);
-            this.label5.TabIndex = 266;
-            this.label5.Text = "Promotion Name";
-            // 
-            // guna2TextBox4
-            // 
-            this.guna2TextBox4.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.guna2TextBox4.DefaultText = "";
-            this.guna2TextBox4.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
-            this.guna2TextBox4.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
-            this.guna2TextBox4.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.guna2TextBox4.DisabledState.Parent = this.guna2TextBox4;
-            this.guna2TextBox4.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.guna2TextBox4.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.guna2TextBox4.FocusedState.Parent = this.guna2TextBox4;
-            this.guna2TextBox4.Font = new System.Drawing.Font("Segoe UI", 11F);
-            this.guna2TextBox4.ForeColor = System.Drawing.Color.Black;
-            this.guna2TextBox4.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.guna2TextBox4.HoverState.Parent = this.guna2TextBox4;
-            this.guna2TextBox4.Location = new System.Drawing.Point(239, 99);
-            this.guna2TextBox4.Margin = new System.Windows.Forms.Padding(5, 6, 5, 6);
-            this.guna2TextBox4.Name = "guna2TextBox4";
-            this.guna2TextBox4.PasswordChar = '\0';
-            this.guna2TextBox4.PlaceholderText = "";
-            this.guna2TextBox4.SelectedText = "";
-            this.guna2TextBox4.ShadowDecoration.Parent = this.guna2TextBox4;
-            this.guna2TextBox4.Size = new System.Drawing.Size(284, 32);
-            this.guna2TextBox4.TabIndex = 265;
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F);
-            this.label6.Location = new System.Drawing.Point(32, 99);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(147, 24);
-            this.label6.TabIndex = 264;
-            this.label6.Text = "Promotion Code";
-            // 
-            // Add
-            // 
-            this.Add.AutoRoundedCorners = true;
-            this.Add.BorderRadius = 21;
-            this.Add.CausesValidation = false;
-            this.Add.CheckedState.Parent = this.Add;
-            this.Add.CustomImages.Parent = this.Add;
-            this.Add.FillColor = System.Drawing.Color.MediumSeaGreen;
-            this.Add.Font = new System.Drawing.Font("Segoe UI", 11F);
-            this.Add.ForeColor = System.Drawing.Color.White;
-            this.Add.HoverState.Parent = this.Add;
-            this.Add.Location = new System.Drawing.Point(905, 86);
-            this.Add.Name = "Add";
-            this.Add.ShadowDecoration.Parent = this.Add;
-            this.Add.Size = new System.Drawing.Size(199, 45);
-            this.Add.TabIndex = 269;
-            this.Add.Text = "Add";
-            this.Add.Click += new System.EventHandler(this.Add_Click);
-            // 
-            // search
-            // 
-            this.search.AutoRoundedCorners = true;
-            this.search.BorderRadius = 21;
-            this.search.CausesValidation = false;
-            this.search.CheckedState.Parent = this.search;
-            this.search.CustomImages.Parent = this.search;
-            this.search.FillColor = System.Drawing.Color.MediumSeaGreen;
-            this.search.Font = new System.Drawing.Font("Segoe UI", 11F);
-            this.search.ForeColor = System.Drawing.Color.White;
-            this.search.HoverState.Parent = this.search;
-            this.search.Location = new System.Drawing.Point(554, 86);
-            this.search.Name = "search";
-            this.search.ShadowDecoration.Parent = this.search;
-            this.search.Size = new System.Drawing.Size(199, 45);
-            this.search.TabIndex = 268;
-            this.search.Text = "Search";
-            // 
             // contextMenuStrip1
             // 
             this.contextMenuStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
@@ -672,26 +673,26 @@
             this.deleteToolStripMenuItem,
             this.printToolStripMenuItem});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(211, 104);
+            this.contextMenuStrip1.Size = new System.Drawing.Size(123, 76);
             // 
             // editToolStripMenuItem
             // 
             this.editToolStripMenuItem.Name = "editToolStripMenuItem";
-            this.editToolStripMenuItem.Size = new System.Drawing.Size(210, 24);
+            this.editToolStripMenuItem.Size = new System.Drawing.Size(122, 24);
             this.editToolStripMenuItem.Text = "Edit";
             this.editToolStripMenuItem.Click += new System.EventHandler(this.editToolStripMenuItem_Click);
             // 
             // deleteToolStripMenuItem
             // 
             this.deleteToolStripMenuItem.Name = "deleteToolStripMenuItem";
-            this.deleteToolStripMenuItem.Size = new System.Drawing.Size(210, 24);
+            this.deleteToolStripMenuItem.Size = new System.Drawing.Size(122, 24);
             this.deleteToolStripMenuItem.Text = "Delete";
             this.deleteToolStripMenuItem.Click += new System.EventHandler(this.deleteToolStripMenuItem_Click);
             // 
             // printToolStripMenuItem
             // 
             this.printToolStripMenuItem.Name = "printToolStripMenuItem";
-            this.printToolStripMenuItem.Size = new System.Drawing.Size(210, 24);
+            this.printToolStripMenuItem.Size = new System.Drawing.Size(122, 24);
             this.printToolStripMenuItem.Text = "Print";
             this.printToolStripMenuItem.Click += new System.EventHandler(this.printToolStripMenuItem_Click);
             // 
@@ -708,12 +709,12 @@
             this.Load += new System.EventHandler(this.SpecialDeal_Load);
             this.tabControl1.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
-            this.tabPage2.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.guna2DataGridView1)).EndInit();
+            this.tabPage2.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.guna2DataGridView1)).EndInit();
             this.contextMenuStrip1.ResumeLayout(false);
             this.ResumeLayout(false);
 
@@ -753,9 +754,9 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn enddatedgv;
         private System.Windows.Forms.DataGridViewTextBoxColumn nutritionistdgv;
         private System.Windows.Forms.DataGridViewTextBoxColumn branchdgv;
-        private Guna.UI2.WinForms.Guna2TextBox guna2TextBox3;
+        private Guna.UI2.WinForms.Guna2TextBox promotionnamesearch;
         private System.Windows.Forms.Label label5;
-        private Guna.UI2.WinForms.Guna2TextBox guna2TextBox4;
+        private Guna.UI2.WinForms.Guna2TextBox promotioncodesearch;
         private System.Windows.Forms.Label label6;
         private Guna.UI2.WinForms.Guna2Button Add;
         private Guna.UI2.WinForms.Guna2Button search;
