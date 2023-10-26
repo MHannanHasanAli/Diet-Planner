@@ -78,5 +78,11 @@ namespace HelloWorldSolutionIMS
             loadform(new SpecialDeal());
 
         }
+
+        private void guna2TileButton3_Click(object sender, EventArgs e)
+        {
+            loadform(new DietPlan());
+
+        }
     }
 }
