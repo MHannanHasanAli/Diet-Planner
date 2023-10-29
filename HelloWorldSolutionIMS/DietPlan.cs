@@ -1,4 +1,6 @@
-﻿using iTextSharp.text.pdf.codec.wmf;
+﻿using Guna.UI2.WinForms;
+using iTextSharp.text.pdf.codec.wmf;
+using RestSharp.Extensions;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -27,6 +29,7 @@ namespace HelloWorldSolutionIMS
         static int removeflag = 0;
         static int edit = 0;
         static int titlecheck = 0;
+        static int chartfiller = 0;
 
         public class MealsDropdown
         {
@@ -179,6 +182,8 @@ namespace HelloWorldSolutionIMS
             chart1.Series.Clear();
             MainClass.HideAllTabsOnTabControl(tabControl1);
             ShowDietPlans(guna2DataGridView1, filenodgv, namedgv, agedgv, dietnamedgv);
+            guna2DataGridView2.EditingControlShowing += guna2DataGridView2_EditingControlShowing;
+
         }
         private void AddIngredient_Click(object sender, EventArgs e)
         {
@@ -322,6 +327,7 @@ namespace HelloWorldSolutionIMS
         }
         private void save_Click(object sender, EventArgs e)
         {
+            chartfiller = 0;
             if (edit == 0)
             {
                 if (firstname.Text != "")
@@ -567,6 +573,140 @@ namespace HelloWorldSolutionIMS
                 MessageBox.Show(ex.Message);
             }
 
+        }
+
+        private void guna2DataGridView2_CellValueChanged(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void guna2DataGridView2_EditingControlShowing(object sender, DataGridViewEditingControlShowingEventArgs e)
+        {
+            if (e.Control is ComboBox comboBox)
+            {
+                // Attach the SelectionChangeCommitted event to the ComboBox
+                comboBox.SelectionChangeCommitted -= ComboBox_SelectionChangeCommitted; // Ensure it's detached first
+                comboBox.SelectionChangeCommitted += ComboBox_SelectionChangeCommitted;
+            }
+        }
+
+        private void ComboBox_SelectionChangeCommitted(object sender, EventArgs e)
+        {
+            var comboBox = (ComboBox)sender;
+
+            // Assuming the ComboBox contains items of a custom class "YourCustomClass"
+            if (comboBox.SelectedItem is MealsDropdown selectedObject)
+            {
+                int selectedValue = selectedObject.ID;
+                if(chartfiller == 0)
+                {
+                    calories.Text = "0";
+                    fats.Text = "0";
+                    fibers.Text = "0";
+                    potassium.Text = "0";
+                    water.Text = "0";
+                    sugar.Text = "0";
+                    calcium.Text = "0";
+                    abox.Text = "0";
+                    protein.Text = "0";
+                    carbohydrates.Text = "0";
+                    sodium.Text = "0";
+                    phosphor.Text = "0";
+                    magnesium.Text = "0";
+                    iron.Text = "0";
+                    iodine.Text = "0";
+                    bbox.Text = "0";
+
+                    chartfiller = 1;
+                }
+                ChartFiller(selectedValue);
+                // Use the value as needed in your application
+            }
+        }
+        private void ChartFiller(int id)
+        {
+            try
+            {
+                MainClass.con.Open();
+                SqlCommand cmd = new SqlCommand("SELECT CALORIES, FATS, CARBOHYDRATES, FIBERS, CALCIUM, PROTEIN, SODIUM, POTASSIUM, PHOSPHOR, WATER, MAGNESIUM, SUGAR, IRON, IODINE, A, B FROM Meal WHERE ID = @ID", MainClass.con);
+                cmd.Parameters.AddWithValue("@ID", id);
+
+                SqlDataReader reader = cmd.ExecuteReader();
+                if (reader.HasRows)
+                {
+                    while (reader.Read())
+                    {
+                        // Set the retrieved data into input controls
+                        float caloriesValue = float.Parse(calories.Text);
+                        float fatsValue = float.Parse(fats.Text);
+                        float fibersValue = float.Parse(fibers.Text);
+                        float potassiumValue = float.Parse(potassium.Text);
+                        float waterValue = float.Parse(water.Text);
+                        float sugarValue = float.Parse(sugar.Text);
+                        float calciumValue = float.Parse(calcium.Text);
+                        float aboxValue = float.Parse(abox.Text);
+                        float proteinValue = float.Parse(protein.Text);
+                        float carbohydratesValue = float.Parse(carbohydrates.Text);
+                        float sodiumValue = float.Parse(sodium.Text);
+                        float phosphorValue = float.Parse(phosphor.Text);
+                        float magnesiumValue = float.Parse(magnesium.Text);
+                        float ironValue = float.Parse(iron.Text);
+                        float iodineValue = float.Parse(iodine.Text);
+                        float bboxValue = float.Parse(bbox.Text);
+
+                        // Assuming the reader is a DataReader
+                        // Add the existing values from text boxes with the new values obtained from the reader
+                        caloriesValue += float.Parse(reader["CALORIES"].ToString());
+                        fatsValue += float.Parse(reader["FATS"].ToString());
+                        fibersValue += float.Parse(reader["FIBERS"].ToString());
+                        potassiumValue += float.Parse(reader["POTASSIUM"].ToString());
+                        waterValue += float.Parse(reader["WATER"].ToString());
+                        sugarValue += float.Parse(reader["SUGAR"].ToString());
+                        calciumValue += float.Parse(reader["CALCIUM"].ToString());
+                        aboxValue += float.Parse(reader["A"].ToString());
+                        proteinValue += float.Parse(reader["PROTEIN"].ToString());
+                        carbohydratesValue += float.Parse(reader["CARBOHYDRATES"].ToString());
+                        sodiumValue += float.Parse(reader["SODIUM"].ToString());
+                        phosphorValue += float.Parse(reader["PHOSPHOR"].ToString());
+                        magnesiumValue += float.Parse(reader["MAGNESIUM"].ToString());
+                        ironValue += float.Parse(reader["IRON"].ToString());
+                        iodineValue += float.Parse(reader["IODINE"].ToString());
+                        bboxValue += float.Parse(reader["B"].ToString());
+
+                        // Assign the summed values back to the respective text boxes
+                        calories.Text = caloriesValue.ToString();
+                        fats.Text = fatsValue.ToString();
+                        fibers.Text = fibersValue.ToString();
+                        potassium.Text = potassiumValue.ToString();
+                        water.Text = waterValue.ToString();
+                        sugar.Text = sugarValue.ToString();
+                        calcium.Text = calciumValue.ToString();
+                        abox.Text = aboxValue.ToString();
+                        protein.Text = proteinValue.ToString();
+                        carbohydrates.Text = carbohydratesValue.ToString();
+                        sodium.Text = sodiumValue.ToString();
+                        phosphor.Text = phosphorValue.ToString();
+                        magnesium.Text = magnesiumValue.ToString();
+                        iron.Text = ironValue.ToString();
+                        iodine.Text = iodineValue.ToString();
+                        bbox.Text = bboxValue.ToString();
+
+                    }
+                    reader.Close();
+                    MainClass.con.Close();
+                    //extrafunc();
+                    tabControl1.SelectedIndex = 1;
+                }
+                else
+                {
+                    MessageBox.Show("Meal Not Found!");
+                }
+            }
+            catch (Exception ex)
+            {
+                MainClass.con.Close();
+                MessageBox.Show(ex.Message);
+            }
         }
     }
 }
