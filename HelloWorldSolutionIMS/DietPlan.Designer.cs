@@ -114,20 +114,19 @@
             this.calories = new Guna.UI2.WinForms.Guna2TextBox();
             this.tabPage3 = new System.Windows.Forms.TabPage();
             this.panel3 = new System.Windows.Forms.Panel();
-            this.guna2HtmlLabel1 = new Guna.UI2.WinForms.Guna2HtmlLabel();
             this.Backtomeal = new Guna.UI2.WinForms.Guna2Button();
             this.save = new Guna.UI2.WinForms.Guna2Button();
             this.AddMealrow = new Guna.UI2.WinForms.Guna2Button();
             this.guna2DataGridView2 = new Guna.UI2.WinForms.Guna2DataGridView();
-            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewComboBoxColumn1 = new System.Windows.Forms.DataGridViewComboBoxColumn();
-            this.dataGridViewComboBoxColumn2 = new System.Windows.Forms.DataGridViewComboBoxColumn();
-            this.dataGridViewComboBoxColumn3 = new System.Windows.Forms.DataGridViewComboBoxColumn();
-            this.dataGridViewComboBoxColumn4 = new System.Windows.Forms.DataGridViewComboBoxColumn();
-            this.dataGridViewComboBoxColumn5 = new System.Windows.Forms.DataGridViewComboBoxColumn();
-            this.dataGridViewComboBoxColumn6 = new System.Windows.Forms.DataGridViewComboBoxColumn();
-            this.dataGridViewComboBoxColumn7 = new System.Windows.Forms.DataGridViewComboBoxColumn();
-            this.dataGridViewComboBoxColumn8 = new System.Windows.Forms.DataGridViewComboBoxColumn();
+            this.iddgv = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.categorydgv = new System.Windows.Forms.DataGridViewComboBoxColumn();
+            this.onedgv = new System.Windows.Forms.DataGridViewComboBoxColumn();
+            this.twodgv = new System.Windows.Forms.DataGridViewComboBoxColumn();
+            this.threedgv = new System.Windows.Forms.DataGridViewComboBoxColumn();
+            this.fourdgv = new System.Windows.Forms.DataGridViewComboBoxColumn();
+            this.fivedgv = new System.Windows.Forms.DataGridViewComboBoxColumn();
+            this.sixdgv = new System.Windows.Forms.DataGridViewComboBoxColumn();
+            this.sevendgv = new System.Windows.Forms.DataGridViewComboBoxColumn();
             this.buttondgv = new System.Windows.Forms.DataGridViewButtonColumn();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
@@ -1447,7 +1446,6 @@
             // 
             // panel3
             // 
-            this.panel3.Controls.Add(this.guna2HtmlLabel1);
             this.panel3.Controls.Add(this.Backtomeal);
             this.panel3.Controls.Add(this.save);
             this.panel3.Controls.Add(this.AddMealrow);
@@ -1457,16 +1455,6 @@
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(1131, 769);
             this.panel3.TabIndex = 0;
-            // 
-            // guna2HtmlLabel1
-            // 
-            this.guna2HtmlLabel1.BackColor = System.Drawing.Color.Transparent;
-            this.guna2HtmlLabel1.ForeColor = System.Drawing.Color.Black;
-            this.guna2HtmlLabel1.Location = new System.Drawing.Point(458, 43);
-            this.guna2HtmlLabel1.Name = "guna2HtmlLabel1";
-            this.guna2HtmlLabel1.Size = new System.Drawing.Size(108, 18);
-            this.guna2HtmlLabel1.TabIndex = 207;
-            this.guna2HtmlLabel1.Text = "guna2HtmlLabel1";
             // 
             // Backtomeal
             // 
@@ -1545,15 +1533,15 @@
             this.guna2DataGridView2.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
             this.guna2DataGridView2.ColumnHeadersHeight = 27;
             this.guna2DataGridView2.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.dataGridViewTextBoxColumn1,
-            this.dataGridViewComboBoxColumn1,
-            this.dataGridViewComboBoxColumn2,
-            this.dataGridViewComboBoxColumn3,
-            this.dataGridViewComboBoxColumn4,
-            this.dataGridViewComboBoxColumn5,
-            this.dataGridViewComboBoxColumn6,
-            this.dataGridViewComboBoxColumn7,
-            this.dataGridViewComboBoxColumn8,
+            this.iddgv,
+            this.categorydgv,
+            this.onedgv,
+            this.twodgv,
+            this.threedgv,
+            this.fourdgv,
+            this.fivedgv,
+            this.sixdgv,
+            this.sevendgv,
             this.buttondgv});
             dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(213)))), ((int)(((byte)(244)))), ((int)(((byte)(226)))));
@@ -1598,60 +1586,60 @@
             this.guna2DataGridView2.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.guna2DataGridView2_CellContentClick);
             this.guna2DataGridView2.EditingControlShowing += new System.Windows.Forms.DataGridViewEditingControlShowingEventHandler(this.guna2DataGridView2_EditingControlShowing);
             // 
-            // dataGridViewTextBoxColumn1
+            // iddgv
             // 
-            this.dataGridViewTextBoxColumn1.HeaderText = "ID";
-            this.dataGridViewTextBoxColumn1.MinimumWidth = 6;
-            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
-            this.dataGridViewTextBoxColumn1.Visible = false;
+            this.iddgv.HeaderText = "ID";
+            this.iddgv.MinimumWidth = 6;
+            this.iddgv.Name = "iddgv";
+            this.iddgv.Visible = false;
             // 
-            // dataGridViewComboBoxColumn1
+            // categorydgv
             // 
-            this.dataGridViewComboBoxColumn1.HeaderText = "CATEGORY";
-            this.dataGridViewComboBoxColumn1.MinimumWidth = 6;
-            this.dataGridViewComboBoxColumn1.Name = "dataGridViewComboBoxColumn1";
+            this.categorydgv.HeaderText = "CATEGORY";
+            this.categorydgv.MinimumWidth = 6;
+            this.categorydgv.Name = "categorydgv";
             // 
-            // dataGridViewComboBoxColumn2
+            // onedgv
             // 
-            this.dataGridViewComboBoxColumn2.HeaderText = "1ST DAY";
-            this.dataGridViewComboBoxColumn2.MinimumWidth = 6;
-            this.dataGridViewComboBoxColumn2.Name = "dataGridViewComboBoxColumn2";
+            this.onedgv.HeaderText = "1ST DAY";
+            this.onedgv.MinimumWidth = 6;
+            this.onedgv.Name = "onedgv";
             // 
-            // dataGridViewComboBoxColumn3
+            // twodgv
             // 
-            this.dataGridViewComboBoxColumn3.HeaderText = "2ND DAY";
-            this.dataGridViewComboBoxColumn3.MinimumWidth = 6;
-            this.dataGridViewComboBoxColumn3.Name = "dataGridViewComboBoxColumn3";
+            this.twodgv.HeaderText = "2ND DAY";
+            this.twodgv.MinimumWidth = 6;
+            this.twodgv.Name = "twodgv";
             // 
-            // dataGridViewComboBoxColumn4
+            // threedgv
             // 
-            this.dataGridViewComboBoxColumn4.HeaderText = "3RD DAY";
-            this.dataGridViewComboBoxColumn4.MinimumWidth = 6;
-            this.dataGridViewComboBoxColumn4.Name = "dataGridViewComboBoxColumn4";
+            this.threedgv.HeaderText = "3RD DAY";
+            this.threedgv.MinimumWidth = 6;
+            this.threedgv.Name = "threedgv";
             // 
-            // dataGridViewComboBoxColumn5
+            // fourdgv
             // 
-            this.dataGridViewComboBoxColumn5.HeaderText = "4TH DAY";
-            this.dataGridViewComboBoxColumn5.MinimumWidth = 6;
-            this.dataGridViewComboBoxColumn5.Name = "dataGridViewComboBoxColumn5";
+            this.fourdgv.HeaderText = "4TH DAY";
+            this.fourdgv.MinimumWidth = 6;
+            this.fourdgv.Name = "fourdgv";
             // 
-            // dataGridViewComboBoxColumn6
+            // fivedgv
             // 
-            this.dataGridViewComboBoxColumn6.HeaderText = "5TH DAY";
-            this.dataGridViewComboBoxColumn6.MinimumWidth = 6;
-            this.dataGridViewComboBoxColumn6.Name = "dataGridViewComboBoxColumn6";
+            this.fivedgv.HeaderText = "5TH DAY";
+            this.fivedgv.MinimumWidth = 6;
+            this.fivedgv.Name = "fivedgv";
             // 
-            // dataGridViewComboBoxColumn7
+            // sixdgv
             // 
-            this.dataGridViewComboBoxColumn7.HeaderText = "6TH DAY";
-            this.dataGridViewComboBoxColumn7.MinimumWidth = 6;
-            this.dataGridViewComboBoxColumn7.Name = "dataGridViewComboBoxColumn7";
+            this.sixdgv.HeaderText = "6TH DAY";
+            this.sixdgv.MinimumWidth = 6;
+            this.sixdgv.Name = "sixdgv";
             // 
-            // dataGridViewComboBoxColumn8
+            // sevendgv
             // 
-            this.dataGridViewComboBoxColumn8.HeaderText = "7TH DAY";
-            this.dataGridViewComboBoxColumn8.MinimumWidth = 6;
-            this.dataGridViewComboBoxColumn8.Name = "dataGridViewComboBoxColumn8";
+            this.sevendgv.HeaderText = "7TH DAY";
+            this.sevendgv.MinimumWidth = 6;
+            this.sevendgv.Name = "sevendgv";
             // 
             // buttondgv
             // 
@@ -1684,7 +1672,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.chart1)).EndInit();
             this.tabPage3.ResumeLayout(false);
             this.panel3.ResumeLayout(false);
-            this.panel3.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.guna2DataGridView2)).EndInit();
             this.ResumeLayout(false);
 
@@ -1772,16 +1759,15 @@
         private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
         private System.Windows.Forms.ToolStripMenuItem viewEditToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem deleteToolStripMenuItem;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
-        private System.Windows.Forms.DataGridViewComboBoxColumn dataGridViewComboBoxColumn1;
-        private System.Windows.Forms.DataGridViewComboBoxColumn dataGridViewComboBoxColumn2;
-        private System.Windows.Forms.DataGridViewComboBoxColumn dataGridViewComboBoxColumn3;
-        private System.Windows.Forms.DataGridViewComboBoxColumn dataGridViewComboBoxColumn4;
-        private System.Windows.Forms.DataGridViewComboBoxColumn dataGridViewComboBoxColumn5;
-        private System.Windows.Forms.DataGridViewComboBoxColumn dataGridViewComboBoxColumn6;
-        private System.Windows.Forms.DataGridViewComboBoxColumn dataGridViewComboBoxColumn7;
-        private System.Windows.Forms.DataGridViewComboBoxColumn dataGridViewComboBoxColumn8;
+        private System.Windows.Forms.DataGridViewTextBoxColumn iddgv;
+        private System.Windows.Forms.DataGridViewComboBoxColumn categorydgv;
+        private System.Windows.Forms.DataGridViewComboBoxColumn onedgv;
+        private System.Windows.Forms.DataGridViewComboBoxColumn twodgv;
+        private System.Windows.Forms.DataGridViewComboBoxColumn threedgv;
+        private System.Windows.Forms.DataGridViewComboBoxColumn fourdgv;
+        private System.Windows.Forms.DataGridViewComboBoxColumn fivedgv;
+        private System.Windows.Forms.DataGridViewComboBoxColumn sixdgv;
+        private System.Windows.Forms.DataGridViewComboBoxColumn sevendgv;
         private System.Windows.Forms.DataGridViewButtonColumn buttondgv;
-        private Guna.UI2.WinForms.Guna2HtmlLabel guna2HtmlLabel1;
     }
 }
