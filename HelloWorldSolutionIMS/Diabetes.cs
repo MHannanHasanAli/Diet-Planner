@@ -21,9 +21,11 @@ namespace HelloWorldSolutionIMS
             weight.TextChanged += weight_TextChanged;
 
         }
+
         static int total;
         static double insulincharbcalc;
         static int rowflag = 0;
+
         public double RoundNumber(double number, int decimalPlaces)
         {
             return Math.Round(number, decimalPlaces);
@@ -63,8 +65,8 @@ namespace HelloWorldSolutionIMS
                 else
                 {
                     guna2DataGridView2.Rows[rowIndex].Cells[0].Value = "TOTAL";
-                    guna2DataGridView2.Rows[rowIndex].Cells[1].Value = total* insulincharbcalc;
-                    guna2DataGridView2.Rows[rowIndex].Cells[2].Value = total;// Add text to cell 2 (index 1)
+                    //guna2DataGridView2.Rows[rowIndex].Cells[1].Value = total* insulincharbcalc;
+                    //guna2DataGridView2.Rows[rowIndex].Cells[2].Value = total;// Add text to cell 2 (index 1)
                 }
                 // Add specific text to the second and third cells of each row
             }
@@ -120,19 +122,13 @@ namespace HelloWorldSolutionIMS
                 baselineinsulin.Text = baseline.ToString();
                 bolusinsulin.Text = bolus.ToString();
                 insulincharb.Text = formattedInsulinCharb;
-
-                
-                if (rowflag == 0)
-                {
-                    
-                    rowflag = 1;
-                }
+                //guna2DataGridView2.Rows[4].Cells[1].Value = total * insulincharbcalc;
+                //guna2DataGridView2.Rows[4].Cells[2].Value = total;
                 updatetotal();
             }
            
 
         }
-
         private void weight_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (sender is TextBox textBox)
@@ -164,6 +160,7 @@ namespace HelloWorldSolutionIMS
         }
 
         static double table_total;
+        static double table_total2;
         private void Diabetes_Load(object sender, EventArgs e)
         {
             
@@ -171,25 +168,17 @@ namespace HelloWorldSolutionIMS
             AddFiveRowsToTable();
             AddFiveRowsToTablecarbs();
             guna2DataGridView1.CellValueChanged += guna2DataGridView1_CellValueChanged;
+            guna2DataGridView2.CellValueChanged += guna2DataGridView2_CellValueChanged;
+
+            guna2DataGridView1.Visible = false;
+            guna2DataGridView2.Visible = false;
 
         }
+        
         static int counter = 0;
         private void guna2DataGridView1_CellValueChanged(object sender, DataGridViewCellEventArgs e)
         {
-            if (e.ColumnIndex == 0 && e.RowIndex >= 0) // Change this to the index of the column to monitor
-            {
-                // Get the modified value from the specific cell
-                //string changedValue = guna2DataGridView1.Rows[e.RowIndex].Cells[e.ColumnIndex].Value.ToString();
-
-                //if(changedValue != "BREAKFAST" && changedValue != "LUNCH" && changedValue != "DINNER" && changedValue != "SNACKS" && changedValue != "TOTAL")
-                //{
-                //    
-                //}
-               
-                
-                // Add more conditional checks for different changed values if needed
-            }
-
+            
             if (e.ColumnIndex == 1 && e.RowIndex != 4 && e.RowIndex >= 0)// Change this to the index of the column to monitor
             {
                 
@@ -201,38 +190,76 @@ namespace HelloWorldSolutionIMS
                         double cellvalue = double.Parse(changedValue) * insulincharbcalc;
 
                         guna2DataGridView1.Rows[e.RowIndex].Cells[e.ColumnIndex + 1].Value = cellvalue;
+                        string val = guna2DataGridView1.Rows[4].Cells[e.ColumnIndex+1].Value?.ToString();
+                        double new_value = 0;
+                       
+                        if (val == null)
+                        {                       
+                            guna2DataGridView1.Rows[4].Cells[e.ColumnIndex + 1].Value = cellvalue;
+                        }
+                        else
+                        {
 
+                            if(rowflag == 0)
+                            {
+                                
+                                rowflag = 1;
+                            }
+                            else
+                            {
+                                new_value = double.Parse(val) + cellvalue / 2;
+                                guna2DataGridView1.Rows[4].Cells[e.ColumnIndex + 1].Value = new_value;
+                            }
+                               
+                        }
+                    
                     }
                     else
                     {
                         MessageBox.Show("Total number of insulin exceeded!");
                     }
-                   
-               
 
-                
-                // Add more conditional checks for different changed values if needed
             }
-            //if (e.ColumnIndex == 1) // Change this to the index of the column to monitor
-            //{
-            //    // Get the modified value from the specific cell
-            //    string changedValue = guna2DataGridView1.Rows[e.RowIndex].Cells[e.ColumnIndex].Value.ToString();
+            
+        }
+        
+        static int full = 0;
+        static int shots = 0;
+        private void guna2DataGridView2_CellValueChanged(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.ColumnIndex == 1 && e.RowIndex != 4 && e.RowIndex >= 0)// Change this to the index of the column to monitor
+            {
 
-            //    if (changedValue != "BREAKFAST" && changedValue != "LUNCH" && changedValue != "DINNER" && changedValue != "SNACKS" && changedValue != "TOTAL")
-            //    {
-            //        table_total += double.Parse(changedValue);
-            //        if (table_total >= total)
-            //        {
-            //            double cellvalue = double.Parse(changedValue) * insulincharbcalc;
+                    string changedValue = guna2DataGridView2.Rows[e.RowIndex].Cells[e.ColumnIndex].Value.ToString();
 
-            //            guna2DataGridView1.Rows[e.RowIndex].Cells[e.ColumnIndex + 2].Value = cellvalue;
+                    table_total2 += double.Parse(changedValue);
+                
+                    double cellvalue = double.Parse(changedValue) / insulincharbcalc;
+                    double round = RoundNumber(cellvalue,0);
 
-            //        }
-            //    }
+                    guna2DataGridView2.Rows[e.RowIndex].Cells[e.ColumnIndex + 1].Value = int.Parse(round.ToString());
+                    shots = shots + int.Parse(round.ToString());
+                    string val = guna2DataGridView2.Rows[4].Cells[e.ColumnIndex + 1].Value?.ToString();
 
+                    guna2DataGridView2.Rows[4].Cells[2].Value = shots/2;
+                    guna2DataGridView2.Rows[4].Cells[1].Value = table_total2 / 2;
 
-            //    // Add more conditional checks for different changed values if needed
-            //}
+                    if (val == null)
+                    {
+                        guna2DataGridView2.Rows[4].Cells[e.ColumnIndex + 1].Value = cellvalue;
+                    }
+
+            }
+        }
+        private void search_Click(object sender, EventArgs e)
+        {
+            guna2DataGridView1.Visible = true;
+            guna2DataGridView2.Visible = false;
+        }
+        private void Add_Click(object sender, EventArgs e)
+        {
+            guna2DataGridView1.Visible = false;
+            guna2DataGridView2.Visible = true;
         }
     }
 }
