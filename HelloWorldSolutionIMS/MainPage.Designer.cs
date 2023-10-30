@@ -218,6 +218,7 @@
             this.guna2TileButton4.TabIndex = 3;
             this.guna2TileButton4.Text = "Diabetes";
             this.guna2TileButton4.TextOffset = new System.Drawing.Point(0, -15);
+            this.guna2TileButton4.Click += new System.EventHandler(this.guna2TileButton4_Click);
             // 
             // guna2TileButton2
             // 
