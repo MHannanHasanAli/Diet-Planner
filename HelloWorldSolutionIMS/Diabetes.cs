@@ -38,6 +38,38 @@ namespace HelloWorldSolutionIMS
             }
            
         }
+        private void AddFiveRowsToTablecarbs()
+        {
+            for (int i = 0; i < 5; i++)
+            {
+                // Add a new row to the DataGridView
+                int rowIndex = guna2DataGridView2.Rows.Add();
+                if (rowIndex == 0)
+                {
+                    guna2DataGridView2.Rows[rowIndex].Cells[0].Value = "BREAKFAST"; // Add text to cell 2 (index 1)
+                }
+                else if (rowIndex == 1)
+                {
+                    guna2DataGridView2.Rows[rowIndex].Cells[0].Value = "LUNCH"; // Add text to cell 2 (index 1)
+                }
+                else if (rowIndex == 2)
+                {
+                    guna2DataGridView2.Rows[rowIndex].Cells[0].Value = "DINNER"; // Add text to cell 2 (index 1)
+                }
+                else if (rowIndex == 3)
+                {
+                    guna2DataGridView2.Rows[rowIndex].Cells[0].Value = "SNACKS"; // Add text to cell 2 (index 1)
+                }
+                else
+                {
+                    guna2DataGridView2.Rows[rowIndex].Cells[0].Value = "TOTAL";
+                    guna2DataGridView2.Rows[rowIndex].Cells[1].Value = total* insulincharbcalc;
+                    guna2DataGridView2.Rows[rowIndex].Cells[2].Value = total;// Add text to cell 2 (index 1)
+                }
+                // Add specific text to the second and third cells of each row
+            }
+
+        }
         private void AddFiveRowsToTable()
         {
                 for (int i = 0; i < 5; i++)
@@ -137,6 +169,7 @@ namespace HelloWorldSolutionIMS
             
             table_total = 0;
             AddFiveRowsToTable();
+            AddFiveRowsToTablecarbs();
             guna2DataGridView1.CellValueChanged += guna2DataGridView1_CellValueChanged;
 
         }
@@ -163,7 +196,7 @@ namespace HelloWorldSolutionIMS
                     string changedValue = guna2DataGridView1.Rows[e.RowIndex].Cells[e.ColumnIndex].Value.ToString();
 
                     table_total += double.Parse(changedValue);
-                    if (table_total <= total)
+                    if (table_total <= total*2)
                     {
                         double cellvalue = double.Parse(changedValue) * insulincharbcalc;
 
