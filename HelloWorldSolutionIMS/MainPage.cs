@@ -81,13 +81,19 @@ namespace HelloWorldSolutionIMS
 
         private void guna2TileButton3_Click(object sender, EventArgs e)
         {
-            //loadform(new DietPlan());
+            loadform(new DietPlan());
 
         }
 
         private void guna2TileButton4_Click(object sender, EventArgs e)
         {
             loadform(new Diabetes());
+        }
+
+        private void guna2TileButton1_Click(object sender, EventArgs e)
+        {
+            loadform(new SettingScreen());
+
         }
     }
 }

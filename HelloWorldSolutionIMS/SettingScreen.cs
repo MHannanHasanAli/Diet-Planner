@@ -53,9 +53,11 @@ namespace HelloWorldSolutionIMS
 
         private void SettingScreen_Load(object sender, EventArgs e)
         {
-            ShowUsers(Datagridview1, NameGV, UsernameGV, PasswordGV, RoleGV);
-            cboRole.SelectedIndex = 0;
+            //ShowUsers(Datagridview1, NameGV, UsernameGV, PasswordGV, RoleGV);
+            //cboRole.SelectedIndex = 0;
             MainClass.HideAllTabsOnTabControl(tabControl1);
+            tabControl1.SelectedIndex = 1;
+            
         }
 
         private void btnSave_Click(object sender, EventArgs e)

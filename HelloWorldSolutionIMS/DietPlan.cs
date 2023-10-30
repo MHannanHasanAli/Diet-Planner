@@ -391,72 +391,6 @@ namespace HelloWorldSolutionIMS
         "Functional Food"
     };
         }
-
-    //    private List<string> GetCategory(string aspect)
-    //    {
-    //        if (aspect == "Breakfast")
-    //        {
-    //            return new List<string>
-    //{
-    //    "Breakfast",
-    //    "Lunch",
-    //    "Dinner",
-    //    "Snack",
-    //    "Functional Food"
-    //};
-    //        }
-    //        else if (aspect == "Functional Food")
-    //        {
-    //            return new List<string>
-    //{
-    //    "Functional Food",
-    //    "Breakfast",
-    //    "Lunch",
-    //    "Dinner",
-    //    "Snack"
-        
-    //};
-    //        }
-    //        else if (aspect == "Dinner")
-    //        {
-    //            return new List<string>
-    //{
-    //    "Dinner",
-    //    "Functional Food",
-    //    "Breakfast",
-    //    "Lunch",        
-    //    "Snack"
-
-    //};
-    //        }
-    //        else if (aspect == "Lunch")
-    //        {
-    //            return new List<string>
-    //{
-    //    "Lunch",
-    //    "Dinner",
-    //    "Functional Food",
-    //    "Breakfast",
-    //    "Snack"
-
-    //};
-    //        }
-    //        else
-    //        {
-    //            return new List<string>
-    //{
-    //    "Snack",
-    //    "Lunch",
-    //    "Dinner",
-    //    "Functional Food",
-    //    "Breakfast"
-
-    //};
-
-    //        }
-            
-    //    }
-
         private List<MealsDropdown> GetMeals()
         {
             try
@@ -585,9 +519,116 @@ namespace HelloWorldSolutionIMS
                 MessageBox.Show(ex.Message);
             }
         }
+        private void SearchDietPlans(DataGridView dgv, DataGridViewColumn no, DataGridViewColumn name, DataGridViewColumn age, DataGridViewColumn dietname)
+        {
+            string firstname = firstnamesearch.Text;
+            string dietplan = dietplannamesearch.Text;
+
+            if (firstname != "" && dietplan != "")
+            {
+                try
+                {
+                    MainClass.con.Open();
+
+                    SqlCommand cmd = new SqlCommand("SELECT FILENO, FIRSTNAME,AGE, DIETPLANTEMPLATENAME FROM DietPlan " +
+                        " WHERE (FIRSTNAME LIKE @firstname) AND (DIETPLANTEMPLATENAME LIKE @dietplan)", MainClass.con);
+
+                    cmd.Parameters.AddWithValue("@firstname", "%" + firstname + "%");
+                    cmd.Parameters.AddWithValue("@dietplan", "%" + dietplan + "%");
+
+                    SqlDataAdapter da = new SqlDataAdapter(cmd);
+                    DataTable dt = new DataTable();
+                    da.Fill(dt);
+
+                    // Modify the column names to match your data grid view
+                    no.DataPropertyName = dt.Columns["FILENO"].ToString();
+                    name.DataPropertyName =  dt.Columns["FIRSTNAME"].ToString();
+                    age.DataPropertyName = dt.Columns["AGE"].ToString();
+                    dietname.DataPropertyName = dt.Columns["DIETPLANTEMPLATENAME"].ToString();
+
+
+                    dgv.DataSource = dt;
+                    MainClass.con.Close();
+                }
+                catch (Exception ex)
+                {
+                    MainClass.con.Close();
+                    MessageBox.Show(ex.Message);
+                }
+            }
+            else if (firstname == "" && dietplan != "")
+            {
+                try
+                {
+                    MainClass.con.Open();
+
+                    SqlCommand cmd = new SqlCommand("SELECT FILENO, FIRSTNAME,AGE, DIETPLANTEMPLATENAME FROM DietPlan " +
+                        " WHERE DIETPLANTEMPLATENAME LIKE @dietplan", MainClass.con);
+
+                    cmd.Parameters.AddWithValue("@dietplan", "%" + dietplan + "%");
+
+                    SqlDataAdapter da = new SqlDataAdapter(cmd);
+                    DataTable dt = new DataTable();
+                    da.Fill(dt);
+
+                    // Modify the column names to match your data grid view
+                    no.DataPropertyName = dt.Columns["FILENO"].ToString();
+                    name.DataPropertyName = dt.Columns["FIRSTNAME"].ToString();
+                    age.DataPropertyName = dt.Columns["AGE"].ToString();
+                    dietname.DataPropertyName = dt.Columns["DIETPLANTEMPLATENAME"].ToString();
+
+
+
+                    dgv.DataSource = dt;
+                    MainClass.con.Close();
+                }
+                catch (Exception ex)
+                {
+                    MainClass.con.Close();
+                    MessageBox.Show(ex.Message);
+                }
+            }
+            else if (firstname != "" && dietplan == "")
+            {
+                try
+                {
+                    MainClass.con.Open();
+
+                    SqlCommand cmd = new SqlCommand("SELECT FILENO, FIRSTNAME,AGE, DIETPLANTEMPLATENAME FROM DietPlan " +
+                        " WHERE FIRSTNAME LIKE @firstname", MainClass.con);
+
+                    cmd.Parameters.AddWithValue("@firstname", "%" + firstname + "%");
+
+                    SqlDataAdapter da = new SqlDataAdapter(cmd);
+                    DataTable dt = new DataTable();
+                    da.Fill(dt);
+
+                    // Modify the column names to match your data grid view
+                    no.DataPropertyName = dt.Columns["FILENO"].ToString();
+                    name.DataPropertyName = dt.Columns["FIRSTNAME"].ToString();
+                    age.DataPropertyName = dt.Columns["AGE"].ToString();
+                    dietname.DataPropertyName = dt.Columns["DIETPLANTEMPLATENAME"].ToString();
+
+
+                    dgv.DataSource = dt;
+                    MainClass.con.Close();
+                }
+                catch (Exception ex)
+                {
+                    MainClass.con.Close();
+                    MessageBox.Show(ex.Message);
+                }
+            }
+            else
+            {
+                MessageBox.Show("Fill First Name or Diet Plan name");
+                ShowDietPlans(guna2DataGridView1, filenodgv, namedgv, agedgv, dietnamedgv);
+
+            }
+        }
         private void Backtomeal_Click(object sender, EventArgs e)
         {
-            tabControl1.SelectedIndex = 0;
+            tabControl1.SelectedIndex = 1;
         }
         private void Meals_Click(object sender, EventArgs e)
         {
@@ -756,87 +797,87 @@ namespace HelloWorldSolutionIMS
             {
                 if (firstname.Text != "")
                 {
-                    //try
-                    //{
-                    //    MainClass.con.Open();
-                    //    SqlCommand cmd = new SqlCommand("INSERT INTO DietPlan (Firstname, Familyname, DietPlanDate, DietPlanTemplateName, DietPlanTemplate, DietPlanDays, Instructions, Gender, Age, MobileNo, PreviousDiePlan, Calories, Fats, Fibers, Potassium, Water, Sugar, Calcium, A, Protein, Carbohydrates, Sodium, Phosphor, Magnesium, Iron, Iodine, B) " +
-                    //        "VALUES (@Firstname, @Familyname, @DietPlanDate, @DietPlanTemplateName, @DietPlanTemplate, @DietPlanDays, @Instructions, @Gender, @Age, @MobileNo, @PreviousDietPlan, @Calories, @Fats, @Fibers, @Potassium, @Water, @Sugar, @Calcium, @A, @Protein, @Carbohydrates, @Sodium, @Phosphor, @Magnesium, @Iron, @Iodine, @B)", MainClass.con);
+                    try
+                    {
+                        MainClass.con.Open();
+                        SqlCommand cmd = new SqlCommand("INSERT INTO DietPlan (Firstname, Familyname, DietPlanDate, DietPlanTemplateName, DietPlanTemplate, DietPlanDays, Instructions, Gender, Age, MobileNo, PreviousDiePlan, Calories, Fats, Fibers, Potassium, Water, Sugar, Calcium, A, Protein, Carbohydrates, Sodium, Phosphor, Magnesium, Iron, Iodine, B) " +
+                            "VALUES (@Firstname, @Familyname, @DietPlanDate, @DietPlanTemplateName, @DietPlanTemplate, @DietPlanDays, @Instructions, @Gender, @Age, @MobileNo, @PreviousDietPlan, @Calories, @Fats, @Fibers, @Potassium, @Water, @Sugar, @Calcium, @A, @Protein, @Carbohydrates, @Sodium, @Phosphor, @Magnesium, @Iron, @Iodine, @B)", MainClass.con);
 
-                    //    // Assuming appropriate text boxes for each field in the DietPlan table
-                    //    //cmd.Parameters.AddWithValue("@Fileno", fileno.Text);
-                    //    cmd.Parameters.AddWithValue("@Firstname", firstname.Text);
-                    //    cmd.Parameters.AddWithValue("@Familyname", familyname.Text);
-                    //    cmd.Parameters.AddWithValue("@DietPlanDate", DateTime.Now);
-                    //    cmd.Parameters.AddWithValue("@DietPlanTemplateName", dietplantemplatename.Text);
-                    //    cmd.Parameters.AddWithValue("@DietPlanTemplate", dietplantemplate.Text);
-                    //    cmd.Parameters.AddWithValue("@DietPlanDays", dietplandays.Text);
-                    //    cmd.Parameters.AddWithValue("@Instructions", instruction.Text);
-                    //    cmd.Parameters.AddWithValue("@Gender", gender.Text);
-                    //    cmd.Parameters.AddWithValue("@Age", int.Parse(age.Text));
-                    //    cmd.Parameters.AddWithValue("@MobileNo", mobileno.Text);
-                    //    cmd.Parameters.AddWithValue("@PreviousDietPlan", previousdietplan.Text);
-                    //    cmd.Parameters.AddWithValue("@Calories", Convert.ToDouble(calories.Text));
-                    //    cmd.Parameters.AddWithValue("@Fats", Convert.ToDouble(fats.Text));
-                    //    cmd.Parameters.AddWithValue("@Fibers", Convert.ToDouble(fibers.Text));
-                    //    cmd.Parameters.AddWithValue("@Potassium", Convert.ToDouble(potassium.Text));
-                    //    cmd.Parameters.AddWithValue("@Water", Convert.ToDouble(water.Text));
-                    //    cmd.Parameters.AddWithValue("@Sugar", Convert.ToDouble(sugar.Text));
-                    //    cmd.Parameters.AddWithValue("@Calcium", Convert.ToDouble(calcium.Text));
-                    //    cmd.Parameters.AddWithValue("@A", Convert.ToDouble(abox.Text));
-                    //    cmd.Parameters.AddWithValue("@Protein", Convert.ToDouble(protein.Text));
-                    //    cmd.Parameters.AddWithValue("@Carbohydrates", Convert.ToDouble(carbohydrates.Text));
-                    //    cmd.Parameters.AddWithValue("@Sodium", Convert.ToDouble(sodium.Text));
-                    //    cmd.Parameters.AddWithValue("@Phosphor", Convert.ToDouble(phosphor.Text));
-                    //    cmd.Parameters.AddWithValue("@Magnesium", Convert.ToDouble(magnesium.Text));
-                    //    cmd.Parameters.AddWithValue("@Iron", Convert.ToDouble(iron.Text));
-                    //    cmd.Parameters.AddWithValue("@Iodine", Convert.ToDouble(iodine.Text));
-                    //    cmd.Parameters.AddWithValue("@B", Convert.ToDouble(bbox.Text));
+                        // Assuming appropriate text boxes for each field in the DietPlan table
+                        //cmd.Parameters.AddWithValue("@Fileno", fileno.Text);
+                        cmd.Parameters.AddWithValue("@Firstname", firstname.Text);
+                        cmd.Parameters.AddWithValue("@Familyname", familyname.Text);
+                        cmd.Parameters.AddWithValue("@DietPlanDate", DateTime.Now);
+                        cmd.Parameters.AddWithValue("@DietPlanTemplateName", dietplantemplatename.Text);
+                        cmd.Parameters.AddWithValue("@DietPlanTemplate", dietplantemplate.Text);
+                        cmd.Parameters.AddWithValue("@DietPlanDays", dietplandays.Text);
+                        cmd.Parameters.AddWithValue("@Instructions", instruction.Text);
+                        cmd.Parameters.AddWithValue("@Gender", gender.Text);
+                        cmd.Parameters.AddWithValue("@Age", int.Parse(age.Text));
+                        cmd.Parameters.AddWithValue("@MobileNo", mobileno.Text);
+                        cmd.Parameters.AddWithValue("@PreviousDietPlan", previousdietplan.Text);
+                        cmd.Parameters.AddWithValue("@Calories", Convert.ToDouble(calories.Text));
+                        cmd.Parameters.AddWithValue("@Fats", Convert.ToDouble(fats.Text));
+                        cmd.Parameters.AddWithValue("@Fibers", Convert.ToDouble(fibers.Text));
+                        cmd.Parameters.AddWithValue("@Potassium", Convert.ToDouble(potassium.Text));
+                        cmd.Parameters.AddWithValue("@Water", Convert.ToDouble(water.Text));
+                        cmd.Parameters.AddWithValue("@Sugar", Convert.ToDouble(sugar.Text));
+                        cmd.Parameters.AddWithValue("@Calcium", Convert.ToDouble(calcium.Text));
+                        cmd.Parameters.AddWithValue("@A", Convert.ToDouble(abox.Text));
+                        cmd.Parameters.AddWithValue("@Protein", Convert.ToDouble(protein.Text));
+                        cmd.Parameters.AddWithValue("@Carbohydrates", Convert.ToDouble(carbohydrates.Text));
+                        cmd.Parameters.AddWithValue("@Sodium", Convert.ToDouble(sodium.Text));
+                        cmd.Parameters.AddWithValue("@Phosphor", Convert.ToDouble(phosphor.Text));
+                        cmd.Parameters.AddWithValue("@Magnesium", Convert.ToDouble(magnesium.Text));
+                        cmd.Parameters.AddWithValue("@Iron", Convert.ToDouble(iron.Text));
+                        cmd.Parameters.AddWithValue("@Iodine", Convert.ToDouble(iodine.Text));
+                        cmd.Parameters.AddWithValue("@B", Convert.ToDouble(bbox.Text));
 
-                    //    cmd.ExecuteNonQuery();
-                    //    MessageBox.Show("Diet Plan added successfully");
-                    //    MainClass.con.Close();
+                        cmd.ExecuteNonQuery();
+                        MessageBox.Show("Diet Plan added successfully");
+                        MainClass.con.Close();
 
-                    //    firstname.Text = "";
-                    //    familyname.Text = "";
-                    //    dietplantemplatename.Text = "";
-                    //    dietplantemplate.Text = "";
-                    //    dietplandays.Text = "";
-                    //    instruction.Text = "";
-                    //    gender.Text = "";
-                    //    age.Text = "";
-                    //    mobileno.Text = "";
-                    //    previousdietplan.Text = "";
-                    //    calories.Text = "";
-                    //    fats.Text = "";
-                    //    fibers.Text = "";
-                    //    potassium.Text = "";
-                    //    water.Text = "";
-                    //    sugar.Text = "";
-                    //    calcium.Text = "";
-                    //    abox.Text = "";
-                    //    protein.Text = "";
-                    //    carbohydrates.Text = "";
-                    //    sodium.Text = "";
-                    //    phosphor.Text = "";
-                    //    magnesium.Text = "";
-                    //    iron.Text = "";
-                    //    iodine.Text = "";
-                    //    bbox.Text = "";
+                        firstname.Text = "";
+                        familyname.Text = "";
+                        dietplantemplatename.Text = "";
+                        dietplantemplate.Text = "";
+                        dietplandays.Text = "";
+                        instruction.Text = "";
+                        gender.Text = "";
+                        age.Text = "";
+                        mobileno.Text = "";
+                        previousdietplan.Text = "";
+                        calories.Text = "";
+                        fats.Text = "";
+                        fibers.Text = "";
+                        potassium.Text = "";
+                        water.Text = "";
+                        sugar.Text = "";
+                        calcium.Text = "";
+                        abox.Text = "";
+                        protein.Text = "";
+                        carbohydrates.Text = "";
+                        sodium.Text = "";
+                        phosphor.Text = "";
+                        magnesium.Text = "";
+                        iron.Text = "";
+                        iodine.Text = "";
+                        bbox.Text = "";
 
 
-                    //    MainClass.con.Close();
+                        MainClass.con.Close();
 
-                    //    // Switch to the first tab of your tab control (assuming it's called tabControl1)
-                    //    tabControl1.SelectedIndex = 0;
+                        // Switch to the first tab of your tab control (assuming it's called tabControl1)
+                        tabControl1.SelectedIndex = 0;
 
-                    //    // Refresh the DataGridView
-                    //    ShowDietPlans(guna2DataGridView1, filenodgv, namedgv, agedgv, dietnamedgv);
-                    //}
-                    //catch (Exception ex)
-                    //{
-                    //    MainClass.con.Close();
-                    //    MessageBox.Show(ex.Message);
-                    //}
+                        // Refresh the DataGridView
+                        ShowDietPlans(guna2DataGridView1, filenodgv, namedgv, agedgv, dietnamedgv);
+                    }
+                    catch (Exception ex)
+                    {
+                        MainClass.con.Close();
+                        MessageBox.Show(ex.Message);
+                    }
 
                     try
                     {
@@ -908,7 +949,7 @@ namespace HelloWorldSolutionIMS
                                     cmd.Parameters.AddWithValue("@Category", category); // Change 'categoryTextBox' to the actual textbox capturing the category value
 
                                     cmd.ExecuteNonQuery();
-                                    MessageBox.Show("Diet Plan added Successfully!");
+                                    //MessageBox.Show("Diet Plan added Successfully!");
                                     MainClass.con.Close();
                                 }
                                 catch (Exception ex)
@@ -941,86 +982,86 @@ namespace HelloWorldSolutionIMS
 
                 if (firstname.Text != "")
                 {
-                    //try
-                    //{
-                    //    MainClass.con.Open();
-                    //    SqlCommand cmd = new SqlCommand("UPDATE DietPlan SET FIRSTNAME = @Firstname, FAMILYNAME = @Familyname, DietPlanDate = @DietPlanDate, DietPlanTemplateName = @DietPlanTemplateName, DietPlanTemplate = @DietPlanTemplate, DietPlanDays = @DietPlanDays, Instructions = @Instructions, Gender = @Gender, Age = @Age, MobileNo = @MobileNo, PreviousDiePlan = @PreviousDietPlan, CALORIES = @Calories, FATS = @Fats, FIBERS = @Fibers, POTASSIUM = @Potassium, WATER = @Water, SUGAR = @Sugar, CALCIUM = @Calcium, A = @A, PROTEIN = @Protein, CARBOHYDRATES = @Carbohydrates, SODIUM = @Sodium, PHOSPHOR = @Phosphor, MAGNESIUM = @Magnesium, IRON = @Iron, IODINE = @Iodine, B = @B WHERE FILENO = @Fileno", MainClass.con);
+                    try
+                    {
+                        MainClass.con.Open();
+                        SqlCommand cmd = new SqlCommand("UPDATE DietPlan SET FIRSTNAME = @Firstname, FAMILYNAME = @Familyname, DietPlanDate = @DietPlanDate, DietPlanTemplateName = @DietPlanTemplateName, DietPlanTemplate = @DietPlanTemplate, DietPlanDays = @DietPlanDays, Instructions = @Instructions, Gender = @Gender, Age = @Age, MobileNo = @MobileNo, PreviousDiePlan = @PreviousDietPlan, CALORIES = @Calories, FATS = @Fats, FIBERS = @Fibers, POTASSIUM = @Potassium, WATER = @Water, SUGAR = @Sugar, CALCIUM = @Calcium, A = @A, PROTEIN = @Protein, CARBOHYDRATES = @Carbohydrates, SODIUM = @Sodium, PHOSPHOR = @Phosphor, MAGNESIUM = @Magnesium, IRON = @Iron, IODINE = @Iodine, B = @B WHERE FILENO = @Fileno", MainClass.con);
 
-                    //    // Assuming appropriate text boxes for each field in the DietPlan table
-                    //    cmd.Parameters.AddWithValue("@Fileno", dietPlanIDToEdit);
-                    //    cmd.Parameters.AddWithValue("@Firstname", firstname.Text);
-                    //    cmd.Parameters.AddWithValue("@Familyname", familyname.Text);
-                    //    cmd.Parameters.AddWithValue("@DietPlanDate", DateTime.Now);
-                    //    cmd.Parameters.AddWithValue("@DietPlanTemplateName", dietplantemplatename.Text);
-                    //    cmd.Parameters.AddWithValue("@DietPlanTemplate", dietplantemplate.Text);
-                    //    cmd.Parameters.AddWithValue("@DietPlanDays", dietplandays.Text);
-                    //    cmd.Parameters.AddWithValue("@Instructions", instruction.Text);
-                    //    cmd.Parameters.AddWithValue("@Gender", gender.Text);
-                    //    cmd.Parameters.AddWithValue("@Age", int.Parse(age.Text));
-                    //    cmd.Parameters.AddWithValue("@MobileNo", mobileno.Text);
-                    //    cmd.Parameters.AddWithValue("@PreviousDietPlan", previousdietplan.Text);
-                    //    cmd.Parameters.AddWithValue("@Calories", Convert.ToDouble(calories.Text));
-                    //    cmd.Parameters.AddWithValue("@Fats", Convert.ToDouble(fats.Text));
-                    //    cmd.Parameters.AddWithValue("@Fibers", Convert.ToDouble(fibers.Text));
-                    //    cmd.Parameters.AddWithValue("@Potassium", Convert.ToDouble(potassium.Text));
-                    //    cmd.Parameters.AddWithValue("@Water", Convert.ToDouble(water.Text));
-                    //    cmd.Parameters.AddWithValue("@Sugar", Convert.ToDouble(sugar.Text));
-                    //    cmd.Parameters.AddWithValue("@Calcium", Convert.ToDouble(calcium.Text));
-                    //    cmd.Parameters.AddWithValue("@A", Convert.ToDouble(abox.Text));
-                    //    cmd.Parameters.AddWithValue("@Protein", Convert.ToDouble(protein.Text));
-                    //    cmd.Parameters.AddWithValue("@Carbohydrates", Convert.ToDouble(carbohydrates.Text));
-                    //    cmd.Parameters.AddWithValue("@Sodium", Convert.ToDouble(sodium.Text));
-                    //    cmd.Parameters.AddWithValue("@Phosphor", Convert.ToDouble(phosphor.Text));
-                    //    cmd.Parameters.AddWithValue("@Magnesium", Convert.ToDouble(magnesium.Text));
-                    //    cmd.Parameters.AddWithValue("@Iron", Convert.ToDouble(iron.Text));
-                    //    cmd.Parameters.AddWithValue("@Iodine", Convert.ToDouble(iodine.Text));
-                    //    cmd.Parameters.AddWithValue("@B", Convert.ToDouble(bbox.Text));
+                        // Assuming appropriate text boxes for each field in the DietPlan table
+                        cmd.Parameters.AddWithValue("@Fileno", dietPlanIDToEdit);
+                        cmd.Parameters.AddWithValue("@Firstname", firstname.Text);
+                        cmd.Parameters.AddWithValue("@Familyname", familyname.Text);
+                        cmd.Parameters.AddWithValue("@DietPlanDate", DateTime.Now);
+                        cmd.Parameters.AddWithValue("@DietPlanTemplateName", dietplantemplatename.Text);
+                        cmd.Parameters.AddWithValue("@DietPlanTemplate", dietplantemplate.Text);
+                        cmd.Parameters.AddWithValue("@DietPlanDays", dietplandays.Text);
+                        cmd.Parameters.AddWithValue("@Instructions", instruction.Text);
+                        cmd.Parameters.AddWithValue("@Gender", gender.Text);
+                        cmd.Parameters.AddWithValue("@Age", int.Parse(age.Text));
+                        cmd.Parameters.AddWithValue("@MobileNo", mobileno.Text);
+                        cmd.Parameters.AddWithValue("@PreviousDietPlan", previousdietplan.Text);
+                        cmd.Parameters.AddWithValue("@Calories", Convert.ToDouble(calories.Text));
+                        cmd.Parameters.AddWithValue("@Fats", Convert.ToDouble(fats.Text));
+                        cmd.Parameters.AddWithValue("@Fibers", Convert.ToDouble(fibers.Text));
+                        cmd.Parameters.AddWithValue("@Potassium", Convert.ToDouble(potassium.Text));
+                        cmd.Parameters.AddWithValue("@Water", Convert.ToDouble(water.Text));
+                        cmd.Parameters.AddWithValue("@Sugar", Convert.ToDouble(sugar.Text));
+                        cmd.Parameters.AddWithValue("@Calcium", Convert.ToDouble(calcium.Text));
+                        cmd.Parameters.AddWithValue("@A", Convert.ToDouble(abox.Text));
+                        cmd.Parameters.AddWithValue("@Protein", Convert.ToDouble(protein.Text));
+                        cmd.Parameters.AddWithValue("@Carbohydrates", Convert.ToDouble(carbohydrates.Text));
+                        cmd.Parameters.AddWithValue("@Sodium", Convert.ToDouble(sodium.Text));
+                        cmd.Parameters.AddWithValue("@Phosphor", Convert.ToDouble(phosphor.Text));
+                        cmd.Parameters.AddWithValue("@Magnesium", Convert.ToDouble(magnesium.Text));
+                        cmd.Parameters.AddWithValue("@Iron", Convert.ToDouble(iron.Text));
+                        cmd.Parameters.AddWithValue("@Iodine", Convert.ToDouble(iodine.Text));
+                        cmd.Parameters.AddWithValue("@B", Convert.ToDouble(bbox.Text));
 
-                    //    cmd.ExecuteNonQuery();
-                    //    //MessageBox.Show("Diet Plan updated successfully");
-                    //    MainClass.con.Close();
+                        cmd.ExecuteNonQuery();
+                        MessageBox.Show("Diet Plan updated successfully");
+                        MainClass.con.Close();
 
-                    //    firstname.Text = "";
-                    //    familyname.Text = "";
-                    //    dietplantemplatename.Text = "";
-                    //    dietplantemplate.Text = "";
-                    //    dietplandays.Text = "";
-                    //    instruction.Text = "";
-                    //    gender.Text = "";
-                    //    age.Text = "";
-                    //    mobileno.Text = "";
-                    //    previousdietplan.Text = "";
-                    //    calories.Text = "";
-                    //    fats.Text = "";
-                    //    fibers.Text = "";
-                    //    potassium.Text = "";
-                    //    water.Text = "";
-                    //    sugar.Text = "";
-                    //    calcium.Text = "";
-                    //    abox.Text = "";
-                    //    protein.Text = "";
-                    //    carbohydrates.Text = "";
-                    //    sodium.Text = "";
-                    //    phosphor.Text = "";
-                    //    magnesium.Text = "";
-                    //    iron.Text = "";
-                    //    iodine.Text = "";
-                    //    bbox.Text = "";
+                        firstname.Text = "";
+                        familyname.Text = "";
+                        dietplantemplatename.Text = "";
+                        dietplantemplate.Text = "";
+                        dietplandays.Text = "";
+                        instruction.Text = "";
+                        gender.Text = "";
+                        age.Text = "";
+                        mobileno.Text = "";
+                        previousdietplan.Text = "";
+                        calories.Text = "";
+                        fats.Text = "";
+                        fibers.Text = "";
+                        potassium.Text = "";
+                        water.Text = "";
+                        sugar.Text = "";
+                        calcium.Text = "";
+                        abox.Text = "";
+                        protein.Text = "";
+                        carbohydrates.Text = "";
+                        sodium.Text = "";
+                        phosphor.Text = "";
+                        magnesium.Text = "";
+                        iron.Text = "";
+                        iodine.Text = "";
+                        bbox.Text = "";
 
 
-                    //    MainClass.con.Close();
+                        MainClass.con.Close();
 
-                    //    // Switch to the first tab of your tab control (assuming it's called tabControl1)
-                    //    tabControl1.SelectedIndex = 0;
+                        // Switch to the first tab of your tab control (assuming it's called tabControl1)
+                        tabControl1.SelectedIndex = 0;
 
-                    //    // Refresh the DataGridView
-                    //    ShowDietPlans(guna2DataGridView1, filenodgv, namedgv, agedgv, dietnamedgv);
-                    //}
-                    //catch (Exception ex)
-                    //{
-                    //    MainClass.con.Close();
-                    //    MessageBox.Show(ex.Message);
-                    //}
+                        // Refresh the DataGridView
+                        ShowDietPlans(guna2DataGridView1, filenodgv, namedgv, agedgv, dietnamedgv);
+                    }
+                    catch (Exception ex)
+                    {
+                        MainClass.con.Close();
+                        MessageBox.Show(ex.Message);
+                    }
 
                     try
                     {
@@ -1099,8 +1140,8 @@ namespace HelloWorldSolutionIMS
                                     cmd.Parameters.AddWithValue("@Category", category); // Change 'categoryTextBox' to the actual textbox capturing the category value
 
                                     cmd.ExecuteNonQuery();
-                                    MessageBox.Show("Diet Plan updated Successfully!");
-                                    MainClass.con.Close();
+                                    //MessageBox.Show("Diet Plan updated Successfully!");
+                                   
                                 }
                                 catch (Exception ex)
                                 {
@@ -1110,6 +1151,7 @@ namespace HelloWorldSolutionIMS
                             }
 
                         }
+                        MainClass.con.Close();
                     }
                     catch (Exception ex)
                     {
@@ -1339,6 +1381,11 @@ namespace HelloWorldSolutionIMS
                 MainClass.con.Close();
                 MessageBox.Show(ex.Message);
             }
+        }
+
+        private void search_Click(object sender, EventArgs e)
+        {
+            SearchDietPlans(guna2DataGridView1, filenodgv, namedgv, agedgv, dietnamedgv);
         }
     }
 }

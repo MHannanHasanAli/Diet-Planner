@@ -368,6 +368,12 @@
     <Compile Include="DietPlan.Designer.cs">
       <DependentUpon>DietPlan.cs</DependentUpon>
     </Compile>
+    <Compile Include="DietPlanTemplate.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DietPlanTemplate.Designer.cs">
+      <DependentUpon>DietPlanTemplate.cs</DependentUpon>
+    </Compile>
     <Compile Include="Expenses.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -610,6 +616,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="DietPlan.resx">
       <DependentUpon>DietPlan.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DietPlanTemplate.resx">
+      <DependentUpon>DietPlanTemplate.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Expenses.resx">
       <DependentUpon>Expenses.cs</DependentUpon>
