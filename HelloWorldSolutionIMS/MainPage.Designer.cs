@@ -176,6 +176,7 @@
             this.guna2TileButton7.TabIndex = 6;
             this.guna2TileButton7.Text = "Diet Plan Templates";
             this.guna2TileButton7.TextOffset = new System.Drawing.Point(0, -15);
+            this.guna2TileButton7.Click += new System.EventHandler(this.guna2TileButton7_Click);
             // 
             // guna2TileButton3
             // 
