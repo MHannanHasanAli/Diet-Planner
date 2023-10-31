@@ -48,6 +48,9 @@
             this.guna2DataGridView1 = new Guna.UI2.WinForms.Guna2DataGridView();
             this.filenodgv = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dietnamedgv = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.viewEditToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.deleteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.panel2 = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
@@ -111,20 +114,18 @@
             this.sixdgv = new System.Windows.Forms.DataGridViewComboBoxColumn();
             this.sevendgv = new System.Windows.Forms.DataGridViewComboBoxColumn();
             this.buttondgv = new System.Windows.Forms.DataGridViewButtonColumn();
-            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.viewEditToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.deleteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.emptyplan = new Guna.UI2.WinForms.Guna2Button();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.guna2DataGridView1)).BeginInit();
+            this.contextMenuStrip1.SuspendLayout();
             this.tabPage2.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.chart1)).BeginInit();
             this.tabPage3.SuspendLayout();
             this.panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.guna2DataGridView2)).BeginInit();
-            this.contextMenuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // tabControl1
@@ -178,7 +179,7 @@
             this.Add.Name = "Add";
             this.Add.ShadowDecoration.Parent = this.Add;
             this.Add.Size = new System.Drawing.Size(199, 45);
-            this.Add.TabIndex = 3;
+            this.Add.TabIndex = 2;
             this.Add.Text = "Add";
             this.Add.Click += new System.EventHandler(this.Add_Click);
             // 
@@ -197,7 +198,7 @@
             this.search.Name = "search";
             this.search.ShadowDecoration.Parent = this.search;
             this.search.Size = new System.Drawing.Size(199, 45);
-            this.search.TabIndex = 2;
+            this.search.TabIndex = 1;
             this.search.Text = "Search";
             this.search.Click += new System.EventHandler(this.search_Click);
             // 
@@ -224,7 +225,7 @@
             this.dietplannamesearch.SelectedText = "";
             this.dietplannamesearch.ShadowDecoration.Parent = this.dietplannamesearch;
             this.dietplannamesearch.Size = new System.Drawing.Size(284, 32);
-            this.dietplannamesearch.TabIndex = 1;
+            this.dietplannamesearch.TabIndex = 0;
             // 
             // label29
             // 
@@ -312,6 +313,29 @@
             this.dietnamedgv.MinimumWidth = 6;
             this.dietnamedgv.Name = "dietnamedgv";
             // 
+            // contextMenuStrip1
+            // 
+            this.contextMenuStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
+            this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.viewEditToolStripMenuItem,
+            this.deleteToolStripMenuItem});
+            this.contextMenuStrip1.Name = "contextMenuStrip1";
+            this.contextMenuStrip1.Size = new System.Drawing.Size(143, 52);
+            // 
+            // viewEditToolStripMenuItem
+            // 
+            this.viewEditToolStripMenuItem.Name = "viewEditToolStripMenuItem";
+            this.viewEditToolStripMenuItem.Size = new System.Drawing.Size(142, 24);
+            this.viewEditToolStripMenuItem.Text = "View/Edit";
+            this.viewEditToolStripMenuItem.Click += new System.EventHandler(this.viewEditToolStripMenuItem_Click);
+            // 
+            // deleteToolStripMenuItem
+            // 
+            this.deleteToolStripMenuItem.Name = "deleteToolStripMenuItem";
+            this.deleteToolStripMenuItem.Size = new System.Drawing.Size(142, 24);
+            this.deleteToolStripMenuItem.Text = "Delete";
+            this.deleteToolStripMenuItem.Click += new System.EventHandler(this.deleteToolStripMenuItem_Click_1);
+            // 
             // tabPage2
             // 
             this.tabPage2.Controls.Add(this.panel2);
@@ -381,7 +405,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F);
-            this.label1.Location = new System.Drawing.Point(575, 110);
+            this.label1.Location = new System.Drawing.Point(556, 110);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(138, 24);
             this.label1.TabIndex = 315;
@@ -409,7 +433,7 @@
             this.medicalhistory.SelectedText = "";
             this.medicalhistory.ShadowDecoration.Parent = this.medicalhistory;
             this.medicalhistory.Size = new System.Drawing.Size(344, 82);
-            this.medicalhistory.TabIndex = 314;
+            this.medicalhistory.TabIndex = 4;
             // 
             // chart1
             // 
@@ -461,7 +485,7 @@
             this.Ingredienttab.Name = "Ingredienttab";
             this.Ingredienttab.ShadowDecoration.Parent = this.Ingredienttab;
             this.Ingredienttab.Size = new System.Drawing.Size(199, 45);
-            this.Ingredienttab.TabIndex = 10;
+            this.Ingredienttab.TabIndex = 5;
             this.Ingredienttab.Text = "Add Meals";
             this.Ingredienttab.Click += new System.EventHandler(this.Ingredienttab_Click);
             // 
@@ -469,7 +493,7 @@
             // 
             this.label27.AutoSize = true;
             this.label27.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F);
-            this.label27.Location = new System.Drawing.Point(575, 29);
+            this.label27.Location = new System.Drawing.Point(556, 29);
             this.label27.Name = "label27";
             this.label27.Size = new System.Drawing.Size(95, 24);
             this.label27.TabIndex = 310;
@@ -497,7 +521,7 @@
             this.instruction.SelectedText = "";
             this.instruction.ShadowDecoration.Parent = this.instruction;
             this.instruction.Size = new System.Drawing.Size(344, 82);
-            this.instruction.TabIndex = 9;
+            this.instruction.TabIndex = 3;
             // 
             // label26
             // 
@@ -532,7 +556,7 @@
             this.dietplandays.SelectedText = "";
             this.dietplandays.ShadowDecoration.Parent = this.dietplandays;
             this.dietplandays.Size = new System.Drawing.Size(284, 32);
-            this.dietplandays.TabIndex = 4;
+            this.dietplandays.TabIndex = 1;
             // 
             // dietplantemplatebox
             // 
@@ -555,7 +579,7 @@
             this.dietplantemplatebox.Name = "dietplantemplatebox";
             this.dietplantemplatebox.ShadowDecoration.Parent = this.dietplantemplatebox;
             this.dietplantemplatebox.Size = new System.Drawing.Size(284, 36);
-            this.dietplantemplatebox.TabIndex = 8;
+            this.dietplantemplatebox.TabIndex = 2;
             // 
             // label23
             // 
@@ -600,7 +624,7 @@
             this.dietplantemplatename.SelectedText = "";
             this.dietplantemplatename.ShadowDecoration.Parent = this.dietplantemplatename;
             this.dietplantemplatename.Size = new System.Drawing.Size(284, 32);
-            this.dietplantemplatename.TabIndex = 2;
+            this.dietplantemplatename.TabIndex = 0;
             // 
             // label15
             // 
@@ -1176,6 +1200,7 @@
             // panel3
             // 
             this.panel3.BackColor = System.Drawing.Color.White;
+            this.panel3.Controls.Add(this.emptyplan);
             this.panel3.Controls.Add(this.Backtomeal);
             this.panel3.Controls.Add(this.save);
             this.panel3.Controls.Add(this.AddMealrow);
@@ -1201,7 +1226,7 @@
             this.Backtomeal.Name = "Backtomeal";
             this.Backtomeal.ShadowDecoration.Parent = this.Backtomeal;
             this.Backtomeal.Size = new System.Drawing.Size(199, 45);
-            this.Backtomeal.TabIndex = 1;
+            this.Backtomeal.TabIndex = 2;
             this.Backtomeal.Text = "Back To Details";
             this.Backtomeal.Click += new System.EventHandler(this.Backtomeal_Click);
             // 
@@ -1220,7 +1245,7 @@
             this.save.Name = "save";
             this.save.ShadowDecoration.Parent = this.save;
             this.save.Size = new System.Drawing.Size(199, 45);
-            this.save.TabIndex = 2;
+            this.save.TabIndex = 1;
             this.save.Text = "Save Plan";
             this.save.Click += new System.EventHandler(this.save_Click);
             // 
@@ -1379,28 +1404,24 @@
             this.buttondgv.Text = "Remove";
             this.buttondgv.UseColumnTextForButtonValue = true;
             // 
-            // contextMenuStrip1
+            // emptyplan
             // 
-            this.contextMenuStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
-            this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.viewEditToolStripMenuItem,
-            this.deleteToolStripMenuItem});
-            this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(211, 80);
-            // 
-            // viewEditToolStripMenuItem
-            // 
-            this.viewEditToolStripMenuItem.Name = "viewEditToolStripMenuItem";
-            this.viewEditToolStripMenuItem.Size = new System.Drawing.Size(210, 24);
-            this.viewEditToolStripMenuItem.Text = "View/Edit";
-            this.viewEditToolStripMenuItem.Click += new System.EventHandler(this.viewEditToolStripMenuItem_Click);
-            // 
-            // deleteToolStripMenuItem
-            // 
-            this.deleteToolStripMenuItem.Name = "deleteToolStripMenuItem";
-            this.deleteToolStripMenuItem.Size = new System.Drawing.Size(210, 24);
-            this.deleteToolStripMenuItem.Text = "Delete";
-            this.deleteToolStripMenuItem.Click += new System.EventHandler(this.deleteToolStripMenuItem_Click_1);
+            this.emptyplan.AutoRoundedCorners = true;
+            this.emptyplan.BorderRadius = 21;
+            this.emptyplan.CausesValidation = false;
+            this.emptyplan.CheckedState.Parent = this.emptyplan;
+            this.emptyplan.CustomImages.Parent = this.emptyplan;
+            this.emptyplan.FillColor = System.Drawing.Color.MediumSeaGreen;
+            this.emptyplan.Font = new System.Drawing.Font("Segoe UI", 11F);
+            this.emptyplan.ForeColor = System.Drawing.Color.White;
+            this.emptyplan.HoverState.Parent = this.emptyplan;
+            this.emptyplan.Location = new System.Drawing.Point(906, 579);
+            this.emptyplan.Name = "emptyplan";
+            this.emptyplan.ShadowDecoration.Parent = this.emptyplan;
+            this.emptyplan.Size = new System.Drawing.Size(199, 45);
+            this.emptyplan.TabIndex = 3;
+            this.emptyplan.Text = "Empty Diet Plan";
+            this.emptyplan.Click += new System.EventHandler(this.emptyplan_Click);
             // 
             // DietPlanTemplate
             // 
@@ -1418,6 +1439,7 @@
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.guna2DataGridView1)).EndInit();
+            this.contextMenuStrip1.ResumeLayout(false);
             this.tabPage2.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
@@ -1425,7 +1447,6 @@
             this.tabPage3.ResumeLayout(false);
             this.panel3.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.guna2DataGridView2)).EndInit();
-            this.contextMenuStrip1.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -1508,5 +1529,6 @@
         private System.Windows.Forms.ToolStripMenuItem deleteToolStripMenuItem;
         private System.Windows.Forms.Label label1;
         private Guna.UI2.WinForms.Guna2TextBox medicalhistory;
+        private Guna.UI2.WinForms.Guna2Button emptyplan;
     }
 }

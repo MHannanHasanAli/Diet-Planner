@@ -1387,7 +1387,31 @@ namespace HelloWorldSolutionIMS
         {
             SearchDietPlans(guna2DataGridView1, filenodgv, namedgv, agedgv, dietnamedgv);
         }
+        private int GetLastMealDietPlanTemplate()
+        {
 
+            int ID = 0;
+            // Create a connection a
+
+            // Create a SQL command to retrieve the last meal
+            using (SqlCommand command = new SqlCommand("SELECT TOP 1 * FROM DietPlanTemplate ORDER BY ID DESC", MainClass.con))
+            {
+                using (SqlDataReader reader = command.ExecuteReader())
+                {
+                    if (reader.Read())
+                    {
+                        // Create a Meal object and populate it with data from the database
+
+                        ID = reader.GetInt32(reader.GetOrdinal("ID"));
+                        // Retrieve other columns as needed
+
+                    }
+                }
+            }
+
+
+            return ID;
+        }
         private void dietplantemplatesave_Click(object sender, EventArgs e)
         {
             if (dietplantemplatename.Text != "")
@@ -1395,8 +1419,8 @@ namespace HelloWorldSolutionIMS
                 try
                 {
                     MainClass.con.Open();
-                    SqlCommand cmd = new SqlCommand("INSERT INTO DietPlanTemplate (DietPlanTemplateName, DietPlanTemplate, DietPlanDays, Instructions, MEDICALHISTORY,  Calories, Fats, Fibers, Potassium, Water, Sugar, Calcium, A, Protein, Carbohydrates, Sodium, Phosphor, Magnesium, Iron, Iodine, B) " +
-                        "VALUES (@DietPlanTemplateName, @DietPlanTemplate, @DietPlanDays, @Instructions, @medicalhistory,  @Calories, @Fats, @Fibers, @Potassium, @Water, @Sugar, @Calcium, @A, @Protein, @Carbohydrates, @Sodium, @Phosphor, @Magnesium, @Iron, @Iodine, @B)", MainClass.con);
+                    SqlCommand cmd = new SqlCommand("INSERT INTO DietPlanTemplate (DietPlanTemplateName, DietPlanTemplate, DietPlanDays, Instructions,  Calories, Fats, Fibers, Potassium, Water, Sugar, Calcium, A, Protein, Carbohydrates, Sodium, Phosphor, Magnesium, Iron, Iodine, B) " +
+                        "VALUES (@DietPlanTemplateName, @DietPlanTemplate, @DietPlanDays, @Instructions,  @Calories, @Fats, @Fibers, @Potassium, @Water, @Sugar, @Calcium, @A, @Protein, @Carbohydrates, @Sodium, @Phosphor, @Magnesium, @Iron, @Iodine, @B)", MainClass.con);
 
                     // Assuming appropriate text boxes for each field in the DietPlan table
                     //cmd.Parameters.AddWithValue("@Fileno", fileno.Text);
@@ -1405,7 +1429,7 @@ namespace HelloWorldSolutionIMS
                     cmd.Parameters.AddWithValue("@DietPlanTemplate", dietplantemplate.Text);
                     cmd.Parameters.AddWithValue("@DietPlanDays", dietplandays.Text);
                     cmd.Parameters.AddWithValue("@Instructions", instruction.Text);
-                    cmd.Parameters.AddWithValue("@medicalhistory", medicalhistory.Text);
+                    //cmd.Parameters.AddWithValue("@medicalhistory", medicalhistory.Text);
                     cmd.Parameters.AddWithValue("@Calories", Convert.ToDouble(calories.Text));
                     cmd.Parameters.AddWithValue("@Fats", Convert.ToDouble(fats.Text));
                     cmd.Parameters.AddWithValue("@Fibers", Convert.ToDouble(fibers.Text));
@@ -1428,10 +1452,15 @@ namespace HelloWorldSolutionIMS
                     MainClass.con.Close();
 
 
-                    dietplantemplatename.Text = "";
+                    firstname.Text = "";
+                    familyname.Text = "";
+                    gender.Text = "";
+                    age.Text = "";
+                    mobileno.Text = "";
                     dietplantemplate.Text = "";
+                    dietplantemplatename.Text = "";
+                    previousdietplan.Text = "";
                     dietplandays.Text = "";
-                    instruction.Text = "";
                     calories.Text = "";
                     fats.Text = "";
                     fibers.Text = "";
@@ -1456,7 +1485,7 @@ namespace HelloWorldSolutionIMS
                     tabControl1.SelectedIndex = 0;
 
                     // Refresh the DataGridView
-                    ShowDietPlanTemplates(guna2DataGridView1, filenodgv, dietnamedgv);
+                    ShowDietPlans(guna2DataGridView1, filenodgv, namedgv, agedgv, dietnamedgv);
                 }
                 catch (Exception ex)
                 {
@@ -1523,7 +1552,7 @@ namespace HelloWorldSolutionIMS
                                     "VALUES (@DietPlanID, @One, @Two, @Three, @Four, @Five, @Six, @Seven, @Category)", MainClass.con);
 
                                 // Assuming appropriate variables for the values in the DietPlanAction table
-                                cmd.Parameters.AddWithValue("@DietPlanID", GetLastMeal()); // Replace GetLastMeal() with the appropriate method or value for DietPlanID
+                                cmd.Parameters.AddWithValue("@DietPlanID", GetLastMealDietPlanTemplate()); // Replace GetLastMeal() with the appropriate method or value for DietPlanID
                                 cmd.Parameters.AddWithValue("@One", one);
                                 cmd.Parameters.AddWithValue("@Two", two);
                                 cmd.Parameters.AddWithValue("@Three", three);

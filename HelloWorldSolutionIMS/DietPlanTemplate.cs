@@ -1273,5 +1273,28 @@ namespace HelloWorldSolutionIMS
                 }
             }
         }
+
+        private void emptyplan_Click(object sender, EventArgs e)
+        {
+            guna2DataGridView2.Rows.Clear();
+
+            calories.Text = "0";
+            fats.Text = "0";
+            fibers.Text = "0";
+            potassium.Text = "0";
+            water.Text = "0";
+            sugar.Text = "0";
+            calcium.Text = "0";
+            abox.Text = "0";
+            protein.Text = "0";
+            carbohydrates.Text = "0";
+            sodium.Text = "0";
+            phosphor.Text = "0";
+            magnesium.Text = "0";
+            iron.Text = "0";
+            iodine.Text = "0";
+            bbox.Text = "0";
+
+        }
     }
 }
