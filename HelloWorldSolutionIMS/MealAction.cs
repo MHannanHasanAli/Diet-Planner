@@ -1123,6 +1123,7 @@ namespace HelloWorldSolutionIMS
 
                         cmd.ExecuteNonQuery();
                         MessageBox.Show("Meal updated successfully");
+                        ShowMeals(guna2DataGridView2, iddgv, mealardgv, mealendgv, caloriesdgv, proteinmaindgv, fatsmaindgv, carbohydratesmaindgv, calciummaindgv, fibermaindgv, sodiummaindgv);
 
                         // Clear the input controls or set them to default values.
                         mealar.Text = "";
