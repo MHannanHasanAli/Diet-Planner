@@ -11,6 +11,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Win32Interop.Enums;
+using static HelloWorldSolutionIMS.Payment;
 
 namespace HelloWorldSolutionIMS
 {
@@ -309,6 +310,7 @@ namespace HelloWorldSolutionIMS
             ShowCustomer(guna2DataGridView1, IDDGV, FILENODGV, firstnamedgv, familynamedgv, subscriptionstartdatedgv, subscriptionenddatedgv, nutritionistnamedgv);
 
         }
+        static int conn = 0;
         private void editToolStripMenuItem_Click(object sender, EventArgs e)
         {
             edit = 1;
@@ -327,6 +329,7 @@ namespace HelloWorldSolutionIMS
                         {
                             // Set the retrieved data into input boxes
                             fileno.Text = reader["FileNo"].ToString();
+
                             firstname.Text = reader["FirstName"].ToString();
                             familyname.Text = reader["FamilyName"].ToString();
                             gender.Text = reader["Gender"].ToString();
@@ -335,7 +338,7 @@ namespace HelloWorldSolutionIMS
                             mobileno.Text = reader["MobileNo"].ToString();
                             landline.Text = reader["Landline"].ToString();
                             email.Text = reader["Email"].ToString();
-                            subscriptionstatus.Text = reader["SubscriptionStatus"].ToString();
+                            //subscriptionstatus.Text = reader["SubscriptionStatus"].ToString();
                             startdate.Value = Convert.ToDateTime(reader["SubscriptionStartDate"]);
                             enddate.Value = Convert.ToDateTime(reader["SubscriptionEndDate"]);
                             branch.Text = reader["Branch"].ToString();
@@ -347,9 +350,59 @@ namespace HelloWorldSolutionIMS
                     {
                         MessageBox.Show("Customer not found with FILE NO : " + customerFilenoToEdit);
                     }
-
+                    reader.Close();
                     MainClass.con.Close();
+                bool anyRowsFound = false;
+                SqlCommand cmd2;
+                try
+                {
+                    if (MainClass.con.State != ConnectionState.Open)
+                    {
+                        MainClass.con.Open();
+                        conn = 1;
+                    }
+
+                    cmd2 = new SqlCommand("SELECT STARTDATE, ENDDATE FROM PAYMENT WHERE FILENO = @FILENO", MainClass.con);
+                    cmd2.Parameters.AddWithValue("@FILENO", fileno.Text);
+                    SqlDataReader reader2 = cmd2.ExecuteReader();
+
+                    while (reader2.Read())
+                    {
+                        anyRowsFound = true;
+                        DateTime startDate = (DateTime)reader2["STARTDATE"];
+                        DateTime endDate = (DateTime)reader2["ENDDATE"];
+                        DateTime currentDate = DateTime.Now;
+
+                        if (currentDate >= startDate && currentDate <= endDate)
+                        {
+                            subscriptionstatus.Text = "Yes";
+                        }
+                        else
+                        {
+                            subscriptionstatus.Text = "Freezed";
+                        }
+                    }
+
+                    reader2.Close();
+                    if (!anyRowsFound)
+                    {
+                        // Execute other code when no rows are found
+                        // For example:
+                        subscriptionstatus.Text = "No";
+                    }
+
+                    if (conn == 1)
+                    {
+                        MainClass.con.Close();
+                        conn = 0;
+                    }
                 }
+                catch (Exception ex)
+                {
+                    MainClass.con.Close();
+                    MessageBox.Show(ex.Message);
+                }
+            }
                 catch (Exception ex)
                 {
                     MainClass.con.Close();

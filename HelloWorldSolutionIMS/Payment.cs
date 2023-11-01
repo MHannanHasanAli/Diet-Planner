@@ -26,7 +26,7 @@ namespace HelloWorldSolutionIMS
 
         static int edit = 0;
         static string PaymentIDToEdit;
-        
+       
         public class Deal
         {
             public int ID { get; set; }
@@ -510,7 +510,7 @@ namespace HelloWorldSolutionIMS
 
                         tabControl1.SelectedIndex = 1;
                              }
-                         }
+                }
                         else
                         {
                             MessageBox.Show("Payment data not found with ID: " + PaymentIDToEdit);
@@ -519,7 +519,6 @@ namespace HelloWorldSolutionIMS
                 updatewithfile();
                 promotionname.SelectedValue = int.Parse(promotionName);
                 MainClass.con.Close();
-                //promotionchange();
 
 
             }
@@ -683,52 +682,6 @@ namespace HelloWorldSolutionIMS
             }
            
 
-        }
-        private void promotionchange()
-        {
-            if (promotionname.SelectedItem != null)
-            {
-                Deal selectedDeal = (Deal)promotionname.SelectedItem;
-                int selectedID = selectedDeal.ID;
-
-                if (selectedID == 0)
-                {
-                    promotioncode.Text = "";
-                    promotionpercentage.Text = "";
-                    promotiondetails.Text = "";
-                }
-                else
-                {
-                    try
-                    {
-                        MainClass.con.Open();
-
-                        SqlCommand cmd = new SqlCommand("SELECT PROMOTIONCODE, PROMOTIONPERCENTAGE, PROMOTIONDETAILS FROM SPECIALDEALS WHERE ID = @SelectedID", MainClass.con);
-                        cmd.Parameters.AddWithValue("@SelectedID", selectedID);
-
-                        SqlDataReader reader = cmd.ExecuteReader();
-
-                        if (reader.Read())
-                        {
-                            string promotionCode = reader["PROMOTIONCODE"].ToString();
-                            string promotionPercentage = reader["PROMOTIONPERCENTAGE"].ToString();
-                            string promotionDetail = reader["PROMOTIONDETAILS"].ToString();
-
-                            promotioncode.Text = promotionCode;
-                            promotionpercentage.Text = promotionPercentage;
-                            promotiondetails.Text = promotionDetail;
-                        }
-
-                        MainClass.con.Close();
-                    }
-                    catch (Exception ex)
-                    {
-                        MainClass.con.Close();
-                        MessageBox.Show(ex.Message);
-                    }
-                }
-
-            }
         }
         private void promotionname_SelectedIndexChanged(object sender, EventArgs e)
         {
