@@ -18,10 +18,10 @@ namespace HelloWorldSolutionIMS
         public DietPlanTemplate()
         {
             InitializeComponent();
-            calories.TextChanged += UpdateChart;
+            carbohydrates.TextChanged += UpdateChart;
             fats.TextChanged += UpdateChart;
             protein.TextChanged += UpdateChart;
-            fibers.TextChanged += UpdateChart;
+            //fibers.TextChanged += UpdateChart;
         }
 
         static int edit = 0;
@@ -1160,29 +1160,29 @@ namespace HelloWorldSolutionIMS
             dt.Columns.Add("Nutrient", typeof(string));
             dt.Columns.Add("Value", typeof(double));
 
-            if (calories.Text != "")
-            {
-                dt.Rows.Add("Calories", double.Parse(calories.Text));
+            //if (calories.Text != "")
+            //{
+            //    dt.Rows.Add("Calories", double.Parse(calories.Text));
 
-            }
+            //}
             if (fats.Text != "")
             {
-                dt.Rows.Add("Fats", double.Parse(fats.Text));
+                dt.Rows.Add("Fats", double.Parse(fats.Text) * 9);
 
             }
             if (protein.Text != "")
             {
-                dt.Rows.Add("Protein", double.Parse(protein.Text));
+                dt.Rows.Add("Protein", double.Parse(protein.Text) * 4);
 
             }
-            if (fibers.Text != "")
+            if (carbohydrates.Text != "")
             {
-                dt.Rows.Add("Fibers", double.Parse(fibers.Text));
+                dt.Rows.Add("Carbohydrates", double.Parse(carbohydrates.Text) * 4);
             }
 
             if (titlecheck != 1)
             {
-                chart1.Titles.Add("Chart Title");
+                chart1.Titles.Add("Nutrient Chart");
                 titlecheck = 1;
             }
             chart1.Titles[0].Alignment = ContentAlignment.TopCenter; // Align the title to the top center
@@ -1206,6 +1206,7 @@ namespace HelloWorldSolutionIMS
 
             // Refresh the chart.
             chart1.Refresh();
+
 
 
         }
@@ -1273,7 +1274,6 @@ namespace HelloWorldSolutionIMS
                 }
             }
         }
-
         private void emptyplan_Click(object sender, EventArgs e)
         {
             guna2DataGridView2.Rows.Clear();

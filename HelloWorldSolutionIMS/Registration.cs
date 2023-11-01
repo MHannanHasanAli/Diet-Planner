@@ -21,7 +21,33 @@ namespace HelloWorldSolutionIMS
             InitializeComponent();
         }
         static int edit = 0;
-        //, string search = ""
+        private int GetLastFileno()
+        {
+
+            int fileno = 0;
+            // Create a connection a
+            MainClass.con.Open();
+
+            // Create a SQL command to retrieve the last meal
+            using (SqlCommand command = new SqlCommand("SELECT TOP 1 * FROM Customer ORDER BY ID DESC", MainClass.con))
+            {
+                using (SqlDataReader reader = command.ExecuteReader())
+                {
+                    if (reader.Read())
+                    {
+                        // Create a Meal object and populate it with data from the database
+
+                        fileno = reader.GetInt32(reader.GetOrdinal("FILENO"));
+                        // Retrieve other columns as needed
+
+                    }
+                }
+            }
+            MainClass.con.Close();
+
+
+            return fileno;
+        }
         private void ShowCustomer(DataGridView dgv, DataGridViewColumn id, DataGridViewColumn file, DataGridViewColumn name, DataGridViewColumn familyname, DataGridViewColumn start, DataGridViewColumn end, DataGridViewColumn nutritionist)
         {
             SqlCommand cmd;
@@ -152,19 +178,20 @@ namespace HelloWorldSolutionIMS
                 MessageBox.Show("Fill File No or First Name");
             }
         }
-
         private void New_Click(object sender, EventArgs e)
         {
-            if(edit == 0)
+            int fileno_new = GetLastFileno();
+            fileno_new = fileno_new + 1;
+            if (edit == 0)
             {
-                if (fileno.Text != "")
+                if (firstname.Text != "" || familyname.Text != "" || gender.Text != "" || mobileno.Text != "" || dob.Text != "" )
                 {
                     try
                     {
                         MainClass.con.Open();
                         SqlCommand cmd = new SqlCommand("INSERT INTO Customer (FileNo, FirstName, FamilyName, Gender, DOB, Age, MobileNo, Landline, Email, SubscriptionStatus, SubscriptionStartDate, SubscriptionEndDate, Branch, LastVisitDate, NutritionistName) VALUES (@FileNo, @FirstName, @FamilyName, @Gender, @DOB, @Age, @MobileNo, @Landline, @Email, @SubscriptionStatus, @SubscriptionStartDate, @SubscriptionEndDate, @Branch, @LastVisitDate, @NutritionistName)", MainClass.con);
 
-                        cmd.Parameters.AddWithValue("@FileNo", fileno.Text); // Replace fileNoValue with the actual file number.
+                        cmd.Parameters.AddWithValue("@FileNo", fileno_new); // Replace fileNoValue with the actual file number.
                         cmd.Parameters.AddWithValue("@FirstName", firstname.Text);
                         cmd.Parameters.AddWithValue("@FamilyName", familyname.Text);
                         cmd.Parameters.AddWithValue("@Gender", gender.Text);
@@ -209,19 +236,19 @@ namespace HelloWorldSolutionIMS
                 }
                 else
                 {
-                    MessageBox.Show("File No cannot be empty.");
+                    MessageBox.Show("First name, Family name, gender, mobile no, Date of birth are mandory!.");
                 }
             }
             else
             {
-                if (fileno.Text != "")
+                if (firstname.Text != "" || familyname.Text != "" || gender.Text != "" || mobileno.Text != "" || dob.Text != "")
                 {
                     try
                     {
                         MainClass.con.Open();
                         SqlCommand cmd = new SqlCommand("UPDATE Customer SET FileNo = @FileNo, FirstName = @FirstName, FamilyName = @FamilyName, Gender = @Gender, DOB = @DOB, Age = @Age, MobileNo = @MobileNo, Landline = @Landline, Email = @Email, SubscriptionStatus = @SubscriptionStatus, SubscriptionStartDate = @SubscriptionStartDate, SubscriptionEndDate = @SubscriptionEndDate, Branch = @Branch, LastVisitDate = @LastVisitDate, NutritionistName = @NutritionistName WHERE FileNo = @FileNo", MainClass.con);
 
-                        cmd.Parameters.AddWithValue("@FileNo", fileno.Text); // Replace fileNoValue with the actual file number.
+                        cmd.Parameters.AddWithValue("@FileNo", fileno_new); // Replace fileNoValue with the actual file number.
                         cmd.Parameters.AddWithValue("@FirstName", firstname.Text);
                         cmd.Parameters.AddWithValue("@FamilyName", familyname.Text);
                         cmd.Parameters.AddWithValue("@Gender", gender.Text);
@@ -266,18 +293,22 @@ namespace HelloWorldSolutionIMS
                 }
                 else
                 {
-                    MessageBox.Show("File No cannot be empty.");
+                    MessageBox.Show("First name, Family name, gender, mobile no, Date of birth are mandory!.");
                 }
             }
            
         }
-
         private void Registration_Load(object sender, EventArgs e)
         {
+            int fileno_new = GetLastFileno();
+            fileno_new = fileno_new + 1;
+
+            fileno.Text = fileno_new.ToString();
+
+            subscriptionstatus.Text = "No";
             ShowCustomer(guna2DataGridView1, IDDGV, FILENODGV, firstnamedgv, familynamedgv, subscriptionstartdatedgv, subscriptionenddatedgv, nutritionistnamedgv);
 
         }
-
         private void editToolStripMenuItem_Click(object sender, EventArgs e)
         {
             edit = 1;
@@ -325,7 +356,6 @@ namespace HelloWorldSolutionIMS
                     MessageBox.Show(ex.Message);
                 }
         }
-
         private void deleteToolStripMenuItem_Click(object sender, EventArgs e)
         {
             if (guna2DataGridView1 != null)
@@ -362,22 +392,48 @@ namespace HelloWorldSolutionIMS
                 }
             }
         }
-
         private void Update_Click(object sender, EventArgs e)
         {
            
         }
-
         private void guna2Button3_Click(object sender, EventArgs e)
         {
 
         }
-
         private void Search_Click(object sender, EventArgs e)
         {
 
             SearchCustomer(guna2DataGridView1, IDDGV, FILENODGV, firstnamedgv, familynamedgv, subscriptionstartdatedgv, subscriptionenddatedgv, nutritionistnamedgv);
 
+        }
+        private void mobileno_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
+            {
+                e.Handled = true; // Ignore the keypress if it's not a number or a control character
+            }
+        }
+        private void landline_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+        private void landline_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
+            {
+                e.Handled = true; // Ignore the keypress if it's not a number or a control character
+            }
+        }
+        private void dob_ValueChanged(object sender, EventArgs e)
+        {
+            DateTime selectedDate = dob.Value;
+            DateTime currentDate = DateTime.Today;
+
+            int years = currentDate.Year - selectedDate.Year;
+            if (selectedDate.Date > currentDate.AddYears(-years)) years--;
+
+            // Use the 'years' variable as needed, for instance, displaying it in a label
+            age.Text = years.ToString();
         }
     }
 }

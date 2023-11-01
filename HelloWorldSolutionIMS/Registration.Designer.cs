@@ -203,6 +203,7 @@
             this.mobileno.ShadowDecoration.Parent = this.mobileno;
             this.mobileno.Size = new System.Drawing.Size(344, 38);
             this.mobileno.TabIndex = 6;
+            this.mobileno.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.mobileno_KeyPress);
             // 
             // landline
             // 
@@ -228,6 +229,8 @@
             this.landline.ShadowDecoration.Parent = this.landline;
             this.landline.Size = new System.Drawing.Size(344, 38);
             this.landline.TabIndex = 7;
+            this.landline.TextChanged += new System.EventHandler(this.landline_TextChanged);
+            this.landline.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.landline_KeyPress);
             // 
             // email
             // 
@@ -269,7 +272,7 @@
             this.nutritionistname.ForeColor = System.Drawing.Color.Black;
             this.nutritionistname.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.nutritionistname.HoverState.Parent = this.nutritionistname;
-            this.nutritionistname.Location = new System.Drawing.Point(769, 327);
+            this.nutritionistname.Location = new System.Drawing.Point(862, 330);
             this.nutritionistname.Margin = new System.Windows.Forms.Padding(5, 6, 5, 6);
             this.nutritionistname.Name = "nutritionistname";
             this.nutritionistname.PasswordChar = '\0';
@@ -294,7 +297,7 @@
             this.branch.ForeColor = System.Drawing.Color.Black;
             this.branch.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.branch.HoverState.Parent = this.branch;
-            this.branch.Location = new System.Drawing.Point(769, 224);
+            this.branch.Location = new System.Drawing.Point(862, 227);
             this.branch.Margin = new System.Windows.Forms.Padding(5, 6, 5, 6);
             this.branch.Name = "branch";
             this.branch.PasswordChar = '\0';
@@ -398,7 +401,7 @@
             // 
             this.label12.AutoSize = true;
             this.label12.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F);
-            this.label12.Location = new System.Drawing.Point(577, 77);
+            this.label12.Location = new System.Drawing.Point(670, 80);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(169, 24);
             this.label12.TabIndex = 27;
@@ -408,7 +411,7 @@
             // 
             this.label13.AutoSize = true;
             this.label13.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F);
-            this.label13.Location = new System.Drawing.Point(549, 127);
+            this.label13.Location = new System.Drawing.Point(642, 130);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(198, 24);
             this.label13.TabIndex = 28;
@@ -418,7 +421,7 @@
             // 
             this.label14.AutoSize = true;
             this.label14.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F);
-            this.label14.Location = new System.Drawing.Point(549, 177);
+            this.label14.Location = new System.Drawing.Point(642, 180);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(197, 24);
             this.label14.TabIndex = 29;
@@ -428,7 +431,7 @@
             // 
             this.label15.AutoSize = true;
             this.label15.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F);
-            this.label15.Location = new System.Drawing.Point(676, 227);
+            this.label15.Location = new System.Drawing.Point(769, 230);
             this.label15.Name = "label15";
             this.label15.Size = new System.Drawing.Size(70, 24);
             this.label15.TabIndex = 30;
@@ -438,7 +441,7 @@
             // 
             this.label16.AutoSize = true;
             this.label16.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F);
-            this.label16.Location = new System.Drawing.Point(625, 277);
+            this.label16.Location = new System.Drawing.Point(718, 280);
             this.label16.Name = "label16";
             this.label16.Size = new System.Drawing.Size(125, 24);
             this.label16.TabIndex = 31;
@@ -448,7 +451,7 @@
             // 
             this.label17.AutoSize = true;
             this.label17.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F);
-            this.label17.Location = new System.Drawing.Point(594, 327);
+            this.label17.Location = new System.Drawing.Point(687, 330);
             this.label17.Name = "label17";
             this.label17.Size = new System.Drawing.Size(152, 24);
             this.label17.TabIndex = 32;
@@ -465,7 +468,7 @@
             this.New.Font = new System.Drawing.Font("Segoe UI", 11F);
             this.New.ForeColor = System.Drawing.Color.White;
             this.New.HoverState.Parent = this.New;
-            this.New.Location = new System.Drawing.Point(178, 540);
+            this.New.Location = new System.Drawing.Point(691, 538);
             this.New.Name = "New";
             this.New.ShadowDecoration.Parent = this.New;
             this.New.Size = new System.Drawing.Size(220, 45);
@@ -483,7 +486,7 @@
             this.Search.Font = new System.Drawing.Font("Segoe UI", 11F);
             this.Search.ForeColor = System.Drawing.Color.White;
             this.Search.HoverState.Parent = this.Search;
-            this.Search.Location = new System.Drawing.Point(777, 390);
+            this.Search.Location = new System.Drawing.Point(918, 538);
             this.Search.Name = "Search";
             this.Search.ShadowDecoration.Parent = this.Search;
             this.Search.Size = new System.Drawing.Size(220, 45);
@@ -494,7 +497,7 @@
             // startdate
             // 
             this.startdate.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.startdate.Location = new System.Drawing.Point(769, 129);
+            this.startdate.Location = new System.Drawing.Point(862, 132);
             this.startdate.Name = "startdate";
             this.startdate.Size = new System.Drawing.Size(276, 22);
             this.startdate.TabIndex = 10;
@@ -502,7 +505,7 @@
             // enddate
             // 
             this.enddate.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.enddate.Location = new System.Drawing.Point(769, 177);
+            this.enddate.Location = new System.Drawing.Point(862, 180);
             this.enddate.Name = "enddate";
             this.enddate.Size = new System.Drawing.Size(276, 22);
             this.enddate.TabIndex = 11;
@@ -537,6 +540,7 @@
             this.dob.Name = "dob";
             this.dob.Size = new System.Drawing.Size(344, 22);
             this.dob.TabIndex = 4;
+            this.dob.ValueChanged += new System.EventHandler(this.dob_ValueChanged);
             // 
             // subscriptionstatus
             // 
@@ -555,7 +559,7 @@
             "No",
             "Freezed"});
             this.subscriptionstatus.ItemsAppearance.Parent = this.subscriptionstatus;
-            this.subscriptionstatus.Location = new System.Drawing.Point(769, 74);
+            this.subscriptionstatus.Location = new System.Drawing.Point(862, 77);
             this.subscriptionstatus.Name = "subscriptionstatus";
             this.subscriptionstatus.ShadowDecoration.Parent = this.subscriptionstatus;
             this.subscriptionstatus.Size = new System.Drawing.Size(276, 36);
@@ -564,7 +568,7 @@
             // lastvisitdate
             // 
             this.lastvisitdate.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.lastvisitdate.Location = new System.Drawing.Point(769, 277);
+            this.lastvisitdate.Location = new System.Drawing.Point(862, 280);
             this.lastvisitdate.Name = "lastvisitdate";
             this.lastvisitdate.Size = new System.Drawing.Size(276, 22);
             this.lastvisitdate.TabIndex = 13;

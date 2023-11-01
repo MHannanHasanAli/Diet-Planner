@@ -17,11 +17,13 @@ namespace HelloWorldSolutionIMS
         public Ingredient()
         {
             InitializeComponent();
-            calories.TextChanged += UpdateChart;
+            carbohydrates.TextChanged += UpdateChart;
             fats.TextChanged += UpdateChart;
             protein.TextChanged += UpdateChart;
-            fibers.TextChanged += UpdateChart;
+            //fibers.TextChanged += UpdateChart;
         }
+        static int titlecheck = 0;
+
         private void UpdateChart(object sender, EventArgs e)
         {
             // Create a sample DataTable with data (replace this with your data source).
@@ -29,27 +31,39 @@ namespace HelloWorldSolutionIMS
             dt.Columns.Add("Nutrient", typeof(string));
             dt.Columns.Add("Value", typeof(double));
 
-            if(calories.Text != "")
-            {
-                dt.Rows.Add("Calories", double.Parse(calories.Text));
+            //if (calories.Text != "")
+            //{
+            //    dt.Rows.Add("Calories", double.Parse(calories.Text));
 
-            }
+            //}
             if (fats.Text != "")
             {
-                dt.Rows.Add("Fats", double.Parse(fats.Text));
+                dt.Rows.Add("Fats", double.Parse(fats.Text)*9);
 
             }
-            if(protein.Text != "")
+            if (protein.Text != "")
             {
-                dt.Rows.Add("Protein", double.Parse(protein.Text));
+                dt.Rows.Add("Protein", double.Parse(protein.Text)*4);
 
             }
-            if(fibers.Text != "")
+            if (carbohydrates.Text != "")
             {
-                dt.Rows.Add("Fibers", double.Parse(fibers.Text));
+                dt.Rows.Add("Carbohydrates", double.Parse(carbohydrates.Text)*4);
             }
 
-            // Set up the Chart control.
+            if (titlecheck != 1)
+            {
+                chart1.Titles.Add("Nutrient Chart");
+                titlecheck = 1;
+            }
+            chart1.Titles[0].Alignment = ContentAlignment.TopCenter; // Align the title to the top center
+
+            // Your existing code for chart settings
+            chart1.Legends[0].Enabled = true; // Enable the legend.
+            chart1.Legends[0].Alignment = StringAlignment.Center; // Align the legend to the center.
+            chart1.Legends[0].Docking = Docking.Bottom; // Dock the legend at the bottom.
+
+            // Your existing code for chart settings
             chart1.Series.Clear();
             chart1.Palette = ChartColorPalette.Pastel;
 
@@ -63,6 +77,8 @@ namespace HelloWorldSolutionIMS
 
             // Refresh the chart.
             chart1.Refresh();
+
+
         }
         static string ingredientIDToEdit;
         static int edit = 0;
@@ -385,7 +401,7 @@ namespace HelloWorldSolutionIMS
             edit = 1;
             try
             {
-                ingredientIDToEdit = guna2DataGridView1.CurrentRow.Cells[1].Value.ToString();
+                ingredientIDToEdit = guna2DataGridView1.CurrentRow.Cells[0].Value.ToString();
                 MainClass.con.Open();
                 SqlCommand cmd = new SqlCommand("SELECT * FROM Ingredient WHERE ID = @IngredientID", MainClass.con);
                 cmd.Parameters.AddWithValue("@IngredientID", ingredientIDToEdit);
@@ -464,7 +480,7 @@ namespace HelloWorldSolutionIMS
                         iodine.Text = "";
                         bbox.Text = "";
                         // Get the Ingredient ID to display in the confirmation message
-                        string ingredientIDToDelete = guna2DataGridView1.CurrentRow.Cells[3].Value.ToString(); // Assuming the Ingredient ID is in the first cell of the selected row.
+                        string ingredientIDToDelete = guna2DataGridView1.CurrentRow.Cells[2].Value.ToString(); // Assuming the Ingredient ID is in the first cell of the selected row.
 
                         // Ask for confirmation
                         DialogResult result = MessageBox.Show("Are you sure you want to delete Ingredient : " + ingredientIDToDelete + "?", "Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
@@ -475,7 +491,7 @@ namespace HelloWorldSolutionIMS
                             {
                                 MainClass.con.Open();
                                 SqlCommand cmd = new SqlCommand("DELETE FROM Ingredient WHERE ID = @IngredientID", MainClass.con);
-                                cmd.Parameters.AddWithValue("@IngredientID", guna2DataGridView1.CurrentRow.Cells[1].Value.ToString()); // Assuming the Ingredient ID is in the first cell of the selected row.
+                                cmd.Parameters.AddWithValue("@IngredientID", guna2DataGridView1.CurrentRow.Cells[0].Value.ToString()); // Assuming the Ingredient ID is in the first cell of the selected row.
                                 cmd.ExecuteNonQuery();
                                 MessageBox.Show("Ingredient removed successfully");
                                 MainClass.con.Close();
