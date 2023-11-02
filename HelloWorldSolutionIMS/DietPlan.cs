@@ -15,6 +15,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Windows.Forms.DataVisualization.Charting;
 using static HelloWorldSolutionIMS.MealAction;
+using static HelloWorldSolutionIMS.Payment;
 
 namespace HelloWorldSolutionIMS
 {
@@ -35,6 +36,12 @@ namespace HelloWorldSolutionIMS
         static string dietPlanIDToEdit;
         static int counter = 0;
         static int connectionflag = 0;
+        public class DietTemplates
+        {
+            public int ID { get; set; }
+            public string Name { get; set; }
+
+        }
         public class MealsDropdown
         {
             public int ID { get; set; }
@@ -42,7 +49,112 @@ namespace HelloWorldSolutionIMS
         }
         List<MealsDropdown> Mealslist = new List<MealsDropdown>();
         List<int> idlist = new List<int>();
+        private void updatepreviousdietplan()
+        {
+            SqlCommand cmd;
+            try
+            {
+                if (MainClass.con.State != ConnectionState.Open)
+                {
+                    MainClass.con.Open();
+                    conn = 1;
+                }
 
+                cmd = new SqlCommand("SELECT ID, DIETPLANTEMPLATENAME FROM DIETPLANTEMPLATE", MainClass.con);
+
+                SqlDataAdapter da = new SqlDataAdapter(cmd);
+                DataTable dt = new DataTable();
+                da.Fill(dt);
+
+                // Clear the dropdown items before adding new ones
+   
+                previousdietplan.DataSource = null;
+                // Clear the items (if DataSource is not being set)
+        
+                previousdietplan.Items.Clear();
+                List<DietTemplates> Template = new List<DietTemplates>();
+
+                // Add the default 'Null' option
+                Template.Add(new DietTemplates { ID = 0, Name = "Null" });
+
+                foreach (DataRow row in dt.Rows)
+                {
+                    int promotionId = row.Field<int>("ID");
+                    string promotionName = row.Field<string>("DIETPLANTEMPLATENAME");
+
+                    DietTemplates Temp = new DietTemplates { ID = promotionId, Name = promotionName };
+                    Template.Add(Temp);
+                }
+
+               
+                previousdietplan.DataSource = Template;
+                previousdietplan.DisplayMember = "Name"; // Display Member is Name
+                previousdietplan.ValueMember = "ID"; // Value Member is ID
+
+                if (conn == 1)
+                {
+                    MainClass.con.Close();
+                    conn = 0;
+                }
+            }
+            catch (Exception ex)
+            {
+                MainClass.con.Close();
+                MessageBox.Show(ex.Message);
+            }
+        }
+        private void UpdateDietPlanTemplate()
+        {
+            SqlCommand cmd;
+            try
+            {
+                if (MainClass.con.State != ConnectionState.Open)
+                {
+                    MainClass.con.Open();
+                    conn = 1;
+                }
+
+                cmd = new SqlCommand("SELECT ID, DIETPLANTEMPLATENAME FROM DIETPLANTEMPLATE", MainClass.con);
+
+                SqlDataAdapter da = new SqlDataAdapter(cmd);
+                DataTable dt = new DataTable();
+                da.Fill(dt);
+
+                // Clear the dropdown items before adding new ones
+                dietplantemplatename.DataSource = null;
+                // Clear the items (if DataSource is not being set)
+                dietplantemplatename.Items.Clear();
+                List<DietTemplates> Template = new List<DietTemplates>();
+
+                // Add the default 'Null' option
+                Template.Add(new DietTemplates { ID = 0, Name = "Null" });
+
+                foreach (DataRow row in dt.Rows)
+                {
+                    int promotionId = row.Field<int>("ID");
+                    string promotionName = row.Field<string>("DIETPLANTEMPLATENAME");
+
+                    DietTemplates Temp = new DietTemplates { ID = promotionId, Name = promotionName };
+                    Template.Add(Temp);
+                }
+
+                dietplantemplatename.DataSource = Template;
+                dietplantemplatename.DisplayMember = "Name"; // Display Member is Name
+                dietplantemplatename.ValueMember = "ID"; // Value Member is ID
+
+              
+                if (conn == 1)
+                {
+                    MainClass.con.Close();
+                    conn = 0;
+                }
+            }
+            catch (Exception ex)
+            {
+                MainClass.con.Close();
+                MessageBox.Show(ex.Message);
+            }
+        }
         private void extrafunc()
         {
             List<int> itemids = GetMealsForDietPlan();
@@ -642,7 +754,37 @@ namespace HelloWorldSolutionIMS
         }
         private void Add_Click(object sender, EventArgs e)
         {
+            fileno.Visible = true;
+            filenolabel.Visible = true;
             tabControl1.SelectedIndex = 1;
+            firstname.Text = "";
+            familyname.Text = "";
+            dietplantemplatename.Text = "";
+            dietplantemplate.SelectedItem= null;
+            dietplandays.Text = "";
+            instruction.Text = "";
+            gender.Text = "";
+            age.Text = "";
+            mobileno.Text = "";
+            previousdietplan.Text = "";
+            calories.Text = "";
+            fats.Text = "";
+            fibers.Text = "";
+            potassium.Text = "";
+            water.Text = "";
+            sugar.Text = "";
+            calcium.Text = "";
+            abox.Text = "";
+            protein.Text = "";
+            carbohydrates.Text = "";
+            sodium.Text = "";
+            phosphor.Text = "";
+            magnesium.Text = "";
+            iron.Text = "";
+            iodine.Text = "";
+            bbox.Text = "";
+            UpdateDietPlanTemplate();
+            updatepreviousdietplan();
         }
         private void DietPlan_Load(object sender, EventArgs e)
         {
@@ -842,7 +984,7 @@ namespace HelloWorldSolutionIMS
                         firstname.Text = "";
                         familyname.Text = "";
                         dietplantemplatename.Text = "";
-                        dietplantemplate.Text = "";
+                        dietplantemplate.SelectedItem = null;
                         dietplandays.Text = "";
                         instruction.Text = "";
                         gender.Text = "";
@@ -1026,7 +1168,7 @@ namespace HelloWorldSolutionIMS
                         firstname.Text = "";
                         familyname.Text = "";
                         dietplantemplatename.Text = "";
-                        dietplantemplate.Text = "";
+                        dietplantemplate.SelectedItem = null;
                         dietplandays.Text = "";
                         instruction.Text = "";
                         gender.Text = "";
@@ -1195,6 +1337,10 @@ namespace HelloWorldSolutionIMS
         }
         private void viewEditToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            fileno.Visible = false;
+            filenolabel.Visible = false;
+            string template = null;
+            string PreviousPlan = null;
             edit = 1;
             try
             {
@@ -1211,14 +1357,14 @@ namespace HelloWorldSolutionIMS
                         // Set the retrieved data into input controls
                         firstname.Text = reader["FIRSTNAME"].ToString();
                         familyname.Text = reader["FAMILYNAME"].ToString();
-                        dietplantemplatename.Text = reader["DietPlanTemplateName"].ToString();
+                        template = reader["DietPlanTemplateName"].ToString();
                         dietplantemplate.Text = reader["DietPlanTemplate"].ToString();
                         dietplandays.Text = reader["DietPlanDays"].ToString();
                         instruction.Text = reader["Instructions"].ToString();
                         gender.Text = reader["Gender"].ToString();
                         age.Text = reader["Age"].ToString();
                         mobileno.Text = reader["MobileNo"].ToString();
-                        previousdietplan.Text = reader["PreviousDiePlan"].ToString();
+                        PreviousPlan = reader["PreviousDiePlan"].ToString();
                         calories.Text = reader["CALORIES"].ToString();
                         fats.Text = reader["FATS"].ToString();
                         fibers.Text = reader["FIBERS"].ToString();
@@ -1238,6 +1384,8 @@ namespace HelloWorldSolutionIMS
                     }
                     reader.Close();
                     MainClass.con.Close();
+                     dietplantemplatename.Text = template;
+                    previousdietplan.Text = PreviousPlan;
                     extrafunc();
                     tabControl1.SelectedIndex = 1;
                 }
@@ -1384,7 +1532,6 @@ namespace HelloWorldSolutionIMS
                 MessageBox.Show(ex.Message);
             }
         }
-
         private void search_Click(object sender, EventArgs e)
         {
             SearchDietPlans(guna2DataGridView1, filenodgv, namedgv, agedgv, dietnamedgv);
@@ -1593,5 +1740,138 @@ namespace HelloWorldSolutionIMS
                 MessageBox.Show("Please enter the Diet Plan Template name."); // Or any other required field.
             }
         }
+        private void intlock(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
+            {
+                e.Handled = true; // Ignore the keypress if it's not a number or a control character
+            }
+        }
+        static int conn = 0;
+        private void fileno_TextChanged(object sender, EventArgs e)
+        {
+            if (fileno.Text != "")
+            {
+                int value = int.Parse(fileno.Text);
+
+                try
+                {
+                    if (MainClass.con.State != ConnectionState.Open)
+                    {
+                        MainClass.con.Open();
+                        conn = 1;
+                    }
+
+                    SqlCommand cmd2 = new SqlCommand("SELECT  FIRSTNAME, FAMILYNAME, MOBILENO, GENDER, AGE FROM CUSTOMER " +
+                        "WHERE FILENO = @fileno", MainClass.con);
+
+                    cmd2.Parameters.AddWithValue("@fileno", value);
+                    SqlDataReader reader2 = cmd2.ExecuteReader();
+                    if (reader2.Read())
+                    {
+                        // Assign values from the reader to the respective text boxes
+                        firstname.Text = reader2["FIRSTNAME"].ToString();
+                        familyname.Text = reader2["FAMILYNAME"].ToString();
+                        mobileno.Text = reader2["MOBILENO"].ToString();
+                        gender.Text = reader2["GENDER"].ToString();
+                        age.Text = reader2["AGE"].ToString();
+                    }
+                    else
+                    {
+                        MessageBox.Show("No customer with this file no exist!");
+                    }
+                    reader2.Close();
+                    if (conn == 1)
+                    {
+                        MainClass.con.Close();
+                        conn = 0;
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MainClass.con.Close();
+                    MessageBox.Show(ex.Message);
+                }
+            }
+            else
+            {
+                firstname.Text = "";
+                familyname.Text = "";
+                mobileno.Text = "";
+                gender.SelectedItem = null;
+                age.Text = "";
+
+            }
+        
+        }
+        private void floatlock(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && e.KeyChar != '.')
+            {
+                e.Handled = true; // Ignore the keypress if it's not a number, a control character, or a decimal point
+            }
+
+            // Allow only one decimal point
+            Guna.UI2.WinForms.Guna2TextBox textBox = (Guna.UI2.WinForms.Guna2TextBox)sender;
+            if (e.KeyChar == '.' && textBox.Text.Contains("."))
+            {
+                e.Handled = true;
+            }
+        }
+        private void dietplantemplatename_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (dietplantemplatename.SelectedItem != null)
+            {
+                DietTemplates selectedTemplate = (DietTemplates)dietplantemplatename.SelectedItem;
+                int selectedID = selectedTemplate.ID;
+
+                if (selectedID == 0)
+                {
+                    dietplandays.Text = "";
+                    dietplantemplate.SelectedItem = null;
+                    instruction.Text = "";
+                }
+                else
+                {
+                    try
+                    {
+                        if (MainClass.con.State != ConnectionState.Open)
+                        {
+                            MainClass.con.Open();
+                            conn = 1;
+                        }
+
+                        SqlCommand cmd = new SqlCommand("SELECT DIETPLANTEMPLATE, DIETPLANDAYS, INSTRUCTIONS FROM DIETPLANTEMPLATE WHERE ID = @SelectedID", MainClass.con);
+                        cmd.Parameters.AddWithValue("@SelectedID", selectedID);
+
+                        SqlDataReader reader = cmd.ExecuteReader();
+
+                        if (reader.Read())
+                        {
+                            string dietplanTemplate = reader["DIETPLANTEMPLATE"].ToString();
+                            string dietplanDays = reader["DIETPLANDAYS"].ToString();
+                            string Instruct = reader["INSTRUCTIONS"].ToString();
+
+                            dietplantemplate.Text = dietplanTemplate;
+                            dietplandays.Text = dietplanDays;
+                            instruction.Text = Instruct;
+                        }
+                        reader.Close();
+                        if (conn == 1)
+                        {
+                            MainClass.con.Close();
+                            conn = 0;
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        MainClass.con.Close();
+                        MessageBox.Show(ex.Message);
+                    }
+                }
+
+            }
+        }
     }
 }
+

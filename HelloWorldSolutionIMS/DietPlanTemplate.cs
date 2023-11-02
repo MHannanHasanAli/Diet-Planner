@@ -35,7 +35,27 @@ namespace HelloWorldSolutionIMS
             public string Name { get; set; }
         }
         List<MealsDropdown> Mealslist = new List<MealsDropdown>();
+        private void intlock(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
+            {
+                e.Handled = true; // Ignore the keypress if it's not a number or a control character
+            }
+        }
+        private void floatlock(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && e.KeyChar != '.')
+            {
+                e.Handled = true; // Ignore the keypress if it's not a number, a control character, or a decimal point
+            }
 
+            // Allow only one decimal point
+            Guna.UI2.WinForms.Guna2TextBox textBox = (Guna.UI2.WinForms.Guna2TextBox)sender;
+            if (e.KeyChar == '.' && textBox.Text.Contains("."))
+            {
+                e.Handled = true;
+            }
+        }
         private void DietPlanTemplate_Load(object sender, EventArgs e)
         {
             chart1.Series.Clear();
@@ -115,6 +135,26 @@ namespace HelloWorldSolutionIMS
         }
         private void Add_Click(object sender, EventArgs e)
         {
+            dietplantemplatename.Text = "";
+            dietplantemplatebox.Text = "";
+            dietplandays.Text = "";
+            instruction.Text = "";
+            calories.Text = "";
+            fats.Text = "";
+            fibers.Text = "";
+            potassium.Text = "";
+            water.Text = "";
+            sugar.Text = "";
+            calcium.Text = "";
+            abox.Text = "";
+            protein.Text = "";
+            carbohydrates.Text = "";
+            sodium.Text = "";
+            phosphor.Text = "";
+            magnesium.Text = "";
+            iron.Text = "";
+            iodine.Text = "";
+            bbox.Text = "";
             tabControl1.SelectedIndex = 1;
         }
         private void Meals_Click(object sender, EventArgs e)

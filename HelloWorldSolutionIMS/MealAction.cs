@@ -562,6 +562,51 @@ namespace HelloWorldSolutionIMS
             }
             return idlist;
         }
+        private List<Ingredients> GetIngredientsEN(int id_ar)
+        {
+            try
+            {
+                MainClass.con.Open();
+                ingredientsList.Clear();
+                SqlCommand cmdfour = new SqlCommand("SELECT ID, INGREDIENT_EN FROM Ingredient WHERE ID = @id", MainClass.con);
+                cmdfour.Parameters.AddWithValue("@id", id_ar);
+                SqlDataReader reader3 = cmdfour.ExecuteReader();
+                ingredientsList.Clear();
+
+                while (reader3.Read())
+                {
+                    int id = Convert.ToInt32(reader3["ID"]);
+                    string ingredientAr = reader3["INGREDIENT_EN"].ToString();
+                    ingredientsList.Add(new Ingredients { ID = id, Name = ingredientAr });
+                }
+                reader3.Close();
+                MainClass.con.Close();
+
+                MainClass.con.Open();
+                SqlCommand cmdfive = new SqlCommand("SELECT ID, INGREDIENT_EN FROM Ingredient", MainClass.con);
+                SqlDataReader reader2 = cmdfive.ExecuteReader();
+
+                while (reader2.Read())
+                {
+                    int id = Convert.ToInt32(reader2["ID"]);
+                    if (id == id_ar)
+                    {
+                        continue;
+                    }
+                    string ingredientAr = reader2["INGREDIENT_EN"].ToString();
+                    ingredientsList.Add(new Ingredients { ID = id, Name = ingredientAr });
+                }
+                reader2.Close();
+                MainClass.con.Close();
+            }
+            catch (Exception ex)
+            {
+                MainClass.con.Close();
+                MessageBox.Show(ex.Message);
+            }
+            return ingredientsList;
+        }
+
         private List<Ingredients> GetIngredients(int id_ar)
         {
             try
@@ -1402,7 +1447,6 @@ namespace HelloWorldSolutionIMS
         {
             tabControl1.SelectedIndex = 0;
         }
-
         private void search_Click(object sender, EventArgs e)
         {
             SearchMeals(guna2DataGridView2, iddgv, mealardgv, mealendgv, caloriedgv, proteindgv, fatsdgv, carbohydratesdgv, calciumdgv, fiberdgv, sodiumdgv);
@@ -1410,7 +1454,6 @@ namespace HelloWorldSolutionIMS
         }
 
         private bool simulateDoubleClick = false;
-
         private void guna2DataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             // Check if a single click should be treated as a double click

@@ -58,6 +58,109 @@ namespace HelloWorldSolutionIMS
                 MessageBox.Show(ex.Message);
             }
         }
+        private void SearchAppointments(DataGridView dgv, DataGridViewColumn id, DataGridViewColumn fileno, DataGridViewColumn firstname, DataGridViewColumn familyname, DataGridViewColumn room, DataGridViewColumn slot, DataGridViewColumn date)
+        {
+            string file_no = filenosearch.Text;
+            string searchname = firstnamesearch.Text;
+            if (file_no != "" && searchname != "")
+            {
+                try
+                {
+                    MainClass.con.Open();
+
+                    SqlCommand cmd = new SqlCommand("SELECT ID, FileNo, FirstName, FamilyName, Date, Room, Slot FROM Appointment WHERE FileNo LIKE @FileNo AND FirstName LIKE @FirstName", MainClass.con);
+
+                    cmd.Parameters.AddWithValue("@FileNo", "%" + file_no + "%");
+                    cmd.Parameters.AddWithValue("@FirstName", "%" + searchname + "%");
+
+                    SqlDataAdapter da = new SqlDataAdapter(cmd);
+                    DataTable dt = new DataTable();
+                    da.Fill(dt);
+                    id.DataPropertyName = dt.Columns["ID"].ToString();
+                    fileno.DataPropertyName = dt.Columns["FileNo"].ToString();
+                    firstname.DataPropertyName = dt.Columns["FirstName"].ToString();
+                    familyname.DataPropertyName = dt.Columns["FamilyName"].ToString();
+                    room.DataPropertyName = dt.Columns["Room"].ToString();
+                    slot.DataPropertyName = dt.Columns["Slot"].ToString();
+                    date.DataPropertyName = dt.Columns["Date"].ToString();
+                    dgv.DataSource = dt;
+                    MainClass.con.Close();
+                }
+
+                catch (Exception ex)
+                {
+                    MainClass.con.Close();
+                    MessageBox.Show(ex.Message);
+                }
+            }
+            else if (file_no == "" && searchname != "")
+            {
+                try
+                {
+                    MainClass.con.Open();
+
+                    SqlCommand cmd = new SqlCommand("SELECT ID, FileNo, FirstName, FamilyName, Date, Room, Slot FROM Appointment WHERE FirstName LIKE @FirstName", MainClass.con);
+
+                    cmd.Parameters.AddWithValue("@FileNo", "%" + file_no + "%");
+                    cmd.Parameters.AddWithValue("@FirstName", "%" + searchname + "%");
+
+                    SqlDataAdapter da = new SqlDataAdapter(cmd);
+                    DataTable dt = new DataTable();
+                    da.Fill(dt);
+                    id.DataPropertyName = dt.Columns["ID"].ToString();
+                    fileno.DataPropertyName = dt.Columns["FileNo"].ToString();
+                    firstname.DataPropertyName = dt.Columns["FirstName"].ToString();
+                    familyname.DataPropertyName = dt.Columns["FamilyName"].ToString();
+                    room.DataPropertyName = dt.Columns["Room"].ToString();
+                    slot.DataPropertyName = dt.Columns["Slot"].ToString();
+                    date.DataPropertyName = dt.Columns["Date"].ToString();
+                    dgv.DataSource = dt;
+                    MainClass.con.Close();
+                }
+
+                catch (Exception ex)
+                {
+                    MainClass.con.Close();
+                    MessageBox.Show(ex.Message);
+                }
+            }
+            else if (file_no != "" && searchname == "")
+            {
+                try
+                {
+                    MainClass.con.Open();
+
+                    SqlCommand cmd = new SqlCommand("SELECT ID, FileNo, FirstName, FamilyName, Date, Room, Slot FROM Appointment WHERE FileNo LIKE @FileNo", MainClass.con);
+
+                    cmd.Parameters.AddWithValue("@FileNo", "%" + file_no + "%");
+                    cmd.Parameters.AddWithValue("@FirstName", "%" + searchname + "%");
+
+                    SqlDataAdapter da = new SqlDataAdapter(cmd);
+                    DataTable dt = new DataTable();
+                    da.Fill(dt);
+                    id.DataPropertyName = dt.Columns["ID"].ToString();
+                    fileno.DataPropertyName = dt.Columns["FileNo"].ToString();
+                    firstname.DataPropertyName = dt.Columns["FirstName"].ToString();
+                    familyname.DataPropertyName = dt.Columns["FamilyName"].ToString();
+                    room.DataPropertyName = dt.Columns["Room"].ToString();
+                    slot.DataPropertyName = dt.Columns["Slot"].ToString();
+                    date.DataPropertyName = dt.Columns["Date"].ToString();
+                    dgv.DataSource = dt;
+                    MainClass.con.Close();
+                }
+
+                catch (Exception ex)
+                {
+                    MainClass.con.Close();
+                    MessageBox.Show(ex.Message);
+                }
+            }
+            else
+            {
+                ShowAppointments(guna2DataGridView1, iddgv, filenodgv, firstnamedgv, familynamedgv, roomdgv, slotdgv, datedgv);
+                MessageBox.Show("Fill File No or First Name");
+            }
+        }
         private void InsertColumnsAndRowsToRoom1(Guna2DataGridView Room1)
         {
            
@@ -1082,6 +1185,11 @@ namespace HelloWorldSolutionIMS
             tabControl1.SelectedIndex = 0;
             slot.Visible = false;
             slotlabel.Visible = false;
+        }
+
+        private void search_Click(object sender, EventArgs e)
+        {
+            SearchAppointments(guna2DataGridView1, iddgv, filenodgv, firstnamedgv, familynamedgv, roomdgv, slotdgv, datedgv);
         }
     }
 }
