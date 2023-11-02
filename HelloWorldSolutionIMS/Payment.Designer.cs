@@ -32,11 +32,21 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.panel1 = new System.Windows.Forms.Panel();
             this.totalvalues = new Guna.UI2.WinForms.Guna2HtmlLabel();
             this.guna2DataGridView1 = new Guna.UI2.WinForms.Guna2DataGridView();
+            this.iddgv = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.filenodgv = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.paymentnamedgv = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.firstnamedgv = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.familynamedgv = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.amountdgv = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.amountaftrpromotiondgv = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.promotionpercentagedgv = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.datedgv = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.editToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.deleteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -49,6 +59,9 @@
             this.filenosearch = new Guna.UI2.WinForms.Guna2TextBox();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.promotionname = new Guna.UI2.WinForms.Guna2ComboBox();
+            this.enddate = new System.Windows.Forms.DateTimePicker();
+            this.label17 = new System.Windows.Forms.Label();
             this.Backtomeal = new Guna.UI2.WinForms.Guna2Button();
             this.save = new Guna.UI2.WinForms.Guna2Button();
             this.promotiondetails = new Guna.UI2.WinForms.Guna2TextBox();
@@ -62,6 +75,8 @@
             this.label9 = new System.Windows.Forms.Label();
             this.amountafterpromotion = new Guna.UI2.WinForms.Guna2TextBox();
             this.label8 = new System.Windows.Forms.Label();
+            this.startdate = new System.Windows.Forms.DateTimePicker();
+            this.label14 = new System.Windows.Forms.Label();
             this.paymentname = new Guna.UI2.WinForms.Guna2TextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
@@ -77,20 +92,6 @@
             this.firstname = new Guna.UI2.WinForms.Guna2TextBox();
             this.fileno = new Guna.UI2.WinForms.Guna2TextBox();
             this.tabPage3 = new System.Windows.Forms.TabPage();
-            this.label14 = new System.Windows.Forms.Label();
-            this.startdate = new System.Windows.Forms.DateTimePicker();
-            this.enddate = new System.Windows.Forms.DateTimePicker();
-            this.label17 = new System.Windows.Forms.Label();
-            this.promotionname = new Guna.UI2.WinForms.Guna2ComboBox();
-            this.iddgv = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.filenodgv = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.paymentnamedgv = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.firstnamedgv = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.familynamedgv = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.amountdgv = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.amountaftrpromotiondgv = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.promotionpercentagedgv = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.datedgv = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -196,6 +197,8 @@
             this.guna2DataGridView1.Name = "guna2DataGridView1";
             this.guna2DataGridView1.RowHeadersVisible = false;
             this.guna2DataGridView1.RowHeadersWidth = 51;
+            dataGridViewCellStyle4.ForeColor = System.Drawing.Color.Black;
+            this.guna2DataGridView1.RowsDefaultCellStyle = dataGridViewCellStyle4;
             this.guna2DataGridView1.RowTemplate.Height = 24;
             this.guna2DataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.guna2DataGridView1.Size = new System.Drawing.Size(1098, 477);
@@ -222,6 +225,61 @@
             this.guna2DataGridView1.ThemeStyle.RowsStyle.Height = 24;
             this.guna2DataGridView1.ThemeStyle.RowsStyle.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(115)))), ((int)(((byte)(221)))), ((int)(((byte)(160)))));
             this.guna2DataGridView1.ThemeStyle.RowsStyle.SelectionForeColor = System.Drawing.Color.Black;
+            // 
+            // iddgv
+            // 
+            this.iddgv.HeaderText = "ID";
+            this.iddgv.MinimumWidth = 6;
+            this.iddgv.Name = "iddgv";
+            this.iddgv.Visible = false;
+            // 
+            // filenodgv
+            // 
+            this.filenodgv.HeaderText = "FILE NO";
+            this.filenodgv.MinimumWidth = 6;
+            this.filenodgv.Name = "filenodgv";
+            // 
+            // paymentnamedgv
+            // 
+            this.paymentnamedgv.HeaderText = "PAYMENT NAME";
+            this.paymentnamedgv.MinimumWidth = 6;
+            this.paymentnamedgv.Name = "paymentnamedgv";
+            // 
+            // firstnamedgv
+            // 
+            this.firstnamedgv.HeaderText = "FIRST NAME";
+            this.firstnamedgv.MinimumWidth = 6;
+            this.firstnamedgv.Name = "firstnamedgv";
+            // 
+            // familynamedgv
+            // 
+            this.familynamedgv.HeaderText = "FAMILY NAME";
+            this.familynamedgv.MinimumWidth = 6;
+            this.familynamedgv.Name = "familynamedgv";
+            // 
+            // amountdgv
+            // 
+            this.amountdgv.HeaderText = "AMOUNT";
+            this.amountdgv.MinimumWidth = 6;
+            this.amountdgv.Name = "amountdgv";
+            // 
+            // amountaftrpromotiondgv
+            // 
+            this.amountaftrpromotiondgv.HeaderText = "AMOUNT AFTER PROMOTION";
+            this.amountaftrpromotiondgv.MinimumWidth = 6;
+            this.amountaftrpromotiondgv.Name = "amountaftrpromotiondgv";
+            // 
+            // promotionpercentagedgv
+            // 
+            this.promotionpercentagedgv.HeaderText = "PROMOTION PERCENTAGE";
+            this.promotionpercentagedgv.MinimumWidth = 6;
+            this.promotionpercentagedgv.Name = "promotionpercentagedgv";
+            // 
+            // datedgv
+            // 
+            this.datedgv.HeaderText = "DATE";
+            this.datedgv.MinimumWidth = 6;
+            this.datedgv.Name = "datedgv";
             // 
             // contextMenuStrip1
             // 
@@ -416,6 +474,44 @@
             this.panel2.Size = new System.Drawing.Size(1140, 673);
             this.panel2.TabIndex = 0;
             // 
+            // promotionname
+            // 
+            this.promotionname.BackColor = System.Drawing.Color.Transparent;
+            this.promotionname.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.promotionname.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.promotionname.FocusedColor = System.Drawing.Color.Empty;
+            this.promotionname.FocusedState.Parent = this.promotionname;
+            this.promotionname.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.promotionname.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(88)))), ((int)(((byte)(112)))));
+            this.promotionname.FormattingEnabled = true;
+            this.promotionname.HoverState.Parent = this.promotionname;
+            this.promotionname.ItemHeight = 30;
+            this.promotionname.ItemsAppearance.Parent = this.promotionname;
+            this.promotionname.Location = new System.Drawing.Point(771, 214);
+            this.promotionname.Name = "promotionname";
+            this.promotionname.ShadowDecoration.Parent = this.promotionname;
+            this.promotionname.Size = new System.Drawing.Size(344, 36);
+            this.promotionname.TabIndex = 238;
+            this.promotionname.SelectedIndexChanged += new System.EventHandler(this.promotionname_SelectedIndexChanged);
+            // 
+            // enddate
+            // 
+            this.enddate.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.enddate.Location = new System.Drawing.Point(238, 397);
+            this.enddate.Name = "enddate";
+            this.enddate.Size = new System.Drawing.Size(284, 22);
+            this.enddate.TabIndex = 236;
+            // 
+            // label17
+            // 
+            this.label17.AutoSize = true;
+            this.label17.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F);
+            this.label17.Location = new System.Drawing.Point(31, 395);
+            this.label17.Name = "label17";
+            this.label17.Size = new System.Drawing.Size(88, 24);
+            this.label17.TabIndex = 237;
+            this.label17.Text = "End Date";
+            // 
             // Backtomeal
             // 
             this.Backtomeal.AutoRoundedCorners = true;
@@ -559,7 +655,7 @@
             this.promotionpercentage.Size = new System.Drawing.Size(284, 32);
             this.promotionpercentage.TabIndex = 227;
             this.promotionpercentage.TextChanged += new System.EventHandler(this.promotionpercentage_TextChanged);
-            this.promotionpercentage.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.promotionpercentage_KeyPress);
+            this.promotionpercentage.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.floatlock);
             this.promotionpercentage.Leave += new System.EventHandler(this.promotionpercentage_Leave);
             // 
             // label10
@@ -596,6 +692,7 @@
             this.amount.ShadowDecoration.Parent = this.amount;
             this.amount.Size = new System.Drawing.Size(284, 32);
             this.amount.TabIndex = 225;
+            this.amount.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.floatlock);
             // 
             // label9
             // 
@@ -631,6 +728,7 @@
             this.amountafterpromotion.ShadowDecoration.Parent = this.amountafterpromotion;
             this.amountafterpromotion.Size = new System.Drawing.Size(344, 32);
             this.amountafterpromotion.TabIndex = 223;
+            this.amountafterpromotion.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.floatlock);
             // 
             // label8
             // 
@@ -641,6 +739,24 @@
             this.label8.Size = new System.Drawing.Size(206, 24);
             this.label8.TabIndex = 222;
             this.label8.Text = "Amount after promotion";
+            // 
+            // startdate
+            // 
+            this.startdate.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.startdate.Location = new System.Drawing.Point(771, 356);
+            this.startdate.Name = "startdate";
+            this.startdate.Size = new System.Drawing.Size(344, 22);
+            this.startdate.TabIndex = 220;
+            // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F);
+            this.label14.Location = new System.Drawing.Point(542, 354);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(89, 24);
+            this.label14.TabIndex = 221;
+            this.label14.Text = "Start Date";
             // 
             // paymentname
             // 
@@ -711,6 +827,7 @@
             this.mobileno.ShadowDecoration.Parent = this.mobileno;
             this.mobileno.Size = new System.Drawing.Size(344, 29);
             this.mobileno.TabIndex = 216;
+            this.mobileno.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.intlock);
             // 
             // label6
             // 
@@ -746,6 +863,7 @@
             this.age.ShadowDecoration.Parent = this.age;
             this.age.Size = new System.Drawing.Size(344, 32);
             this.age.TabIndex = 214;
+            this.age.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.intlock);
             // 
             // gender
             // 
@@ -896,117 +1014,6 @@
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "tabPage3";
             this.tabPage3.UseVisualStyleBackColor = true;
-            // 
-            // label14
-            // 
-            this.label14.AutoSize = true;
-            this.label14.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F);
-            this.label14.Location = new System.Drawing.Point(542, 354);
-            this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(89, 24);
-            this.label14.TabIndex = 221;
-            this.label14.Text = "Start Date";
-            // 
-            // startdate
-            // 
-            this.startdate.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.startdate.Location = new System.Drawing.Point(771, 356);
-            this.startdate.Name = "startdate";
-            this.startdate.Size = new System.Drawing.Size(344, 22);
-            this.startdate.TabIndex = 220;
-            // 
-            // enddate
-            // 
-            this.enddate.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.enddate.Location = new System.Drawing.Point(238, 397);
-            this.enddate.Name = "enddate";
-            this.enddate.Size = new System.Drawing.Size(284, 22);
-            this.enddate.TabIndex = 236;
-            // 
-            // label17
-            // 
-            this.label17.AutoSize = true;
-            this.label17.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F);
-            this.label17.Location = new System.Drawing.Point(31, 395);
-            this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(88, 24);
-            this.label17.TabIndex = 237;
-            this.label17.Text = "End Date";
-            // 
-            // promotionname
-            // 
-            this.promotionname.BackColor = System.Drawing.Color.Transparent;
-            this.promotionname.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
-            this.promotionname.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.promotionname.FocusedColor = System.Drawing.Color.Empty;
-            this.promotionname.FocusedState.Parent = this.promotionname;
-            this.promotionname.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.promotionname.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(88)))), ((int)(((byte)(112)))));
-            this.promotionname.FormattingEnabled = true;
-            this.promotionname.HoverState.Parent = this.promotionname;
-            this.promotionname.ItemHeight = 30;
-            this.promotionname.ItemsAppearance.Parent = this.promotionname;
-            this.promotionname.Location = new System.Drawing.Point(771, 214);
-            this.promotionname.Name = "promotionname";
-            this.promotionname.ShadowDecoration.Parent = this.promotionname;
-            this.promotionname.Size = new System.Drawing.Size(344, 36);
-            this.promotionname.TabIndex = 238;
-            this.promotionname.SelectedIndexChanged += new System.EventHandler(this.promotionname_SelectedIndexChanged);
-            // 
-            // iddgv
-            // 
-            this.iddgv.HeaderText = "ID";
-            this.iddgv.MinimumWidth = 6;
-            this.iddgv.Name = "iddgv";
-            this.iddgv.Visible = false;
-            // 
-            // filenodgv
-            // 
-            this.filenodgv.HeaderText = "FILE NO";
-            this.filenodgv.MinimumWidth = 6;
-            this.filenodgv.Name = "filenodgv";
-            // 
-            // paymentnamedgv
-            // 
-            this.paymentnamedgv.HeaderText = "PAYMENT NAME";
-            this.paymentnamedgv.MinimumWidth = 6;
-            this.paymentnamedgv.Name = "paymentnamedgv";
-            // 
-            // firstnamedgv
-            // 
-            this.firstnamedgv.HeaderText = "FIRST NAME";
-            this.firstnamedgv.MinimumWidth = 6;
-            this.firstnamedgv.Name = "firstnamedgv";
-            // 
-            // familynamedgv
-            // 
-            this.familynamedgv.HeaderText = "FAMILY NAME";
-            this.familynamedgv.MinimumWidth = 6;
-            this.familynamedgv.Name = "familynamedgv";
-            // 
-            // amountdgv
-            // 
-            this.amountdgv.HeaderText = "AMOUNT";
-            this.amountdgv.MinimumWidth = 6;
-            this.amountdgv.Name = "amountdgv";
-            // 
-            // amountaftrpromotiondgv
-            // 
-            this.amountaftrpromotiondgv.HeaderText = "AMOUNT AFTER PROMOTION";
-            this.amountaftrpromotiondgv.MinimumWidth = 6;
-            this.amountaftrpromotiondgv.Name = "amountaftrpromotiondgv";
-            // 
-            // promotionpercentagedgv
-            // 
-            this.promotionpercentagedgv.HeaderText = "PROMOTION PERCENTAGE";
-            this.promotionpercentagedgv.MinimumWidth = 6;
-            this.promotionpercentagedgv.Name = "promotionpercentagedgv";
-            // 
-            // datedgv
-            // 
-            this.datedgv.HeaderText = "DATE";
-            this.datedgv.MinimumWidth = 6;
-            this.datedgv.Name = "datedgv";
             // 
             // Payment
             // 

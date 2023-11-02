@@ -261,5 +261,19 @@ namespace HelloWorldSolutionIMS
             guna2DataGridView1.Visible = false;
             guna2DataGridView2.Visible = true;
         }
+        private void floatlock(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && e.KeyChar != '.')
+            {
+                e.Handled = true; // Ignore the keypress if it's not a number, a control character, or a decimal point
+            }
+
+            // Allow only one decimal point
+            Guna.UI2.WinForms.Guna2TextBox textBox = (Guna.UI2.WinForms.Guna2TextBox)sender;
+            if (e.KeyChar == '.' && textBox.Text.Contains("."))
+            {
+                e.Handled = true;
+            }
+        }
     }
 }

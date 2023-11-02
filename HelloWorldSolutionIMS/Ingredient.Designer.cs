@@ -335,6 +335,7 @@
             this.potassium.ShadowDecoration.Parent = this.potassium;
             this.potassium.Size = new System.Drawing.Size(149, 29);
             this.potassium.TabIndex = 79;
+            this.potassium.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.floatlock);
             // 
             // fibers
             // 
@@ -360,6 +361,7 @@
             this.fibers.ShadowDecoration.Parent = this.fibers;
             this.fibers.Size = new System.Drawing.Size(149, 29);
             this.fibers.TabIndex = 78;
+            this.fibers.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.floatlock);
             // 
             // fats
             // 
@@ -385,6 +387,7 @@
             this.fats.ShadowDecoration.Parent = this.fats;
             this.fats.Size = new System.Drawing.Size(149, 29);
             this.fats.TabIndex = 77;
+            this.fats.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.floatlock);
             // 
             // calories
             // 
@@ -410,6 +413,7 @@
             this.calories.ShadowDecoration.Parent = this.calories;
             this.calories.Size = new System.Drawing.Size(149, 29);
             this.calories.TabIndex = 76;
+            this.calories.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.floatlock);
             // 
             // label9
             // 
@@ -475,6 +479,7 @@
             this.abox.ShadowDecoration.Parent = this.abox;
             this.abox.Size = new System.Drawing.Size(149, 29);
             this.abox.TabIndex = 87;
+            this.abox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.floatlock);
             // 
             // calcium
             // 
@@ -500,6 +505,7 @@
             this.calcium.ShadowDecoration.Parent = this.calcium;
             this.calcium.Size = new System.Drawing.Size(149, 29);
             this.calcium.TabIndex = 86;
+            this.calcium.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.floatlock);
             // 
             // sugar
             // 
@@ -525,6 +531,7 @@
             this.sugar.ShadowDecoration.Parent = this.sugar;
             this.sugar.Size = new System.Drawing.Size(149, 29);
             this.sugar.TabIndex = 85;
+            this.sugar.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.floatlock);
             // 
             // water
             // 
@@ -550,6 +557,7 @@
             this.water.ShadowDecoration.Parent = this.water;
             this.water.Size = new System.Drawing.Size(149, 29);
             this.water.TabIndex = 84;
+            this.water.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.floatlock);
             // 
             // label15
             // 
@@ -615,6 +623,7 @@
             this.bbox.ShadowDecoration.Parent = this.bbox;
             this.bbox.Size = new System.Drawing.Size(149, 29);
             this.bbox.TabIndex = 103;
+            this.bbox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.floatlock);
             // 
             // iodine
             // 
@@ -640,6 +649,7 @@
             this.iodine.ShadowDecoration.Parent = this.iodine;
             this.iodine.Size = new System.Drawing.Size(149, 29);
             this.iodine.TabIndex = 102;
+            this.iodine.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.floatlock);
             // 
             // iron
             // 
@@ -665,6 +675,7 @@
             this.iron.ShadowDecoration.Parent = this.iron;
             this.iron.Size = new System.Drawing.Size(149, 29);
             this.iron.TabIndex = 101;
+            this.iron.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.floatlock);
             // 
             // magnesium
             // 
@@ -690,6 +701,7 @@
             this.magnesium.ShadowDecoration.Parent = this.magnesium;
             this.magnesium.Size = new System.Drawing.Size(149, 29);
             this.magnesium.TabIndex = 100;
+            this.magnesium.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.floatlock);
             // 
             // label19
             // 
@@ -755,6 +767,7 @@
             this.phosphor.ShadowDecoration.Parent = this.phosphor;
             this.phosphor.Size = new System.Drawing.Size(149, 29);
             this.phosphor.TabIndex = 95;
+            this.phosphor.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.floatlock);
             // 
             // sodium
             // 
@@ -780,6 +793,7 @@
             this.sodium.ShadowDecoration.Parent = this.sodium;
             this.sodium.Size = new System.Drawing.Size(149, 29);
             this.sodium.TabIndex = 94;
+            this.sodium.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.floatlock);
             // 
             // carbohydrates
             // 
@@ -805,6 +819,7 @@
             this.carbohydrates.ShadowDecoration.Parent = this.carbohydrates;
             this.carbohydrates.Size = new System.Drawing.Size(149, 29);
             this.carbohydrates.TabIndex = 93;
+            this.carbohydrates.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.floatlock);
             // 
             // protein
             // 
@@ -830,6 +845,7 @@
             this.protein.ShadowDecoration.Parent = this.protein;
             this.protein.Size = new System.Drawing.Size(149, 29);
             this.protein.TabIndex = 92;
+            this.protein.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.floatlock);
             // 
             // guna2DataGridView1
             // 
@@ -1108,6 +1124,7 @@
             this.Name = "Ingredient";
             this.Text = "Ingredient";
             this.Load += new System.EventHandler(this.Ingredient_Load);
+            this.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.floatlock);
             ((System.ComponentModel.ISupportInitialize)(this.guna2DataGridView1)).EndInit();
             this.contextMenuStrip1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.chart1)).EndInit();

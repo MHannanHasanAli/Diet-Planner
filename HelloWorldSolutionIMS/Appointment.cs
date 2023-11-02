@@ -251,6 +251,7 @@ namespace HelloWorldSolutionIMS
             InsertColumnsAndRowsToRoom2(Room2);
             InsertColumnsAndRowsToRoom3(Room3);
             InsertColumnsAndRowsToRoom4(Room4);
+          
             ShowAppointments(guna2DataGridView1, iddgv, filenodgv, firstnamedgv, familynamedgv, roomdgv, slotdgv, datedgv);
         }
         private void Save_Click(object sender, EventArgs e)
@@ -451,6 +452,146 @@ namespace HelloWorldSolutionIMS
                             MessageBox.Show("Please fill First name, Family name and Mobile No.");
                         }
                     }
+                    else
+                    {
+                       
+                        if (firstname.Text != "" || familyname.Text != "" || mobileno.Text != "")
+                        {
+                            if (selectedCellIndexesRoom1.RowIndex != -1)
+                            {
+                                try
+                                {
+                                    MainClass.con.Open();
+
+                                    SqlCommand cmd = new SqlCommand("UPDATE Appointment SET Fileno = @Fileno, Firstname = @Firstname, Familyname = @Familyname, Mobileno = @Mobileno, Date = @Date, Room = @Room, RowIndex = @RowIndex, ColumnIndex = @ColumnIndex, Slot = @Slot WHERE ID = @AppointmentID", MainClass.con);
+
+                                    cmd.Parameters.AddWithValue("@Fileno", fileno.Text);
+                                    cmd.Parameters.AddWithValue("@Firstname", firstname.Text);
+                                    cmd.Parameters.AddWithValue("@Familyname", familyname.Text);
+                                    cmd.Parameters.AddWithValue("@Mobileno", mobileno.Text);
+                                    cmd.Parameters.AddWithValue("@Date", date.SelectionStart);
+                                    cmd.Parameters.AddWithValue("@Room", selectedCellIndexesRoom1.RoomNo);
+                                    cmd.Parameters.AddWithValue("@RowIndex", selectedCellIndexesRoom1.RowIndex);
+                                    cmd.Parameters.AddWithValue("@ColumnIndex", selectedCellIndexesRoom1.ColumnIndex);
+                                    cmd.Parameters.AddWithValue("@Slot", selectedCellIndexesRoom1.time);
+                                    cmd.Parameters.AddWithValue("@AppointmentID", AppointmentIDToEdit);
+
+                                    cmd.ExecuteNonQuery();
+                                    MessageBox.Show("Appointment updated successfully");
+                                    MainClass.con.Close();
+                                }
+                                catch (Exception ex)
+                                {
+                                    MainClass.con.Close();
+                                    MessageBox.Show(ex.Message);
+                                }
+                                ShowAppointments(guna2DataGridView1, iddgv, filenodgv, firstnamedgv, familynamedgv, roomdgv, slotdgv, datedgv);
+
+                            }
+                            else if (selectedCellIndexesRoom2.RowIndex != -1)
+                            {
+                                try
+                                {
+                                    MainClass.con.Open();
+
+                                    SqlCommand cmd = new SqlCommand("UPDATE Appointment SET Fileno = @Fileno, Firstname = @Firstname, Familyname = @Familyname, Mobileno = @Mobileno, Date = @Date, Room = @Room, RowIndex = @RowIndex, ColumnIndex = @ColumnIndex, Slot = @Slot WHERE ID = @AppointmentID", MainClass.con);
+
+                                    cmd.Parameters.AddWithValue("@Fileno", fileno.Text);
+                                    cmd.Parameters.AddWithValue("@Firstname", firstname.Text);
+                                    cmd.Parameters.AddWithValue("@Familyname", familyname.Text);
+                                    cmd.Parameters.AddWithValue("@Mobileno", mobileno.Text);
+                                    cmd.Parameters.AddWithValue("@Date", date.SelectionStart);
+                                    cmd.Parameters.AddWithValue("@Room", selectedCellIndexesRoom2.RoomNo);
+                                    cmd.Parameters.AddWithValue("@RowIndex", selectedCellIndexesRoom2.RowIndex);
+                                    cmd.Parameters.AddWithValue("@ColumnIndex", selectedCellIndexesRoom2.ColumnIndex);
+                                    cmd.Parameters.AddWithValue("@Slot", selectedCellIndexesRoom2.time);
+                                    cmd.Parameters.AddWithValue("@AppointmentID", AppointmentIDToEdit);
+
+                                    cmd.ExecuteNonQuery();
+                                    MessageBox.Show("Appointment updated successfully");
+                                    MainClass.con.Close();
+                                }
+                                catch (Exception ex)
+                                {
+                                    MainClass.con.Close();
+                                    MessageBox.Show(ex.Message);
+                                }
+                                ShowAppointments(guna2DataGridView1, iddgv, filenodgv, firstnamedgv, familynamedgv, roomdgv, slotdgv, datedgv);
+
+                            }
+                            else if (selectedCellIndexesRoom3.RowIndex != -1)
+                            {
+                                try
+                                {
+                                    MainClass.con.Open();
+
+                                    SqlCommand cmd = new SqlCommand("UPDATE Appointment SET Fileno = @Fileno, Firstname = @Firstname, Familyname = @Familyname, Mobileno = @Mobileno, Date = @Date, Room = @Room, RowIndex = @RowIndex, ColumnIndex = @ColumnIndex, Slot = @Slot WHERE ID = @AppointmentID", MainClass.con);
+
+                                    cmd.Parameters.AddWithValue("@Fileno", fileno.Text);
+                                    cmd.Parameters.AddWithValue("@Firstname", firstname.Text);
+                                    cmd.Parameters.AddWithValue("@Familyname", familyname.Text);
+                                    cmd.Parameters.AddWithValue("@Mobileno", mobileno.Text);
+                                    cmd.Parameters.AddWithValue("@Date", date.SelectionStart);
+                                    cmd.Parameters.AddWithValue("@Room", selectedCellIndexesRoom3.RoomNo);
+                                    cmd.Parameters.AddWithValue("@RowIndex", selectedCellIndexesRoom3.RowIndex);
+                                    cmd.Parameters.AddWithValue("@ColumnIndex", selectedCellIndexesRoom3.ColumnIndex);
+                                    cmd.Parameters.AddWithValue("@Slot", selectedCellIndexesRoom3.time);
+                                    cmd.Parameters.AddWithValue("@AppointmentID", AppointmentIDToEdit);
+
+                                    cmd.ExecuteNonQuery();
+                                    MessageBox.Show("Appointment updated successfully");
+                                    MainClass.con.Close();
+                                }
+                                catch (Exception ex)
+                                {
+                                    MainClass.con.Close();
+                                    MessageBox.Show(ex.Message);
+                                }
+                                ShowAppointments(guna2DataGridView1, iddgv, filenodgv, firstnamedgv, familynamedgv, roomdgv, slotdgv, datedgv);
+
+                            }
+                            else
+                            {
+                                try
+                                {
+                                    MainClass.con.Open();
+
+                                    SqlCommand cmd = new SqlCommand("UPDATE Appointment SET Fileno = @Fileno, Firstname = @Firstname, Familyname = @Familyname, Mobileno = @Mobileno, Date = @Date, Room = @Room, RowIndex = @RowIndex, ColumnIndex = @ColumnIndex, Slot = @Slot WHERE ID = @AppointmentID", MainClass.con);
+
+                                    cmd.Parameters.AddWithValue("@Fileno", fileno.Text);
+                                    cmd.Parameters.AddWithValue("@Firstname", firstname.Text);
+                                    cmd.Parameters.AddWithValue("@Familyname", familyname.Text);
+                                    cmd.Parameters.AddWithValue("@Mobileno", mobileno.Text);
+                                    cmd.Parameters.AddWithValue("@Date", date.SelectionStart);
+                                    cmd.Parameters.AddWithValue("@Room", selectedCellIndexesRoom4.RoomNo);
+                                    cmd.Parameters.AddWithValue("@RowIndex", selectedCellIndexesRoom4.RowIndex);
+                                    cmd.Parameters.AddWithValue("@ColumnIndex", selectedCellIndexesRoom4.ColumnIndex);
+                                    cmd.Parameters.AddWithValue("@Slot", selectedCellIndexesRoom4.time);
+                                    cmd.Parameters.AddWithValue("@AppointmentID", AppointmentIDToEdit);
+
+                                    cmd.ExecuteNonQuery();
+                                    MessageBox.Show("Appointment updated successfully");
+                                    MainClass.con.Close();
+                                }
+                                catch (Exception ex)
+                                {
+                                    MainClass.con.Close();
+                                    MessageBox.Show(ex.Message);
+                                }
+                                ShowAppointments(guna2DataGridView1, iddgv, filenodgv, firstnamedgv, familynamedgv, roomdgv, slotdgv, datedgv);
+
+                            }
+
+                        }
+                        else
+                        {
+                            MessageBox.Show("Please fill First name, Family name and Mobile No.");
+                        }
+
+                    }
+                    tabControl1.SelectedIndex = 0;
+                    slot.Visible = false;
+                    slotlabel.Visible = false;
                 }
             }
             else
@@ -740,7 +881,18 @@ namespace HelloWorldSolutionIMS
         {
             int empty = 0;
             SqlCommand cmd;
-
+            Room1.Rows.Clear();
+            Room1.Columns.Clear();
+            Room2.Rows.Clear();
+            Room2.Columns.Clear();
+            Room3.Rows.Clear();
+            Room3.Columns.Clear();
+            Room4.Rows.Clear();
+            Room4.Columns.Clear();
+            InsertColumnsAndRowsToRoom1(Room1);
+            InsertColumnsAndRowsToRoom2(Room2);
+            InsertColumnsAndRowsToRoom3(Room3);
+            InsertColumnsAndRowsToRoom4(Room4);
             try
             {
                 if (MainClass.con.State != ConnectionState.Open)
@@ -868,6 +1020,14 @@ namespace HelloWorldSolutionIMS
         }
         private void viewEditToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            Room1.ClearSelection();
+            Room1.CurrentCell = null;
+            Room2.ClearSelection();
+            Room2.CurrentCell = null;
+            Room3.ClearSelection();
+            Room3.CurrentCell = null;
+            Room4.ClearSelection();
+            Room4.CurrentCell = null;
             edit = 1;
             stopper = 1;
             check = 1;
@@ -875,6 +1035,9 @@ namespace HelloWorldSolutionIMS
             DateTime datefiller = DateTime.Now;
             try
             {
+               
+                slot.Visible = true;
+                slotlabel.Visible = true;
                 AppointmentIDToEdit = int.Parse(guna2DataGridView1.CurrentRow.Cells["Iddgv"].Value.ToString()); // Assuming the ID is in a column named "Id"
 
                 SqlCommand cmd = new SqlCommand("SELECT * FROM Appointment WHERE Id = @appointmentID", MainClass.con);
@@ -891,7 +1054,8 @@ namespace HelloWorldSolutionIMS
                         familyname.Text = reader["FAMILYNAME"].ToString();
                         mobileno.Text = reader["MOBILENO"].ToString();
                         datefiller = Convert.ToDateTime(reader["DATE"]);
-                        
+                       slot.Text = reader["SLOT"].ToString();
+
                         tabControl1.SelectedIndex = 1; // Switch to the desired tab
                     }
                 }
@@ -903,6 +1067,7 @@ namespace HelloWorldSolutionIMS
                 reader.Close();
                 MainClass.con.Close();
                 date.SetDate(datefiller);
+                slotupdate();
             }
             catch (Exception ex)
             {
@@ -910,6 +1075,13 @@ namespace HelloWorldSolutionIMS
             }
 
 
+        }
+
+        private void back_Click(object sender, EventArgs e)
+        {
+            tabControl1.SelectedIndex = 0;
+            slot.Visible = false;
+            slotlabel.Visible = false;
         }
     }
 }

@@ -213,7 +213,7 @@ namespace HelloWorldSolutionIMS
                         fileno.Text = "";
                         firstname.Text = "";
                         familyname.Text = "";
-                        gender.Text = "";
+                        gender.SelectedItem = null;
                         dob.Value = DateTime.Now; // Reset the date of birth to the current date or your default value.
                         age.Text = "";
                         mobileno.Text = "";
@@ -226,6 +226,11 @@ namespace HelloWorldSolutionIMS
                         lastvisitdate.Value = DateTime.Now; // Reset the last visit date to the current date or your default value.
                         nutritionistname.Text = "";
                         MainClass.con.Close();
+
+                        int filenonew = GetLastFileno();
+                        filenonew = filenonew + 1;
+
+                        fileno.Text = filenonew.ToString();
 
                         ShowCustomer(guna2DataGridView1, IDDGV, FILENODGV, firstnamedgv, familynamedgv, subscriptionstartdatedgv, subscriptionenddatedgv, nutritionistnamedgv);
                     }
@@ -249,7 +254,7 @@ namespace HelloWorldSolutionIMS
                         MainClass.con.Open();
                         SqlCommand cmd = new SqlCommand("UPDATE Customer SET FileNo = @FileNo, FirstName = @FirstName, FamilyName = @FamilyName, Gender = @Gender, DOB = @DOB, Age = @Age, MobileNo = @MobileNo, Landline = @Landline, Email = @Email, SubscriptionStatus = @SubscriptionStatus, SubscriptionStartDate = @SubscriptionStartDate, SubscriptionEndDate = @SubscriptionEndDate, Branch = @Branch, LastVisitDate = @LastVisitDate, NutritionistName = @NutritionistName WHERE FileNo = @FileNo", MainClass.con);
 
-                        cmd.Parameters.AddWithValue("@FileNo", fileno_new); // Replace fileNoValue with the actual file number.
+                        cmd.Parameters.AddWithValue("@FileNo", guna2DataGridView1.CurrentRow.Cells[1].Value.ToString()); // Replace fileNoValue with the actual file number.
                         cmd.Parameters.AddWithValue("@FirstName", firstname.Text);
                         cmd.Parameters.AddWithValue("@FamilyName", familyname.Text);
                         cmd.Parameters.AddWithValue("@Gender", gender.Text);
@@ -270,7 +275,7 @@ namespace HelloWorldSolutionIMS
                         fileno.Text = "";
                         firstname.Text = "";
                         familyname.Text = "";
-                        gender.Text = "";
+                        gender.SelectedItem = null;
                         dob.Value = DateTime.Now; // Reset the date of birth to the current date or your default value.
                         age.Text = "";
                         mobileno.Text = "";
@@ -283,6 +288,11 @@ namespace HelloWorldSolutionIMS
                         lastvisitdate.Value = DateTime.Now; // Reset the last visit date to the current date or your default value.
                         nutritionistname.Text = "";
                         MainClass.con.Close();
+
+                        int filenonew = GetLastFileno();
+                        filenonew = filenonew + 1;
+
+                        fileno.Text = filenonew.ToString();
 
                         ShowCustomer(guna2DataGridView1, IDDGV, FILENODGV, firstnamedgv, familynamedgv, subscriptionstartdatedgv, subscriptionenddatedgv, nutritionistnamedgv);
                     }
@@ -487,6 +497,13 @@ namespace HelloWorldSolutionIMS
 
             // Use the 'years' variable as needed, for instance, displaying it in a label
             age.Text = years.ToString();
+        }
+        private void age_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
+            {
+                e.Handled = true; // Ignore the keypress if it's not a number or a control character
+            }
         }
     }
 }

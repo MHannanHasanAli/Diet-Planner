@@ -51,6 +51,9 @@ namespace HelloWorldSolutionIMS
                 da.Fill(dt);
 
                 // Clear the dropdown items before adding new ones
+                promotionname.DataSource = null;
+
+                // Clear the items (if DataSource is not being set)
                 promotionname.Items.Clear();
 
                 List<Deal> deals = new List<Deal>();
@@ -449,7 +452,7 @@ namespace HelloWorldSolutionIMS
                         promotiondetails.Text = "";
 
                         // Get the Ingredient ID to display in the confirmation message
-                        string paymentIDToDelete = guna2DataGridView1.CurrentRow.Cells[0].Value.ToString(); // Assuming the Ingredient ID is in the first cell of the selected row.
+                        string paymentIDToDelete = guna2DataGridView1.CurrentRow.Cells[1].Value.ToString(); // Assuming the Ingredient ID is in the first cell of the selected row.
 
                         // Ask for confirmation
                         DialogResult result = MessageBox.Show("Are you sure you want to delete Payment : " + paymentIDToDelete + "?", "Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
@@ -764,6 +767,27 @@ namespace HelloWorldSolutionIMS
 
         }
         private void promotionpercentage_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
+            {
+                e.Handled = true; // Ignore the keypress if it's not a number or a control character
+            }
+        }
+        private void floatlock(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && e.KeyChar != '.')
+            {
+                e.Handled = true; // Ignore the keypress if it's not a number, a control character, or a decimal point
+            }
+
+            // Allow only one decimal point
+            Guna.UI2.WinForms.Guna2TextBox textBox = (Guna.UI2.WinForms.Guna2TextBox)sender;
+            if (e.KeyChar == '.' && textBox.Text.Contains("."))
+            {
+                e.Handled = true;
+            }
+        }
+        private void intlock(object sender, KeyPressEventArgs e)
         {
             if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
             {

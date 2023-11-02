@@ -178,6 +178,7 @@
             this.age.ShadowDecoration.Parent = this.age;
             this.age.Size = new System.Drawing.Size(344, 38);
             this.age.TabIndex = 5;
+            this.age.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.age_KeyPress);
             // 
             // mobileno
             // 
