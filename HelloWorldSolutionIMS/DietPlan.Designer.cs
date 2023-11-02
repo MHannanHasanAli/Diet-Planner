@@ -767,7 +767,7 @@
             this.mobileno.ShadowDecoration.Parent = this.mobileno;
             this.mobileno.Size = new System.Drawing.Size(344, 29);
             this.mobileno.TabIndex = 7;
-            this.mobileno.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.intlock);
+            this.mobileno.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.mobileno_KeyPress);
             // 
             // label2
             // 

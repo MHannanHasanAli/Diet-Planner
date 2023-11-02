@@ -731,9 +731,9 @@ namespace HelloWorldSolutionIMS
         }
         private void mobileno_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && e.KeyChar != '+')
             {
-                e.Handled = true; // Ignore the keypress if it's not a number or a control character
+                e.Handled = true; // Ignore the keypress if it's not a number, a control character, or a plus sign
             }
         }
         private void fileno_KeyPress(object sender, KeyPressEventArgs e)

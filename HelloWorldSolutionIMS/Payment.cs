@@ -810,5 +810,13 @@ namespace HelloWorldSolutionIMS
                 e.Handled = true; // Ignore the keypress if it's not a number or a control character
             }
         }
+
+        private void mobileno_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && e.KeyChar != '+')
+            {
+                e.Handled = true; // Ignore the keypress if it's not a number, a control character, or a plus sign
+            }
+        }
     }
 }
