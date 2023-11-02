@@ -283,7 +283,7 @@ namespace HelloWorldSolutionIMS
                         fileno.Text = "";
                         firstname.Text = "";
                         familyname.Text = "";
-                        gender.Text = "";
+                        gender.SelectedItem = null;
                         age.Text = "";
                         mobileno.Text = "";
                         paymentname.Text = "";
@@ -356,7 +356,7 @@ namespace HelloWorldSolutionIMS
                         fileno.Text = "";
                         firstname.Text = "";
                         familyname.Text = "";
-                        gender.Text = "";
+                        gender.SelectedItem = null;
                         age.Text = "";
                         mobileno.Text = "";
                         paymentname.Text = "";
@@ -438,7 +438,7 @@ namespace HelloWorldSolutionIMS
                         fileno.Text = "";
                         firstname.Text = "";
                         familyname.Text = "";
-                        gender.Text = "";
+                        gender.SelectedItem = null;
                         age.Text = "";
                         mobileno.Text = "";
                         paymentname.Text = "";
@@ -537,8 +537,24 @@ namespace HelloWorldSolutionIMS
         }
         private void Add_Click(object sender, EventArgs e)
         {
+            fileno.Text = "";
+            firstname.Text = "";
+            familyname.Text = "";
+            gender.SelectedItem = null;
+            age.Text = "";
+            mobileno.Text = "";
+            paymentname.Text = "";
+            amount.Text = "";
+            startdate.Text = "";
+            enddate.Text = "";
+            amountafterpromotion.Text = "";
+            promotionpercentage.Text = "";
+            promotioncode.Text = "";
+            promotionname.Text = "";
+            promotiondetails.Text = "";
             tabControl1.SelectedIndex = 1;
             check = 1;
+            edit = 0;
             updatepromotions();
         }
         private void promotionpercentage_Leave(object sender, EventArgs e)

@@ -430,7 +430,7 @@
             this.Backtodeal.Name = "Backtodeal";
             this.Backtodeal.ShadowDecoration.Parent = this.Backtodeal;
             this.Backtodeal.Size = new System.Drawing.Size(199, 45);
-            this.Backtodeal.TabIndex = 276;
+            this.Backtodeal.TabIndex = 9;
             this.Backtodeal.Text = "Back To Deals";
             this.Backtodeal.Click += new System.EventHandler(this.Backtodeal_Click);
             // 
@@ -449,7 +449,7 @@
             this.save.Name = "save";
             this.save.ShadowDecoration.Parent = this.save;
             this.save.Size = new System.Drawing.Size(199, 45);
-            this.save.TabIndex = 275;
+            this.save.TabIndex = 8;
             this.save.Text = "Save Deal";
             this.save.Click += new System.EventHandler(this.save_Click);
             // 
@@ -476,7 +476,7 @@
             this.branch.SelectedText = "";
             this.branch.ShadowDecoration.Parent = this.branch;
             this.branch.Size = new System.Drawing.Size(300, 32);
-            this.branch.TabIndex = 274;
+            this.branch.TabIndex = 5;
             // 
             // label3
             // 
@@ -511,7 +511,7 @@
             this.nutritionist.SelectedText = "";
             this.nutritionist.ShadowDecoration.Parent = this.nutritionist;
             this.nutritionist.Size = new System.Drawing.Size(300, 32);
-            this.nutritionist.TabIndex = 272;
+            this.nutritionist.TabIndex = 6;
             // 
             // label4
             // 
@@ -545,7 +545,7 @@
             this.promotiondetails.SelectedText = "";
             this.promotiondetails.ShadowDecoration.Parent = this.promotiondetails;
             this.promotiondetails.Size = new System.Drawing.Size(300, 119);
-            this.promotiondetails.TabIndex = 270;
+            this.promotiondetails.TabIndex = 7;
             // 
             // enddate
             // 
@@ -553,7 +553,7 @@
             this.enddate.Location = new System.Drawing.Point(243, 230);
             this.enddate.Name = "enddate";
             this.enddate.Size = new System.Drawing.Size(276, 22);
-            this.enddate.TabIndex = 267;
+            this.enddate.TabIndex = 4;
             // 
             // startdate
             // 
@@ -561,7 +561,7 @@
             this.startdate.Location = new System.Drawing.Point(243, 182);
             this.startdate.Name = "startdate";
             this.startdate.Size = new System.Drawing.Size(276, 22);
-            this.startdate.TabIndex = 266;
+            this.startdate.TabIndex = 3;
             // 
             // label1
             // 
@@ -616,7 +616,7 @@
             this.promotionname.SelectedText = "";
             this.promotionname.ShadowDecoration.Parent = this.promotionname;
             this.promotionname.Size = new System.Drawing.Size(284, 32);
-            this.promotionname.TabIndex = 263;
+            this.promotionname.TabIndex = 0;
             // 
             // label12
             // 
@@ -651,7 +651,7 @@
             this.promotioncode.SelectedText = "";
             this.promotioncode.ShadowDecoration.Parent = this.promotioncode;
             this.promotioncode.Size = new System.Drawing.Size(284, 32);
-            this.promotioncode.TabIndex = 261;
+            this.promotioncode.TabIndex = 1;
             // 
             // label11
             // 
@@ -686,7 +686,7 @@
             this.promotionpercentage.SelectedText = "";
             this.promotionpercentage.ShadowDecoration.Parent = this.promotionpercentage;
             this.promotionpercentage.Size = new System.Drawing.Size(284, 32);
-            this.promotionpercentage.TabIndex = 259;
+            this.promotionpercentage.TabIndex = 2;
             this.promotionpercentage.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.promotionpercentage_KeyPress);
             // 
             // label10

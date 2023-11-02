@@ -65,6 +65,10 @@
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.label5 = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
+            this.firstnamesearch = new Guna.UI2.WinForms.Guna2TextBox();
+            this.filenosearch = new Guna.UI2.WinForms.Guna2TextBox();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.panel2 = new System.Windows.Forms.Panel();
             this.slot = new Guna.UI2.WinForms.Guna2TextBox();
@@ -88,10 +92,6 @@
             this.label15 = new System.Windows.Forms.Label();
             this.label13 = new System.Windows.Forms.Label();
             this.label14 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
-            this.firstnamesearch = new Guna.UI2.WinForms.Guna2TextBox();
-            this.filenosearch = new Guna.UI2.WinForms.Guna2TextBox();
             back = new Guna.UI2.WinForms.Guna2Button();
             ((System.ComponentModel.ISupportInitialize)(this.guna2DataGridView1)).BeginInit();
             this.contextMenuStrip1.SuspendLayout();
@@ -341,6 +341,76 @@
             this.panel1.Size = new System.Drawing.Size(1241, 814);
             this.panel1.TabIndex = 0;
             // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F);
+            this.label5.Location = new System.Drawing.Point(31, 71);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(101, 24);
+            this.label5.TabIndex = 52;
+            this.label5.Text = "First Name";
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F);
+            this.label6.Location = new System.Drawing.Point(31, 21);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(76, 24);
+            this.label6.TabIndex = 51;
+            this.label6.Text = "File No.";
+            // 
+            // firstnamesearch
+            // 
+            this.firstnamesearch.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.firstnamesearch.DefaultText = "";
+            this.firstnamesearch.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
+            this.firstnamesearch.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
+            this.firstnamesearch.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.firstnamesearch.DisabledState.Parent = this.firstnamesearch;
+            this.firstnamesearch.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.firstnamesearch.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.firstnamesearch.FocusedState.Parent = this.firstnamesearch;
+            this.firstnamesearch.Font = new System.Drawing.Font("Segoe UI", 11F);
+            this.firstnamesearch.ForeColor = System.Drawing.Color.Black;
+            this.firstnamesearch.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.firstnamesearch.HoverState.Parent = this.firstnamesearch;
+            this.firstnamesearch.Location = new System.Drawing.Point(160, 71);
+            this.firstnamesearch.Margin = new System.Windows.Forms.Padding(5, 6, 5, 6);
+            this.firstnamesearch.Name = "firstnamesearch";
+            this.firstnamesearch.PasswordChar = '\0';
+            this.firstnamesearch.PlaceholderText = "";
+            this.firstnamesearch.SelectedText = "";
+            this.firstnamesearch.ShadowDecoration.Parent = this.firstnamesearch;
+            this.firstnamesearch.Size = new System.Drawing.Size(274, 38);
+            this.firstnamesearch.TabIndex = 50;
+            // 
+            // filenosearch
+            // 
+            this.filenosearch.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.filenosearch.DefaultText = "";
+            this.filenosearch.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
+            this.filenosearch.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
+            this.filenosearch.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.filenosearch.DisabledState.Parent = this.filenosearch;
+            this.filenosearch.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.filenosearch.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.filenosearch.FocusedState.Parent = this.filenosearch;
+            this.filenosearch.Font = new System.Drawing.Font("Segoe UI", 11F);
+            this.filenosearch.ForeColor = System.Drawing.Color.Black;
+            this.filenosearch.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.filenosearch.HoverState.Parent = this.filenosearch;
+            this.filenosearch.Location = new System.Drawing.Point(160, 21);
+            this.filenosearch.Margin = new System.Windows.Forms.Padding(5, 6, 5, 6);
+            this.filenosearch.Name = "filenosearch";
+            this.filenosearch.PasswordChar = '\0';
+            this.filenosearch.PlaceholderText = "";
+            this.filenosearch.SelectedText = "";
+            this.filenosearch.ShadowDecoration.Parent = this.filenosearch;
+            this.filenosearch.Size = new System.Drawing.Size(274, 38);
+            this.filenosearch.TabIndex = 49;
+            // 
             // tabPage2
             // 
             this.tabPage2.Controls.Add(this.panel2);
@@ -502,7 +572,7 @@
             this.Save.Name = "Save";
             this.Save.ShadowDecoration.Parent = this.Save;
             this.Save.Size = new System.Drawing.Size(199, 45);
-            this.Save.TabIndex = 56;
+            this.Save.TabIndex = 4;
             this.Save.Text = "Save";
             this.Save.Click += new System.EventHandler(this.Save_Click);
             // 
@@ -784,7 +854,7 @@
             this.fileno.SelectedText = "";
             this.fileno.ShadowDecoration.Parent = this.fileno;
             this.fileno.Size = new System.Drawing.Size(320, 38);
-            this.fileno.TabIndex = 43;
+            this.fileno.TabIndex = 0;
             this.fileno.TextChanged += new System.EventHandler(this.fileno_TextChanged);
             this.fileno.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.fileno_KeyPress);
             // 
@@ -811,7 +881,7 @@
             this.firstname.SelectedText = "";
             this.firstname.ShadowDecoration.Parent = this.firstname;
             this.firstname.Size = new System.Drawing.Size(320, 38);
-            this.firstname.TabIndex = 44;
+            this.firstname.TabIndex = 1;
             // 
             // familyname
             // 
@@ -836,7 +906,7 @@
             this.familyname.SelectedText = "";
             this.familyname.ShadowDecoration.Parent = this.familyname;
             this.familyname.Size = new System.Drawing.Size(320, 38);
-            this.familyname.TabIndex = 45;
+            this.familyname.TabIndex = 2;
             // 
             // mobileno
             // 
@@ -861,7 +931,7 @@
             this.mobileno.SelectedText = "";
             this.mobileno.ShadowDecoration.Parent = this.mobileno;
             this.mobileno.Size = new System.Drawing.Size(320, 38);
-            this.mobileno.TabIndex = 46;
+            this.mobileno.TabIndex = 3;
             this.mobileno.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.mobileno_KeyPress);
             // 
             // label12
@@ -903,76 +973,6 @@
             this.label14.Size = new System.Drawing.Size(121, 24);
             this.label14.TabIndex = 49;
             this.label14.Text = "Family Name";
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F);
-            this.label5.Location = new System.Drawing.Point(31, 71);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(101, 24);
-            this.label5.TabIndex = 52;
-            this.label5.Text = "First Name";
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F);
-            this.label6.Location = new System.Drawing.Point(31, 21);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(76, 24);
-            this.label6.TabIndex = 51;
-            this.label6.Text = "File No.";
-            // 
-            // firstnamesearch
-            // 
-            this.firstnamesearch.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.firstnamesearch.DefaultText = "";
-            this.firstnamesearch.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
-            this.firstnamesearch.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
-            this.firstnamesearch.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.firstnamesearch.DisabledState.Parent = this.firstnamesearch;
-            this.firstnamesearch.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.firstnamesearch.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.firstnamesearch.FocusedState.Parent = this.firstnamesearch;
-            this.firstnamesearch.Font = new System.Drawing.Font("Segoe UI", 11F);
-            this.firstnamesearch.ForeColor = System.Drawing.Color.Black;
-            this.firstnamesearch.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.firstnamesearch.HoverState.Parent = this.firstnamesearch;
-            this.firstnamesearch.Location = new System.Drawing.Point(160, 71);
-            this.firstnamesearch.Margin = new System.Windows.Forms.Padding(5, 6, 5, 6);
-            this.firstnamesearch.Name = "firstnamesearch";
-            this.firstnamesearch.PasswordChar = '\0';
-            this.firstnamesearch.PlaceholderText = "";
-            this.firstnamesearch.SelectedText = "";
-            this.firstnamesearch.ShadowDecoration.Parent = this.firstnamesearch;
-            this.firstnamesearch.Size = new System.Drawing.Size(274, 38);
-            this.firstnamesearch.TabIndex = 50;
-            // 
-            // filenosearch
-            // 
-            this.filenosearch.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.filenosearch.DefaultText = "";
-            this.filenosearch.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
-            this.filenosearch.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
-            this.filenosearch.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.filenosearch.DisabledState.Parent = this.filenosearch;
-            this.filenosearch.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.filenosearch.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.filenosearch.FocusedState.Parent = this.filenosearch;
-            this.filenosearch.Font = new System.Drawing.Font("Segoe UI", 11F);
-            this.filenosearch.ForeColor = System.Drawing.Color.Black;
-            this.filenosearch.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.filenosearch.HoverState.Parent = this.filenosearch;
-            this.filenosearch.Location = new System.Drawing.Point(160, 21);
-            this.filenosearch.Margin = new System.Windows.Forms.Padding(5, 6, 5, 6);
-            this.filenosearch.Name = "filenosearch";
-            this.filenosearch.PasswordChar = '\0';
-            this.filenosearch.PlaceholderText = "";
-            this.filenosearch.SelectedText = "";
-            this.filenosearch.ShadowDecoration.Parent = this.filenosearch;
-            this.filenosearch.Size = new System.Drawing.Size(274, 38);
-            this.filenosearch.TabIndex = 49;
             // 
             // Appointment
             // 

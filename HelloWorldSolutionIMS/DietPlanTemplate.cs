@@ -155,6 +155,7 @@ namespace HelloWorldSolutionIMS
             iron.Text = "";
             iodine.Text = "";
             bbox.Text = "";
+            edit = 0;
             tabControl1.SelectedIndex = 1;
         }
         private void Meals_Click(object sender, EventArgs e)

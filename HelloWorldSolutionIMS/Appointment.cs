@@ -582,6 +582,10 @@ namespace HelloWorldSolutionIMS
                                     cmd.ExecuteNonQuery();
                                     MessageBox.Show("Appointment updated successfully");
                                     MainClass.con.Close();
+                                    fileno.Text = "";
+                                    firstname.Text = "";
+                                    familyname.Text = "";
+                                    mobileno.Text = "";
                                 }
                                 catch (Exception ex)
                                 {
@@ -613,6 +617,10 @@ namespace HelloWorldSolutionIMS
                                     cmd.ExecuteNonQuery();
                                     MessageBox.Show("Appointment updated successfully");
                                     MainClass.con.Close();
+                                    fileno.Text = "";
+                                    firstname.Text = "";
+                                    familyname.Text = "";
+                                    mobileno.Text = "";
                                 }
                                 catch (Exception ex)
                                 {
@@ -644,6 +652,10 @@ namespace HelloWorldSolutionIMS
                                     cmd.ExecuteNonQuery();
                                     MessageBox.Show("Appointment updated successfully");
                                     MainClass.con.Close();
+                                    fileno.Text = "";
+                                    firstname.Text = "";
+                                    familyname.Text = "";
+                                    mobileno.Text = "";
                                 }
                                 catch (Exception ex)
                                 {
@@ -675,6 +687,10 @@ namespace HelloWorldSolutionIMS
                                     cmd.ExecuteNonQuery();
                                     MessageBox.Show("Appointment updated successfully");
                                     MainClass.con.Close();
+                                    fileno.Text = "";
+                                    firstname.Text = "";
+                                    familyname.Text = "";
+                                    mobileno.Text = "";
                                 }
                                 catch (Exception ex)
                                 {
@@ -1075,6 +1091,11 @@ namespace HelloWorldSolutionIMS
         }
         private void New_Click(object sender, EventArgs e)
         {
+            fileno.Text = "";
+            firstname.Text = "";
+            familyname.Text = "";
+            mobileno.Text = "";
+            edit = 0;
             tabControl1.SelectedIndex = 1;
             slotupdate();
         }

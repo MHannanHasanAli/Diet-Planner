@@ -783,6 +783,7 @@ namespace HelloWorldSolutionIMS
             iron.Text = "";
             iodine.Text = "";
             bbox.Text = "";
+            edit = 0;
             UpdateDietPlanTemplate();
             updatepreviousdietplan();
         }

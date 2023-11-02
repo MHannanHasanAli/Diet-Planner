@@ -178,6 +178,15 @@ namespace HelloWorldSolutionIMS
         }
         private void Add_Click(object sender, EventArgs e)
         {
+            promotionname.Text = "";
+            promotioncode.Text = "";
+            promotionpercentage.Text = "";
+            startdate.Text = "";
+            enddate.Text = "";
+            nutritionist.Text = "";
+            branch.Text = "";
+            promotiondetails.Text = "";
+            edit = 0;
             tabControl1.SelectedIndex = 1;
         }
         private void Backtodeal_Click(object sender, EventArgs e)

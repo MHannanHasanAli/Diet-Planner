@@ -1,4 +1,5 @@
-﻿using iTextSharp.text.pdf.codec.wmf;
+﻿using Guna.UI2.WinForms;
+using iTextSharp.text.pdf.codec.wmf;
 using RestSharp.Extensions;
 using System;
 using System.Collections.Generic;
@@ -25,6 +26,8 @@ namespace HelloWorldSolutionIMS
             fats.TextChanged += UpdateChart;
             protein.TextChanged += UpdateChart;
             //fibers.TextChanged += UpdateChart;
+
+           
 
         }
 
@@ -69,7 +72,7 @@ namespace HelloWorldSolutionIMS
                         double sugerd = Convert.ToDouble(reader5["SUGER"]);
                         double magnesiumd = Convert.ToDouble(reader5["MAGNESIUM"]);
                         double phosphord = Convert.ToDouble(reader5["PHOSPHOR"]);
-                        string ingredientend = reader5["IngredientEn"].ToString();
+                        int ingredientend = int.Parse(reader5["IngredientEn"].ToString());
                         int ingredientard = int.Parse(reader5["IngredientAr"].ToString());
                         int Quantityd = int.Parse(reader5["Quantity"].ToString());
                         string unitd = (reader5["UNIT"]).ToString();
@@ -207,10 +210,23 @@ namespace HelloWorldSolutionIMS
                         row.Cells.Add(cell1);
                         row.Cells.Add(comboCell);
 
+                        DataGridViewComboBoxCell comboCell2 = new DataGridViewComboBoxCell();
+                        comboCell2.DataSource = GetIngredientsEN(ingredientend); // Use different items for the second combo box
+                        comboCell2.DisplayMember = "Name";
+                        comboCell2.ValueMember = "ID";
+                        comboCell2.Value = GetIngredientsEN(ingredientend)[0].ID;
+
+                        // Create a DataGridViewTextBoxCell for the first cell (just an assumption for the text cell).
+
+
+                        // Add cells to the row
+
+                        row.Cells.Add(comboCell2);
+
                         // Add the row to the DataGridView.
                         guna2DataGridView1.Rows.Add(row);
                         // Set the calculated values for other cells in the row.
-                        guna2DataGridView1.Rows[i].Cells[2].Value = ingredientend;
+                        //guna2DataGridView1.Rows[i].Cells[2].Value = ingredientend;
                         guna2DataGridView1.Rows[i].Cells[3].Value = Quantityd;
                         guna2DataGridView1.Rows[i].Cells[4].Value = caloriesd;
                         guna2DataGridView1.Rows[i].Cells[5].Value = Proteind;
@@ -302,7 +318,8 @@ namespace HelloWorldSolutionIMS
             public string Name { get; set; }
         }
         List<Ingredients> ingredientsList = new List<Ingredients>();
-        
+        List<Ingredients> ingredientsListen = new List<Ingredients>();
+
         static int titlecheck = 0;
         static int edit = 0;
         static int removeflag = 0;
@@ -534,7 +551,7 @@ namespace HelloWorldSolutionIMS
             save.Visible = false;
             
             ShowMeals(guna2DataGridView2, iddgv, mealardgv, mealendgv, caloriesdgv, proteinmaindgv, fatsmaindgv, carbohydratesmaindgv, calciummaindgv, fibermaindgv, sodiummaindgv);
-            //ShowMeals(guna2DataGridView2, iddgv, mealardgv, mealendgv, caloriedgv, proteindgv, fatsdgv, carbohydratesdgv, calciumdgv, fiberdgv, sodiumdgv);
+            guna2DataGridView1.EditingControlShowing += guna2DataGridView1_EditingControlShowing;
         }
         List<int> idlist = new List<int>();
         private List<int> GetIngredientsForMeal()
@@ -567,17 +584,17 @@ namespace HelloWorldSolutionIMS
             try
             {
                 MainClass.con.Open();
-                ingredientsList.Clear();
+                ingredientsListen.Clear();
                 SqlCommand cmdfour = new SqlCommand("SELECT ID, INGREDIENT_EN FROM Ingredient WHERE ID = @id", MainClass.con);
                 cmdfour.Parameters.AddWithValue("@id", id_ar);
                 SqlDataReader reader3 = cmdfour.ExecuteReader();
-                ingredientsList.Clear();
+                ingredientsListen.Clear();
 
                 while (reader3.Read())
                 {
                     int id = Convert.ToInt32(reader3["ID"]);
                     string ingredientAr = reader3["INGREDIENT_EN"].ToString();
-                    ingredientsList.Add(new Ingredients { ID = id, Name = ingredientAr });
+                    ingredientsListen.Add(new Ingredients { ID = id, Name = ingredientAr });
                 }
                 reader3.Close();
                 MainClass.con.Close();
@@ -594,7 +611,7 @@ namespace HelloWorldSolutionIMS
                         continue;
                     }
                     string ingredientAr = reader2["INGREDIENT_EN"].ToString();
-                    ingredientsList.Add(new Ingredients { ID = id, Name = ingredientAr });
+                    ingredientsListen.Add(new Ingredients { ID = id, Name = ingredientAr });
                 }
                 reader2.Close();
                 MainClass.con.Close();
@@ -604,9 +621,8 @@ namespace HelloWorldSolutionIMS
                 MainClass.con.Close();
                 MessageBox.Show(ex.Message);
             }
-            return ingredientsList;
+            return ingredientsListen;
         }
-
         private List<Ingredients> GetIngredients(int id_ar)
         {
             try
@@ -650,6 +666,31 @@ namespace HelloWorldSolutionIMS
                 MessageBox.Show(ex.Message);
             }
             return ingredientsList;
+        }
+        private List<Ingredients> GetIngredientsEn()
+        {
+            try
+            {
+                MainClass.con.Open();
+                ingredientsListen.Clear();
+                SqlCommand cmd = new SqlCommand("SELECT ID, INGREDIENT_EN FROM Ingredient", MainClass.con);
+                SqlDataReader reader = cmd.ExecuteReader();
+
+                while (reader.Read())
+                {
+                    int id = Convert.ToInt32(reader["ID"]);
+                    string ingredientAr = reader["INGREDIENT_EN"].ToString();
+                    ingredientsListen.Add(new Ingredients { ID = id, Name = ingredientAr });
+                }
+
+                MainClass.con.Close();
+            }
+            catch (Exception ex)
+            {
+                MainClass.con.Close();
+                MessageBox.Show(ex.Message);
+            }
+            return ingredientsListen;
         }
         private List<Ingredients> GetIngredients()
         {
@@ -793,24 +834,28 @@ namespace HelloWorldSolutionIMS
 
             DataGridViewRow row = new DataGridViewRow();
 
-            // Create a DataGridViewComboBoxCell for the second cell.
-            DataGridViewComboBoxCell comboCell = new DataGridViewComboBoxCell();
-
-            // Clear the items in the combo cell to avoid duplicates
-            comboCell.Items.Clear();
-
-            comboCell.DataSource = GetIngredients();
-            comboCell.DisplayMember = "Name";
-            comboCell.ValueMember = "ID";
-
-            // Set the default selected value for the combo box.
-            comboCell.Value = GetIngredients()[0].ID; // Replace with the desired default value.
-
-            // Create a DataGridViewTextBoxCell for the first cell.
+            // Create the first DataGridViewComboBoxCell for the first column.
+            DataGridViewComboBoxCell comboCell1 = new DataGridViewComboBoxCell();
+            comboCell1.DataSource = GetIngredients();
+            comboCell1.DisplayMember = "Name";
+            comboCell1.ValueMember = "ID";
+            comboCell1.Value = GetIngredients()[0].ID;
             DataGridViewTextBoxCell cell1 = new DataGridViewTextBoxCell();
-
             row.Cells.Add(cell1);
-            row.Cells.Add(comboCell);
+            row.Cells.Add(comboCell1);
+            // Create the second DataGridViewComboBoxCell for the second column.
+            DataGridViewComboBoxCell comboCell2 = new DataGridViewComboBoxCell();
+            comboCell2.DataSource = GetIngredientsEn(); // Use different items for the second combo box
+            comboCell2.DisplayMember = "Name";
+            comboCell2.ValueMember = "ID";
+            comboCell2.Value = GetIngredientsEn()[0].ID;
+
+            // Create a DataGridViewTextBoxCell for the first cell (just an assumption for the text cell).
+
+
+            // Add cells to the row
+
+            row.Cells.Add(comboCell2);
 
             // Add the row to the DataGridView.
             guna2DataGridView1.Rows.Add(row);
@@ -862,7 +907,7 @@ namespace HelloWorldSolutionIMS
                         string unit = (reader["CLASSIFICATION"]).ToString();
 
                         // Set the calculated values for other cells in the row.
-                        guna2DataGridView1.Rows[e.RowIndex].Cells[2].Value = ingredienten;
+                        //guna2DataGridView1.Rows[e.RowIndex].Cells[2].Value = ingredienten;
                         guna2DataGridView1.Rows[e.RowIndex].Cells[4].Value = calories;
                         guna2DataGridView1.Rows[e.RowIndex].Cells[5].Value = Protein;
                         guna2DataGridView1.Rows[e.RowIndex].Cells[6].Value = fats;
@@ -942,6 +987,7 @@ namespace HelloWorldSolutionIMS
                     MainClass.con.Close();
                 }
             }
+
         }
         private int GetLastMeal()
         {
@@ -1010,15 +1056,15 @@ namespace HelloWorldSolutionIMS
                         cmd.ExecuteNonQuery();
                         MessageBox.Show("Meal added successfully");
                         MainClass.con.Close();
-                        
+
                         mealar.Text = "";
                         mealen.Text = "";
                         groupnar.Text = "";
                         groupnen.Text = "";
                         groupcar.Text = "";
                         groupcen.Text = "";
-                        classification.Text = "";
-                        category.Text = "";
+                        classification.SelectedItem = null;
+                        category.SelectedItem = null;
                         calories.Text = "";
                         fats.Text = "";
                         fibers.Text = "";
@@ -1035,10 +1081,12 @@ namespace HelloWorldSolutionIMS
                         iron.Text = "";
                         iodine.Text = "";
                         bbox.Text = "";
-                    
+                        notes.Text = "";
+                        preparation.Text = "";
 
-                        
-                        MainClass.con.Close();
+
+
+
                         tabControl1.SelectedIndex = 0;
                         ShowMeals(guna2DataGridView2, iddgv, mealardgv, mealendgv, caloriesdgv, proteinmaindgv, fatsmaindgv, carbohydratesmaindgv, calciummaindgv, fibermaindgv, sodiummaindgv);
 
@@ -1168,6 +1216,7 @@ namespace HelloWorldSolutionIMS
 
                         cmd.ExecuteNonQuery();
                         MessageBox.Show("Meal updated successfully");
+                        MainClass.con.Close();
                         ShowMeals(guna2DataGridView2, iddgv, mealardgv, mealendgv, caloriesdgv, proteinmaindgv, fatsmaindgv, carbohydratesmaindgv, calciummaindgv, fibermaindgv, sodiummaindgv);
 
                         // Clear the input controls or set them to default values.
@@ -1177,8 +1226,8 @@ namespace HelloWorldSolutionIMS
                         groupnen.Text = "";
                         groupcar.Text = "";
                         groupcen.Text = "";
-                        classification.Text = "";
-                        category.Text = "";
+                        classification.SelectedItem = null;
+                        category.SelectedItem = null;
                         calories.Text = "";
                         fats.Text = "";
                         fibers.Text = "";
@@ -1197,7 +1246,6 @@ namespace HelloWorldSolutionIMS
                         bbox.Text = "";
                         notes.Text = "";
                         preparation.Text = "";
-                        MainClass.con.Close();
 
 
 
@@ -1308,6 +1356,35 @@ namespace HelloWorldSolutionIMS
         }
         private void Add_Click(object sender, EventArgs e)
         {
+            mealar.Text = "";
+            mealen.Text = "";
+            groupnar.Text = "";
+            groupnen.Text = "";
+            groupcar.Text = "";
+            groupcen.Text = "";
+            classification.SelectedItem = null;
+            category.SelectedItem = null;
+            calories.Text = "";
+            fats.Text = "";
+            fibers.Text = "";
+            potassium.Text = "";
+            water.Text = "";
+            sugar.Text = "";
+            calcium.Text = "";
+            abox.Text = "";
+            protein.Text = "";
+            carbohydrates.Text = "";
+            sodium.Text = "";
+            phosphor.Text = "";
+            magnesium.Text = "";
+            iron.Text = "";
+            iodine.Text = "";
+            bbox.Text = "";
+            notes.Text = "";
+            preparation.Text = "";
+            edit = 0;
+            guna2DataGridView1.Rows.Clear();
+
             tabControl1.SelectedIndex = 2;
         }
         private void deleteToolStripMenuItem_Click(object sender, EventArgs e)
@@ -1474,6 +1551,73 @@ namespace HelloWorldSolutionIMS
                     simulateDoubleClick = false;
                 };
                 timer.Start();
+            }
+        }
+        private void guna2DataGridView1_EditingControlShowing(object sender, DataGridViewEditingControlShowingEventArgs e)
+        {
+            if (e.Control is ComboBox)
+            {
+                ComboBox comboBox = e.Control as ComboBox;
+
+                // Unsubscribe previously subscribed event to avoid adding the handler multiple times
+                comboBox.SelectedIndexChanged -= ComboBox_SelectedIndexChanged;
+
+                // Subscribe to the SelectedIndexChanged event to detect changes in the ComboBox
+                comboBox.SelectedIndexChanged += ComboBox_SelectedIndexChanged;
+            }
+        }
+        private void ComboBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (sender is ComboBox comboBox)
+            {
+                // Get the row and column index of the changed cell
+                int rowIndex = guna2DataGridView1.CurrentCell.RowIndex;
+                int columnIndex = guna2DataGridView1.CurrentCell.ColumnIndex;
+                if (comboBox.SelectedValue != null)
+                {
+                    if (comboBox.SelectedValue != null && int.TryParse(comboBox.SelectedValue.ToString(), out int selectedValue))
+                    {
+                        selectedValue = (int)comboBox.SelectedValue; // Change this to the appropriate data type if needed
+                        guna2DataGridView1.Rows.RemoveAt(rowIndex);
+                        DataGridViewRow row = new DataGridViewRow();
+
+                        // Create the first DataGridViewComboBoxCell for the first column.
+                        DataGridViewComboBoxCell comboCell1 = new DataGridViewComboBoxCell();
+                        comboCell1.DataSource = GetIngredients(selectedValue);
+                        comboCell1.DisplayMember = "Name";
+                        comboCell1.ValueMember = "ID";
+                        comboCell1.Value = GetIngredients(selectedValue)[0].ID;
+
+                        DataGridViewTextBoxCell cell1 = new DataGridViewTextBoxCell();
+                        row.Cells.Add(cell1);
+                        row.Cells.Add(comboCell1);
+                        // Create the second DataGridViewComboBoxCell for the second column.
+
+                        DataGridViewComboBoxCell comboCell2 = new DataGridViewComboBoxCell();
+                        comboCell2.DataSource = GetIngredientsEN(selectedValue); // Use different items for the second combo box
+                        comboCell2.DisplayMember = "Name";
+                        comboCell2.ValueMember = "ID";
+                        comboCell2.Value = GetIngredientsEN(selectedValue)[0].ID;
+
+                        // Create a DataGridViewTextBoxCell for the first cell (just an assumption for the text cell).
+
+
+                        // Add cells to the row
+
+                        row.Cells.Add(comboCell2);
+
+                        // Add the row to the DataGridView.
+                        guna2DataGridView1.Rows.Add(row);
+                    }
+                    else
+                    {
+                        MessageBox.Show("You are selecting same option again!");
+                    }
+                }
+                // Access the selected value in the ComboBox
+
+                // Do something with the selected value or perform additional actions
+                // For instance, you can update other cells in the same row or process the selected value
             }
         }
     }
