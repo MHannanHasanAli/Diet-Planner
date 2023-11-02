@@ -103,6 +103,7 @@
             this.fileno.ShadowDecoration.Parent = this.fileno;
             this.fileno.Size = new System.Drawing.Size(344, 38);
             this.fileno.TabIndex = 0;
+            this.fileno.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.fileno_KeyPress);
             // 
             // firstname
             // 
