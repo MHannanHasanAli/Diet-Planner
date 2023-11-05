@@ -197,6 +197,7 @@
             // 
             // panel1
             // 
+            this.panel1.BackColor = System.Drawing.Color.White;
             this.panel1.Controls.Add(this.bodycomp);
             this.panel1.Controls.Add(this.guna2DataGridView1);
             this.panel1.Controls.Add(this.lastvisitdate);
@@ -241,7 +242,7 @@
             // 
             this.bodycomp.AutoSize = true;
             this.bodycomp.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.bodycomp.Location = new System.Drawing.Point(579, 333);
+            this.bodycomp.Location = new System.Drawing.Point(878, 343);
             this.bodycomp.Name = "bodycomp";
             this.bodycomp.Size = new System.Drawing.Size(187, 25);
             this.bodycomp.TabIndex = 66;
@@ -912,6 +913,7 @@
             this.Close.Size = new System.Drawing.Size(139, 45);
             this.Close.TabIndex = 83;
             this.Close.Text = "Close";
+            this.Close.Click += new System.EventHandler(this.Close_Click);
             // 
             // EditBMI
             // 

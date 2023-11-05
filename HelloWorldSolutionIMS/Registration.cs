@@ -599,6 +599,15 @@ namespace HelloWorldSolutionIMS
         }
         private void AddBMI_Click(object sender, EventArgs e)
         {
+            bca.Text = "";
+            height.Text = "";
+            weight.Text = "";
+            protein.Text = "";
+            water.Text = "";
+            minerals.Text = "";
+            abdominalfats.Text = "";
+            visceralfats.Text = "";
+            fats.Text = "";
             tabControl1.SelectedIndex = 2;
         }
 
@@ -665,6 +674,7 @@ namespace HelloWorldSolutionIMS
                         MainClass.con.Close();
                         ShowBodyComposition(guna2DataGridView2, idbc, datebc, bcabc, heightbc, weightbc, agebc, fatsbc, proteinbc, waterbc, mineralsbc, visceralfatsbc, abdominalfatsbc, bmibc, bmrbc);
                         tabControl1.SelectedIndex = 1;
+                      
                     }
                     catch (Exception ex)
                     {
@@ -684,7 +694,7 @@ namespace HelloWorldSolutionIMS
                     try
                     {
                         MainClass.con.Open();
-                        SqlCommand cmd = new SqlCommand("UPDATE BodyComposition SET DATE = @DATE, BCA = @BCA, LENGTH = @LENGTH, WEIGHT = @WEIGHT, AGE = @AGE, FATS = @FATS, PROTEIN = @PROTEIN, WATER = @WATER, MINERALS = @MINERALS, VISCERAL_FATS = @VISCERAL_FATS, ABDOMINAL_FAT = @ABDOMINAL_FAT, BMI = @BMI, BMR = @BMR WHERE CustomerID = @CustomerID", MainClass.con);
+                        SqlCommand cmd = new SqlCommand("UPDATE BodyComposition SET DATE = @DATE, BCA = @BCA, LENGTH = @LENGTH, WEIGHT = @WEIGHT, AGE = @AGE, FATS = @FATS, PROTEIN = @PROTEIN, WATER = @WATER, MINERALS = @MINERALS, VISCERAL_FATS = @VISCERAL_FATS, ABDOMINAL_FAT = @ABDOMINAL_FAT, BMI = @BMI, BMR = @BMR WHERE ID = @CustomerID", MainClass.con);
 
                         // Assuming you have a customer ID, replace customerIDValue with the actual ID.
                         int customerIDValue = int.Parse(filenobmi.Text); // Get the actual customer ID from your application logic.
@@ -730,7 +740,7 @@ namespace HelloWorldSolutionIMS
 
                         cmd.Parameters.AddWithValue("@BMI", bmi); // Replace bmiValue with the actual value.
                         cmd.Parameters.AddWithValue("@BMR", bmr); // Replace bmrValue with the actual value.
-                        cmd.Parameters.AddWithValue("@CustomerID", filenoforbmi);
+                        cmd.Parameters.AddWithValue("@CustomerID", BMIID);
 
                         cmd.ExecuteNonQuery();
                         MessageBox.Show("Body composition data updated successfully");
@@ -740,8 +750,13 @@ namespace HelloWorldSolutionIMS
                         weight.Text = "";
                         protein.Text = "";
                         water.Text = "";
+                        minerals.Text = "";
+                        abdominalfats.Text = "";
+                        visceralfats.Text = "";
+                        fats.Text = "";
                         ShowBodyComposition(guna2DataGridView2, idbc, datebc, bcabc, heightbc, weightbc, agebc, fatsbc, proteinbc, waterbc, mineralsbc, visceralfatsbc, abdominalfatsbc, bmibc, bmrbc);
                         tabControl1.SelectedIndex = 1;
+                        edit = 1;
                     }
                     catch (Exception ex)
                     {
@@ -800,14 +815,14 @@ namespace HelloWorldSolutionIMS
                 MessageBox.Show(ex.Message);
             }
         }
-
+        static string BMIID;
         private void EditBMI_Click(object sender, EventArgs e)
         {
             edit = 1;
             try
             {
                 int selectedIndex = guna2DataGridView2.SelectedRows[0].Index;
-                string BMIID = guna2DataGridView2.SelectedRows[0].Cells[0].Value.ToString();
+                BMIID = guna2DataGridView2.SelectedRows[0].Cells[0].Value.ToString();
                 filenoforbmi = BMIID;
                 MainClass.con.Open();
                 SqlCommand cmd = new SqlCommand("SELECT * FROM BodyComposition WHERE ID = @ID", MainClass.con);
@@ -844,6 +859,11 @@ namespace HelloWorldSolutionIMS
                 MessageBox.Show(ex.Message);
             }
 
+        }
+
+        private void Close_Click(object sender, EventArgs e)
+        {
+            tabControl1.SelectedIndex = 0;
         }
     }
 }
