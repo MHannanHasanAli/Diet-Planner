@@ -813,9 +813,18 @@ namespace HelloWorldSolutionIMS
 
         private void mobileno_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && e.KeyChar != '+')
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
             {
-                e.Handled = true; // Ignore the keypress if it's not a number, a control character, or a plus sign
+                e.Handled = true; // Ignore the keypress if it's not a number or a control character
+            }
+
+            if (!char.IsControl(e.KeyChar) && char.IsDigit(e.KeyChar))
+            {
+                string text = mobileno.Text + e.KeyChar;
+                if (!int.TryParse(text, out int number) || text.Length > 10 || (text.Length == 1 && e.KeyChar != '0'))
+                {
+                    e.Handled = true; // Ensure the text remains an integer, doesn't exceed 10 digits, and starts with 0
+                }
             }
         }
     }

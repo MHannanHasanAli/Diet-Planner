@@ -28,14 +28,14 @@ namespace HelloWorldSolutionIMS
         static int check = 0;
         static int stopper = 0;
         static int AppointmentIDToEdit;
-        private void ShowAppointments(DataGridView dgv, DataGridViewColumn id, DataGridViewColumn fileno, DataGridViewColumn firstname, DataGridViewColumn familyname, DataGridViewColumn room, DataGridViewColumn slot, DataGridViewColumn date)
+        private void ShowAppointments(DataGridView dgv, DataGridViewColumn id, DataGridViewColumn fileno, DataGridViewColumn firstname, DataGridViewColumn familyname, DataGridViewColumn mobile, DataGridViewColumn room, DataGridViewColumn slot, DataGridViewColumn date)
         {
             SqlCommand cmd;
             try
             {
                 MainClass.con.Open();
 
-                cmd = new SqlCommand("SELECT Id, Fileno, Firstname, Familyname, Room, Slot, Date FROM Appointment", MainClass.con);
+                cmd = new SqlCommand("SELECT Id, Fileno, Firstname, Familyname, Room, Slot, Date, MOBILENO FROM Appointment", MainClass.con);
 
                 SqlDataAdapter da = new SqlDataAdapter(cmd);
                 DataTable dt = new DataTable();
@@ -48,7 +48,7 @@ namespace HelloWorldSolutionIMS
                 room.DataPropertyName = dt.Columns["Room"].ColumnName;
                 slot.DataPropertyName = dt.Columns["Slot"].ColumnName;
                 date.DataPropertyName = dt.Columns["Date"].ColumnName;
-
+                mobile.DataPropertyName = dt.Columns["MOBILENO"].ColumnName;
                 dgv.DataSource = dt;
                 MainClass.con.Close();
             }
@@ -58,7 +58,7 @@ namespace HelloWorldSolutionIMS
                 MessageBox.Show(ex.Message);
             }
         }
-        private void SearchAppointments(DataGridView dgv, DataGridViewColumn id, DataGridViewColumn fileno, DataGridViewColumn firstname, DataGridViewColumn familyname, DataGridViewColumn room, DataGridViewColumn slot, DataGridViewColumn date)
+        private void SearchAppointments(DataGridView dgv, DataGridViewColumn id, DataGridViewColumn fileno, DataGridViewColumn firstname, DataGridViewColumn familyname, DataGridViewColumn mobile, DataGridViewColumn room, DataGridViewColumn slot, DataGridViewColumn date)
         {
             string file_no = filenosearch.Text;
             string searchname = firstnamesearch.Text;
@@ -68,7 +68,7 @@ namespace HelloWorldSolutionIMS
                 {
                     MainClass.con.Open();
 
-                    SqlCommand cmd = new SqlCommand("SELECT ID, FileNo, FirstName, FamilyName, Date, Room, Slot FROM Appointment WHERE FileNo LIKE @FileNo AND FirstName LIKE @FirstName", MainClass.con);
+                    SqlCommand cmd = new SqlCommand("SELECT ID, FileNo, FirstName, FamilyName, Date, Room, Slot, MOBILENO FROM Appointment WHERE FileNo LIKE @FileNo AND FirstName LIKE @FirstName", MainClass.con);
 
                     cmd.Parameters.AddWithValue("@FileNo", "%" + file_no + "%");
                     cmd.Parameters.AddWithValue("@FirstName", "%" + searchname + "%");
@@ -83,6 +83,9 @@ namespace HelloWorldSolutionIMS
                     room.DataPropertyName = dt.Columns["Room"].ToString();
                     slot.DataPropertyName = dt.Columns["Slot"].ToString();
                     date.DataPropertyName = dt.Columns["Date"].ToString();
+                    mobile.DataPropertyName = dt.Columns["MOBILENO"].ColumnName;
+
+
                     dgv.DataSource = dt;
                     MainClass.con.Close();
                 }
@@ -99,7 +102,7 @@ namespace HelloWorldSolutionIMS
                 {
                     MainClass.con.Open();
 
-                    SqlCommand cmd = new SqlCommand("SELECT ID, FileNo, FirstName, FamilyName, Date, Room, Slot FROM Appointment WHERE FirstName LIKE @FirstName", MainClass.con);
+                    SqlCommand cmd = new SqlCommand("SELECT ID, FileNo, FirstName, FamilyName, Date, Room, Slot, MOBILENO FROM Appointment WHERE FirstName LIKE @FirstName", MainClass.con);
 
                     cmd.Parameters.AddWithValue("@FileNo", "%" + file_no + "%");
                     cmd.Parameters.AddWithValue("@FirstName", "%" + searchname + "%");
@@ -114,6 +117,8 @@ namespace HelloWorldSolutionIMS
                     room.DataPropertyName = dt.Columns["Room"].ToString();
                     slot.DataPropertyName = dt.Columns["Slot"].ToString();
                     date.DataPropertyName = dt.Columns["Date"].ToString();
+                    mobile.DataPropertyName = dt.Columns["MOBILENO"].ColumnName;
+
                     dgv.DataSource = dt;
                     MainClass.con.Close();
                 }
@@ -130,7 +135,7 @@ namespace HelloWorldSolutionIMS
                 {
                     MainClass.con.Open();
 
-                    SqlCommand cmd = new SqlCommand("SELECT ID, FileNo, FirstName, FamilyName, Date, Room, Slot FROM Appointment WHERE FileNo LIKE @FileNo", MainClass.con);
+                    SqlCommand cmd = new SqlCommand("SELECT ID, FileNo, FirstName, FamilyName, Date, Room, Slot, MOBILENO FROM Appointment WHERE FileNo LIKE @FileNo", MainClass.con);
 
                     cmd.Parameters.AddWithValue("@FileNo", "%" + file_no + "%");
                     cmd.Parameters.AddWithValue("@FirstName", "%" + searchname + "%");
@@ -145,6 +150,8 @@ namespace HelloWorldSolutionIMS
                     room.DataPropertyName = dt.Columns["Room"].ToString();
                     slot.DataPropertyName = dt.Columns["Slot"].ToString();
                     date.DataPropertyName = dt.Columns["Date"].ToString();
+                    mobile.DataPropertyName = dt.Columns["MOBILENO"].ColumnName;
+
                     dgv.DataSource = dt;
                     MainClass.con.Close();
                 }
@@ -157,7 +164,7 @@ namespace HelloWorldSolutionIMS
             }
             else
             {
-                ShowAppointments(guna2DataGridView1, iddgv, filenodgv, firstnamedgv, familynamedgv, roomdgv, slotdgv, datedgv);
+                ShowAppointments(guna2DataGridView1, iddgv, filenodgv, firstnamedgv, familynamedgv,mobilenodgv, roomdgv, slotdgv, datedgv);
                 MessageBox.Show("Fill File No or First Name");
             }
         }
@@ -355,7 +362,7 @@ namespace HelloWorldSolutionIMS
             InsertColumnsAndRowsToRoom3(Room3);
             InsertColumnsAndRowsToRoom4(Room4);
           
-            ShowAppointments(guna2DataGridView1, iddgv, filenodgv, firstnamedgv, familynamedgv, roomdgv, slotdgv, datedgv);
+            ShowAppointments(guna2DataGridView1, iddgv, filenodgv, firstnamedgv, familynamedgv, mobilenodgv, roomdgv, slotdgv, datedgv);
         }
         private void Save_Click(object sender, EventArgs e)
         {
@@ -417,7 +424,7 @@ namespace HelloWorldSolutionIMS
                                     tabControl1.SelectedIndex = 0;
 
                                     // Refresh the DataGridView (if it displays the Appointment data)
-                                    ShowAppointments(guna2DataGridView1, iddgv, filenodgv, firstnamedgv, familynamedgv, roomdgv, slotdgv, datedgv);
+                                    ShowAppointments(guna2DataGridView1, iddgv, filenodgv, firstnamedgv, familynamedgv, mobilenodgv, roomdgv, slotdgv, datedgv);
                                 }
                                 catch (Exception ex)
                                 {
@@ -458,7 +465,7 @@ namespace HelloWorldSolutionIMS
                                     tabControl1.SelectedIndex = 0;
 
                                     // Refresh the DataGridView (if it displays the Appointment data)
-                                    ShowAppointments(guna2DataGridView1, iddgv, filenodgv, firstnamedgv, familynamedgv, roomdgv, slotdgv, datedgv);
+                                    ShowAppointments(guna2DataGridView1, iddgv, filenodgv, firstnamedgv, familynamedgv, mobilenodgv, roomdgv, slotdgv, datedgv);
                                 }
                                 catch (Exception ex)
                                 {
@@ -499,7 +506,7 @@ namespace HelloWorldSolutionIMS
                                     tabControl1.SelectedIndex = 0;
 
                                     // Refresh the DataGridView (if it displays the Appointment data)
-                                    ShowAppointments(guna2DataGridView1, iddgv, filenodgv, firstnamedgv, familynamedgv, roomdgv, slotdgv, datedgv);
+                                    ShowAppointments(guna2DataGridView1, iddgv, filenodgv, firstnamedgv, familynamedgv, mobilenodgv, roomdgv, slotdgv, datedgv);
                                 }
                                 catch (Exception ex)
                                 {
@@ -540,7 +547,7 @@ namespace HelloWorldSolutionIMS
                                     tabControl1.SelectedIndex = 0;
 
                                     // Refresh the DataGridView (if it displays the Appointment data)
-                                    ShowAppointments(guna2DataGridView1, iddgv, filenodgv, firstnamedgv, familynamedgv, roomdgv, slotdgv, datedgv);
+                                    ShowAppointments(guna2DataGridView1, iddgv, filenodgv, firstnamedgv, familynamedgv, mobilenodgv, roomdgv, slotdgv, datedgv);
                                 }
                                 catch (Exception ex)
                                 {
@@ -592,7 +599,7 @@ namespace HelloWorldSolutionIMS
                                     MainClass.con.Close();
                                     MessageBox.Show(ex.Message);
                                 }
-                                ShowAppointments(guna2DataGridView1, iddgv, filenodgv, firstnamedgv, familynamedgv, roomdgv, slotdgv, datedgv);
+                                ShowAppointments(guna2DataGridView1, iddgv, filenodgv, firstnamedgv, familynamedgv, mobilenodgv, roomdgv, slotdgv, datedgv);
 
                             }
                             else if (selectedCellIndexesRoom2.RowIndex != -1)
@@ -627,7 +634,7 @@ namespace HelloWorldSolutionIMS
                                     MainClass.con.Close();
                                     MessageBox.Show(ex.Message);
                                 }
-                                ShowAppointments(guna2DataGridView1, iddgv, filenodgv, firstnamedgv, familynamedgv, roomdgv, slotdgv, datedgv);
+                                ShowAppointments(guna2DataGridView1, iddgv, filenodgv, firstnamedgv, familynamedgv, mobilenodgv, roomdgv, slotdgv, datedgv);
 
                             }
                             else if (selectedCellIndexesRoom3.RowIndex != -1)
@@ -662,7 +669,7 @@ namespace HelloWorldSolutionIMS
                                     MainClass.con.Close();
                                     MessageBox.Show(ex.Message);
                                 }
-                                ShowAppointments(guna2DataGridView1, iddgv, filenodgv, firstnamedgv, familynamedgv, roomdgv, slotdgv, datedgv);
+                                ShowAppointments(guna2DataGridView1, iddgv, filenodgv, firstnamedgv, familynamedgv, mobilenodgv, roomdgv, slotdgv, datedgv);
 
                             }
                             else
@@ -697,7 +704,7 @@ namespace HelloWorldSolutionIMS
                                     MainClass.con.Close();
                                     MessageBox.Show(ex.Message);
                                 }
-                                ShowAppointments(guna2DataGridView1, iddgv, filenodgv, firstnamedgv, familynamedgv, roomdgv, slotdgv, datedgv);
+                                ShowAppointments(guna2DataGridView1, iddgv, filenodgv, firstnamedgv, familynamedgv, mobilenodgv, roomdgv, slotdgv, datedgv);
 
                             }
 
@@ -1129,7 +1136,7 @@ namespace HelloWorldSolutionIMS
                                 MessageBox.Show("Appointment removed successfully");
                                 MainClass.con.Close();
                                 // Refresh the data grid view with the updated data
-                                ShowAppointments(guna2DataGridView1, iddgv, filenodgv, firstnamedgv, familynamedgv, roomdgv, slotdgv, datedgv);
+                                ShowAppointments(guna2DataGridView1, iddgv, filenodgv, firstnamedgv, familynamedgv, mobilenodgv, roomdgv, slotdgv, datedgv);
                             }
                             catch (Exception ex)
                             {
@@ -1210,7 +1217,7 @@ namespace HelloWorldSolutionIMS
 
         private void search_Click(object sender, EventArgs e)
         {
-            SearchAppointments(guna2DataGridView1, iddgv, filenodgv, firstnamedgv, familynamedgv, roomdgv, slotdgv, datedgv);
+            SearchAppointments(guna2DataGridView1, iddgv, filenodgv, firstnamedgv, familynamedgv, mobilenodgv, roomdgv, slotdgv, datedgv);
         }
 
         private void EditBTN_Click(object sender, EventArgs e)
@@ -1301,7 +1308,7 @@ namespace HelloWorldSolutionIMS
                                 MessageBox.Show("Appointment removed successfully");
                                 MainClass.con.Close();
                                 // Refresh the data grid view with the updated data
-                                ShowAppointments(guna2DataGridView1, iddgv, filenodgv, firstnamedgv, familynamedgv, roomdgv, slotdgv, datedgv);
+                                ShowAppointments(guna2DataGridView1, iddgv, filenodgv, firstnamedgv, familynamedgv, mobilenodgv, roomdgv, slotdgv, datedgv);
                             }
                             catch (Exception ex)
                             {

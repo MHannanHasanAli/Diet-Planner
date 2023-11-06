@@ -85,14 +85,14 @@ namespace HelloWorldSolutionIMS
         }
         static string ingredientIDToEdit;
         static int edit = 0;
-        private void ShowIngredients(DataGridView dgv, DataGridViewColumn no, DataGridViewColumn classification, DataGridViewColumn ingredientAr, DataGridViewColumn calories, DataGridViewColumn protein, DataGridViewColumn fats, DataGridViewColumn carbohydrates, DataGridViewColumn fibers, DataGridViewColumn calcium, DataGridViewColumn sodium)
+        private void ShowIngredients(DataGridView dgv, DataGridViewColumn no, DataGridViewColumn fdc, DataGridViewColumn classification, DataGridViewColumn ingredientAr, DataGridViewColumn calories, DataGridViewColumn protein, DataGridViewColumn fats, DataGridViewColumn carbohydrates, DataGridViewColumn fibers, DataGridViewColumn calcium, DataGridViewColumn sodium)
         {
             SqlCommand cmd;
             try
             {
                 MainClass.con.Open();
 
-                cmd = new SqlCommand("SELECT ID, CLASSIFICATION, INGREDIENT_AR, CALORIES, FATS, CARBOHYDRATES, FIBERS, CALCIUM, SODIUM, PROTEIN FROM Ingredient", MainClass.con);
+                cmd = new SqlCommand("SELECT ID, fdc_id, CLASSIFICATION, INGREDIENT_AR, CALORIES, FATS, CARBOHYDRATES, FIBERS, CALCIUM, SODIUM, PROTEIN FROM Ingredient", MainClass.con);
 
                 SqlDataAdapter da = new SqlDataAdapter(cmd);
                 DataTable dt = new DataTable();
@@ -108,7 +108,7 @@ namespace HelloWorldSolutionIMS
                 calcium.DataPropertyName = dt.Columns["CALCIUM"].ToString();
                 sodium.DataPropertyName = dt.Columns["SODIUM"].ToString();
                 protein.DataPropertyName = dt.Columns["PROTEIN"].ToString();
-
+                fdc.DataPropertyName = dt.Columns["fdc_id"].ToString();
 
                 dgv.DataSource = dt;
                 MainClass.con.Close();
@@ -120,7 +120,7 @@ namespace HelloWorldSolutionIMS
             }
         }
 
-        private void SearchIngredients(DataGridView dgv, DataGridViewColumn no, DataGridViewColumn classification, DataGridViewColumn ingredientAr, DataGridViewColumn calories, DataGridViewColumn protein, DataGridViewColumn fats, DataGridViewColumn carbohydrates, DataGridViewColumn fibers, DataGridViewColumn calcium, DataGridViewColumn sodium)
+        private void SearchIngredients(DataGridView dgv, DataGridViewColumn no, DataGridViewColumn fdc, DataGridViewColumn classification, DataGridViewColumn ingredientAr, DataGridViewColumn calories, DataGridViewColumn protein, DataGridViewColumn fats, DataGridViewColumn carbohydrates, DataGridViewColumn fibers, DataGridViewColumn calcium, DataGridViewColumn sodium)
         {
             string ingredientName = ingredientar.Text;
             string groupArName = groupar.Text;
@@ -131,7 +131,7 @@ namespace HelloWorldSolutionIMS
                 {
                     MainClass.con.Open();
 
-                    SqlCommand cmd = new SqlCommand("SELECT ID, INGREDIENT_AR, CALORIES, FATS, CARBOHYDRATES, FIBERS, CALCIUM, SODIUM, CLASSIFICATION FROM Ingredient " +
+                    SqlCommand cmd = new SqlCommand("SELECT ID, fdc_id, INGREDIENT_AR, CALORIES, FATS, CARBOHYDRATES, FIBERS, CALCIUM, SODIUM, CLASSIFICATION FROM Ingredient " +
                         "WHERE (INGREDIENT_AR LIKE @IngredientName) AND (GROUP_AR LIKE @GroupArName)", MainClass.con);
 
                     cmd.Parameters.AddWithValue("@IngredientName", "%" + ingredientName + "%");
@@ -151,8 +151,9 @@ namespace HelloWorldSolutionIMS
                     calcium.DataPropertyName = dt.Columns["CALCIUM"].ToString();
                     sodium.DataPropertyName = dt.Columns["SODIUM"].ToString();
                     classification.DataPropertyName = dt.Columns["CLASSIFICATION"].ToString();
+                    fdc.DataPropertyName = dt.Columns["fdc_id"].ToString();
 
-                
+
 
                     dgv.DataSource = dt;
                     MainClass.con.Close();
@@ -169,7 +170,7 @@ namespace HelloWorldSolutionIMS
                 {
                     MainClass.con.Open();
 
-                    SqlCommand cmd = new SqlCommand("SELECT ID, INGREDIENT_AR, CALORIES, FATS, CARBOHYDRATES, FIBERS, CALCIUM, SODIUM, CLASSIFICATION FROM Ingredient " +
+                    SqlCommand cmd = new SqlCommand("SELECT ID, fdc_id, INGREDIENT_AR, CALORIES, FATS, CARBOHYDRATES, FIBERS, CALCIUM, SODIUM, CLASSIFICATION FROM Ingredient " +
                         "WHERE GROUP_AR LIKE @GroupArName", MainClass.con);
 
                     cmd.Parameters.AddWithValue("@GroupArName", "%" + groupArName + "%");
@@ -188,6 +189,7 @@ namespace HelloWorldSolutionIMS
                     calcium.DataPropertyName = dt.Columns["CALCIUM"].ToString();
                     sodium.DataPropertyName = dt.Columns["SODIUM"].ToString();
                     classification.DataPropertyName = dt.Columns["CLASSIFICATION"].ToString();
+                    fdc.DataPropertyName = dt.Columns["fdc_id"].ToString();
 
 
 
@@ -206,7 +208,7 @@ namespace HelloWorldSolutionIMS
                 {
                     MainClass.con.Open();
 
-                    SqlCommand cmd = new SqlCommand("SELECT ID, INGREDIENT_AR, CALORIES, FATS, CARBOHYDRATES, FIBERS, CALCIUM, SODIUM, CLASSIFICATION FROM Ingredient " +
+                    SqlCommand cmd = new SqlCommand("SELECT ID, fdc_id, INGREDIENT_AR, CALORIES, FATS, CARBOHYDRATES, FIBERS, CALCIUM, SODIUM, CLASSIFICATION FROM Ingredient " +
                         "WHERE INGREDIENT_AR LIKE @IngredientName", MainClass.con);
 
                     cmd.Parameters.AddWithValue("@IngredientName", "%" + ingredientName + "%");
@@ -225,7 +227,7 @@ namespace HelloWorldSolutionIMS
                     calcium.DataPropertyName = dt.Columns["CALCIUM"].ToString();
                     sodium.DataPropertyName = dt.Columns["SODIUM"].ToString();
                     classification.DataPropertyName = dt.Columns["CLASSIFICATION"].ToString();
-
+                    fdc.DataPropertyName = dt.Columns["fdc_id"].ToString();
 
 
                     dgv.DataSource = dt;
@@ -239,13 +241,13 @@ namespace HelloWorldSolutionIMS
             }
             else
             {
-                ShowIngredients(guna2DataGridView1, nodgv, classificationdgv, ingredientardgv, calloriesdgv, proteindgv, fatsdgv, carbohydratedgv, calciumdgv, fibersdgv, sodiumdgv);
+                ShowIngredients(guna2DataGridView1, nodgv, fdciddgv, classificationdgv, ingredientardgv, calloriesdgv, proteindgv, fatsdgv, carbohydratedgv, calciumdgv, fibersdgv, sodiumdgv);
                 MessageBox.Show("Fill Ingredient Ar or Group Ar");
             }
         }
         private void Ingredient_Load(object sender, EventArgs e)
         {
-            ShowIngredients(guna2DataGridView1, nodgv, classificationdgv, ingredientardgv, calloriesdgv, proteindgv, fatsdgv, carbohydratedgv, calciumdgv, fibersdgv, sodiumdgv);
+            ShowIngredients(guna2DataGridView1, nodgv, fdciddgv, classificationdgv, ingredientardgv, calloriesdgv, proteindgv, fatsdgv, carbohydratedgv, calciumdgv, fibersdgv, sodiumdgv);
 
             chart1.Series.Clear();
         }
@@ -311,7 +313,7 @@ namespace HelloWorldSolutionIMS
 
                         MainClass.con.Close();
 
-                        ShowIngredients(guna2DataGridView1, nodgv, classificationdgv, ingredientardgv, calloriesdgv, proteindgv, fatsdgv, carbohydratedgv, calciumdgv, fibersdgv, sodiumdgv);
+                        ShowIngredients(guna2DataGridView1, nodgv, fdciddgv, classificationdgv, ingredientardgv, calloriesdgv, proteindgv, fatsdgv, carbohydratedgv, calciumdgv, fibersdgv, sodiumdgv);
 
                     }
                     catch (Exception ex)
@@ -384,7 +386,7 @@ namespace HelloWorldSolutionIMS
                         bbox.Text = "";
                         MainClass.con.Close();
 
-                        ShowIngredients(guna2DataGridView1, nodgv, classificationdgv, ingredientardgv, calloriesdgv, proteindgv, fatsdgv, carbohydratedgv, calciumdgv, fibersdgv, sodiumdgv);
+                        ShowIngredients(guna2DataGridView1, nodgv, fdciddgv, classificationdgv, ingredientardgv, calloriesdgv, proteindgv, fatsdgv, carbohydratedgv, calciumdgv, fibersdgv, sodiumdgv);
                     }
                     catch (Exception ex)
                     {
@@ -499,7 +501,7 @@ namespace HelloWorldSolutionIMS
                                 MessageBox.Show("Ingredient removed successfully");
                                 MainClass.con.Close();
                                 // Refresh the data grid view with the updated data
-                                ShowIngredients(guna2DataGridView1, nodgv, classificationdgv, ingredientardgv, calloriesdgv, proteindgv, fatsdgv, carbohydratedgv, calciumdgv, fibersdgv, sodiumdgv);
+                                ShowIngredients(guna2DataGridView1, nodgv, fdciddgv, classificationdgv, ingredientardgv, calloriesdgv, proteindgv, fatsdgv, carbohydratedgv, calciumdgv, fibersdgv, sodiumdgv);
                             }
                             catch (Exception ex)
                             {
@@ -514,7 +516,7 @@ namespace HelloWorldSolutionIMS
         }
         private void Search_Click(object sender, EventArgs e)
         {
-            SearchIngredients(guna2DataGridView1, nodgv, classificationdgv, ingredientardgv, calloriesdgv, proteindgv, fatsdgv, carbohydratedgv, calciumdgv, fibersdgv, sodiumdgv);
+            SearchIngredients(guna2DataGridView1, nodgv, fdciddgv, classificationdgv, ingredientardgv, calloriesdgv, proteindgv, fatsdgv, carbohydratedgv, calciumdgv, fibersdgv, sodiumdgv);
 
         }
 
@@ -620,7 +622,7 @@ namespace HelloWorldSolutionIMS
                         iodine.Text = "";
                         bbox.Text = "";
                         // Get the Ingredient ID to display in the confirmation message
-                        string ingredientIDToDelete = guna2DataGridView1.CurrentRow.Cells[2].Value.ToString(); // Assuming the Ingredient ID is in the first cell of the selected row.
+                        string ingredientIDToDelete = guna2DataGridView1.CurrentRow.Cells[0].Value.ToString(); // Assuming the Ingredient ID is in the first cell of the selected row.
 
                         // Ask for confirmation
                         DialogResult result = MessageBox.Show("Are you sure you want to delete Ingredient : " + ingredientIDToDelete + "?", "Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
@@ -636,7 +638,7 @@ namespace HelloWorldSolutionIMS
                                 MessageBox.Show("Ingredient removed successfully");
                                 MainClass.con.Close();
                                 // Refresh the data grid view with the updated data
-                                ShowIngredients(guna2DataGridView1, nodgv, classificationdgv, ingredientardgv, calloriesdgv, proteindgv, fatsdgv, carbohydratedgv, calciumdgv, fibersdgv, sodiumdgv);
+                                ShowIngredients(guna2DataGridView1, nodgv, fdciddgv, classificationdgv, ingredientardgv, calloriesdgv, proteindgv, fatsdgv, carbohydratedgv, calciumdgv, fibersdgv, sodiumdgv);
                             }
                             catch (Exception ex)
                             {

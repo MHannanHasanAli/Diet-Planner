@@ -79,39 +79,9 @@ namespace HelloWorldSolutionIMS
         }
         private void SearchCustomer(DataGridView dgv, DataGridViewColumn id, DataGridViewColumn file, DataGridViewColumn name, DataGridViewColumn familyname, DataGridViewColumn start, DataGridViewColumn end, DataGridViewColumn nutritionist)
         {
-            string file_no = fileno.Text;
+            //string file_no = fileno.Text;
             string searchname = firstname.Text;
-            if (file_no != "" && searchname != "")
-            {
-                try
-                {
-                    MainClass.con.Open();
-
-                    SqlCommand cmd = new SqlCommand("SELECT ID, FileNo, FirstName, FamilyName, SubscriptionStartDate, SubscriptionEndDate, NutritionistName FROM Customer WHERE FileNo LIKE @FileNo AND FirstName LIKE @FirstName", MainClass.con);
-
-                    cmd.Parameters.AddWithValue("@FileNo", "%" + file_no + "%");
-                    cmd.Parameters.AddWithValue("@FirstName", "%" + searchname + "%");
-
-                    SqlDataAdapter da = new SqlDataAdapter(cmd);
-                    DataTable dt = new DataTable();
-                    da.Fill(dt);
-                    id.DataPropertyName = dt.Columns["ID"].ToString();
-                    file.DataPropertyName = dt.Columns["FileNo"].ToString();
-                    name.DataPropertyName = dt.Columns["FirstName"].ToString();
-                    familyname.DataPropertyName = dt.Columns["FamilyName"].ToString();
-                    start.DataPropertyName = dt.Columns["SubscriptionStartDate"].ToString();
-                    end.DataPropertyName = dt.Columns["SubscriptionEndDate"].ToString();
-                    nutritionist.DataPropertyName = dt.Columns["NutritionistName"].ToString();
-                    dgv.DataSource = dt;
-                    MainClass.con.Close();
-                }
-
-                catch (Exception ex)
-                {
-                    MainClass.con.Close();
-                    MessageBox.Show(ex.Message);
-                }
-            }else if(file_no == "" && searchname != "")
+            if(searchname != "")
             {
                 try
                 {
@@ -119,7 +89,6 @@ namespace HelloWorldSolutionIMS
 
                     SqlCommand cmd = new SqlCommand("SELECT ID, FileNo, FirstName, FamilyName, SubscriptionStartDate, SubscriptionEndDate, NutritionistName FROM Customer WHERE FirstName LIKE @FirstName", MainClass.con);
 
-                    cmd.Parameters.AddWithValue("@FileNo", "%" + file_no + "%");
                     cmd.Parameters.AddWithValue("@FirstName", "%" + searchname + "%");
 
                     SqlDataAdapter da = new SqlDataAdapter(cmd);
@@ -141,42 +110,11 @@ namespace HelloWorldSolutionIMS
                     MainClass.con.Close();
                     MessageBox.Show(ex.Message);
                 }
-            }
-            else if (file_no != "" && searchname == "")
-            {
-                try
-                {
-                    MainClass.con.Open();
-
-                    SqlCommand cmd = new SqlCommand("SELECT ID, FileNo, FirstName, FamilyName, SubscriptionStartDate, SubscriptionEndDate, NutritionistName FROM Customer WHERE FileNo LIKE @FileNo", MainClass.con);
-
-                    cmd.Parameters.AddWithValue("@FileNo", "%" + file_no + "%");
-                    cmd.Parameters.AddWithValue("@FirstName", "%" + searchname + "%");
-
-                    SqlDataAdapter da = new SqlDataAdapter(cmd);
-                    DataTable dt = new DataTable();
-                    da.Fill(dt);
-                    id.DataPropertyName = dt.Columns["ID"].ToString();
-                    file.DataPropertyName = dt.Columns["FileNo"].ToString();
-                    name.DataPropertyName = dt.Columns["FirstName"].ToString();
-                    familyname.DataPropertyName = dt.Columns["FamilyName"].ToString();
-                    start.DataPropertyName = dt.Columns["SubscriptionStartDate"].ToString();
-                    end.DataPropertyName = dt.Columns["SubscriptionEndDate"].ToString();
-                    nutritionist.DataPropertyName = dt.Columns["NutritionistName"].ToString();
-                    dgv.DataSource = dt;
-                    MainClass.con.Close();
-                }
-
-                catch (Exception ex)
-                {
-                    MainClass.con.Close();
-                    MessageBox.Show(ex.Message);
-                }
-            }
+            }            
             else
             {
                 ShowCustomer(guna2DataGridView1, IDDGV, FILENODGV, firstnamedgv, familynamedgv, subscriptionstartdatedgv, subscriptionenddatedgv, nutritionistnamedgv);
-                MessageBox.Show("Fill File No or First Name");
+                MessageBox.Show("Fill First Name");
             }
         }
         private void New_Click(object sender, EventArgs e)
@@ -242,7 +180,7 @@ namespace HelloWorldSolutionIMS
                 }
                 else
                 {
-                    MessageBox.Show("First name, Family name, gender, mobile no, Date of birth are mandory!.");
+                    MessageBox.Show("First name, Family name, gender, mobile no, Date of birth are mandatory!.");
                 }
             }
             else
@@ -304,7 +242,7 @@ namespace HelloWorldSolutionIMS
                 }
                 else
                 {
-                    MessageBox.Show("First name, Family name, gender, mobile no, Date of birth are mandory!.");
+                    MessageBox.Show("First name, Family name, gender, mobile no, Date of birth are mandatory!.");
                 }
             }
            
@@ -942,7 +880,7 @@ namespace HelloWorldSolutionIMS
                     }
 
                     cmd2 = new SqlCommand("SELECT STARTDATE, ENDDATE FROM PAYMENT WHERE FILENO = @FILENO", MainClass.con);
-                    cmd2.Parameters.AddWithValue("@FILENO", fileno.Text);
+                    cmd2.Parameters.AddWithValue("@FILENO", filenoTobeedited);
                     SqlDataReader reader2 = cmd2.ExecuteReader();
 
                     while (reader2.Read())

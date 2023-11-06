@@ -77,7 +77,13 @@
             this.carbohydrates = new Guna.UI2.WinForms.Guna2TextBox();
             this.protein = new Guna.UI2.WinForms.Guna2TextBox();
             this.guna2DataGridView1 = new Guna.UI2.WinForms.Guna2DataGridView();
+            this.Search = new Guna.UI2.WinForms.Guna2Button();
+            this.New = new Guna.UI2.WinForms.Guna2Button();
+            this.chart1 = new System.Windows.Forms.DataVisualization.Charting.Chart();
+            this.DeleteBTN = new Guna.UI2.WinForms.Guna2Button();
+            this.EditBTN = new Guna.UI2.WinForms.Guna2Button();
             this.nodgv = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.fdciddgv = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.classificationdgv = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ingredientardgv = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.calloriesdgv = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -87,11 +93,6 @@
             this.calciumdgv = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.fibersdgv = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.sodiumdgv = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Search = new Guna.UI2.WinForms.Guna2Button();
-            this.New = new Guna.UI2.WinForms.Guna2Button();
-            this.chart1 = new System.Windows.Forms.DataVisualization.Charting.Chart();
-            this.DeleteBTN = new Guna.UI2.WinForms.Guna2Button();
-            this.EditBTN = new Guna.UI2.WinForms.Guna2Button();
             ((System.ComponentModel.ISupportInitialize)(this.guna2DataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.chart1)).BeginInit();
             this.SuspendLayout();
@@ -866,6 +867,7 @@
             this.guna2DataGridView1.ColumnHeadersHeight = 52;
             this.guna2DataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.nodgv,
+            this.fdciddgv,
             this.classificationdgv,
             this.ingredientardgv,
             this.calloriesdgv,
@@ -916,76 +918,6 @@
             this.guna2DataGridView1.ThemeStyle.RowsStyle.Height = 24;
             this.guna2DataGridView1.ThemeStyle.RowsStyle.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(115)))), ((int)(((byte)(221)))), ((int)(((byte)(160)))));
             this.guna2DataGridView1.ThemeStyle.RowsStyle.SelectionForeColor = System.Drawing.Color.Black;
-            // 
-            // nodgv
-            // 
-            this.nodgv.HeaderText = "NO";
-            this.nodgv.MinimumWidth = 6;
-            this.nodgv.Name = "nodgv";
-            this.nodgv.ReadOnly = true;
-            // 
-            // classificationdgv
-            // 
-            this.classificationdgv.HeaderText = "CLASSIFICATION";
-            this.classificationdgv.MinimumWidth = 6;
-            this.classificationdgv.Name = "classificationdgv";
-            this.classificationdgv.ReadOnly = true;
-            // 
-            // ingredientardgv
-            // 
-            this.ingredientardgv.HeaderText = "INGREDIENT (AR)";
-            this.ingredientardgv.MinimumWidth = 6;
-            this.ingredientardgv.Name = "ingredientardgv";
-            this.ingredientardgv.ReadOnly = true;
-            // 
-            // calloriesdgv
-            // 
-            this.calloriesdgv.HeaderText = "CALLORIES";
-            this.calloriesdgv.MinimumWidth = 6;
-            this.calloriesdgv.Name = "calloriesdgv";
-            this.calloriesdgv.ReadOnly = true;
-            // 
-            // proteindgv
-            // 
-            this.proteindgv.HeaderText = "PROTEIN";
-            this.proteindgv.MinimumWidth = 6;
-            this.proteindgv.Name = "proteindgv";
-            this.proteindgv.ReadOnly = true;
-            // 
-            // fatsdgv
-            // 
-            this.fatsdgv.HeaderText = "FATS";
-            this.fatsdgv.MinimumWidth = 6;
-            this.fatsdgv.Name = "fatsdgv";
-            this.fatsdgv.ReadOnly = true;
-            // 
-            // carbohydratedgv
-            // 
-            this.carbohydratedgv.HeaderText = "CARBOHYDRATES";
-            this.carbohydratedgv.MinimumWidth = 6;
-            this.carbohydratedgv.Name = "carbohydratedgv";
-            this.carbohydratedgv.ReadOnly = true;
-            // 
-            // calciumdgv
-            // 
-            this.calciumdgv.HeaderText = "CALCIUM";
-            this.calciumdgv.MinimumWidth = 6;
-            this.calciumdgv.Name = "calciumdgv";
-            this.calciumdgv.ReadOnly = true;
-            // 
-            // fibersdgv
-            // 
-            this.fibersdgv.HeaderText = "FIBERS";
-            this.fibersdgv.MinimumWidth = 6;
-            this.fibersdgv.Name = "fibersdgv";
-            this.fibersdgv.ReadOnly = true;
-            // 
-            // sodiumdgv
-            // 
-            this.sodiumdgv.HeaderText = "SODIUM";
-            this.sodiumdgv.MinimumWidth = 6;
-            this.sodiumdgv.Name = "sodiumdgv";
-            this.sodiumdgv.ReadOnly = true;
             // 
             // Search
             // 
@@ -1080,6 +1012,83 @@
             this.EditBTN.TabIndex = 112;
             this.EditBTN.Text = "Edit Ingredient";
             this.EditBTN.Click += new System.EventHandler(this.EditBTN_Click);
+            // 
+            // nodgv
+            // 
+            this.nodgv.HeaderText = "NO";
+            this.nodgv.MinimumWidth = 6;
+            this.nodgv.Name = "nodgv";
+            this.nodgv.ReadOnly = true;
+            // 
+            // fdciddgv
+            // 
+            this.fdciddgv.HeaderText = "FDC ID";
+            this.fdciddgv.MinimumWidth = 6;
+            this.fdciddgv.Name = "fdciddgv";
+            this.fdciddgv.ReadOnly = true;
+            // 
+            // classificationdgv
+            // 
+            this.classificationdgv.HeaderText = "CLASSIFICATION";
+            this.classificationdgv.MinimumWidth = 6;
+            this.classificationdgv.Name = "classificationdgv";
+            this.classificationdgv.ReadOnly = true;
+            // 
+            // ingredientardgv
+            // 
+            this.ingredientardgv.HeaderText = "INGREDIENT (AR)";
+            this.ingredientardgv.MinimumWidth = 6;
+            this.ingredientardgv.Name = "ingredientardgv";
+            this.ingredientardgv.ReadOnly = true;
+            // 
+            // calloriesdgv
+            // 
+            this.calloriesdgv.HeaderText = "CALLORIES";
+            this.calloriesdgv.MinimumWidth = 6;
+            this.calloriesdgv.Name = "calloriesdgv";
+            this.calloriesdgv.ReadOnly = true;
+            // 
+            // proteindgv
+            // 
+            this.proteindgv.HeaderText = "PROTEIN";
+            this.proteindgv.MinimumWidth = 6;
+            this.proteindgv.Name = "proteindgv";
+            this.proteindgv.ReadOnly = true;
+            // 
+            // fatsdgv
+            // 
+            this.fatsdgv.HeaderText = "FATS";
+            this.fatsdgv.MinimumWidth = 6;
+            this.fatsdgv.Name = "fatsdgv";
+            this.fatsdgv.ReadOnly = true;
+            // 
+            // carbohydratedgv
+            // 
+            this.carbohydratedgv.HeaderText = "CARBOHYDRATES";
+            this.carbohydratedgv.MinimumWidth = 6;
+            this.carbohydratedgv.Name = "carbohydratedgv";
+            this.carbohydratedgv.ReadOnly = true;
+            // 
+            // calciumdgv
+            // 
+            this.calciumdgv.HeaderText = "CALCIUM";
+            this.calciumdgv.MinimumWidth = 6;
+            this.calciumdgv.Name = "calciumdgv";
+            this.calciumdgv.ReadOnly = true;
+            // 
+            // fibersdgv
+            // 
+            this.fibersdgv.HeaderText = "FIBERS";
+            this.fibersdgv.MinimumWidth = 6;
+            this.fibersdgv.Name = "fibersdgv";
+            this.fibersdgv.ReadOnly = true;
+            // 
+            // sodiumdgv
+            // 
+            this.sodiumdgv.HeaderText = "SODIUM";
+            this.sodiumdgv.MinimumWidth = 6;
+            this.sodiumdgv.Name = "sodiumdgv";
+            this.sodiumdgv.ReadOnly = true;
             // 
             // Ingredient
             // 
@@ -1191,7 +1200,13 @@
         private Guna.UI2.WinForms.Guna2TextBox carbohydrates;
         private Guna.UI2.WinForms.Guna2TextBox protein;
         private Guna.UI2.WinForms.Guna2DataGridView guna2DataGridView1;
+        private Guna.UI2.WinForms.Guna2Button Search;
+        private Guna.UI2.WinForms.Guna2Button New;
+        private System.Windows.Forms.DataVisualization.Charting.Chart chart1;
+        private Guna.UI2.WinForms.Guna2Button DeleteBTN;
+        private Guna.UI2.WinForms.Guna2Button EditBTN;
         private System.Windows.Forms.DataGridViewTextBoxColumn nodgv;
+        private System.Windows.Forms.DataGridViewTextBoxColumn fdciddgv;
         private System.Windows.Forms.DataGridViewTextBoxColumn classificationdgv;
         private System.Windows.Forms.DataGridViewTextBoxColumn ingredientardgv;
         private System.Windows.Forms.DataGridViewTextBoxColumn calloriesdgv;
@@ -1201,10 +1216,5 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn calciumdgv;
         private System.Windows.Forms.DataGridViewTextBoxColumn fibersdgv;
         private System.Windows.Forms.DataGridViewTextBoxColumn sodiumdgv;
-        private Guna.UI2.WinForms.Guna2Button Search;
-        private Guna.UI2.WinForms.Guna2Button New;
-        private System.Windows.Forms.DataVisualization.Charting.Chart chart1;
-        private Guna.UI2.WinForms.Guna2Button DeleteBTN;
-        private Guna.UI2.WinForms.Guna2Button EditBTN;
     }
 }
