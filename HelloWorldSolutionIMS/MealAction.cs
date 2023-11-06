@@ -107,22 +107,22 @@ namespace HelloWorldSolutionIMS
                                     }
                                     else
                                     {
-                                        var caloriesu = int.Parse(guna2DataGridView1.Rows[args.RowIndex].Cells[4].Value.ToString());
-                                        var proteinu = int.Parse(guna2DataGridView1.Rows[args.RowIndex].Cells[5].Value.ToString());
-                                        var fatsu = int.Parse(guna2DataGridView1.Rows[args.RowIndex].Cells[6].Value.ToString());
-                                        var carbsu = int.Parse(guna2DataGridView1.Rows[args.RowIndex].Cells[7].Value.ToString());
-                                        var calciumu = int.Parse(guna2DataGridView1.Rows[args.RowIndex].Cells[8].Value.ToString());
-                                        var fiberu = int.Parse(guna2DataGridView1.Rows[args.RowIndex].Cells[9].Value.ToString());
-                                        var sodiumu = int.Parse(guna2DataGridView1.Rows[args.RowIndex].Cells[10].Value.ToString());
-                                        var potassiumu = int.Parse(guna2DataGridView1.Rows[args.RowIndex].Cells[11].Value.ToString());
-                                        var phosphoru = int.Parse(guna2DataGridView1.Rows[args.RowIndex].Cells[12].Value.ToString());
-                                        var wateru = int.Parse(guna2DataGridView1.Rows[args.RowIndex].Cells[13].Value.ToString());
-                                        var magnesiumu = int.Parse(guna2DataGridView1.Rows[args.RowIndex].Cells[14].Value.ToString());
-                                        var sugaru = int.Parse(guna2DataGridView1.Rows[args.RowIndex].Cells[15].Value.ToString());
-                                        var ironu = int.Parse(guna2DataGridView1.Rows[args.RowIndex].Cells[16].Value.ToString());
-                                        var iodineu = int.Parse(guna2DataGridView1.Rows[args.RowIndex].Cells[17].Value.ToString());
-                                        var au = int.Parse(guna2DataGridView1.Rows[args.RowIndex].Cells[18].Value.ToString());
-                                        var bu = int.Parse(guna2DataGridView1.Rows[args.RowIndex].Cells[19].Value.ToString());
+                                        var caloriesu = float.Parse(guna2DataGridView1.Rows[args.RowIndex].Cells[4].Value.ToString());
+                                        var proteinu = float.Parse(guna2DataGridView1.Rows[args.RowIndex].Cells[5].Value.ToString());
+                                        var fatsu = float.Parse(guna2DataGridView1.Rows[args.RowIndex].Cells[6].Value.ToString());
+                                        var carbsu = float.Parse(guna2DataGridView1.Rows[args.RowIndex].Cells[7].Value.ToString());
+                                        var calciumu = float.Parse(guna2DataGridView1.Rows[args.RowIndex].Cells[8].Value.ToString());
+                                        var fiberu = float.Parse(guna2DataGridView1.Rows[args.RowIndex].Cells[9].Value.ToString());
+                                        var sodiumu = float.Parse(guna2DataGridView1.Rows[args.RowIndex].Cells[10].Value.ToString());
+                                        var potassiumu = float.Parse(guna2DataGridView1.Rows[args.RowIndex].Cells[11].Value.ToString());
+                                        var phosphoru = float.Parse(guna2DataGridView1.Rows[args.RowIndex].Cells[12].Value.ToString());
+                                        var wateru = float.Parse(guna2DataGridView1.Rows[args.RowIndex].Cells[13].Value.ToString());
+                                        var magnesiumu = float.Parse(guna2DataGridView1.Rows[args.RowIndex].Cells[14].Value.ToString());
+                                        var sugaru = float.Parse(guna2DataGridView1.Rows[args.RowIndex].Cells[15].Value.ToString());
+                                        var ironu = float.Parse(guna2DataGridView1.Rows[args.RowIndex].Cells[16].Value.ToString());
+                                        var iodineu = float.Parse(guna2DataGridView1.Rows[args.RowIndex].Cells[17].Value.ToString());
+                                        var au = float.Parse(guna2DataGridView1.Rows[args.RowIndex].Cells[18].Value.ToString());
+                                        var bu = float.Parse(guna2DataGridView1.Rows[args.RowIndex].Cells[19].Value.ToString());
 
                                         double currentCalories = double.Parse(calories.Text);
                                         double currentProteins = double.Parse(protein.Text);
@@ -332,7 +332,8 @@ namespace HelloWorldSolutionIMS
         public class GroupnarContent
         {
             public int ID { get; set; }
-            public string NameNAR { get; set; }
+            public string NameAR { get; set; }
+            public string NameEN { get; set; }
         }
         private void UpdateGroupsN()
         {
@@ -345,7 +346,7 @@ namespace HelloWorldSolutionIMS
                     conn = 1;
                 }
 
-                cmd = new SqlCommand("SELECT ID, Namear FROM GROUPN", MainClass.con);
+                cmd = new SqlCommand("SELECT ID, Namear, Nameen FROM GROUPN", MainClass.con);
 
                 SqlDataAdapter da = new SqlDataAdapter(cmd);
                 DataTable dt = new DataTable();
@@ -353,25 +354,33 @@ namespace HelloWorldSolutionIMS
 
                 // Clear the dropdown items before adding new ones
                 groupnar.DataSource = null;
+                groupnen.DataSource = null;
+
                 // Clear the items (if DataSource is not being set)
                 groupnar.Items.Clear();
+                groupnen.Items.Clear();
                 List<GroupnarContent> GroupNAR = new List<GroupnarContent>();
 
                 // Add the default 'Null' option
-                GroupNAR.Add(new GroupnarContent { ID = 0, NameNAR = "Null" });
+                GroupNAR.Add(new GroupnarContent { ID = 0, NameAR = "Null", NameEN = "Null" });
 
                 foreach (DataRow row in dt.Rows)
                 {
                     int Id = row.Field<int>("ID");
-                    string Name = row.Field<string>("Namear");
+                    string Namear = row.Field<string>("Namear");
+                    string Nameen = row.Field<string>("Nameen");
 
-                    GroupnarContent Temp = new GroupnarContent { ID = Id, NameNAR = Name };
+                    GroupnarContent Temp = new GroupnarContent { ID = Id, NameAR = Namear, NameEN = Nameen };
                     GroupNAR.Add(Temp);
                 }
 
                 groupnar.DataSource = GroupNAR;
-                groupnar.DisplayMember = "NameNAR"; // Display Member is Name
+                groupnar.DisplayMember = "NameAR"; // Display Member is Name
                 groupnar.ValueMember = "ID"; // Value Member is ID
+
+                groupnen.DataSource = GroupNAR;
+                groupnen.DisplayMember = "NameEN"; // Display Member is Name
+                groupnen.ValueMember = "ID"; // Value Member is ID
 
 
                 if (conn == 1)
@@ -397,7 +406,7 @@ namespace HelloWorldSolutionIMS
                     conn = 1;
                 }
 
-                cmd = new SqlCommand("SELECT ID, Namear FROM GROUPC", MainClass.con);
+                cmd = new SqlCommand("SELECT ID, Namear, Nameen FROM GROUPC", MainClass.con);
 
                 SqlDataAdapter da = new SqlDataAdapter(cmd);
                 DataTable dt = new DataTable();
@@ -405,26 +414,32 @@ namespace HelloWorldSolutionIMS
 
                 // Clear the dropdown items before adding new ones
                 groupcar.DataSource = null;
+                groupcen.DataSource = null;
                 // Clear the items (if DataSource is not being set)
                 groupcar.Items.Clear();
+                groupcen.Items.Clear();
                 List<GroupnarContent> GroupCAR = new List<GroupnarContent>();
 
                 // Add the default 'Null' option
-                GroupCAR.Add(new GroupnarContent { ID = 0, NameNAR = "Null" });
+                GroupCAR.Add(new GroupnarContent { ID = 0, NameAR = "Null", NameEN = "Null" });
 
                 foreach (DataRow row in dt.Rows)
                 {
                     int Id = row.Field<int>("ID");
-                    string Name = row.Field<string>("Namear");
+                    string Namear= row.Field<string>("Namear");
+                    string Nameen = row.Field<string>("Nameen");
 
-                    GroupnarContent Temp = new GroupnarContent { ID = Id, NameNAR = Name };
+                    GroupnarContent Temp = new GroupnarContent { ID = Id, NameAR = Namear, NameEN = Nameen };
                     GroupCAR.Add(Temp);
                 }
 
                 groupcar.DataSource = GroupCAR;
-                groupcar.DisplayMember = "NameNAR"; // Display Member is Name
+                groupcar.DisplayMember = "NameAR"; // Display Member is Name
                 groupcar.ValueMember = "ID"; // Value Member is ID
 
+                groupcen.DataSource = GroupCAR;
+                groupcen.DisplayMember = "NameEN"; // Display Member is Name
+                groupcen.ValueMember = "ID"; // Value Member is ID
 
                 if (conn == 1)
                 {
@@ -914,21 +929,21 @@ namespace HelloWorldSolutionIMS
                         else
                         {
                             var caloriesu = float.Parse(guna2DataGridView1.Rows[args.RowIndex].Cells[4].Value.ToString());
-                            var proteinu = int.Parse(guna2DataGridView1.Rows[args.RowIndex].Cells[5].Value.ToString());
-                            var fatsu = int.Parse(guna2DataGridView1.Rows[args.RowIndex].Cells[6].Value.ToString());
-                            var carbsu = int.Parse(guna2DataGridView1.Rows[args.RowIndex].Cells[7].Value.ToString());
-                            var calciumu = int.Parse(guna2DataGridView1.Rows[args.RowIndex].Cells[8].Value.ToString());
-                            var fiberu = int.Parse(guna2DataGridView1.Rows[args.RowIndex].Cells[9].Value.ToString());
-                            var sodiumu = int.Parse(guna2DataGridView1.Rows[args.RowIndex].Cells[10].Value.ToString());
-                            var potassiumu = int.Parse(guna2DataGridView1.Rows[args.RowIndex].Cells[11].Value.ToString());
-                            var phosphoru = int.Parse(guna2DataGridView1.Rows[args.RowIndex].Cells[12].Value.ToString());
-                            var wateru = int.Parse(guna2DataGridView1.Rows[args.RowIndex].Cells[13].Value.ToString());
-                            var magnesiumu = int.Parse(guna2DataGridView1.Rows[args.RowIndex].Cells[14].Value.ToString());
-                            var sugaru = int.Parse(guna2DataGridView1.Rows[args.RowIndex].Cells[15].Value.ToString());
-                            var ironu = int.Parse(guna2DataGridView1.Rows[args.RowIndex].Cells[16].Value.ToString());
-                            var iodineu = int.Parse(guna2DataGridView1.Rows[args.RowIndex].Cells[17].Value.ToString());
-                            var au = int.Parse(guna2DataGridView1.Rows[args.RowIndex].Cells[18].Value.ToString());
-                            var bu = int.Parse(guna2DataGridView1.Rows[args.RowIndex].Cells[19].Value.ToString());
+                            var proteinu = float.Parse(guna2DataGridView1.Rows[args.RowIndex].Cells[5].Value.ToString());
+                            var fatsu = float.Parse(guna2DataGridView1.Rows[args.RowIndex].Cells[6].Value.ToString());
+                            var carbsu = float.Parse(guna2DataGridView1.Rows[args.RowIndex].Cells[7].Value.ToString());
+                            var calciumu = float.Parse(guna2DataGridView1.Rows[args.RowIndex].Cells[8].Value.ToString());
+                            var fiberu = float.Parse(guna2DataGridView1.Rows[args.RowIndex].Cells[9].Value.ToString());
+                            var sodiumu = float.Parse(guna2DataGridView1.Rows[args.RowIndex].Cells[10].Value.ToString());
+                            var potassiumu = float.Parse(guna2DataGridView1.Rows[args.RowIndex].Cells[11].Value.ToString());
+                            var phosphoru = float.Parse(guna2DataGridView1.Rows[args.RowIndex].Cells[12].Value.ToString());
+                            var wateru = float.Parse(guna2DataGridView1.Rows[args.RowIndex].Cells[13].Value.ToString());
+                            var magnesiumu = float.Parse(guna2DataGridView1.Rows[args.RowIndex].Cells[14].Value.ToString());
+                            var sugaru = float.Parse(guna2DataGridView1.Rows[args.RowIndex].Cells[15].Value.ToString());
+                            var ironu = float.Parse(guna2DataGridView1.Rows[args.RowIndex].Cells[16].Value.ToString());
+                            var iodineu = float.Parse(guna2DataGridView1.Rows[args.RowIndex].Cells[17].Value.ToString());
+                            var au = float.Parse(guna2DataGridView1.Rows[args.RowIndex].Cells[18].Value.ToString());
+                            var bu = float.Parse(guna2DataGridView1.Rows[args.RowIndex].Cells[19].Value.ToString());
 
                             double currentCalories = double.Parse(calories.Text);
                             double currentProteins = double.Parse(protein.Text);
@@ -1695,7 +1710,6 @@ namespace HelloWorldSolutionIMS
             SearchMeals(guna2DataGridView2, iddgv, mealardgv, mealendgv, caloriedgv, proteindgv, fatsdgv, carbohydratesdgv, calciumdgv, fiberdgv, sodiumdgv);
 
         }
-
         private bool simulateDoubleClick = false;
         private void guna2DataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
@@ -1788,6 +1802,8 @@ namespace HelloWorldSolutionIMS
         }
         private void EditBTN_Click(object sender, EventArgs e)
         {
+            UpdateGroupsC();
+            UpdateGroupsN();
             edit = 1;
             try
             {
@@ -2324,6 +2340,7 @@ namespace HelloWorldSolutionIMS
                                 MainClass.con.Close();
 
                                 //tabControl1.SelectedIndex = 2;
+                                ShowGroupN(guna2DataGridView3, idgn, gnnar, gnnen);
                                 UpdateGroupsN();
 
                             }
@@ -2343,12 +2360,10 @@ namespace HelloWorldSolutionIMS
             tabControl1.SelectedIndex = 3;
 
         }
-
         private void agc_Click(object sender, EventArgs e)
         {
             tabControl1.SelectedIndex = 4;
         }
-
         private void savegc_Click(object sender, EventArgs e)
         {
             if (gcnamear.Text != "" && gcnameen.Text != "")
@@ -2385,11 +2400,59 @@ namespace HelloWorldSolutionIMS
                 MessageBox.Show("Fill both names!");
             }
         }
-
         private void dgc_Click(object sender, EventArgs e)
         {
             ShowGroupC(guna2DataGridView4, gcid, gcnar, gcnen);
-            tabControl1.SelectedIndex = 3;
+            tabControl1.SelectedIndex = 5;
+        }
+        private void Deletegc_Click(object sender, EventArgs e)
+        {
+            if (guna2DataGridView4 != null)
+            {
+                if (guna2DataGridView4.Rows.Count > 0)
+                {
+                    if (guna2DataGridView4.SelectedRows.Count == 1)
+                    {
+
+                        // Get the Ingredient ID to display in the confirmation message
+                        string groupid = guna2DataGridView4.SelectedRows[0].Cells[0].Value.ToString(); // Assuming the Ingredient ID is in the first cell of the selected row.
+
+                        // Ask for confirmation
+                        DialogResult result = MessageBox.Show("Are you sure you want to delete Group C : " + groupid + "?", "Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+
+                        if (result == DialogResult.Yes)
+                        {
+                            try
+                            {
+                                MainClass.con.Open();
+                                SqlCommand cmd = new SqlCommand("DELETE FROM GROUPC WHERE ID = @ID", MainClass.con);
+                                cmd.Parameters.AddWithValue("@ID", groupid); // Assuming the Ingredient ID is in the first cell of the selected row.
+                                cmd.ExecuteNonQuery();
+                                MainClass.con.Close();
+
+                                //tabControl1.SelectedIndex = 2;
+                                ShowGroupC(guna2DataGridView4, gcid, gcnar, gcnen);
+                                UpdateGroupsC();
+                                
+                            }
+                            catch (Exception ex)
+                            {
+                                MainClass.con.Close();
+                                MessageBox.Show(ex.Message);
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        private void guna2Button3_Click(object sender, EventArgs e)
+        {
+            tabControl1.SelectedIndex = 2;
+        }
+
+        private void guna2Button1_Click(object sender, EventArgs e)
+        {
+            tabControl1.SelectedIndex = 2;
         }
     }
       

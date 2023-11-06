@@ -1212,6 +1212,112 @@ namespace HelloWorldSolutionIMS
         {
             SearchAppointments(guna2DataGridView1, iddgv, filenodgv, firstnamedgv, familynamedgv, roomdgv, slotdgv, datedgv);
         }
+
+        private void EditBTN_Click(object sender, EventArgs e)
+        {
+            Room1.ClearSelection();
+            Room1.CurrentCell = null;
+            Room2.ClearSelection();
+            Room2.CurrentCell = null;
+            Room3.ClearSelection();
+            Room3.CurrentCell = null;
+            Room4.ClearSelection();
+            Room4.CurrentCell = null;
+            edit = 1;
+            stopper = 1;
+            check = 1;
+
+            DateTime datefiller = DateTime.Now;
+            try
+            {
+
+                slot.Visible = true;
+                slotlabel.Visible = true;
+                AppointmentIDToEdit = int.Parse(guna2DataGridView1.SelectedRows[0].Cells["Iddgv"].Value.ToString()); // Assuming the ID is in a column named "Id"
+
+                SqlCommand cmd = new SqlCommand("SELECT * FROM Appointment WHERE Id = @appointmentID", MainClass.con);
+                cmd.Parameters.AddWithValue("@appointmentID", AppointmentIDToEdit);
+                MainClass.con.Open();
+                SqlDataReader reader = cmd.ExecuteReader();
+
+                if (reader.HasRows)
+                {
+                    while (reader.Read())
+                    {
+                        fileno.Text = reader["FILENO"].ToString();
+                        firstname.Text = reader["FIRSTNAME"].ToString();
+                        familyname.Text = reader["FAMILYNAME"].ToString();
+                        mobileno.Text = reader["MOBILENO"].ToString();
+                        datefiller = Convert.ToDateTime(reader["DATE"]);
+                        slot.Text = reader["SLOT"].ToString();
+
+                        tabControl1.SelectedIndex = 1; // Switch to the desired tab
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Appointment data not found with ID: " + AppointmentIDToEdit);
+                }
+
+                reader.Close();
+                MainClass.con.Close();
+                date.SetDate(datefiller);
+                slotupdate();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+
+        }
+
+        private void delete_Click(object sender, EventArgs e)
+        {
+            if (guna2DataGridView1 != null)
+            {
+                if (guna2DataGridView1.Rows.Count > 0)
+                {
+                    if (guna2DataGridView1.SelectedRows.Count == 1) // Changed from SelectedRows to SelectedCells
+                    {
+                        // Clear the text boxes
+                        fileno.Text = "";
+                        firstname.Text = "";
+                        familyname.Text = "";
+                        mobileno.Text = "";
+
+
+                        string appointmentIDToDelete = guna2DataGridView1.SelectedRows[0].Cells["iddgv"].Value.ToString(); // Assuming the Appointment ID is in a column named "Id"
+
+                        DialogResult result = MessageBox.Show("Are you sure you want to delete Appointment: " + appointmentIDToDelete + "?", "Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+
+                        if (result == DialogResult.Yes)
+                        {
+                            try
+                            {
+                                MainClass.con.Open();
+                                SqlCommand cmd = new SqlCommand("DELETE FROM Appointment WHERE Id = @ID", MainClass.con);
+                                cmd.Parameters.AddWithValue("@ID", guna2DataGridView1.CurrentRow.Cells["iddgv"].Value.ToString()); // Assuming the Appointment ID is in a column named "Id"
+                                cmd.ExecuteNonQuery();
+                                MessageBox.Show("Appointment removed successfully");
+                                MainClass.con.Close();
+                                // Refresh the data grid view with the updated data
+                                ShowAppointments(guna2DataGridView1, iddgv, filenodgv, firstnamedgv, familynamedgv, roomdgv, slotdgv, datedgv);
+                            }
+                            catch (Exception ex)
+                            {
+                                MainClass.con.Close();
+                                MessageBox.Show(ex.Message);
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        private void panel4_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
     }
 }
 
