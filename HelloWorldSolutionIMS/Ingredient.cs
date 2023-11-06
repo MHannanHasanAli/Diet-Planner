@@ -56,13 +56,16 @@ namespace HelloWorldSolutionIMS
                 chart1.Titles.Add("Nutrient Chart");
                 titlecheck = 1;
             }
-            chart1.Titles[0].Alignment = ContentAlignment.TopCenter; // Align the title to the top center
 
-            // Your existing code for chart settings
-            chart1.Legends[0].Enabled = true; // Enable the legend.
-            chart1.Legends[0].Alignment = StringAlignment.Center; // Align the legend to the center.
-            chart1.Legends[0].Docking = Docking.Bottom; // Dock the legend at the bottom.
+            // Ensure the legend is enabled and docked at the left
+            chart1.Size = new Size(220, 220);
 
+            //chart1.Legends[0].Enabled = true;
+            //chart1.Legends[0].Alignment = StringAlignment.Near;
+            //chart1.Legends[0].Docking = Docking.Bottom;
+            //chart1.Legends[0].IsTextAutoFit = false;
+            //chart1.Legends[0].MaximumAutoSize = 15;
+            //chart1.Legends[0].TextWrapThreshold = 2;
             // Your existing code for chart settings
             chart1.Series.Clear();
             chart1.Palette = ChartColorPalette.Pastel;
@@ -534,5 +537,116 @@ namespace HelloWorldSolutionIMS
             }
         }
 
+        private void EditBTN_Click(object sender, EventArgs e)
+        {
+            edit = 1;
+            try
+            {
+                ingredientIDToEdit = guna2DataGridView1.SelectedRows[0].Cells[0].Value.ToString();
+                MainClass.con.Open();
+                SqlCommand cmd = new SqlCommand("SELECT * FROM Ingredient WHERE ID = @IngredientID", MainClass.con);
+                cmd.Parameters.AddWithValue("@IngredientID", ingredientIDToEdit);
+
+                SqlDataReader reader = cmd.ExecuteReader();
+                if (reader.HasRows)
+                {
+                    while (reader.Read())
+                    {
+                        // Set the retrieved data into input controls
+                        ingredientar.Text = reader["INGREDIENT_AR"].ToString();
+                        ingredienten.Text = reader["INGREDIENT_EN"].ToString();
+                        groupar.Text = reader["GROUP_AR"].ToString();
+                        groupen.Text = reader["GROUP_EN"].ToString();
+                        classification.Text = reader["CLASSIFICATION"].ToString();
+                        calories.Text = reader["CALORIES"].ToString();
+                        fats.Text = reader["FATS"].ToString();
+                        fibers.Text = reader["FIBERS"].ToString();
+                        potassium.Text = reader["POTASSIUM"].ToString();
+                        water.Text = reader["WATER"].ToString();
+                        sugar.Text = reader["SUGAR"].ToString();
+                        calcium.Text = reader["CALCIUM"].ToString();
+                        abox.Text = reader["A"].ToString();
+                        protein.Text = reader["PROTEIN"].ToString();
+                        carbohydrates.Text = reader["CARBOHYDRATES"].ToString();
+                        sodium.Text = reader["SODIUM"].ToString();
+                        phosphor.Text = reader["PHOSPHOR"].ToString();
+                        magnesium.Text = reader["MAGNESIUM"].ToString();
+                        iron.Text = reader["IRON"].ToString();
+                        iodine.Text = reader["IODINE"].ToString();
+                        bbox.Text = reader["B"].ToString();
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Ingredient not found with No: " + ingredientIDToEdit);
+                }
+
+                MainClass.con.Close();
+            }
+            catch (Exception ex)
+            {
+                MainClass.con.Close();
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        private void DeleteBTN_Click(object sender, EventArgs e)
+        {
+            if (guna2DataGridView1 != null)
+            {
+                if (guna2DataGridView1.Rows.Count > 0)
+                {
+                    if (guna2DataGridView1.SelectedRows.Count == 1)
+                    {
+                        ingredientar.Text = "";
+                        ingredienten.Text = "";
+                        groupar.Text = "";
+                        groupen.Text = "";
+                        classification.Text = "";
+                        calories.Text = "";
+                        fats.Text = "";
+                        fibers.Text = "";
+                        potassium.Text = "";
+                        water.Text = "";
+                        sugar.Text = "";
+                        calcium.Text = "";
+                        abox.Text = "";
+                        protein.Text = "";
+                        carbohydrates.Text = "";
+                        sodium.Text = "";
+                        phosphor.Text = "";
+                        magnesium.Text = "";
+                        iron.Text = "";
+                        iodine.Text = "";
+                        bbox.Text = "";
+                        // Get the Ingredient ID to display in the confirmation message
+                        string ingredientIDToDelete = guna2DataGridView1.CurrentRow.Cells[2].Value.ToString(); // Assuming the Ingredient ID is in the first cell of the selected row.
+
+                        // Ask for confirmation
+                        DialogResult result = MessageBox.Show("Are you sure you want to delete Ingredient : " + ingredientIDToDelete + "?", "Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+
+                        if (result == DialogResult.Yes)
+                        {
+                            try
+                            {
+                                MainClass.con.Open();
+                                SqlCommand cmd = new SqlCommand("DELETE FROM Ingredient WHERE ID = @IngredientID", MainClass.con);
+                                cmd.Parameters.AddWithValue("@IngredientID", guna2DataGridView1.CurrentRow.Cells[0].Value.ToString()); // Assuming the Ingredient ID is in the first cell of the selected row.
+                                cmd.ExecuteNonQuery();
+                                MessageBox.Show("Ingredient removed successfully");
+                                MainClass.con.Close();
+                                // Refresh the data grid view with the updated data
+                                ShowIngredients(guna2DataGridView1, nodgv, classificationdgv, ingredientardgv, calloriesdgv, proteindgv, fatsdgv, carbohydratedgv, calciumdgv, fibersdgv, sodiumdgv);
+                            }
+                            catch (Exception ex)
+                            {
+                                MainClass.con.Close();
+                                MessageBox.Show(ex.Message);
+                            }
+                        }
+                    }
+                }
+            }
+        }
     }
 }

@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
@@ -88,14 +87,12 @@
             this.calciumdgv = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.fibersdgv = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.sodiumdgv = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.editToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.deleteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.Search = new Guna.UI2.WinForms.Guna2Button();
             this.New = new Guna.UI2.WinForms.Guna2Button();
             this.chart1 = new System.Windows.Forms.DataVisualization.Charting.Chart();
+            this.DeleteBTN = new Guna.UI2.WinForms.Guna2Button();
+            this.EditBTN = new Guna.UI2.WinForms.Guna2Button();
             ((System.ComponentModel.ISupportInitialize)(this.guna2DataGridView1)).BeginInit();
-            this.contextMenuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.chart1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -125,11 +122,11 @@
             // 
             this.label12.AutoSize = true;
             this.label12.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F);
-            this.label12.Location = new System.Drawing.Point(48, 212);
+            this.label12.Location = new System.Drawing.Point(59, 212);
             this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(117, 24);
+            this.label12.Size = new System.Drawing.Size(42, 24);
             this.label12.TabIndex = 62;
-            this.label12.Text = "Classification";
+            this.label12.Text = "Unit";
             // 
             // label3
             // 
@@ -333,7 +330,7 @@
             this.potassium.PlaceholderText = "";
             this.potassium.SelectedText = "";
             this.potassium.ShadowDecoration.Parent = this.potassium;
-            this.potassium.Size = new System.Drawing.Size(149, 29);
+            this.potassium.Size = new System.Drawing.Size(123, 29);
             this.potassium.TabIndex = 79;
             this.potassium.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.floatlock);
             // 
@@ -359,7 +356,7 @@
             this.fibers.PlaceholderText = "";
             this.fibers.SelectedText = "";
             this.fibers.ShadowDecoration.Parent = this.fibers;
-            this.fibers.Size = new System.Drawing.Size(149, 29);
+            this.fibers.Size = new System.Drawing.Size(123, 29);
             this.fibers.TabIndex = 78;
             this.fibers.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.floatlock);
             // 
@@ -385,7 +382,7 @@
             this.fats.PlaceholderText = "";
             this.fats.SelectedText = "";
             this.fats.ShadowDecoration.Parent = this.fats;
-            this.fats.Size = new System.Drawing.Size(149, 29);
+            this.fats.Size = new System.Drawing.Size(123, 29);
             this.fats.TabIndex = 77;
             this.fats.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.floatlock);
             // 
@@ -411,7 +408,7 @@
             this.calories.PlaceholderText = "";
             this.calories.SelectedText = "";
             this.calories.ShadowDecoration.Parent = this.calories;
-            this.calories.Size = new System.Drawing.Size(149, 29);
+            this.calories.Size = new System.Drawing.Size(123, 29);
             this.calories.TabIndex = 76;
             this.calories.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.floatlock);
             // 
@@ -419,7 +416,7 @@
             // 
             this.label9.AutoSize = true;
             this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F);
-            this.label9.Location = new System.Drawing.Point(141, 577);
+            this.label9.Location = new System.Drawing.Point(681, 410);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(23, 24);
             this.label9.TabIndex = 91;
@@ -429,7 +426,7 @@
             // 
             this.label10.AutoSize = true;
             this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F);
-            this.label10.Location = new System.Drawing.Point(108, 492);
+            this.label10.Location = new System.Drawing.Point(648, 325);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(60, 24);
             this.label10.TabIndex = 90;
@@ -439,7 +436,7 @@
             // 
             this.label11.AutoSize = true;
             this.label11.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F);
-            this.label11.Location = new System.Drawing.Point(90, 538);
+            this.label11.Location = new System.Drawing.Point(630, 371);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(78, 24);
             this.label11.TabIndex = 89;
@@ -449,7 +446,7 @@
             // 
             this.label14.AutoSize = true;
             this.label14.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F);
-            this.label14.Location = new System.Drawing.Point(105, 451);
+            this.label14.Location = new System.Drawing.Point(645, 284);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(59, 24);
             this.label14.TabIndex = 88;
@@ -470,14 +467,14 @@
             this.abox.ForeColor = System.Drawing.Color.Black;
             this.abox.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.abox.HoverState.Parent = this.abox;
-            this.abox.Location = new System.Drawing.Point(173, 577);
+            this.abox.Location = new System.Drawing.Point(713, 410);
             this.abox.Margin = new System.Windows.Forms.Padding(5, 6, 5, 6);
             this.abox.Name = "abox";
             this.abox.PasswordChar = '\0';
             this.abox.PlaceholderText = "";
             this.abox.SelectedText = "";
             this.abox.ShadowDecoration.Parent = this.abox;
-            this.abox.Size = new System.Drawing.Size(149, 29);
+            this.abox.Size = new System.Drawing.Size(123, 29);
             this.abox.TabIndex = 87;
             this.abox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.floatlock);
             // 
@@ -496,14 +493,14 @@
             this.calcium.ForeColor = System.Drawing.Color.Black;
             this.calcium.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.calcium.HoverState.Parent = this.calcium;
-            this.calcium.Location = new System.Drawing.Point(173, 533);
+            this.calcium.Location = new System.Drawing.Point(713, 366);
             this.calcium.Margin = new System.Windows.Forms.Padding(5, 6, 5, 6);
             this.calcium.Name = "calcium";
             this.calcium.PasswordChar = '\0';
             this.calcium.PlaceholderText = "";
             this.calcium.SelectedText = "";
             this.calcium.ShadowDecoration.Parent = this.calcium;
-            this.calcium.Size = new System.Drawing.Size(149, 29);
+            this.calcium.Size = new System.Drawing.Size(123, 29);
             this.calcium.TabIndex = 86;
             this.calcium.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.floatlock);
             // 
@@ -522,14 +519,14 @@
             this.sugar.ForeColor = System.Drawing.Color.Black;
             this.sugar.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.sugar.HoverState.Parent = this.sugar;
-            this.sugar.Location = new System.Drawing.Point(173, 492);
+            this.sugar.Location = new System.Drawing.Point(713, 325);
             this.sugar.Margin = new System.Windows.Forms.Padding(5, 6, 5, 6);
             this.sugar.Name = "sugar";
             this.sugar.PasswordChar = '\0';
             this.sugar.PlaceholderText = "";
             this.sugar.SelectedText = "";
             this.sugar.ShadowDecoration.Parent = this.sugar;
-            this.sugar.Size = new System.Drawing.Size(149, 29);
+            this.sugar.Size = new System.Drawing.Size(123, 29);
             this.sugar.TabIndex = 85;
             this.sugar.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.floatlock);
             // 
@@ -548,14 +545,14 @@
             this.water.ForeColor = System.Drawing.Color.Black;
             this.water.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.water.HoverState.Parent = this.water;
-            this.water.Location = new System.Drawing.Point(173, 451);
+            this.water.Location = new System.Drawing.Point(713, 284);
             this.water.Margin = new System.Windows.Forms.Padding(5, 6, 5, 6);
             this.water.Name = "water";
             this.water.PasswordChar = '\0';
             this.water.PlaceholderText = "";
             this.water.SelectedText = "";
             this.water.ShadowDecoration.Parent = this.water;
-            this.water.Size = new System.Drawing.Size(149, 29);
+            this.water.Size = new System.Drawing.Size(123, 29);
             this.water.TabIndex = 84;
             this.water.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.floatlock);
             // 
@@ -563,7 +560,7 @@
             // 
             this.label15.AutoSize = true;
             this.label15.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F);
-            this.label15.Location = new System.Drawing.Point(432, 577);
+            this.label15.Location = new System.Drawing.Point(972, 410);
             this.label15.Name = "label15";
             this.label15.Size = new System.Drawing.Size(22, 24);
             this.label15.TabIndex = 107;
@@ -573,7 +570,7 @@
             // 
             this.label16.AutoSize = true;
             this.label16.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F);
-            this.label16.Location = new System.Drawing.Point(417, 492);
+            this.label16.Location = new System.Drawing.Point(957, 325);
             this.label16.Name = "label16";
             this.label16.Size = new System.Drawing.Size(42, 24);
             this.label16.TabIndex = 106;
@@ -583,7 +580,7 @@
             // 
             this.label17.AutoSize = true;
             this.label17.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F);
-            this.label17.Location = new System.Drawing.Point(397, 538);
+            this.label17.Location = new System.Drawing.Point(937, 371);
             this.label17.Name = "label17";
             this.label17.Size = new System.Drawing.Size(62, 24);
             this.label17.TabIndex = 105;
@@ -593,7 +590,7 @@
             // 
             this.label18.AutoSize = true;
             this.label18.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F);
-            this.label18.Location = new System.Drawing.Point(350, 451);
+            this.label18.Location = new System.Drawing.Point(890, 284);
             this.label18.Name = "label18";
             this.label18.Size = new System.Drawing.Size(109, 24);
             this.label18.TabIndex = 104;
@@ -614,14 +611,14 @@
             this.bbox.ForeColor = System.Drawing.Color.Black;
             this.bbox.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.bbox.HoverState.Parent = this.bbox;
-            this.bbox.Location = new System.Drawing.Point(464, 577);
+            this.bbox.Location = new System.Drawing.Point(1004, 410);
             this.bbox.Margin = new System.Windows.Forms.Padding(5, 6, 5, 6);
             this.bbox.Name = "bbox";
             this.bbox.PasswordChar = '\0';
             this.bbox.PlaceholderText = "";
             this.bbox.SelectedText = "";
             this.bbox.ShadowDecoration.Parent = this.bbox;
-            this.bbox.Size = new System.Drawing.Size(149, 29);
+            this.bbox.Size = new System.Drawing.Size(123, 29);
             this.bbox.TabIndex = 103;
             this.bbox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.floatlock);
             // 
@@ -640,14 +637,14 @@
             this.iodine.ForeColor = System.Drawing.Color.Black;
             this.iodine.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.iodine.HoverState.Parent = this.iodine;
-            this.iodine.Location = new System.Drawing.Point(464, 533);
+            this.iodine.Location = new System.Drawing.Point(1004, 366);
             this.iodine.Margin = new System.Windows.Forms.Padding(5, 6, 5, 6);
             this.iodine.Name = "iodine";
             this.iodine.PasswordChar = '\0';
             this.iodine.PlaceholderText = "";
             this.iodine.SelectedText = "";
             this.iodine.ShadowDecoration.Parent = this.iodine;
-            this.iodine.Size = new System.Drawing.Size(149, 29);
+            this.iodine.Size = new System.Drawing.Size(123, 29);
             this.iodine.TabIndex = 102;
             this.iodine.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.floatlock);
             // 
@@ -666,14 +663,14 @@
             this.iron.ForeColor = System.Drawing.Color.Black;
             this.iron.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.iron.HoverState.Parent = this.iron;
-            this.iron.Location = new System.Drawing.Point(464, 492);
+            this.iron.Location = new System.Drawing.Point(1004, 325);
             this.iron.Margin = new System.Windows.Forms.Padding(5, 6, 5, 6);
             this.iron.Name = "iron";
             this.iron.PasswordChar = '\0';
             this.iron.PlaceholderText = "";
             this.iron.SelectedText = "";
             this.iron.ShadowDecoration.Parent = this.iron;
-            this.iron.Size = new System.Drawing.Size(149, 29);
+            this.iron.Size = new System.Drawing.Size(123, 29);
             this.iron.TabIndex = 101;
             this.iron.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.floatlock);
             // 
@@ -692,14 +689,14 @@
             this.magnesium.ForeColor = System.Drawing.Color.Black;
             this.magnesium.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.magnesium.HoverState.Parent = this.magnesium;
-            this.magnesium.Location = new System.Drawing.Point(464, 451);
+            this.magnesium.Location = new System.Drawing.Point(1004, 284);
             this.magnesium.Margin = new System.Windows.Forms.Padding(5, 6, 5, 6);
             this.magnesium.Name = "magnesium";
             this.magnesium.PasswordChar = '\0';
             this.magnesium.PlaceholderText = "";
             this.magnesium.SelectedText = "";
             this.magnesium.ShadowDecoration.Parent = this.magnesium;
-            this.magnesium.Size = new System.Drawing.Size(149, 29);
+            this.magnesium.Size = new System.Drawing.Size(123, 29);
             this.magnesium.TabIndex = 100;
             this.magnesium.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.floatlock);
             // 
@@ -765,7 +762,7 @@
             this.phosphor.PlaceholderText = "";
             this.phosphor.SelectedText = "";
             this.phosphor.ShadowDecoration.Parent = this.phosphor;
-            this.phosphor.Size = new System.Drawing.Size(149, 29);
+            this.phosphor.Size = new System.Drawing.Size(123, 29);
             this.phosphor.TabIndex = 95;
             this.phosphor.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.floatlock);
             // 
@@ -791,7 +788,7 @@
             this.sodium.PlaceholderText = "";
             this.sodium.SelectedText = "";
             this.sodium.ShadowDecoration.Parent = this.sodium;
-            this.sodium.Size = new System.Drawing.Size(149, 29);
+            this.sodium.Size = new System.Drawing.Size(123, 29);
             this.sodium.TabIndex = 94;
             this.sodium.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.floatlock);
             // 
@@ -817,7 +814,7 @@
             this.carbohydrates.PlaceholderText = "";
             this.carbohydrates.SelectedText = "";
             this.carbohydrates.ShadowDecoration.Parent = this.carbohydrates;
-            this.carbohydrates.Size = new System.Drawing.Size(149, 29);
+            this.carbohydrates.Size = new System.Drawing.Size(123, 29);
             this.carbohydrates.TabIndex = 93;
             this.carbohydrates.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.floatlock);
             // 
@@ -843,7 +840,7 @@
             this.protein.PlaceholderText = "";
             this.protein.SelectedText = "";
             this.protein.ShadowDecoration.Parent = this.protein;
-            this.protein.Size = new System.Drawing.Size(149, 29);
+            this.protein.Size = new System.Drawing.Size(123, 29);
             this.protein.TabIndex = 92;
             this.protein.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.floatlock);
             // 
@@ -878,7 +875,6 @@
             this.calciumdgv,
             this.fibersdgv,
             this.sodiumdgv});
-            this.guna2DataGridView1.ContextMenuStrip = this.contextMenuStrip1;
             dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(213)))), ((int)(((byte)(244)))), ((int)(((byte)(226)))));
             dataGridViewCellStyle3.Font = new System.Drawing.Font("Segoe UI", 10.5F);
@@ -889,14 +885,14 @@
             this.guna2DataGridView1.DefaultCellStyle = dataGridViewCellStyle3;
             this.guna2DataGridView1.EnableHeadersVisualStyles = false;
             this.guna2DataGridView1.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(187)))), ((int)(((byte)(238)))), ((int)(((byte)(208)))));
-            this.guna2DataGridView1.Location = new System.Drawing.Point(52, 628);
+            this.guna2DataGridView1.Location = new System.Drawing.Point(63, 553);
             this.guna2DataGridView1.Name = "guna2DataGridView1";
             this.guna2DataGridView1.ReadOnly = true;
             this.guna2DataGridView1.RowHeadersVisible = false;
             this.guna2DataGridView1.RowHeadersWidth = 51;
             this.guna2DataGridView1.RowTemplate.Height = 24;
             this.guna2DataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.guna2DataGridView1.Size = new System.Drawing.Size(1069, 222);
+            this.guna2DataGridView1.Size = new System.Drawing.Size(1069, 310);
             this.guna2DataGridView1.TabIndex = 108;
             this.guna2DataGridView1.Theme = Guna.UI2.WinForms.Enums.DataGridViewPresetThemes.Emerald;
             this.guna2DataGridView1.ThemeStyle.AlternatingRowsStyle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(239)))), ((int)(((byte)(212)))));
@@ -991,29 +987,6 @@
             this.sodiumdgv.Name = "sodiumdgv";
             this.sodiumdgv.ReadOnly = true;
             // 
-            // contextMenuStrip1
-            // 
-            this.contextMenuStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
-            this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.editToolStripMenuItem,
-            this.deleteToolStripMenuItem});
-            this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(123, 52);
-            // 
-            // editToolStripMenuItem
-            // 
-            this.editToolStripMenuItem.Name = "editToolStripMenuItem";
-            this.editToolStripMenuItem.Size = new System.Drawing.Size(122, 24);
-            this.editToolStripMenuItem.Text = "Edit";
-            this.editToolStripMenuItem.Click += new System.EventHandler(this.editToolStripMenuItem_Click);
-            // 
-            // deleteToolStripMenuItem
-            // 
-            this.deleteToolStripMenuItem.Name = "deleteToolStripMenuItem";
-            this.deleteToolStripMenuItem.Size = new System.Drawing.Size(122, 24);
-            this.deleteToolStripMenuItem.Text = "Delete";
-            this.deleteToolStripMenuItem.Click += new System.EventHandler(this.deleteToolStripMenuItem_Click);
-            // 
             // Search
             // 
             this.Search.AutoRoundedCorners = true;
@@ -1024,7 +997,7 @@
             this.Search.Font = new System.Drawing.Font("Segoe UI", 11F);
             this.Search.ForeColor = System.Drawing.Color.White;
             this.Search.HoverState.Parent = this.Search;
-            this.Search.Location = new System.Drawing.Point(901, 561);
+            this.Search.Location = new System.Drawing.Point(266, 480);
             this.Search.Name = "Search";
             this.Search.ShadowDecoration.Parent = this.Search;
             this.Search.Size = new System.Drawing.Size(204, 45);
@@ -1043,7 +1016,7 @@
             this.New.Font = new System.Drawing.Font("Segoe UI", 11F);
             this.New.ForeColor = System.Drawing.Color.White;
             this.New.HoverState.Parent = this.New;
-            this.New.Location = new System.Drawing.Point(696, 561);
+            this.New.Location = new System.Drawing.Point(61, 480);
             this.New.Name = "New";
             this.New.ShadowDecoration.Parent = this.New;
             this.New.Size = new System.Drawing.Size(199, 45);
@@ -1055,25 +1028,67 @@
             // 
             chartArea1.Name = "ChartArea1";
             this.chart1.ChartAreas.Add(chartArea1);
+            legend1.Docking = System.Windows.Forms.DataVisualization.Charting.Docking.Bottom;
+            legend1.IsTextAutoFit = false;
+            legend1.MaximumAutoSize = 20F;
             legend1.Name = "Legend1";
             this.chart1.Legends.Add(legend1);
-            this.chart1.Location = new System.Drawing.Point(668, 59);
+            this.chart1.Location = new System.Drawing.Point(824, 12);
             this.chart1.Name = "chart1";
             series1.ChartArea = "ChartArea1";
             series1.Legend = "Legend1";
             series1.Name = "Series1";
             this.chart1.Series.Add(series1);
-            this.chart1.Size = new System.Drawing.Size(483, 430);
+            this.chart1.Size = new System.Drawing.Size(307, 250);
             this.chart1.TabIndex = 111;
             this.chart1.Text = "chart1";
             this.chart1.Click += new System.EventHandler(this.chart1_Click);
+            // 
+            // DeleteBTN
+            // 
+            this.DeleteBTN.AutoRoundedCorners = true;
+            this.DeleteBTN.BorderRadius = 21;
+            this.DeleteBTN.CheckedState.Parent = this.DeleteBTN;
+            this.DeleteBTN.CustomImages.Parent = this.DeleteBTN;
+            this.DeleteBTN.FillColor = System.Drawing.Color.MediumSeaGreen;
+            this.DeleteBTN.Font = new System.Drawing.Font("Segoe UI", 11F);
+            this.DeleteBTN.ForeColor = System.Drawing.Color.White;
+            this.DeleteBTN.HoverState.Parent = this.DeleteBTN;
+            this.DeleteBTN.Location = new System.Drawing.Point(681, 480);
+            this.DeleteBTN.Name = "DeleteBTN";
+            this.DeleteBTN.ShadowDecoration.Parent = this.DeleteBTN;
+            this.DeleteBTN.Size = new System.Drawing.Size(204, 45);
+            this.DeleteBTN.TabIndex = 113;
+            this.DeleteBTN.Text = "Delete Ingredient";
+            this.DeleteBTN.Click += new System.EventHandler(this.DeleteBTN_Click);
+            // 
+            // EditBTN
+            // 
+            this.EditBTN.AutoRoundedCorners = true;
+            this.EditBTN.BorderRadius = 21;
+            this.EditBTN.CausesValidation = false;
+            this.EditBTN.CheckedState.Parent = this.EditBTN;
+            this.EditBTN.CustomImages.Parent = this.EditBTN;
+            this.EditBTN.FillColor = System.Drawing.Color.MediumSeaGreen;
+            this.EditBTN.Font = new System.Drawing.Font("Segoe UI", 11F);
+            this.EditBTN.ForeColor = System.Drawing.Color.White;
+            this.EditBTN.HoverState.Parent = this.EditBTN;
+            this.EditBTN.Location = new System.Drawing.Point(476, 480);
+            this.EditBTN.Name = "EditBTN";
+            this.EditBTN.ShadowDecoration.Parent = this.EditBTN;
+            this.EditBTN.Size = new System.Drawing.Size(199, 45);
+            this.EditBTN.TabIndex = 112;
+            this.EditBTN.Text = "Edit Ingredient";
+            this.EditBTN.Click += new System.EventHandler(this.EditBTN_Click);
             // 
             // Ingredient
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(1167, 875);
+            this.ClientSize = new System.Drawing.Size(1141, 875);
+            this.Controls.Add(this.DeleteBTN);
+            this.Controls.Add(this.EditBTN);
             this.Controls.Add(this.chart1);
             this.Controls.Add(this.Search);
             this.Controls.Add(this.New);
@@ -1126,7 +1141,6 @@
             this.Load += new System.EventHandler(this.Ingredient_Load);
             this.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.floatlock);
             ((System.ComponentModel.ISupportInitialize)(this.guna2DataGridView1)).EndInit();
-            this.contextMenuStrip1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.chart1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -1189,9 +1203,8 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn sodiumdgv;
         private Guna.UI2.WinForms.Guna2Button Search;
         private Guna.UI2.WinForms.Guna2Button New;
-        private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
-        private System.Windows.Forms.ToolStripMenuItem editToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem deleteToolStripMenuItem;
         private System.Windows.Forms.DataVisualization.Charting.Chart chart1;
+        private Guna.UI2.WinForms.Guna2Button DeleteBTN;
+        private Guna.UI2.WinForms.Guna2Button EditBTN;
     }
 }
