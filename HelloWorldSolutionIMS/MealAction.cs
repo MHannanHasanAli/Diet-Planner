@@ -1620,7 +1620,6 @@ namespace HelloWorldSolutionIMS
                 // For instance, you can update other cells in the same row or process the selected value
             }
         }
-
         private void EditBTN_Click(object sender, EventArgs e)
         {
             edit = 1;
@@ -1686,7 +1685,6 @@ namespace HelloWorldSolutionIMS
             }
 
         }
-
         private void Delete_Click(object sender, EventArgs e)
         {
             if (guna2DataGridView2 != null)
@@ -1754,7 +1752,6 @@ namespace HelloWorldSolutionIMS
                 }
             }
         }
-
         private void SaveBTN_Click(object sender, EventArgs e)
         {
             if (edit == 0)
@@ -1925,7 +1922,7 @@ namespace HelloWorldSolutionIMS
                     try
                     {
                         MainClass.con.Open();
-                        SqlCommand cmd = new SqlCommand("UPDATE Meal SET MealAr = @MealAr, MealEn = @MealEn, GroupNAr = @GroupNAr, GroupNEn = @GroupNEn, GroupCAr = @GroupCAr, GroupCEn = @GroupCEn, CLASSIFICATION = @CLASSIFICATION, FATS = @FATS, FIBERS = @FIBERS, POTASSIUM = @POTASSIUM, WATER = @WATER, SUGAR = @SUGAR, CALCIUM = @CALCIUM, A = @A, PROTEIN = @PROTEIN, CARBOHYDRATES = @CARBOHYDRATES, SODIUM = @SODIUM, PHOSPHOR = @PHOSPHOR, MAGNESIUM = @MAGNESIUM, IRON = @IRON, IODINE = @IODINE, B = @B, Category = @Category, Notes = @Notes, Preparation = @Preparation WHERE ID = @ID", MainClass.con);
+                        SqlCommand cmd = new SqlCommand("UPDATE Meal SET MealAr = @MealAr, MealEn = @MealEn, GroupNAr = @GroupNAr, GroupNEn = @GroupNEn, GroupCAr = @GroupCAr, GroupCEn = @GroupCEn, CLASSIFICATION = @CLASSIFICATION, CALORIES = @CALORIES, FATS = @FATS, FIBERS = @FIBERS, POTASSIUM = @POTASSIUM, WATER = @WATER, SUGAR = @SUGAR, CALCIUM = @CALCIUM, A = @A, PROTEIN = @PROTEIN, CARBOHYDRATES = @CARBOHYDRATES, SODIUM = @SODIUM, PHOSPHOR = @PHOSPHOR, MAGNESIUM = @MAGNESIUM, IRON = @IRON, IODINE = @IODINE, B = @B, Notes = @Notes, Preparation = @Preparation WHERE ID = @ID", MainClass.con);
 
                         cmd.Parameters.AddWithValue("@ID", mealIDToEdit);
                         cmd.Parameters.AddWithValue("@MealAr", mealar.Text);
