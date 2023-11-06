@@ -12,6 +12,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Windows.Forms.DataVisualization.Charting;
+using static HelloWorldSolutionIMS.DietPlan;
 using static HelloWorldSolutionIMS.MealAction;
 
 namespace HelloWorldSolutionIMS
@@ -326,7 +327,171 @@ namespace HelloWorldSolutionIMS
         static int dropdown = 0;
         static string mealIDToEdit;
         static int counter = 0;
+        static int conn = 0;
 
+        public class GroupnarContent
+        {
+            public int ID { get; set; }
+            public string NameNAR { get; set; }
+        }
+        private void UpdateGroupsN()
+        {
+            SqlCommand cmd;
+            try
+            {
+                if (MainClass.con.State != ConnectionState.Open)
+                {
+                    MainClass.con.Open();
+                    conn = 1;
+                }
+
+                cmd = new SqlCommand("SELECT ID, Namear FROM GROUPN", MainClass.con);
+
+                SqlDataAdapter da = new SqlDataAdapter(cmd);
+                DataTable dt = new DataTable();
+                da.Fill(dt);
+
+                // Clear the dropdown items before adding new ones
+                groupnar.DataSource = null;
+                // Clear the items (if DataSource is not being set)
+                groupnar.Items.Clear();
+                List<GroupnarContent> GroupNAR = new List<GroupnarContent>();
+
+                // Add the default 'Null' option
+                GroupNAR.Add(new GroupnarContent { ID = 0, NameNAR = "Null" });
+
+                foreach (DataRow row in dt.Rows)
+                {
+                    int Id = row.Field<int>("ID");
+                    string Name = row.Field<string>("Namear");
+
+                    GroupnarContent Temp = new GroupnarContent { ID = Id, NameNAR = Name };
+                    GroupNAR.Add(Temp);
+                }
+
+                groupnar.DataSource = GroupNAR;
+                groupnar.DisplayMember = "NameNAR"; // Display Member is Name
+                groupnar.ValueMember = "ID"; // Value Member is ID
+
+
+                if (conn == 1)
+                {
+                    MainClass.con.Close();
+                    conn = 0;
+                }
+            }
+            catch (Exception ex)
+            {
+                MainClass.con.Close();
+                MessageBox.Show(ex.Message);
+            }
+        }
+        private void UpdateGroupsC()
+        {
+            SqlCommand cmd;
+            try
+            {
+                if (MainClass.con.State != ConnectionState.Open)
+                {
+                    MainClass.con.Open();
+                    conn = 1;
+                }
+
+                cmd = new SqlCommand("SELECT ID, Namear FROM GROUPC", MainClass.con);
+
+                SqlDataAdapter da = new SqlDataAdapter(cmd);
+                DataTable dt = new DataTable();
+                da.Fill(dt);
+
+                // Clear the dropdown items before adding new ones
+                groupcar.DataSource = null;
+                // Clear the items (if DataSource is not being set)
+                groupcar.Items.Clear();
+                List<GroupnarContent> GroupCAR = new List<GroupnarContent>();
+
+                // Add the default 'Null' option
+                GroupCAR.Add(new GroupnarContent { ID = 0, NameNAR = "Null" });
+
+                foreach (DataRow row in dt.Rows)
+                {
+                    int Id = row.Field<int>("ID");
+                    string Name = row.Field<string>("Namear");
+
+                    GroupnarContent Temp = new GroupnarContent { ID = Id, NameNAR = Name };
+                    GroupCAR.Add(Temp);
+                }
+
+                groupcar.DataSource = GroupCAR;
+                groupcar.DisplayMember = "NameNAR"; // Display Member is Name
+                groupcar.ValueMember = "ID"; // Value Member is ID
+
+
+                if (conn == 1)
+                {
+                    MainClass.con.Close();
+                    conn = 0;
+                }
+            }
+            catch (Exception ex)
+            {
+                MainClass.con.Close();
+                MessageBox.Show(ex.Message);
+            }
+        }
+        private void ShowGroupN(DataGridView dgv, DataGridViewColumn no, DataGridViewColumn namear, DataGridViewColumn nameen)
+        {
+            SqlCommand cmd;
+            try
+            {
+                MainClass.con.Open();
+
+                cmd = new SqlCommand("SELECT ID, Namear, Nameen FROM GROUPN", MainClass.con);
+
+                SqlDataAdapter da = new SqlDataAdapter(cmd);
+                DataTable dt = new DataTable();
+                da.Fill(dt);
+
+                no.DataPropertyName = dt.Columns["ID"].ToString();
+                namear.DataPropertyName = dt.Columns["Namear"].ToString();
+                nameen.DataPropertyName = dt.Columns["Nameen"].ToString();
+               
+
+                dgv.DataSource = dt;
+                MainClass.con.Close();
+            }
+            catch (Exception ex)
+            {
+                MainClass.con.Close();
+                MessageBox.Show(ex.Message);
+            }
+        }
+        private void ShowGroupC(DataGridView dgv, DataGridViewColumn no, DataGridViewColumn namear, DataGridViewColumn nameen)
+        {
+            SqlCommand cmd;
+            try
+            {
+                MainClass.con.Open();
+
+                cmd = new SqlCommand("SELECT ID, Namear, Nameen FROM GROUPC", MainClass.con);
+
+                SqlDataAdapter da = new SqlDataAdapter(cmd);
+                DataTable dt = new DataTable();
+                da.Fill(dt);
+
+                no.DataPropertyName = dt.Columns["ID"].ToString();
+                namear.DataPropertyName = dt.Columns["Namear"].ToString();
+                nameen.DataPropertyName = dt.Columns["Nameen"].ToString();
+
+
+                dgv.DataSource = dt;
+                MainClass.con.Close();
+            }
+            catch (Exception ex)
+            {
+                MainClass.con.Close();
+                MessageBox.Show(ex.Message);
+            }
+        }
         private void ShowMeals(DataGridView dgv, DataGridViewColumn no, DataGridViewColumn mealar, DataGridViewColumn mealen, DataGridViewColumn calories, DataGridViewColumn protein, DataGridViewColumn fats, DataGridViewColumn carbohydrates, DataGridViewColumn fibers, DataGridViewColumn calcium, DataGridViewColumn sodium)
         {
             SqlCommand cmd;
@@ -748,7 +913,7 @@ namespace HelloWorldSolutionIMS
                         }
                         else
                         {
-                            var caloriesu = int.Parse(guna2DataGridView1.Rows[args.RowIndex].Cells[4].Value.ToString());
+                            var caloriesu = float.Parse(guna2DataGridView1.Rows[args.RowIndex].Cells[4].Value.ToString());
                             var proteinu = int.Parse(guna2DataGridView1.Rows[args.RowIndex].Cells[5].Value.ToString());
                             var fatsu = int.Parse(guna2DataGridView1.Rows[args.RowIndex].Cells[6].Value.ToString());
                             var carbsu = int.Parse(guna2DataGridView1.Rows[args.RowIndex].Cells[7].Value.ToString());
@@ -1358,10 +1523,10 @@ namespace HelloWorldSolutionIMS
         {
             mealar.Text = "";
             mealen.Text = "";
-            groupnar.Text = "";
-            groupnen.Text = "";
-            groupcar.Text = "";
-            groupcen.Text = "";
+            groupnar.SelectedItem = null;
+            groupnen.SelectedItem = null;
+            groupcar.SelectedItem = null;
+            groupcen.SelectedItem = null;
             classification.SelectedItem = null;
             //category.SelectedItem = null;
             calories.Text = "";
@@ -1384,7 +1549,8 @@ namespace HelloWorldSolutionIMS
             preparation.Text = "";
             edit = 0;
             guna2DataGridView1.Rows.Clear();
-
+            UpdateGroupsN();
+            UpdateGroupsC();
             tabControl1.SelectedIndex = 2;
         }
         private void deleteToolStripMenuItem_Click(object sender, EventArgs e)
@@ -2079,5 +2245,152 @@ namespace HelloWorldSolutionIMS
                 }
             }
         }
+        private void SaveGroupn_Click(object sender, EventArgs e)
+        {
+            if (agnar.Text != "" && agnen.Text != "")
+            {
+                try
+                {
+                    MainClass.con.Open();
+                    SqlCommand cmd = new SqlCommand("INSERT INTO GROUPN (Namear, Nameen) " +
+                        "VALUES (@Namear, @Nameen)", MainClass.con);
+
+                    cmd.Parameters.AddWithValue("@Namear", agnar.Text);
+                    cmd.Parameters.AddWithValue("@Nameen", agnen.Text);
+
+
+                    cmd.ExecuteNonQuery();
+                    MessageBox.Show("Added successfully");
+                    MainClass.con.Close();
+
+                    agnar.Text = "";
+                    agnen.Text = "";
+
+                    tabControl1.SelectedIndex = 2;
+                    UpdateGroupsN();
+
+                }
+                catch (Exception ex)
+                {
+                    MainClass.con.Close();
+                    MessageBox.Show(ex.Message);
+                }
+            }
+            else
+            {
+                MessageBox.Show("Fill both names!.");
+            }
+        }
+        private void Closebtn_Click(object sender, EventArgs e)
+        {
+            agnar.Text = "";
+            agnen.Text = "";
+            tabControl1.SelectedIndex = 2;
+
+        }
+        private void agn_Click(object sender, EventArgs e)
+        {
+            tabControl1.SelectedIndex = 1;
+
+        }
+        private void CLoseDGN_Click(object sender, EventArgs e)
+        {
+            tabControl1.SelectedIndex = 2;
+
+        }
+        private void Deletegn_Click(object sender, EventArgs e)
+        {
+            if (guna2DataGridView3 != null)
+            {
+                if (guna2DataGridView3.Rows.Count > 0)
+                {
+                    if (guna2DataGridView3.SelectedRows.Count == 1)
+                    {
+                       
+                        // Get the Ingredient ID to display in the confirmation message
+                        string groupid = guna2DataGridView3.SelectedRows[0].Cells[0].Value.ToString(); // Assuming the Ingredient ID is in the first cell of the selected row.
+
+                        // Ask for confirmation
+                        DialogResult result = MessageBox.Show("Are you sure you want to delete Group N : " + groupid + "?", "Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+
+                        if (result == DialogResult.Yes)
+                        {
+                            try
+                            {
+                                MainClass.con.Open();
+                                SqlCommand cmd = new SqlCommand("DELETE FROM GROUPN WHERE ID = @ID", MainClass.con);
+                                cmd.Parameters.AddWithValue("@ID", groupid); // Assuming the Ingredient ID is in the first cell of the selected row.
+                                cmd.ExecuteNonQuery();
+                                MainClass.con.Close();
+
+                                //tabControl1.SelectedIndex = 2;
+                                UpdateGroupsN();
+
+                            }
+                            catch (Exception ex)
+                            {
+                                MainClass.con.Close();
+                                MessageBox.Show(ex.Message);
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        private void dgn_Click(object sender, EventArgs e)
+        {
+            ShowGroupN(guna2DataGridView3, idgn, gnnar, gnnen);
+            tabControl1.SelectedIndex = 3;
+
+        }
+
+        private void agc_Click(object sender, EventArgs e)
+        {
+            tabControl1.SelectedIndex = 4;
+        }
+
+        private void savegc_Click(object sender, EventArgs e)
+        {
+            if (gcnamear.Text != "" && gcnameen.Text != "")
+            {
+                try
+                {
+                    MainClass.con.Open();
+                    SqlCommand cmd = new SqlCommand("INSERT INTO GROUPC (Namear, Nameen) " +
+                        "VALUES (@Namear, @Nameen)", MainClass.con);
+
+                    cmd.Parameters.AddWithValue("@Namear", gcnamear.Text);
+                    cmd.Parameters.AddWithValue("@Nameen", gcnameen.Text);
+
+
+                    cmd.ExecuteNonQuery();
+                    MessageBox.Show("Added successfully");
+                    MainClass.con.Close();
+
+                    gcnamear.Text = "";
+                    gcnameen.Text = "";
+
+                    tabControl1.SelectedIndex = 2;
+                    UpdateGroupsC();
+
+                }
+                catch (Exception ex)
+                {
+                    MainClass.con.Close();
+                    MessageBox.Show(ex.Message);
+                }
+            }
+            else
+            {
+                MessageBox.Show("Fill both names!");
+            }
+        }
+
+        private void dgc_Click(object sender, EventArgs e)
+        {
+            ShowGroupC(guna2DataGridView4, gcid, gcnar, gcnen);
+            tabControl1.SelectedIndex = 3;
+        }
     }
+      
 }
