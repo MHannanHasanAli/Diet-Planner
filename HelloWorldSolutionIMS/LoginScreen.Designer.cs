@@ -34,19 +34,21 @@ namespace HelloWorldSolutionIMS
             this.txtUsername = new Guna.UI2.WinForms.Guna2TextBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.label7 = new System.Windows.Forms.Label();
-            this.label8 = new System.Windows.Forms.Label();
+            this.welcome = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.guna2ComboBox1 = new Guna.UI2.WinForms.Guna2ComboBox();
             this.label11 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
-            this.label9 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
+            this.trade = new System.Windows.Forms.Label();
+            this.email = new System.Windows.Forms.Label();
+            this.landline = new System.Windows.Forms.Label();
+            this.branch = new System.Windows.Forms.Label();
+            this.companyname = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.liscense = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel1.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
@@ -143,25 +145,25 @@ namespace HelloWorldSolutionIMS
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F);
             this.label7.ForeColor = System.Drawing.Color.Honeydew;
-            this.label7.Location = new System.Drawing.Point(433, 409);
+            this.label7.Location = new System.Drawing.Point(427, 409);
             this.label7.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(124, 29);
             this.label7.TabIndex = 1;
             this.label7.Text = "Password";
             // 
-            // label8
+            // welcome
             // 
-            this.label8.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.label8.AutoSize = true;
-            this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 30.25F);
-            this.label8.ForeColor = System.Drawing.Color.Honeydew;
-            this.label8.Location = new System.Drawing.Point(435, 277);
-            this.label8.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(581, 59);
-            this.label8.TabIndex = 0;
-            this.label8.Text = "SIGN IN TO CONTINUE";
+            this.welcome.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.welcome.AutoSize = true;
+            this.welcome.Font = new System.Drawing.Font("Microsoft Sans Serif", 30.25F);
+            this.welcome.ForeColor = System.Drawing.Color.Honeydew;
+            this.welcome.Location = new System.Drawing.Point(422, 277);
+            this.welcome.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.welcome.Name = "welcome";
+            this.welcome.Size = new System.Drawing.Size(581, 59);
+            this.welcome.TabIndex = 0;
+            this.welcome.Text = "SIGN IN TO CONTINUE";
             // 
             // label6
             // 
@@ -179,20 +181,22 @@ namespace HelloWorldSolutionIMS
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.MediumSeaGreen;
+            this.panel1.Controls.Add(this.liscense);
+            this.panel1.Controls.Add(this.label2);
             this.panel1.Controls.Add(this.label6);
             this.panel1.Controls.Add(this.tableLayoutPanel1);
             this.panel1.Controls.Add(this.label11);
             this.panel1.Controls.Add(this.label10);
-            this.panel1.Controls.Add(this.label9);
-            this.panel1.Controls.Add(this.label5);
-            this.panel1.Controls.Add(this.label2);
-            this.panel1.Controls.Add(this.label3);
-            this.panel1.Controls.Add(this.label4);
+            this.panel1.Controls.Add(this.trade);
+            this.panel1.Controls.Add(this.email);
+            this.panel1.Controls.Add(this.landline);
+            this.panel1.Controls.Add(this.branch);
+            this.panel1.Controls.Add(this.companyname);
             this.panel1.Controls.Add(this.label1);
             this.panel1.Controls.Add(this.label7);
             this.panel1.Controls.Add(this.btnLogin);
             this.panel1.Controls.Add(this.pictureBox1);
-            this.panel1.Controls.Add(this.label8);
+            this.panel1.Controls.Add(this.welcome);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel1.ForeColor = System.Drawing.Color.White;
             this.panel1.Location = new System.Drawing.Point(0, 0);
@@ -267,70 +271,70 @@ namespace HelloWorldSolutionIMS
             this.label10.TabIndex = 14;
             this.label10.Text = "This software is protected by copyright and intellectual property rights";
             // 
-            // label9
+            // trade
             // 
-            this.label9.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.label9.AutoSize = true;
-            this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F);
-            this.label9.ForeColor = System.Drawing.Color.Honeydew;
-            this.label9.Location = new System.Drawing.Point(23, 347);
-            this.label9.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(139, 29);
-            this.label9.TabIndex = 13;
-            this.label9.Text = "123456789";
+            this.trade.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.trade.AutoSize = true;
+            this.trade.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F);
+            this.trade.ForeColor = System.Drawing.Color.Honeydew;
+            this.trade.Location = new System.Drawing.Point(13, 283);
+            this.trade.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.trade.Name = "trade";
+            this.trade.Size = new System.Drawing.Size(139, 29);
+            this.trade.TabIndex = 13;
+            this.trade.Text = "123456789";
             // 
-            // label5
+            // email
             // 
-            this.label5.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F);
-            this.label5.ForeColor = System.Drawing.Color.Honeydew;
-            this.label5.Location = new System.Drawing.Point(23, 300);
-            this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(231, 29);
-            this.label5.TabIndex = 12;
-            this.label5.Text = "TEST@TEST.COM";
+            this.email.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.email.AutoSize = true;
+            this.email.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F);
+            this.email.ForeColor = System.Drawing.Color.Honeydew;
+            this.email.Location = new System.Drawing.Point(13, 236);
+            this.email.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.email.Name = "email";
+            this.email.Size = new System.Drawing.Size(231, 29);
+            this.email.TabIndex = 12;
+            this.email.Text = "TEST@TEST.COM";
             // 
-            // label2
+            // landline
             // 
-            this.label2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F);
-            this.label2.ForeColor = System.Drawing.Color.Honeydew;
-            this.label2.Location = new System.Drawing.Point(23, 252);
-            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(177, 29);
-            this.label2.TabIndex = 11;
-            this.label2.Text = "0-123-456-789";
+            this.landline.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.landline.AutoSize = true;
+            this.landline.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F);
+            this.landline.ForeColor = System.Drawing.Color.Honeydew;
+            this.landline.Location = new System.Drawing.Point(13, 188);
+            this.landline.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.landline.Name = "landline";
+            this.landline.Size = new System.Drawing.Size(177, 29);
+            this.landline.TabIndex = 11;
+            this.landline.Text = "0-123-456-789";
             // 
-            // label3
+            // branch
             // 
-            this.label3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F);
-            this.label3.ForeColor = System.Drawing.Color.Honeydew;
-            this.label3.Location = new System.Drawing.Point(23, 201);
-            this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(119, 29);
-            this.label3.TabIndex = 9;
-            this.label3.Text = "BRANCH";
+            this.branch.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.branch.AutoSize = true;
+            this.branch.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F);
+            this.branch.ForeColor = System.Drawing.Color.Honeydew;
+            this.branch.Location = new System.Drawing.Point(13, 137);
+            this.branch.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.branch.Name = "branch";
+            this.branch.Size = new System.Drawing.Size(119, 29);
+            this.branch.TabIndex = 9;
+            this.branch.Text = "BRANCH";
             // 
-            // label4
+            // companyname
             // 
-            this.label4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F);
-            this.label4.ForeColor = System.Drawing.Color.Honeydew;
-            this.label4.Location = new System.Drawing.Point(23, 142);
-            this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(219, 29);
-            this.label4.TabIndex = 10;
-            this.label4.Text = "COMPANY NAME";
+            this.companyname.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.companyname.AutoSize = true;
+            this.companyname.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F);
+            this.companyname.ForeColor = System.Drawing.Color.Honeydew;
+            this.companyname.Location = new System.Drawing.Point(13, 78);
+            this.companyname.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.companyname.Name = "companyname";
+            this.companyname.Size = new System.Drawing.Size(219, 29);
+            this.companyname.TabIndex = 10;
+            this.companyname.Text = "COMPANY NAME";
             // 
             // label1
             // 
@@ -338,12 +342,31 @@ namespace HelloWorldSolutionIMS
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F);
             this.label1.ForeColor = System.Drawing.Color.Honeydew;
-            this.label1.Location = new System.Drawing.Point(435, 452);
+            this.label1.Location = new System.Drawing.Point(427, 452);
             this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(125, 29);
             this.label1.TabIndex = 7;
             this.label1.Text = "Language";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(432, 602);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(533, 16);
+            this.label2.TabIndex = 18;
+            this.label2.Text = "This software is protected by copyright and intellectual property rights under Li" +
+    "scense No.";
+            // 
+            // liscense
+            // 
+            this.liscense.AutoSize = true;
+            this.liscense.Location = new System.Drawing.Point(992, 602);
+            this.liscense.Name = "liscense";
+            this.liscense.Size = new System.Drawing.Size(44, 16);
+            this.liscense.TabIndex = 19;
+            this.liscense.Text = "label3";
             // 
             // LoginScreen
             // 
@@ -373,20 +396,22 @@ namespace HelloWorldSolutionIMS
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.Label welcome;
         private Guna.UI2.WinForms.Guna2TextBox txtPassword;
         private Guna.UI2.WinForms.Guna2TextBox txtUsername;
         private System.Windows.Forms.PictureBox pictureBox1;
         private Guna.UI2.WinForms.Guna2Button btnLogin;
         private System.Windows.Forms.Label label10;
-        private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label trade;
+        private System.Windows.Forms.Label email;
+        private System.Windows.Forms.Label landline;
+        private System.Windows.Forms.Label branch;
+        private System.Windows.Forms.Label companyname;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label11;
         private Guna.UI2.WinForms.Guna2ComboBox guna2ComboBox1;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
+        private System.Windows.Forms.Label liscense;
+        private System.Windows.Forms.Label label2;
     }
 }

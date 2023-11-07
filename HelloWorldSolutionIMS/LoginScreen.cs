@@ -9,6 +9,8 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.SqlClient;
 using System.IO;
+using static HelloWorldSolutionIMS.MealAction;
+using Win32Interop.Enums;
 
 namespace HelloWorldSolutionIMS
 {
@@ -78,7 +80,39 @@ namespace HelloWorldSolutionIMS
         //        txtPassword.UseSystemPasswordChar = true;
         //    }
         //}
+        private void Start()
+        {
+            SqlCommand cmd;
+            try
+            {
+                MainClass.con.Open();
 
+                cmd = new SqlCommand("SELECT COMPANYNAME,BRANCH,EMAIL,LANDLINE,MOBILE,POBOX,TRADENO,WELCOME,LOGO FROM SETTINGS", MainClass.con);
+                SqlDataReader dr = cmd.ExecuteReader();
+
+                if (dr.Read())
+                {
+                    companyname.Text = dr["COMPANYNAME"].ToString();
+                    branch.Text = dr["BRANCH"].ToString();
+                    email.Text = dr["EMAIL"].ToString();
+                    landline.Text = dr["LANDLINE"].ToString();
+                    trade.Text = dr["TRADENO"].ToString();
+                    //labelPOBox.Text = dr["POBOX"].ToString();
+                    trade.Text = dr["TRADENO"].ToString();
+                    liscense.Text = dr["TRADENO"].ToString();
+                    welcome.Text = dr["WELCOME"].ToString();
+                    pictureBox1.ImageLocation = dr["LOGO"].ToString();
+                }
+
+                dr.Close();
+                MainClass.con.Close();
+            }
+            catch (Exception ex)
+            {
+                MainClass.con.Close();
+                MessageBox.Show(ex.Message);
+            }
+        }
         private void LoginScreen_Load(object sender, EventArgs e)
         {
             //int w =1200;
@@ -86,6 +120,7 @@ namespace HelloWorldSolutionIMS
             //this.Location = new Point(0, 0);
             //this.Size = new Size(w, h);
 
+            Start();
             string path = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
             if (!File.Exists(path + "\\myconnect"))
             {

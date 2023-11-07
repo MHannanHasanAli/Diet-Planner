@@ -8,6 +8,11 @@ using System.Text;
 using System.Data.SqlClient;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Guna.UI2.WinForms;
+using static HelloWorldSolutionIMS.MealAction;
+using Svg;
+using Win32Interop.Enums;
+
 namespace HelloWorldSolutionIMS
 {
     public partial class SettingScreen : Form
@@ -51,12 +56,45 @@ namespace HelloWorldSolutionIMS
             cboRole.SelectedIndex = 0;
         }
 
+        private void Start()
+        {
+            SqlCommand cmd;
+            try
+            {
+                MainClass.con.Open();
+
+                cmd = new SqlCommand("SELECT COMPANYNAME,BRANCH,EMAIL,LANDLINE,MOBILE,POBOX,TRADENO,WELCOME,LOGO FROM SETTINGS", MainClass.con);
+                SqlDataReader dr = cmd.ExecuteReader();
+
+                if (dr.Read())
+                {
+                    companyname.Text = dr["COMPANYNAME"].ToString();
+                    branch.Text = dr["BRANCH"].ToString();
+                    email.Text = dr["EMAIL"].ToString();
+                    landline.Text = dr["LANDLINE"].ToString();
+                    mobile.Text = dr["MOBILE"].ToString();
+                    pobox.Text = dr["POBOX"].ToString();
+                    trade.Text = dr["TRADENO"].ToString();
+                    welcomewords.Text = dr["WELCOME"].ToString();
+                    pictureBox1.ImageLocation = dr["LOGO"].ToString();
+                }
+
+                dr.Close();
+                MainClass.con.Close();
+            }
+            catch (Exception ex)
+            {
+                MainClass.con.Close();
+                MessageBox.Show(ex.Message);
+            }
+        }
         private void SettingScreen_Load(object sender, EventArgs e)
         {
             //ShowUsers(Datagridview1, NameGV, UsernameGV, PasswordGV, RoleGV);
             //cboRole.SelectedIndex = 0;
+            Start();
             MainClass.HideAllTabsOnTabControl(tabControl1);
-            tabControl1.SelectedIndex = 1;
+            tabControl1.SelectedIndex = 2;
             
         }
 
@@ -335,10 +373,201 @@ namespace HelloWorldSolutionIMS
             }
         }
 
+        private void Dbsetting_Click(object sender, EventArgs e)
+        {
+            tabControl1.SelectedIndex = 1;
+        }
+        static string logolocation;
+        private void Save_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                MainClass.con.Open();
+                SqlCommand cmd = new SqlCommand("UPDATE Settings SET CompanyName = @CompanyName, Branch = @Branch, Landline = @Landline, Mobile = @Mobile, Email = @Email, POBox = @POBox, TradeNo = @TradeNo, Welcome = @Welcome, Logo = @logo WHERE ID = @ID", MainClass.con);
+
+                cmd.Parameters.AddWithValue("@ID", 1); // Replace with the actual input control for ID.
+                cmd.Parameters.AddWithValue("@CompanyName", companyname.Text); // Replace with the actual input control for INGREDIENT_AR.
+                cmd.Parameters.AddWithValue("@Branch", branch.Text); // Replace with the actual input control for INGREDIENT_EN.
+                cmd.Parameters.AddWithValue("@Landline", landline.Text); // Replace with the actual input control for GROUP_AR.
+                cmd.Parameters.AddWithValue("@Mobile", mobile.Text); // Replace with the actual input control for GROUP_EN.
+                cmd.Parameters.AddWithValue("@Email", email.Text); // Replace with the actual input control for CLASSIFICATION.
+                cmd.Parameters.AddWithValue("@POBox", pobox.Text); // Replace with the actual input control for CALORIES.
+                cmd.Parameters.AddWithValue("@TradeNo", trade.Text); // Replace with the actual input control for FATS.
+                cmd.Parameters.AddWithValue("@Welcome", welcomewords.Text); // Replace with the actual input control for FIBERS.
+                cmd.Parameters.AddWithValue("@Logo", logolocation.ToString());
+
+                cmd.ExecuteNonQuery();
+                MessageBox.Show("Info updated successfully");
+
+                // Clear the input controls or set them to default values.
+                //companyname.Text = "";
+                //branch.Text = "";
+                //landline.Text = "";
+                //mobile.Text = "";
+                //email.Text = "";
+                //pobox.Text = "";
+                //trade.Text = "";
+                //welcomewords.Text = "";
+               
+                MainClass.con.Close();
+
+            }
+            catch (Exception ex)
+            {
+                MainClass.con.Close();
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        private void Attach_Click(object sender, EventArgs e)
+        {
+           
+            try
+            {
+                OpenFileDialog dialog = new OpenFileDialog();
+                dialog.Filter = "jpg files(*.jpg)|*.jpg| PNG files(*.png)|*.png| All Files(*.*)|*.*";
+
+                if(dialog.ShowDialog() == DialogResult.OK) 
+                {
+                    logolocation = dialog.FileName;
+                     pictureBox1.ImageLocation = logolocation;
+                }
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        private void back_Click(object sender, EventArgs e)
+        {
+            tabControl1.SelectedIndex = 2; 
+        }
+
+        private void guna2Button1_Click(object sender, EventArgs e)
+        {
+            tabControl1.SelectedIndex = 2;
+
+        }
+
+        private void guna2Button3_Click(object sender, EventArgs e)
+        {
+            tabControl1.SelectedIndex = 2;
+        }
+
+        private void AddNutri_Click(object sender, EventArgs e)
+        {
+            tabControl1.SelectedIndex = 3;
+        }
+
+        private void Delete_Click(object sender, EventArgs e)
+        {
+            ShowNutritionist(guna2DataGridView4, iddgv, namedgv);
+            tabControl1.SelectedIndex = 4;
+        }
+
+        private void ADD_Click(object sender, EventArgs e)
+        {
+            if (nutriname.Text != "")
+            {
+                try
+                {
+                    MainClass.con.Open();
+                    SqlCommand cmd = new SqlCommand("INSERT INTO Nutritionist (Name) " +
+                        "VALUES (@Name)", MainClass.con);
+
+                    cmd.Parameters.AddWithValue("@Name", nutriname.Text);
 
 
+                    cmd.ExecuteNonQuery();
+                    MessageBox.Show("Added successfully");
+                    MainClass.con.Close();
+
+                    nutriname.Text = "";
+                  
+
+                    tabControl1.SelectedIndex = 2;
+                    //UpdateGroupsC();
+
+                }
+                catch (Exception ex)
+                {
+                    MainClass.con.Close();
+                    MessageBox.Show(ex.Message);
+                }
+            }
+            else
+            {
+                MessageBox.Show("Fill name!");
+            }
+        }
+
+        private void ShowNutritionist(DataGridView dgv, DataGridViewColumn no, DataGridViewColumn name)
+        {
+            SqlCommand cmd;
+            try
+            {
+                MainClass.con.Open();
+
+                cmd = new SqlCommand("SELECT ID, Name FROM NUTRITIONIST", MainClass.con);
+
+                SqlDataAdapter da = new SqlDataAdapter(cmd);
+                DataTable dt = new DataTable();
+                da.Fill(dt);
+
+                no.DataPropertyName = dt.Columns["ID"].ToString();
+                name.DataPropertyName = dt.Columns["Name"].ToString();
 
 
-      
+                dgv.DataSource = dt;
+                MainClass.con.Close();
+            }
+            catch (Exception ex)
+            {
+                MainClass.con.Close();
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        private void Deletegc_Click(object sender, EventArgs e)
+        {
+            if (guna2DataGridView4 != null)
+            {
+                if (guna2DataGridView4.Rows.Count > 0)
+                {
+                    if (guna2DataGridView4.SelectedRows.Count == 1)
+                    {
+
+                        // Get the Ingredient ID to display in the confirmation message
+                        string groupid = guna2DataGridView4.SelectedRows[0].Cells[0].Value.ToString(); // Assuming the Ingredient ID is in the first cell of the selected row.
+
+                        // Ask for confirmation
+                        DialogResult result = MessageBox.Show("Are you sure you want to delete Nutritionist : " + groupid + "?", "Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+
+                        if (result == DialogResult.Yes)
+                        {
+                            try
+                            {
+                                MainClass.con.Open();
+                                SqlCommand cmd = new SqlCommand("DELETE FROM NUTRITIONIST WHERE ID = @ID", MainClass.con);
+                                cmd.Parameters.AddWithValue("@ID", groupid); // Assuming the Ingredient ID is in the first cell of the selected row.
+                                cmd.ExecuteNonQuery();
+                                MainClass.con.Close();
+
+                                //tabControl1.SelectedIndex = 2;
+                                ShowNutritionist(guna2DataGridView4, iddgv, namedgv);
+                                //UpdateGroupsC();
+
+                            }
+                            catch (Exception ex)
+                            {
+                                MainClass.con.Close();
+                                MessageBox.Show(ex.Message);
+                            }
+                        }
+                    }
+                }
+            }
+        }
     }
 }
