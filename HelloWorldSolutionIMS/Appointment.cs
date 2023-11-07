@@ -1,4 +1,5 @@
 ﻿using Guna.UI2.WinForms;
+using Guna.UI2.WinForms.Suite;
 using Svg;
 using System;
 using System.Collections.Generic;
@@ -13,6 +14,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Win32Interop.Enums;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.ListView;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.TreeView;
 
 namespace HelloWorldSolutionIMS
 {
@@ -50,6 +53,31 @@ namespace HelloWorldSolutionIMS
                 date.DataPropertyName = dt.Columns["Date"].ColumnName;
                 mobile.DataPropertyName = dt.Columns["MOBILENO"].ColumnName;
                 dgv.DataSource = dt;
+                MainClass.con.Close();
+            }
+            catch (Exception ex)
+            {
+                MainClass.con.Close();
+                MessageBox.Show(ex.Message);
+            }
+
+            try
+            {
+                MainClass.con.Open();
+
+                cmd = new SqlCommand("SELECT Room1,Room2,Room3,Room4 FROM SETTINGS", MainClass.con);
+                SqlDataReader dr = cmd.ExecuteReader();
+
+                if (dr.Read())
+                {
+                   
+                    room1label.Text = dr["Room1"].ToString();
+                    room2label.Text = dr["Room2"].ToString();
+                    room3label.Text = dr["Room3"].ToString();
+                    room4label.Text = dr["Room4"].ToString();
+                }
+
+                dr.Close();
                 MainClass.con.Close();
             }
             catch (Exception ex)
@@ -1325,6 +1353,48 @@ namespace HelloWorldSolutionIMS
         {
 
         }
+
+        private void Room1_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            Room2.ClearSelection();
+            Room2.CurrentCell = null;
+            Room3.ClearSelection();
+            Room3.CurrentCell = null;
+            Room4.ClearSelection();
+            Room4.CurrentCell = null;
+        }
+
+        private void Room2_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            Room1.ClearSelection();
+            Room1.CurrentCell = null;
+            Room3.ClearSelection();
+            Room3.CurrentCell = null;
+            Room4.ClearSelection();
+            Room4.CurrentCell = null;
+        }
+
+        private void Room3_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            Room1.ClearSelection();
+            Room1.CurrentCell = null;
+            Room2.ClearSelection();
+            Room2.CurrentCell = null;
+            Room4.ClearSelection();
+            Room4.CurrentCell = null;
+        }
+
+        private void Room4_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            Room1.ClearSelection();
+            Room1.CurrentCell = null;
+            Room2.ClearSelection();
+            Room2.CurrentCell = null;
+            Room3.ClearSelection();
+            Room3.CurrentCell = null;
+        }
+
+ 
     }
 }
 

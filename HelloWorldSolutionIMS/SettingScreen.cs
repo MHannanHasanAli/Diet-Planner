@@ -23,7 +23,84 @@ namespace HelloWorldSolutionIMS
         {
             InitializeComponent();
         }
+        public class NutritionistInfo
+        {
+            public int ID { get; set; }
+            public string Name { get; set; }
+        }
 
+        static int conn = 0;
+        private void UpdateNutritionist()
+        {
+            SqlCommand cmd;
+            try
+            {
+                if (MainClass.con.State != ConnectionState.Open)
+                {
+                    MainClass.con.Open();
+                    conn = 1;
+                }
+
+                cmd = new SqlCommand("SELECT ID, Name FROM NUTRITIONIST", MainClass.con);
+
+                SqlDataAdapter da = new SqlDataAdapter(cmd);
+                DataTable dt = new DataTable();
+                da.Fill(dt);
+
+                room1.DataSource = null;
+                room1.Items.Clear();
+
+                List<NutritionistInfo> Room1 = new List<NutritionistInfo>();
+                List<NutritionistInfo> Room2 = new List<NutritionistInfo>();
+                List<NutritionistInfo> Room3 = new List<NutritionistInfo>();
+                List<NutritionistInfo> Room4 = new List<NutritionistInfo>();
+
+                Room1.Add(new NutritionistInfo { ID = 0, Name = "Null" });
+                Room2.Add(new NutritionistInfo { ID = 0, Name = "Null" });
+                Room3.Add(new NutritionistInfo { ID = 0, Name = "Null" });
+                Room4.Add(new NutritionistInfo { ID = 0, Name = "Null" });
+
+                foreach (DataRow row in dt.Rows)
+                {
+                    int Id = row.Field<int>("ID");
+                    string Name = row.Field<string>("Name");
+
+
+                    NutritionistInfo Temp = new NutritionistInfo { ID = Id, Name = Name};
+                    Room1.Add(Temp);
+                    Room2.Add(Temp);
+                    Room3.Add(Temp);
+                    Room4.Add(Temp);
+                }
+
+                room1.DataSource = Room1;
+                room1.DisplayMember = "Name"; // Display Member is Name
+                room1.ValueMember = "ID"; // Value Member is ID
+
+                room2.DataSource = Room2;
+                room2.DisplayMember = "Name"; // Display Member is Name
+                room2.ValueMember = "ID"; // Value Member is ID
+
+                room3.DataSource = Room3;
+                room3.DisplayMember = "Name"; // Display Member is Name
+                room3.ValueMember = "ID"; // Value Member is ID
+
+                room4.DataSource = Room4;
+                room4.DisplayMember = "Name"; // Display Member is Name
+                room4.ValueMember = "ID"; // Value Member is ID
+
+                if (conn == 1)
+                {
+                    MainClass.con.Close();
+                    conn = 0;
+                }
+            }
+            catch (Exception ex)
+            {
+                MainClass.con.Close();
+                MessageBox.Show(ex.Message);
+            }
+        }
         void ShowUsers(DataGridView dgv, DataGridViewColumn NameGV, DataGridViewColumn UsernameGV, DataGridViewColumn PasswordGV, DataGridViewColumn RoleGv)
         {
             try
@@ -58,12 +135,13 @@ namespace HelloWorldSolutionIMS
 
         private void Start()
         {
+            UpdateNutritionist();
             SqlCommand cmd;
             try
             {
                 MainClass.con.Open();
 
-                cmd = new SqlCommand("SELECT COMPANYNAME,BRANCH,EMAIL,LANDLINE,MOBILE,POBOX,TRADENO,WELCOME,LOGO FROM SETTINGS", MainClass.con);
+                cmd = new SqlCommand("SELECT COMPANYNAME,BRANCH,EMAIL,LANDLINE,MOBILE,POBOX,TRADENO,WELCOME,LOGO,Room1,Room2,Room3,Room4 FROM SETTINGS", MainClass.con);
                 SqlDataReader dr = cmd.ExecuteReader();
 
                 if (dr.Read())
@@ -77,6 +155,11 @@ namespace HelloWorldSolutionIMS
                     trade.Text = dr["TRADENO"].ToString();
                     welcomewords.Text = dr["WELCOME"].ToString();
                     pictureBox1.ImageLocation = dr["LOGO"].ToString();
+                    logolocation = dr["LOGO"].ToString();
+                    room1.Text = dr["Room1"].ToString();
+                    room2.Text = dr["Room2"].ToString();
+                    room3.Text = dr["Room3"].ToString();
+                    room4.Text = dr["Room4"].ToString();
                 }
 
                 dr.Close();
@@ -383,7 +466,7 @@ namespace HelloWorldSolutionIMS
             try
             {
                 MainClass.con.Open();
-                SqlCommand cmd = new SqlCommand("UPDATE Settings SET CompanyName = @CompanyName, Branch = @Branch, Landline = @Landline, Mobile = @Mobile, Email = @Email, POBox = @POBox, TradeNo = @TradeNo, Welcome = @Welcome, Logo = @logo WHERE ID = @ID", MainClass.con);
+                SqlCommand cmd = new SqlCommand("UPDATE Settings SET CompanyName = @CompanyName, Branch = @Branch, Landline = @Landline, Mobile = @Mobile, Email = @Email, POBox = @POBox, TradeNo = @TradeNo, Welcome = @Welcome, Logo = @logo, Room1 = @Room1, Room2 = @Room2, Room3 = @Room3, Room4 = @Room4 WHERE ID = @ID", MainClass.con);
 
                 cmd.Parameters.AddWithValue("@ID", 1); // Replace with the actual input control for ID.
                 cmd.Parameters.AddWithValue("@CompanyName", companyname.Text); // Replace with the actual input control for INGREDIENT_AR.
@@ -395,7 +478,10 @@ namespace HelloWorldSolutionIMS
                 cmd.Parameters.AddWithValue("@TradeNo", trade.Text); // Replace with the actual input control for FATS.
                 cmd.Parameters.AddWithValue("@Welcome", welcomewords.Text); // Replace with the actual input control for FIBERS.
                 cmd.Parameters.AddWithValue("@Logo", logolocation.ToString());
-
+                cmd.Parameters.AddWithValue("@Room1", room1.Text);
+                cmd.Parameters.AddWithValue("@Room2", room2.Text);
+                cmd.Parameters.AddWithValue("@Room3", room3.Text);
+                cmd.Parameters.AddWithValue("@Room4", room4.Text);
                 cmd.ExecuteNonQuery();
                 MessageBox.Show("Info updated successfully");
 
@@ -487,8 +573,7 @@ namespace HelloWorldSolutionIMS
                   
 
                     tabControl1.SelectedIndex = 2;
-                    //UpdateGroupsC();
-
+                    UpdateNutritionist();
                 }
                 catch (Exception ex)
                 {
@@ -556,8 +641,7 @@ namespace HelloWorldSolutionIMS
 
                                 //tabControl1.SelectedIndex = 2;
                                 ShowNutritionist(guna2DataGridView4, iddgv, namedgv);
-                                //UpdateGroupsC();
-
+                                UpdateNutritionist();
                             }
                             catch (Exception ex)
                             {

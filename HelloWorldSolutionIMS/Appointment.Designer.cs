@@ -51,6 +51,14 @@
             this.search = new Guna.UI2.WinForms.Guna2Button();
             this.New = new Guna.UI2.WinForms.Guna2Button();
             this.guna2DataGridView1 = new Guna.UI2.WinForms.Guna2DataGridView();
+            this.iddgv = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.filenodgv = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.firstnamedgv = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.familynamedgv = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.mobilenodgv = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.datedgv = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.roomdgv = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.slotdgv = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.panel1 = new System.Windows.Forms.Panel();
@@ -69,10 +77,10 @@
             this.Reserved = new System.Windows.Forms.Label();
             this.slot = new Guna.UI2.WinForms.Guna2TextBox();
             this.slotlabel = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
+            this.room4label = new System.Windows.Forms.Label();
+            this.room3label = new System.Windows.Forms.Label();
+            this.room2label = new System.Windows.Forms.Label();
+            this.room1label = new System.Windows.Forms.Label();
             this.Clear = new Guna.UI2.WinForms.Guna2Button();
             this.Save = new Guna.UI2.WinForms.Guna2Button();
             this.Room4 = new Guna.UI2.WinForms.Guna2DataGridView();
@@ -88,14 +96,6 @@
             this.label15 = new System.Windows.Forms.Label();
             this.label13 = new System.Windows.Forms.Label();
             this.label14 = new System.Windows.Forms.Label();
-            this.iddgv = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.filenodgv = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.firstnamedgv = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.familynamedgv = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.mobilenodgv = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.datedgv = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.roomdgv = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.slotdgv = new System.Windows.Forms.DataGridViewTextBoxColumn();
             back = new Guna.UI2.WinForms.Guna2Button();
             ((System.ComponentModel.ISupportInitialize)(this.guna2DataGridView1)).BeginInit();
             this.tabControl1.SuspendLayout();
@@ -234,6 +234,63 @@
             this.guna2DataGridView1.ThemeStyle.RowsStyle.Height = 24;
             this.guna2DataGridView1.ThemeStyle.RowsStyle.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(115)))), ((int)(((byte)(221)))), ((int)(((byte)(160)))));
             this.guna2DataGridView1.ThemeStyle.RowsStyle.SelectionForeColor = System.Drawing.Color.Black;
+            // 
+            // iddgv
+            // 
+            this.iddgv.HeaderText = "ID";
+            this.iddgv.MinimumWidth = 6;
+            this.iddgv.Name = "iddgv";
+            this.iddgv.ReadOnly = true;
+            this.iddgv.Visible = false;
+            // 
+            // filenodgv
+            // 
+            this.filenodgv.HeaderText = "FILE NO";
+            this.filenodgv.MinimumWidth = 6;
+            this.filenodgv.Name = "filenodgv";
+            this.filenodgv.ReadOnly = true;
+            // 
+            // firstnamedgv
+            // 
+            this.firstnamedgv.HeaderText = "FIRST NAME";
+            this.firstnamedgv.MinimumWidth = 6;
+            this.firstnamedgv.Name = "firstnamedgv";
+            this.firstnamedgv.ReadOnly = true;
+            // 
+            // familynamedgv
+            // 
+            this.familynamedgv.HeaderText = "FAMILY NAME";
+            this.familynamedgv.MinimumWidth = 6;
+            this.familynamedgv.Name = "familynamedgv";
+            this.familynamedgv.ReadOnly = true;
+            // 
+            // mobilenodgv
+            // 
+            this.mobilenodgv.HeaderText = "MOBILE NO";
+            this.mobilenodgv.MinimumWidth = 6;
+            this.mobilenodgv.Name = "mobilenodgv";
+            this.mobilenodgv.ReadOnly = true;
+            // 
+            // datedgv
+            // 
+            this.datedgv.HeaderText = "DATE";
+            this.datedgv.MinimumWidth = 6;
+            this.datedgv.Name = "datedgv";
+            this.datedgv.ReadOnly = true;
+            // 
+            // roomdgv
+            // 
+            this.roomdgv.HeaderText = "ROOM";
+            this.roomdgv.MinimumWidth = 6;
+            this.roomdgv.Name = "roomdgv";
+            this.roomdgv.ReadOnly = true;
+            // 
+            // slotdgv
+            // 
+            this.slotdgv.HeaderText = "SLOT";
+            this.slotdgv.MinimumWidth = 6;
+            this.slotdgv.Name = "slotdgv";
+            this.slotdgv.ReadOnly = true;
             // 
             // tabControl1
             // 
@@ -398,10 +455,10 @@
             this.panel2.Controls.Add(this.slot);
             this.panel2.Controls.Add(this.slotlabel);
             this.panel2.Controls.Add(back);
-            this.panel2.Controls.Add(this.label4);
-            this.panel2.Controls.Add(this.label3);
-            this.panel2.Controls.Add(this.label2);
-            this.panel2.Controls.Add(this.label1);
+            this.panel2.Controls.Add(this.room4label);
+            this.panel2.Controls.Add(this.room3label);
+            this.panel2.Controls.Add(this.room2label);
+            this.panel2.Controls.Add(this.room1label);
             this.panel2.Controls.Add(this.Clear);
             this.panel2.Controls.Add(this.Save);
             this.panel2.Controls.Add(this.Room4);
@@ -511,53 +568,53 @@
             this.slotlabel.Text = "Saved Slot";
             this.slotlabel.Visible = false;
             // 
-            // label4
+            // room4label
             // 
-            this.label4.AutoSize = true;
-            this.label4.BackColor = System.Drawing.Color.MediumSeaGreen;
-            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.ForeColor = System.Drawing.Color.White;
-            this.label4.Location = new System.Drawing.Point(845, 250);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(238, 32);
-            this.label4.TabIndex = 61;
-            this.label4.Text = "         Room 4         ";
+            this.room4label.AutoSize = true;
+            this.room4label.BackColor = System.Drawing.Color.MediumSeaGreen;
+            this.room4label.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.room4label.ForeColor = System.Drawing.Color.White;
+            this.room4label.Location = new System.Drawing.Point(845, 250);
+            this.room4label.Name = "room4label";
+            this.room4label.Size = new System.Drawing.Size(238, 32);
+            this.room4label.TabIndex = 61;
+            this.room4label.Text = "         Room 4         ";
             // 
-            // label3
+            // room3label
             // 
-            this.label3.AutoSize = true;
-            this.label3.BackColor = System.Drawing.Color.MediumSeaGreen;
-            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.ForeColor = System.Drawing.Color.White;
-            this.label3.Location = new System.Drawing.Point(572, 250);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(238, 32);
-            this.label3.TabIndex = 60;
-            this.label3.Text = "         Room 3         ";
+            this.room3label.AutoSize = true;
+            this.room3label.BackColor = System.Drawing.Color.MediumSeaGreen;
+            this.room3label.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.room3label.ForeColor = System.Drawing.Color.White;
+            this.room3label.Location = new System.Drawing.Point(572, 250);
+            this.room3label.Name = "room3label";
+            this.room3label.Size = new System.Drawing.Size(238, 32);
+            this.room3label.TabIndex = 60;
+            this.room3label.Text = "         Room 3         ";
             // 
-            // label2
+            // room2label
             // 
-            this.label2.AutoSize = true;
-            this.label2.BackColor = System.Drawing.Color.MediumSeaGreen;
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.ForeColor = System.Drawing.Color.White;
-            this.label2.Location = new System.Drawing.Point(293, 250);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(238, 32);
-            this.label2.TabIndex = 59;
-            this.label2.Text = "         Room 2         ";
+            this.room2label.AutoSize = true;
+            this.room2label.BackColor = System.Drawing.Color.MediumSeaGreen;
+            this.room2label.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.room2label.ForeColor = System.Drawing.Color.White;
+            this.room2label.Location = new System.Drawing.Point(293, 250);
+            this.room2label.Name = "room2label";
+            this.room2label.Size = new System.Drawing.Size(238, 32);
+            this.room2label.TabIndex = 59;
+            this.room2label.Text = "         Room 2         ";
             // 
-            // label1
+            // room1label
             // 
-            this.label1.AutoSize = true;
-            this.label1.BackColor = System.Drawing.Color.MediumSeaGreen;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.ForeColor = System.Drawing.Color.White;
-            this.label1.Location = new System.Drawing.Point(19, 250);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(238, 32);
-            this.label1.TabIndex = 58;
-            this.label1.Text = "         Room 1         ";
+            this.room1label.AutoSize = true;
+            this.room1label.BackColor = System.Drawing.Color.MediumSeaGreen;
+            this.room1label.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.room1label.ForeColor = System.Drawing.Color.White;
+            this.room1label.Location = new System.Drawing.Point(19, 250);
+            this.room1label.Name = "room1label";
+            this.room1label.Size = new System.Drawing.Size(238, 32);
+            this.room1label.TabIndex = 58;
+            this.room1label.Text = "         Room 1         ";
             // 
             // Clear
             // 
@@ -599,6 +656,9 @@
             // 
             // Room4
             // 
+            this.Room4.AllowUserToDeleteRows = false;
+            this.Room4.AllowUserToResizeColumns = false;
+            this.Room4.AllowUserToResizeRows = false;
             dataGridViewCellStyle4.BackColor = System.Drawing.Color.White;
             this.Room4.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle4;
             this.Room4.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
@@ -627,6 +687,7 @@
             this.Room4.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(247)))), ((int)(((byte)(248)))), ((int)(((byte)(249)))));
             this.Room4.Location = new System.Drawing.Point(848, 275);
             this.Room4.Name = "Room4";
+            this.Room4.ReadOnly = true;
             this.Room4.RowHeadersVisible = false;
             this.Room4.RowHeadersWidth = 51;
             dataGridViewCellStyle7.SelectionBackColor = System.Drawing.Color.LightGreen;
@@ -650,7 +711,7 @@
             this.Room4.ThemeStyle.HeaderStyle.ForeColor = System.Drawing.Color.Black;
             this.Room4.ThemeStyle.HeaderStyle.HeaightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.EnableResizing;
             this.Room4.ThemeStyle.HeaderStyle.Height = 4;
-            this.Room4.ThemeStyle.ReadOnly = false;
+            this.Room4.ThemeStyle.ReadOnly = true;
             this.Room4.ThemeStyle.RowsStyle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(247)))), ((int)(((byte)(248)))), ((int)(((byte)(249)))));
             this.Room4.ThemeStyle.RowsStyle.BorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
             this.Room4.ThemeStyle.RowsStyle.Font = new System.Drawing.Font("Segoe UI", 10.5F);
@@ -658,9 +719,13 @@
             this.Room4.ThemeStyle.RowsStyle.Height = 24;
             this.Room4.ThemeStyle.RowsStyle.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(241)))), ((int)(((byte)(243)))));
             this.Room4.ThemeStyle.RowsStyle.SelectionForeColor = System.Drawing.Color.Black;
+            this.Room4.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.Room4_CellClick);
             // 
             // Room3
             // 
+            this.Room3.AllowUserToDeleteRows = false;
+            this.Room3.AllowUserToResizeColumns = false;
+            this.Room3.AllowUserToResizeRows = false;
             dataGridViewCellStyle8.BackColor = System.Drawing.Color.White;
             this.Room3.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle8;
             this.Room3.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
@@ -689,6 +754,7 @@
             this.Room3.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(247)))), ((int)(((byte)(248)))), ((int)(((byte)(249)))));
             this.Room3.Location = new System.Drawing.Point(575, 275);
             this.Room3.Name = "Room3";
+            this.Room3.ReadOnly = true;
             this.Room3.RowHeadersVisible = false;
             this.Room3.RowHeadersWidth = 51;
             dataGridViewCellStyle11.SelectionBackColor = System.Drawing.Color.LightGreen;
@@ -712,7 +778,7 @@
             this.Room3.ThemeStyle.HeaderStyle.ForeColor = System.Drawing.Color.Black;
             this.Room3.ThemeStyle.HeaderStyle.HeaightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.EnableResizing;
             this.Room3.ThemeStyle.HeaderStyle.Height = 4;
-            this.Room3.ThemeStyle.ReadOnly = false;
+            this.Room3.ThemeStyle.ReadOnly = true;
             this.Room3.ThemeStyle.RowsStyle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(247)))), ((int)(((byte)(248)))), ((int)(((byte)(249)))));
             this.Room3.ThemeStyle.RowsStyle.BorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
             this.Room3.ThemeStyle.RowsStyle.Font = new System.Drawing.Font("Segoe UI", 10.5F);
@@ -720,9 +786,13 @@
             this.Room3.ThemeStyle.RowsStyle.Height = 24;
             this.Room3.ThemeStyle.RowsStyle.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(241)))), ((int)(((byte)(243)))));
             this.Room3.ThemeStyle.RowsStyle.SelectionForeColor = System.Drawing.Color.Black;
+            this.Room3.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.Room3_CellClick);
             // 
             // Room2
             // 
+            this.Room2.AllowUserToDeleteRows = false;
+            this.Room2.AllowUserToResizeColumns = false;
+            this.Room2.AllowUserToResizeRows = false;
             dataGridViewCellStyle12.BackColor = System.Drawing.Color.White;
             this.Room2.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle12;
             this.Room2.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
@@ -751,6 +821,7 @@
             this.Room2.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(247)))), ((int)(((byte)(248)))), ((int)(((byte)(249)))));
             this.Room2.Location = new System.Drawing.Point(296, 275);
             this.Room2.Name = "Room2";
+            this.Room2.ReadOnly = true;
             this.Room2.RowHeadersVisible = false;
             this.Room2.RowHeadersWidth = 51;
             dataGridViewCellStyle15.SelectionBackColor = System.Drawing.Color.LightGreen;
@@ -774,7 +845,7 @@
             this.Room2.ThemeStyle.HeaderStyle.ForeColor = System.Drawing.Color.Black;
             this.Room2.ThemeStyle.HeaderStyle.HeaightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.EnableResizing;
             this.Room2.ThemeStyle.HeaderStyle.Height = 4;
-            this.Room2.ThemeStyle.ReadOnly = false;
+            this.Room2.ThemeStyle.ReadOnly = true;
             this.Room2.ThemeStyle.RowsStyle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(247)))), ((int)(((byte)(248)))), ((int)(((byte)(249)))));
             this.Room2.ThemeStyle.RowsStyle.BorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
             this.Room2.ThemeStyle.RowsStyle.Font = new System.Drawing.Font("Segoe UI", 10.5F);
@@ -782,9 +853,13 @@
             this.Room2.ThemeStyle.RowsStyle.Height = 24;
             this.Room2.ThemeStyle.RowsStyle.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(241)))), ((int)(((byte)(243)))));
             this.Room2.ThemeStyle.RowsStyle.SelectionForeColor = System.Drawing.Color.Black;
+            this.Room2.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.Room2_CellClick);
             // 
             // Room1
             // 
+            this.Room1.AllowUserToDeleteRows = false;
+            this.Room1.AllowUserToResizeColumns = false;
+            this.Room1.AllowUserToResizeRows = false;
             dataGridViewCellStyle16.BackColor = System.Drawing.Color.White;
             this.Room1.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle16;
             this.Room1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
@@ -813,6 +888,7 @@
             this.Room1.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(247)))), ((int)(((byte)(248)))), ((int)(((byte)(249)))));
             this.Room1.Location = new System.Drawing.Point(21, 275);
             this.Room1.Name = "Room1";
+            this.Room1.ReadOnly = true;
             this.Room1.RowHeadersVisible = false;
             this.Room1.RowHeadersWidth = 51;
             dataGridViewCellStyle19.SelectionBackColor = System.Drawing.Color.LightGreen;
@@ -836,7 +912,7 @@
             this.Room1.ThemeStyle.HeaderStyle.ForeColor = System.Drawing.Color.Black;
             this.Room1.ThemeStyle.HeaderStyle.HeaightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.EnableResizing;
             this.Room1.ThemeStyle.HeaderStyle.Height = 4;
-            this.Room1.ThemeStyle.ReadOnly = false;
+            this.Room1.ThemeStyle.ReadOnly = true;
             this.Room1.ThemeStyle.RowsStyle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(247)))), ((int)(((byte)(248)))), ((int)(((byte)(249)))));
             this.Room1.ThemeStyle.RowsStyle.BorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
             this.Room1.ThemeStyle.RowsStyle.Font = new System.Drawing.Font("Segoe UI", 10.5F);
@@ -844,6 +920,7 @@
             this.Room1.ThemeStyle.RowsStyle.Height = 24;
             this.Room1.ThemeStyle.RowsStyle.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(241)))), ((int)(((byte)(243)))));
             this.Room1.ThemeStyle.RowsStyle.SelectionForeColor = System.Drawing.Color.Black;
+            this.Room1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.Room1_CellClick);
             // 
             // date
             // 
@@ -959,7 +1036,7 @@
             // 
             this.label12.AutoSize = true;
             this.label12.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F);
-            this.label12.Location = new System.Drawing.Point(373, 19);
+            this.label12.Location = new System.Drawing.Point(373, 33);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(76, 24);
             this.label12.TabIndex = 47;
@@ -969,7 +1046,7 @@
             // 
             this.label15.AutoSize = true;
             this.label15.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F);
-            this.label15.Location = new System.Drawing.Point(373, 188);
+            this.label15.Location = new System.Drawing.Point(373, 202);
             this.label15.Name = "label15";
             this.label15.Size = new System.Drawing.Size(102, 24);
             this.label15.TabIndex = 50;
@@ -979,7 +1056,7 @@
             // 
             this.label13.AutoSize = true;
             this.label13.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F);
-            this.label13.Location = new System.Drawing.Point(373, 69);
+            this.label13.Location = new System.Drawing.Point(373, 83);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(101, 24);
             this.label13.TabIndex = 48;
@@ -989,68 +1066,11 @@
             // 
             this.label14.AutoSize = true;
             this.label14.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F);
-            this.label14.Location = new System.Drawing.Point(373, 129);
+            this.label14.Location = new System.Drawing.Point(373, 143);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(121, 24);
             this.label14.TabIndex = 49;
             this.label14.Text = "Family Name";
-            // 
-            // iddgv
-            // 
-            this.iddgv.HeaderText = "ID";
-            this.iddgv.MinimumWidth = 6;
-            this.iddgv.Name = "iddgv";
-            this.iddgv.ReadOnly = true;
-            this.iddgv.Visible = false;
-            // 
-            // filenodgv
-            // 
-            this.filenodgv.HeaderText = "FILE NO";
-            this.filenodgv.MinimumWidth = 6;
-            this.filenodgv.Name = "filenodgv";
-            this.filenodgv.ReadOnly = true;
-            // 
-            // firstnamedgv
-            // 
-            this.firstnamedgv.HeaderText = "FIRST NAME";
-            this.firstnamedgv.MinimumWidth = 6;
-            this.firstnamedgv.Name = "firstnamedgv";
-            this.firstnamedgv.ReadOnly = true;
-            // 
-            // familynamedgv
-            // 
-            this.familynamedgv.HeaderText = "FAMILY NAME";
-            this.familynamedgv.MinimumWidth = 6;
-            this.familynamedgv.Name = "familynamedgv";
-            this.familynamedgv.ReadOnly = true;
-            // 
-            // mobilenodgv
-            // 
-            this.mobilenodgv.HeaderText = "MOBILE NO";
-            this.mobilenodgv.MinimumWidth = 6;
-            this.mobilenodgv.Name = "mobilenodgv";
-            this.mobilenodgv.ReadOnly = true;
-            // 
-            // datedgv
-            // 
-            this.datedgv.HeaderText = "DATE";
-            this.datedgv.MinimumWidth = 6;
-            this.datedgv.Name = "datedgv";
-            this.datedgv.ReadOnly = true;
-            // 
-            // roomdgv
-            // 
-            this.roomdgv.HeaderText = "ROOM";
-            this.roomdgv.MinimumWidth = 6;
-            this.roomdgv.Name = "roomdgv";
-            this.roomdgv.ReadOnly = true;
-            // 
-            // slotdgv
-            // 
-            this.slotdgv.HeaderText = "SLOT";
-            this.slotdgv.MinimumWidth = 6;
-            this.slotdgv.Name = "slotdgv";
-            this.slotdgv.ReadOnly = true;
             // 
             // Appointment
             // 
@@ -1105,10 +1125,6 @@
         private Guna.UI2.WinForms.Guna2DataGridView Room2;
         private Guna.UI2.WinForms.Guna2Button Save;
         private Guna.UI2.WinForms.Guna2Button Clear;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label label2;
         private Guna.UI2.WinForms.Guna2TextBox slot;
         private System.Windows.Forms.Label slotlabel;
         private System.Windows.Forms.Label label5;
@@ -1130,5 +1146,9 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn datedgv;
         private System.Windows.Forms.DataGridViewTextBoxColumn roomdgv;
         private System.Windows.Forms.DataGridViewTextBoxColumn slotdgv;
+        public System.Windows.Forms.Label room1label;
+        public System.Windows.Forms.Label room4label;
+        public System.Windows.Forms.Label room3label;
+        public System.Windows.Forms.Label room2label;
     }
 }
