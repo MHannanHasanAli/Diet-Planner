@@ -969,6 +969,9 @@
   <ItemGroup>
     <None Include="Resources\verify1.png" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\rgbSpectrum.jpg" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\StrongNamer.0.2.5\build\StrongNamer.targets" Condition="Exists('..\packages\StrongNamer.0.2.5\build\StrongNamer.targets')" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

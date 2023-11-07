@@ -12,6 +12,8 @@ using Guna.UI2.WinForms;
 using static HelloWorldSolutionIMS.MealAction;
 using Svg;
 using Win32Interop.Enums;
+using System.Runtime.ConstrainedExecution;
+using Win32Interop.Structs;
 
 namespace HelloWorldSolutionIMS
 {
@@ -652,6 +654,261 @@ namespace HelloWorldSolutionIMS
                     }
                 }
             }
+        }
+
+        private void guna2Button5_Click(object sender, EventArgs e)
+        {
+            tabControl1.SelectedIndex = 2;
+        }
+
+        private void guna2Button2_Click(object sender, EventArgs e)
+        {
+            tabControl1.SelectedIndex = 2;
+        }
+
+        private void guna2Button7_Click(object sender, EventArgs e)
+        {
+            tabControl1.SelectedIndex = 2;
+        }
+
+        private void Adduser_Click(object sender, EventArgs e)
+        {
+            if (username.Text != "" && password.Text != "")
+            {
+                try
+                {
+                    MainClass.con.Open();
+                    SqlCommand cmd = new SqlCommand("INSERT INTO Users (Username, Passkey) " +
+                        "VALUES (@username,@passkey)", MainClass.con);
+
+                    cmd.Parameters.AddWithValue("@username", username.Text);
+                    cmd.Parameters.AddWithValue("@passkey", password.Text);
+
+
+                    cmd.ExecuteNonQuery();
+                    MessageBox.Show("Added successfully");
+                    MainClass.con.Close();
+
+                    username.Text = "";
+                    password.Text = "";
+
+                    tabControl1.SelectedIndex = 2;
+                    UpdateNutritionist();
+                }
+                catch (Exception ex)
+                {
+                    MainClass.con.Close();
+                    MessageBox.Show(ex.Message);
+                }
+            }
+            else
+            {
+                MessageBox.Show("Fill both Username and Password!");
+            }
+        }
+
+        void ShowUser(DataGridView dgv, DataGridViewColumn no, DataGridViewColumn Username)
+        {
+            try
+            {
+                MainClass.con.Open();
+                SqlCommand cmd = new SqlCommand("select * from Users order by Username", MainClass.con);
+                SqlDataAdapter da = new SqlDataAdapter(cmd);
+                DataTable dt = new DataTable();
+                da.Fill(dt);
+
+                no.DataPropertyName = dt.Columns["ID"].ToString();
+                Username.DataPropertyName = dt.Columns["Username"].ToString();
+                
+                dgv.DataSource = dt;
+                MainClass.con.Close();
+            }
+            catch (Exception ex)
+            {
+                MainClass.con.Close();
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        private void usermanagement_Click(object sender, EventArgs e)
+        {
+            tabControl1.SelectedIndex = 5;
+        }
+
+        private void modifyuser_Click(object sender, EventArgs e)
+        {
+            ShowUser(guna2DataGridView1, useriddgv, usernamedgv);
+            tabControl1.SelectedIndex = 6;
+        }
+
+        private void DeleteUser_Click(object sender, EventArgs e)
+        {
+            if (guna2DataGridView1 != null)
+            {
+                if (guna2DataGridView1.Rows.Count > 0)
+                {
+                    if (guna2DataGridView1.SelectedRows.Count == 1)
+                    {
+
+                        // Get the Ingredient ID to display in the confirmation message
+                        string groupid = guna2DataGridView1.SelectedRows[0].Cells[0].Value.ToString(); // Assuming the Ingredient ID is in the first cell of the selected row.
+
+                        // Ask for confirmation
+                        DialogResult result = MessageBox.Show("Are you sure you want to delete User : " + groupid + "?", "Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+
+                        if (result == DialogResult.Yes)
+                        {
+                            try
+                            {
+                                MainClass.con.Open();
+                                SqlCommand cmd = new SqlCommand("DELETE FROM Users WHERE ID = @ID", MainClass.con);
+                                cmd.Parameters.AddWithValue("@ID", groupid); // Assuming the Ingredient ID is in the first cell of the selected row.
+                                cmd.ExecuteNonQuery();
+                                MainClass.con.Close();
+
+                                //tabControl1.SelectedIndex = 2;
+                                ShowUser(guna2DataGridView1, useriddgv, usernamedgv);
+                            }
+                            catch (Exception ex)
+                            {
+                                MainClass.con.Close();
+                                MessageBox.Show(ex.Message);
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        static string userid = "";
+        private void edituser_Click(object sender, EventArgs e)
+        {
+            tabControl1.SelectedIndex = 7;
+            if (guna2DataGridView1 != null)
+            {
+                if (guna2DataGridView1.Rows.Count > 0)
+                {
+                    if (guna2DataGridView1.SelectedRows.Count == 1)
+                    {
+                        try
+                        {
+
+                        // Get the Ingredient ID to display in the confirmation message
+                        string groupid = guna2DataGridView1.SelectedRows[0].Cells[0].Value.ToString(); // Assuming the Ingredient ID is in the first cell of the selected row.
+
+                        // Ask for confirmation
+
+                        SqlCommand cmd;
+                        MainClass.con.Open();
+
+                        cmd = new SqlCommand("SELECT ID,Username,Passkey FROM Users WHERE ID = @ID", MainClass.con);
+                        cmd.Parameters.AddWithValue("@ID", groupid);
+                        SqlDataReader dr = cmd.ExecuteReader();
+
+                        if (dr.Read())
+                        {
+                            userid = dr["ID"].ToString();
+                            usernameedit.Text = dr["Username"].ToString();
+                            passwordedit.Text = dr["Passkey"].ToString();                          
+                        }
+
+                        dr.Close();
+                        MainClass.con.Close();
+                    }
+                    catch (Exception ex)
+                    {
+                        MainClass.con.Close();
+                        MessageBox.Show(ex.Message);
+                    }
+                        
+
+                    }
+                }
+            }
+        }
+
+        private void saveuser_Click(object sender, EventArgs e)
+        {
+            if (usernameedit.Text != "" && passwordedit.Text != "")
+            {
+                try
+                {
+                    MainClass.con.Open();
+                    SqlCommand cmd = new SqlCommand("UPDATE Users SET Username = @username, Passkey = @passkey WHERE ID = @userId", MainClass.con);
+
+                    cmd.Parameters.AddWithValue("@userId", userid);
+                    cmd.Parameters.AddWithValue("@username", usernameedit.Text);
+                    cmd.Parameters.AddWithValue("@passkey", passwordedit.Text);
+
+                    cmd.ExecuteNonQuery();
+                    MessageBox.Show("User information updated successfully");
+                    MainClass.con.Close();
+
+                    usernameedit.Text = "";
+                    passwordedit.Text = "";
+
+                    tabControl1.SelectedIndex = 2;
+                    //UpdateNutritionist();
+                }
+                catch (Exception ex)
+                {
+                    MainClass.con.Close();
+                    MessageBox.Show(ex.Message);
+                }
+            }
+            else
+            {
+                MessageBox.Show("Provide a valid  Username and Password!");
+            }
+
+        }
+
+        private void pictureBox2_MouseMove(object sender, MouseEventArgs e)
+        {
+            Bitmap pixelData = (Bitmap)pictureBox2.Image;
+            Color clr = pixelData.GetPixel(e.X, e.Y);
+            showpanel.BackColor = clr;
+        }
+
+        static Color color;
+        private void pictureBox2_MouseDown(object sender, MouseEventArgs e)
+        {
+            Bitmap pixelData = (Bitmap)pictureBox2.Image;
+            Color clr = pixelData.GetPixel(e.X, e.Y);
+            selectedpanel.BackColor = clr;
+            color = clr;
+        }
+
+        private void pictureBox2_MouseLeave(object sender, EventArgs e)
+        {
+            showpanel.BackColor = Color.White;
+        }
+
+        private void Apply_Click(object sender, EventArgs e)
+        {
+           
+
+           
+
+            try
+            {
+                MainClass.con.Open();
+                SqlCommand cmd = new SqlCommand("UPDATE SideBarColor SET Color = @color WHERE Id = @colorId", MainClass.con);
+
+                cmd.Parameters.AddWithValue("@colorId", 1);
+                cmd.Parameters.AddWithValue("@color", ColorTranslator.ToHtml(color));
+
+                cmd.ExecuteNonQuery();
+                MessageBox.Show("Color theme updated successfully");
+                MainClass.con.Close();
+            }
+            catch (Exception ex)
+            {
+                MainClass.con.Close();
+                MessageBox.Show(ex.Message);
+            }
+
+            Application.Restart();
         }
     }
 }

@@ -29,15 +29,17 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle25 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle26 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle27 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle28 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle29 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle30 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.Delete = new Guna.UI2.WinForms.Guna2Button();
+            this.EditBTN = new Guna.UI2.WinForms.Guna2Button();
             this.bodycomp = new System.Windows.Forms.Label();
             this.guna2DataGridView1 = new Guna.UI2.WinForms.Guna2DataGridView();
             this.IDDGV = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -70,7 +72,6 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.nutritionistname = new Guna.UI2.WinForms.Guna2TextBox();
             this.branch = new Guna.UI2.WinForms.Guna2TextBox();
             this.email = new Guna.UI2.WinForms.Guna2TextBox();
             this.landline = new Guna.UI2.WinForms.Guna2TextBox();
@@ -136,8 +137,7 @@
             this.height = new Guna.UI2.WinForms.Guna2TextBox();
             this.bca = new Guna.UI2.WinForms.Guna2TextBox();
             this.contextMenuStrip2 = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.Delete = new Guna.UI2.WinForms.Guna2Button();
-            this.EditBTN = new Guna.UI2.WinForms.Guna2Button();
+            this.nutritionistname = new Guna.UI2.WinForms.Guna2ComboBox();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -174,6 +174,7 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.White;
+            this.panel1.Controls.Add(this.nutritionistname);
             this.panel1.Controls.Add(this.Delete);
             this.panel1.Controls.Add(this.EditBTN);
             this.panel1.Controls.Add(this.bodycomp);
@@ -201,7 +202,6 @@
             this.panel1.Controls.Add(this.label3);
             this.panel1.Controls.Add(this.label2);
             this.panel1.Controls.Add(this.label1);
-            this.panel1.Controls.Add(this.nutritionistname);
             this.panel1.Controls.Add(this.branch);
             this.panel1.Controls.Add(this.email);
             this.panel1.Controls.Add(this.landline);
@@ -215,6 +215,43 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(1168, 941);
             this.panel1.TabIndex = 0;
+            // 
+            // Delete
+            // 
+            this.Delete.AutoRoundedCorners = true;
+            this.Delete.BorderRadius = 21;
+            this.Delete.CheckedState.Parent = this.Delete;
+            this.Delete.CustomImages.Parent = this.Delete;
+            this.Delete.FillColor = System.Drawing.Color.MediumSeaGreen;
+            this.Delete.Font = new System.Drawing.Font("Segoe UI", 11F);
+            this.Delete.ForeColor = System.Drawing.Color.White;
+            this.Delete.HoverState.Parent = this.Delete;
+            this.Delete.Location = new System.Drawing.Point(845, 486);
+            this.Delete.Name = "Delete";
+            this.Delete.ShadowDecoration.Parent = this.Delete;
+            this.Delete.Size = new System.Drawing.Size(220, 45);
+            this.Delete.TabIndex = 68;
+            this.Delete.Text = "Delete Client";
+            this.Delete.Click += new System.EventHandler(this.Delete_Click);
+            // 
+            // EditBTN
+            // 
+            this.EditBTN.AutoRoundedCorners = true;
+            this.EditBTN.BorderRadius = 21;
+            this.EditBTN.CausesValidation = false;
+            this.EditBTN.CheckedState.Parent = this.EditBTN;
+            this.EditBTN.CustomImages.Parent = this.EditBTN;
+            this.EditBTN.FillColor = System.Drawing.Color.MediumSeaGreen;
+            this.EditBTN.Font = new System.Drawing.Font("Segoe UI", 11F);
+            this.EditBTN.ForeColor = System.Drawing.Color.White;
+            this.EditBTN.HoverState.Parent = this.EditBTN;
+            this.EditBTN.Location = new System.Drawing.Point(618, 486);
+            this.EditBTN.Name = "EditBTN";
+            this.EditBTN.ShadowDecoration.Parent = this.EditBTN;
+            this.EditBTN.Size = new System.Drawing.Size(220, 45);
+            this.EditBTN.TabIndex = 67;
+            this.EditBTN.Text = "Edit Client";
+            this.EditBTN.Click += new System.EventHandler(this.EditBTN_Click);
             // 
             // bodycomp
             // 
@@ -231,21 +268,21 @@
             // 
             this.guna2DataGridView1.AllowUserToAddRows = false;
             this.guna2DataGridView1.AllowUserToDeleteRows = false;
-            dataGridViewCellStyle25.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(239)))), ((int)(((byte)(212)))));
-            this.guna2DataGridView1.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle25;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(239)))), ((int)(((byte)(212)))));
+            this.guna2DataGridView1.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.guna2DataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.guna2DataGridView1.BackgroundColor = System.Drawing.Color.White;
             this.guna2DataGridView1.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.guna2DataGridView1.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
             this.guna2DataGridView1.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle26.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle26.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(204)))), ((int)(((byte)(113)))));
-            dataGridViewCellStyle26.Font = new System.Drawing.Font("Segoe UI", 10.5F);
-            dataGridViewCellStyle26.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle26.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle26.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle26.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.guna2DataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle26;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(204)))), ((int)(((byte)(113)))));
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 10.5F);
+            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.guna2DataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             this.guna2DataGridView1.ColumnHeadersHeight = 52;
             this.guna2DataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.IDDGV,
@@ -255,14 +292,14 @@
             this.subscriptionstartdatedgv,
             this.subscriptionenddatedgv,
             this.nutritionistnamedgv});
-            dataGridViewCellStyle27.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle27.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(213)))), ((int)(((byte)(244)))), ((int)(((byte)(226)))));
-            dataGridViewCellStyle27.Font = new System.Drawing.Font("Segoe UI", 10.5F);
-            dataGridViewCellStyle27.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle27.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(115)))), ((int)(((byte)(221)))), ((int)(((byte)(160)))));
-            dataGridViewCellStyle27.SelectionForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle27.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.guna2DataGridView1.DefaultCellStyle = dataGridViewCellStyle27;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(213)))), ((int)(((byte)(244)))), ((int)(((byte)(226)))));
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Segoe UI", 10.5F);
+            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(115)))), ((int)(((byte)(221)))), ((int)(((byte)(160)))));
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.guna2DataGridView1.DefaultCellStyle = dataGridViewCellStyle3;
             this.guna2DataGridView1.EnableHeadersVisualStyles = false;
             this.guna2DataGridView1.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(187)))), ((int)(((byte)(238)))), ((int)(((byte)(208)))));
             this.guna2DataGridView1.Location = new System.Drawing.Point(62, 549);
@@ -613,31 +650,6 @@
             this.label1.TabIndex = 50;
             this.label1.Text = "File No.";
             // 
-            // nutritionistname
-            // 
-            this.nutritionistname.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.nutritionistname.DefaultText = "";
-            this.nutritionistname.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
-            this.nutritionistname.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
-            this.nutritionistname.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.nutritionistname.DisabledState.Parent = this.nutritionistname;
-            this.nutritionistname.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.nutritionistname.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.nutritionistname.FocusedState.Parent = this.nutritionistname;
-            this.nutritionistname.Font = new System.Drawing.Font("Segoe UI", 11F);
-            this.nutritionistname.ForeColor = System.Drawing.Color.Black;
-            this.nutritionistname.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.nutritionistname.HoverState.Parent = this.nutritionistname;
-            this.nutritionistname.Location = new System.Drawing.Point(789, 270);
-            this.nutritionistname.Margin = new System.Windows.Forms.Padding(5, 6, 5, 6);
-            this.nutritionistname.Name = "nutritionistname";
-            this.nutritionistname.PasswordChar = '\0';
-            this.nutritionistname.PlaceholderText = "";
-            this.nutritionistname.SelectedText = "";
-            this.nutritionistname.ShadowDecoration.Parent = this.nutritionistname;
-            this.nutritionistname.Size = new System.Drawing.Size(276, 38);
-            this.nutritionistname.TabIndex = 47;
-            // 
             // branch
             // 
             this.branch.Cursor = System.Windows.Forms.Cursors.IBeam;
@@ -939,21 +951,21 @@
             // 
             this.guna2DataGridView2.AllowUserToAddRows = false;
             this.guna2DataGridView2.AllowUserToDeleteRows = false;
-            dataGridViewCellStyle28.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(239)))), ((int)(((byte)(212)))));
-            this.guna2DataGridView2.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle28;
+            dataGridViewCellStyle4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(239)))), ((int)(((byte)(212)))));
+            this.guna2DataGridView2.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle4;
             this.guna2DataGridView2.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.guna2DataGridView2.BackgroundColor = System.Drawing.Color.White;
             this.guna2DataGridView2.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.guna2DataGridView2.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
             this.guna2DataGridView2.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle29.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle29.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(204)))), ((int)(((byte)(113)))));
-            dataGridViewCellStyle29.Font = new System.Drawing.Font("Segoe UI", 10.5F);
-            dataGridViewCellStyle29.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle29.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle29.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle29.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.guna2DataGridView2.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle29;
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(204)))), ((int)(((byte)(113)))));
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("Segoe UI", 10.5F);
+            dataGridViewCellStyle5.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.guna2DataGridView2.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
             this.guna2DataGridView2.ColumnHeadersHeight = 52;
             this.guna2DataGridView2.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.idbc,
@@ -970,14 +982,14 @@
             this.abdominalfatsbc,
             this.bmibc,
             this.bmrbc});
-            dataGridViewCellStyle30.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle30.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(213)))), ((int)(((byte)(244)))), ((int)(((byte)(226)))));
-            dataGridViewCellStyle30.Font = new System.Drawing.Font("Segoe UI", 10.5F);
-            dataGridViewCellStyle30.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle30.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(115)))), ((int)(((byte)(221)))), ((int)(((byte)(160)))));
-            dataGridViewCellStyle30.SelectionForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle30.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.guna2DataGridView2.DefaultCellStyle = dataGridViewCellStyle30;
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(213)))), ((int)(((byte)(244)))), ((int)(((byte)(226)))));
+            dataGridViewCellStyle6.Font = new System.Drawing.Font("Segoe UI", 10.5F);
+            dataGridViewCellStyle6.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(115)))), ((int)(((byte)(221)))), ((int)(((byte)(160)))));
+            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.guna2DataGridView2.DefaultCellStyle = dataGridViewCellStyle6;
             this.guna2DataGridView2.EnableHeadersVisualStyles = false;
             this.guna2DataGridView2.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(187)))), ((int)(((byte)(238)))), ((int)(((byte)(208)))));
             this.guna2DataGridView2.Location = new System.Drawing.Point(21, 264);
@@ -1765,42 +1777,24 @@
             this.contextMenuStrip2.Name = "contextMenuStrip2";
             this.contextMenuStrip2.Size = new System.Drawing.Size(61, 4);
             // 
-            // Delete
+            // nutritionistname
             // 
-            this.Delete.AutoRoundedCorners = true;
-            this.Delete.BorderRadius = 21;
-            this.Delete.CheckedState.Parent = this.Delete;
-            this.Delete.CustomImages.Parent = this.Delete;
-            this.Delete.FillColor = System.Drawing.Color.MediumSeaGreen;
-            this.Delete.Font = new System.Drawing.Font("Segoe UI", 11F);
-            this.Delete.ForeColor = System.Drawing.Color.White;
-            this.Delete.HoverState.Parent = this.Delete;
-            this.Delete.Location = new System.Drawing.Point(845, 486);
-            this.Delete.Name = "Delete";
-            this.Delete.ShadowDecoration.Parent = this.Delete;
-            this.Delete.Size = new System.Drawing.Size(220, 45);
-            this.Delete.TabIndex = 68;
-            this.Delete.Text = "Delete Client";
-            this.Delete.Click += new System.EventHandler(this.Delete_Click);
-            // 
-            // EditBTN
-            // 
-            this.EditBTN.AutoRoundedCorners = true;
-            this.EditBTN.BorderRadius = 21;
-            this.EditBTN.CausesValidation = false;
-            this.EditBTN.CheckedState.Parent = this.EditBTN;
-            this.EditBTN.CustomImages.Parent = this.EditBTN;
-            this.EditBTN.FillColor = System.Drawing.Color.MediumSeaGreen;
-            this.EditBTN.Font = new System.Drawing.Font("Segoe UI", 11F);
-            this.EditBTN.ForeColor = System.Drawing.Color.White;
-            this.EditBTN.HoverState.Parent = this.EditBTN;
-            this.EditBTN.Location = new System.Drawing.Point(618, 486);
-            this.EditBTN.Name = "EditBTN";
-            this.EditBTN.ShadowDecoration.Parent = this.EditBTN;
-            this.EditBTN.Size = new System.Drawing.Size(220, 45);
-            this.EditBTN.TabIndex = 67;
-            this.EditBTN.Text = "Edit Client";
-            this.EditBTN.Click += new System.EventHandler(this.EditBTN_Click);
+            this.nutritionistname.BackColor = System.Drawing.Color.Transparent;
+            this.nutritionistname.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.nutritionistname.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.nutritionistname.FocusedColor = System.Drawing.Color.Empty;
+            this.nutritionistname.FocusedState.Parent = this.nutritionistname;
+            this.nutritionistname.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.nutritionistname.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(88)))), ((int)(((byte)(112)))));
+            this.nutritionistname.FormattingEnabled = true;
+            this.nutritionistname.HoverState.Parent = this.nutritionistname;
+            this.nutritionistname.ItemHeight = 30;
+            this.nutritionistname.ItemsAppearance.Parent = this.nutritionistname;
+            this.nutritionistname.Location = new System.Drawing.Point(789, 267);
+            this.nutritionistname.Name = "nutritionistname";
+            this.nutritionistname.ShadowDecoration.Parent = this.nutritionistname;
+            this.nutritionistname.Size = new System.Drawing.Size(276, 36);
+            this.nutritionistname.TabIndex = 69;
             // 
             // Registration
             // 
@@ -1865,7 +1859,6 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
-        private Guna.UI2.WinForms.Guna2TextBox nutritionistname;
         private Guna.UI2.WinForms.Guna2TextBox branch;
         private Guna.UI2.WinForms.Guna2TextBox email;
         private Guna.UI2.WinForms.Guna2TextBox landline;
@@ -1933,5 +1926,6 @@
         private System.Windows.Forms.ContextMenuStrip contextMenuStrip2;
         private Guna.UI2.WinForms.Guna2Button Delete;
         private Guna.UI2.WinForms.Guna2Button EditBTN;
+        private Guna.UI2.WinForms.Guna2ComboBox nutritionistname;
     }
 }

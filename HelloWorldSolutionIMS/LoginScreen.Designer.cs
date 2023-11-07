@@ -32,11 +32,12 @@ namespace HelloWorldSolutionIMS
             this.btnLogin = new Guna.UI2.WinForms.Guna2Button();
             this.txtPassword = new Guna.UI2.WinForms.Guna2TextBox();
             this.txtUsername = new Guna.UI2.WinForms.Guna2TextBox();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.label7 = new System.Windows.Forms.Label();
             this.welcome = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.liscense = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.guna2ComboBox1 = new Guna.UI2.WinForms.Guna2ComboBox();
             this.label11 = new System.Windows.Forms.Label();
@@ -47,11 +48,10 @@ namespace HelloWorldSolutionIMS
             this.branch = new System.Windows.Forms.Label();
             this.companyname = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.liscense = new System.Windows.Forms.Label();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.panel1.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // btnLogin
@@ -127,18 +127,6 @@ namespace HelloWorldSolutionIMS
             this.txtUsername.Size = new System.Drawing.Size(448, 35);
             this.txtUsername.TabIndex = 3;
             // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.pictureBox1.Image = global::HelloWorldSolutionIMS.Properties.Resources.diet1;
-            this.pictureBox1.Location = new System.Drawing.Point(603, 73);
-            this.pictureBox1.Margin = new System.Windows.Forms.Padding(4);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(229, 200);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox1.TabIndex = 3;
-            this.pictureBox1.TabStop = false;
-            // 
             // label7
             // 
             this.label7.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
@@ -204,6 +192,25 @@ namespace HelloWorldSolutionIMS
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(1168, 690);
             this.panel1.TabIndex = 0;
+            // 
+            // liscense
+            // 
+            this.liscense.AutoSize = true;
+            this.liscense.Location = new System.Drawing.Point(992, 602);
+            this.liscense.Name = "liscense";
+            this.liscense.Size = new System.Drawing.Size(44, 16);
+            this.liscense.TabIndex = 19;
+            this.liscense.Text = "label3";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(432, 602);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(533, 16);
+            this.label2.TabIndex = 18;
+            this.label2.Text = "This software is protected by copyright and intellectual property rights under Li" +
+    "scense No.";
             // 
             // tableLayoutPanel1
             // 
@@ -349,24 +356,17 @@ namespace HelloWorldSolutionIMS
             this.label1.TabIndex = 7;
             this.label1.Text = "Language";
             // 
-            // label2
+            // pictureBox1
             // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(432, 602);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(533, 16);
-            this.label2.TabIndex = 18;
-            this.label2.Text = "This software is protected by copyright and intellectual property rights under Li" +
-    "scense No.";
-            // 
-            // liscense
-            // 
-            this.liscense.AutoSize = true;
-            this.liscense.Location = new System.Drawing.Point(992, 602);
-            this.liscense.Name = "liscense";
-            this.liscense.Size = new System.Drawing.Size(44, 16);
-            this.liscense.TabIndex = 19;
-            this.liscense.Text = "label3";
+            this.pictureBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.pictureBox1.Image = global::HelloWorldSolutionIMS.Properties.Resources.diet1;
+            this.pictureBox1.Location = new System.Drawing.Point(603, 73);
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(4);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(229, 200);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox1.TabIndex = 3;
+            this.pictureBox1.TabStop = false;
             // 
             // LoginScreen
             // 
@@ -383,10 +383,10 @@ namespace HelloWorldSolutionIMS
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Diet Planner - Login";
             this.Load += new System.EventHandler(this.LoginScreen_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.tableLayoutPanel1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
 
         }

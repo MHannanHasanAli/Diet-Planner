@@ -7,11 +7,13 @@ using System.Data.SqlClient;
 using System.Drawing;
 using System.IO;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Win32Interop.Enums;
 using static HelloWorldSolutionIMS.Payment;
+using static HelloWorldSolutionIMS.SettingScreen;
 
 namespace HelloWorldSolutionIMS
 {
@@ -22,6 +24,91 @@ namespace HelloWorldSolutionIMS
             InitializeComponent();
         }
         static int edit = 0;
+        public class NutritionistInfo
+        {
+            public int ID { get; set; }
+            public string Name { get; set; }
+        }
+        private void UpdateBranch()
+        {
+            SqlCommand cmd;
+            try
+            {
+                MainClass.con.Open();
+
+                cmd = new SqlCommand("SELECT BRANCH FROM SETTINGS", MainClass.con);
+                SqlDataReader dr = cmd.ExecuteReader();
+
+                if (dr.Read())
+                {
+                    
+                    branch.Text = dr["BRANCH"].ToString();
+                    
+                }
+
+                dr.Close();
+                MainClass.con.Close();
+            }
+            catch (Exception ex)
+            {
+                MainClass.con.Close();
+                MessageBox.Show(ex.Message);
+            }
+        }
+        private void UpdateNutritionist()
+        {
+            SqlCommand cmd;
+            try
+            {
+                if (MainClass.con.State != ConnectionState.Open)
+                {
+                    MainClass.con.Open();
+                    conn = 1;
+                }
+
+                cmd = new SqlCommand("SELECT ID, Name FROM NUTRITIONIST", MainClass.con);
+
+                SqlDataAdapter da = new SqlDataAdapter(cmd);
+                DataTable dt = new DataTable();
+                da.Fill(dt);
+
+                nutritionistname.DataSource = null;
+                nutritionistname.Items.Clear();
+
+                List<NutritionistInfo> Nutrition = new List<NutritionistInfo>();
+
+
+                Nutrition.Add(new NutritionistInfo { ID = 0, Name = "Null" });
+
+
+                foreach (DataRow row in dt.Rows)
+                {
+                    int Id = row.Field<int>("ID");
+                    string Name = row.Field<string>("Name");
+
+
+                    NutritionistInfo Temp = new NutritionistInfo { ID = Id, Name = Name };
+                    Nutrition.Add(Temp);
+
+                }
+
+                nutritionistname.DataSource = Nutrition;
+                nutritionistname.DisplayMember = "Name"; // Display Member is Name
+                nutritionistname.ValueMember = "ID"; // Value Member is ID
+
+               
+                if (conn == 1)
+                {
+                    MainClass.con.Close();
+                    conn = 0;
+                }
+            }
+            catch (Exception ex)
+            {
+                MainClass.con.Close();
+                MessageBox.Show(ex.Message);
+            }
+        }
         private int GetLastFileno()
         {
 
@@ -148,7 +235,7 @@ namespace HelloWorldSolutionIMS
 
                         cmd.ExecuteNonQuery();
                         MessageBox.Show("Customer added successfully");
-                        fileno.Text = "";
+                        
                         firstname.Text = "";
                         familyname.Text = "";
                         gender.SelectedItem = null;
@@ -162,7 +249,7 @@ namespace HelloWorldSolutionIMS
                         enddate.Value = DateTime.Now; // Reset the subscription end date to the current date or your default value.
                         branch.Text = "";
                         lastvisitdate.Value = DateTime.Now; // Reset the last visit date to the current date or your default value.
-                        nutritionistname.Text = "";
+                        nutritionistname.SelectedItem = null;
                         MainClass.con.Close();
 
                         int filenonew = GetLastFileno();
@@ -249,6 +336,8 @@ namespace HelloWorldSolutionIMS
         }
         private void Registration_Load(object sender, EventArgs e)
         {
+            UpdateBranch();
+            UpdateNutritionist();
             MainClass.HideAllTabsOnTabControl(tabControl1);
             int fileno_new = GetLastFileno();
             fileno_new = fileno_new + 1;

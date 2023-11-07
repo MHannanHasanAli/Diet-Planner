@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.guna2GradientPanel1 = new Guna.UI2.WinForms.Guna2GradientPanel();
+            this.sidebar = new Guna.UI2.WinForms.Guna2GradientPanel();
             this.guna2TileButton1 = new Guna.UI2.WinForms.Guna2TileButton();
             this.guna2TileButton10 = new Guna.UI2.WinForms.Guna2TileButton();
             this.guna2TileButton5 = new Guna.UI2.WinForms.Guna2TileButton();
@@ -42,39 +42,41 @@
             this.guna2TileButton6 = new Guna.UI2.WinForms.Guna2TileButton();
             this.guna2TileButton9 = new Guna.UI2.WinForms.Guna2TileButton();
             this.mainpanel = new Guna.UI2.WinForms.Guna2Panel();
-            this.guna2GradientPanel1.SuspendLayout();
+            this.sidebar.SuspendLayout();
             this.SuspendLayout();
             // 
-            // guna2GradientPanel1
+            // sidebar
             // 
-            this.guna2GradientPanel1.Controls.Add(this.guna2TileButton1);
-            this.guna2GradientPanel1.Controls.Add(this.guna2TileButton10);
-            this.guna2GradientPanel1.Controls.Add(this.guna2TileButton5);
-            this.guna2GradientPanel1.Controls.Add(this.guna2TileButton11);
-            this.guna2GradientPanel1.Controls.Add(this.guna2TileButton7);
-            this.guna2GradientPanel1.Controls.Add(this.guna2TileButton3);
-            this.guna2GradientPanel1.Controls.Add(this.guna2TileButton4);
-            this.guna2GradientPanel1.Controls.Add(this.guna2TileButton2);
-            this.guna2GradientPanel1.Controls.Add(this.guna2TileButton8);
-            this.guna2GradientPanel1.Controls.Add(this.guna2TileButton12);
-            this.guna2GradientPanel1.Controls.Add(this.guna2TileButton6);
-            this.guna2GradientPanel1.Controls.Add(this.guna2TileButton9);
-            this.guna2GradientPanel1.Dock = System.Windows.Forms.DockStyle.Left;
-            this.guna2GradientPanel1.FillColor = System.Drawing.Color.Honeydew;
-            this.guna2GradientPanel1.FillColor2 = System.Drawing.Color.Honeydew;
-            this.guna2GradientPanel1.ForeColor = System.Drawing.Color.Black;
-            this.guna2GradientPanel1.Location = new System.Drawing.Point(0, 0);
-            this.guna2GradientPanel1.Name = "guna2GradientPanel1";
-            this.guna2GradientPanel1.ShadowDecoration.Parent = this.guna2GradientPanel1;
-            this.guna2GradientPanel1.Size = new System.Drawing.Size(343, 887);
-            this.guna2GradientPanel1.TabIndex = 0;
+            this.sidebar.BackColor = System.Drawing.SystemColors.InactiveBorder;
+            this.sidebar.Controls.Add(this.guna2TileButton1);
+            this.sidebar.Controls.Add(this.guna2TileButton10);
+            this.sidebar.Controls.Add(this.guna2TileButton5);
+            this.sidebar.Controls.Add(this.guna2TileButton11);
+            this.sidebar.Controls.Add(this.guna2TileButton7);
+            this.sidebar.Controls.Add(this.guna2TileButton3);
+            this.sidebar.Controls.Add(this.guna2TileButton4);
+            this.sidebar.Controls.Add(this.guna2TileButton2);
+            this.sidebar.Controls.Add(this.guna2TileButton8);
+            this.sidebar.Controls.Add(this.guna2TileButton12);
+            this.sidebar.Controls.Add(this.guna2TileButton6);
+            this.sidebar.Controls.Add(this.guna2TileButton9);
+            this.sidebar.Dock = System.Windows.Forms.DockStyle.Left;
+            this.sidebar.FillColor = System.Drawing.Color.Transparent;
+            this.sidebar.FillColor2 = System.Drawing.Color.Transparent;
+            this.sidebar.ForeColor = System.Drawing.Color.Black;
+            this.sidebar.Location = new System.Drawing.Point(0, 0);
+            this.sidebar.Name = "sidebar";
+            this.sidebar.ShadowDecoration.Parent = this.sidebar;
+            this.sidebar.Size = new System.Drawing.Size(343, 887);
+            this.sidebar.TabIndex = 0;
             // 
             // guna2TileButton1
             // 
+            this.guna2TileButton1.BackColor = System.Drawing.Color.Transparent;
             this.guna2TileButton1.CheckedState.Parent = this.guna2TileButton1;
             this.guna2TileButton1.CustomImages.Parent = this.guna2TileButton1;
             this.guna2TileButton1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.guna2TileButton1.FillColor = System.Drawing.Color.Honeydew;
+            this.guna2TileButton1.FillColor = System.Drawing.Color.Transparent;
             this.guna2TileButton1.Font = new System.Drawing.Font("Segoe UI", 12F);
             this.guna2TileButton1.ForeColor = System.Drawing.Color.Black;
             this.guna2TileButton1.HoverState.Parent = this.guna2TileButton1;
@@ -93,10 +95,11 @@
             // 
             // guna2TileButton10
             // 
+            this.guna2TileButton10.BackColor = System.Drawing.Color.Transparent;
             this.guna2TileButton10.CheckedState.Parent = this.guna2TileButton10;
             this.guna2TileButton10.CustomImages.Parent = this.guna2TileButton10;
             this.guna2TileButton10.Dock = System.Windows.Forms.DockStyle.Top;
-            this.guna2TileButton10.FillColor = System.Drawing.Color.Honeydew;
+            this.guna2TileButton10.FillColor = System.Drawing.Color.Transparent;
             this.guna2TileButton10.Font = new System.Drawing.Font("Segoe UI", 12F);
             this.guna2TileButton10.ForeColor = System.Drawing.Color.Black;
             this.guna2TileButton10.HoverState.Parent = this.guna2TileButton10;
@@ -115,10 +118,11 @@
             // 
             // guna2TileButton5
             // 
+            this.guna2TileButton5.BackColor = System.Drawing.Color.Transparent;
             this.guna2TileButton5.CheckedState.Parent = this.guna2TileButton5;
             this.guna2TileButton5.CustomImages.Parent = this.guna2TileButton5;
             this.guna2TileButton5.Dock = System.Windows.Forms.DockStyle.Top;
-            this.guna2TileButton5.FillColor = System.Drawing.Color.Honeydew;
+            this.guna2TileButton5.FillColor = System.Drawing.Color.Transparent;
             this.guna2TileButton5.Font = new System.Drawing.Font("Segoe UI", 12F);
             this.guna2TileButton5.ForeColor = System.Drawing.Color.Black;
             this.guna2TileButton5.HoverState.Parent = this.guna2TileButton5;
@@ -136,10 +140,11 @@
             // 
             // guna2TileButton11
             // 
+            this.guna2TileButton11.BackColor = System.Drawing.Color.Transparent;
             this.guna2TileButton11.CheckedState.Parent = this.guna2TileButton11;
             this.guna2TileButton11.CustomImages.Parent = this.guna2TileButton11;
             this.guna2TileButton11.Dock = System.Windows.Forms.DockStyle.Top;
-            this.guna2TileButton11.FillColor = System.Drawing.Color.Honeydew;
+            this.guna2TileButton11.FillColor = System.Drawing.Color.Transparent;
             this.guna2TileButton11.Font = new System.Drawing.Font("Segoe UI", 12F);
             this.guna2TileButton11.ForeColor = System.Drawing.Color.Black;
             this.guna2TileButton11.HoverState.Parent = this.guna2TileButton11;
@@ -158,10 +163,11 @@
             // 
             // guna2TileButton7
             // 
+            this.guna2TileButton7.BackColor = System.Drawing.Color.Transparent;
             this.guna2TileButton7.CheckedState.Parent = this.guna2TileButton7;
             this.guna2TileButton7.CustomImages.Parent = this.guna2TileButton7;
             this.guna2TileButton7.Dock = System.Windows.Forms.DockStyle.Top;
-            this.guna2TileButton7.FillColor = System.Drawing.Color.Honeydew;
+            this.guna2TileButton7.FillColor = System.Drawing.Color.Transparent;
             this.guna2TileButton7.Font = new System.Drawing.Font("Segoe UI", 12F);
             this.guna2TileButton7.ForeColor = System.Drawing.Color.Black;
             this.guna2TileButton7.HoverState.Parent = this.guna2TileButton7;
@@ -180,10 +186,11 @@
             // 
             // guna2TileButton3
             // 
+            this.guna2TileButton3.BackColor = System.Drawing.Color.Transparent;
             this.guna2TileButton3.CheckedState.Parent = this.guna2TileButton3;
             this.guna2TileButton3.CustomImages.Parent = this.guna2TileButton3;
             this.guna2TileButton3.Dock = System.Windows.Forms.DockStyle.Top;
-            this.guna2TileButton3.FillColor = System.Drawing.Color.Honeydew;
+            this.guna2TileButton3.FillColor = System.Drawing.Color.Transparent;
             this.guna2TileButton3.Font = new System.Drawing.Font("Segoe UI", 12F);
             this.guna2TileButton3.ForeColor = System.Drawing.Color.Black;
             this.guna2TileButton3.HoverState.Parent = this.guna2TileButton3;
@@ -202,10 +209,11 @@
             // 
             // guna2TileButton4
             // 
+            this.guna2TileButton4.BackColor = System.Drawing.Color.Transparent;
             this.guna2TileButton4.CheckedState.Parent = this.guna2TileButton4;
             this.guna2TileButton4.CustomImages.Parent = this.guna2TileButton4;
             this.guna2TileButton4.Dock = System.Windows.Forms.DockStyle.Top;
-            this.guna2TileButton4.FillColor = System.Drawing.Color.Honeydew;
+            this.guna2TileButton4.FillColor = System.Drawing.Color.Transparent;
             this.guna2TileButton4.Font = new System.Drawing.Font("Segoe UI", 12F);
             this.guna2TileButton4.ForeColor = System.Drawing.Color.Black;
             this.guna2TileButton4.HoverState.Parent = this.guna2TileButton4;
@@ -224,10 +232,11 @@
             // 
             // guna2TileButton2
             // 
+            this.guna2TileButton2.BackColor = System.Drawing.Color.Transparent;
             this.guna2TileButton2.CheckedState.Parent = this.guna2TileButton2;
             this.guna2TileButton2.CustomImages.Parent = this.guna2TileButton2;
             this.guna2TileButton2.Dock = System.Windows.Forms.DockStyle.Top;
-            this.guna2TileButton2.FillColor = System.Drawing.Color.Honeydew;
+            this.guna2TileButton2.FillColor = System.Drawing.Color.Transparent;
             this.guna2TileButton2.Font = new System.Drawing.Font("Segoe UI", 12F);
             this.guna2TileButton2.ForeColor = System.Drawing.Color.Black;
             this.guna2TileButton2.HoverState.Parent = this.guna2TileButton2;
@@ -246,10 +255,11 @@
             // 
             // guna2TileButton8
             // 
+            this.guna2TileButton8.BackColor = System.Drawing.Color.Transparent;
             this.guna2TileButton8.CheckedState.Parent = this.guna2TileButton8;
             this.guna2TileButton8.CustomImages.Parent = this.guna2TileButton8;
             this.guna2TileButton8.Dock = System.Windows.Forms.DockStyle.Top;
-            this.guna2TileButton8.FillColor = System.Drawing.Color.Honeydew;
+            this.guna2TileButton8.FillColor = System.Drawing.Color.Transparent;
             this.guna2TileButton8.Font = new System.Drawing.Font("Segoe UI", 12F);
             this.guna2TileButton8.ForeColor = System.Drawing.Color.Black;
             this.guna2TileButton8.HoverState.Parent = this.guna2TileButton8;
@@ -268,10 +278,11 @@
             // 
             // guna2TileButton12
             // 
+            this.guna2TileButton12.BackColor = System.Drawing.Color.Transparent;
             this.guna2TileButton12.CheckedState.Parent = this.guna2TileButton12;
             this.guna2TileButton12.CustomImages.Parent = this.guna2TileButton12;
             this.guna2TileButton12.Dock = System.Windows.Forms.DockStyle.Top;
-            this.guna2TileButton12.FillColor = System.Drawing.Color.Honeydew;
+            this.guna2TileButton12.FillColor = System.Drawing.Color.Transparent;
             this.guna2TileButton12.Font = new System.Drawing.Font("Segoe UI", 12F);
             this.guna2TileButton12.ForeColor = System.Drawing.Color.Black;
             this.guna2TileButton12.HoverState.Parent = this.guna2TileButton12;
@@ -290,10 +301,11 @@
             // 
             // guna2TileButton6
             // 
+            this.guna2TileButton6.BackColor = System.Drawing.Color.Transparent;
             this.guna2TileButton6.CheckedState.Parent = this.guna2TileButton6;
             this.guna2TileButton6.CustomImages.Parent = this.guna2TileButton6;
             this.guna2TileButton6.Dock = System.Windows.Forms.DockStyle.Top;
-            this.guna2TileButton6.FillColor = System.Drawing.Color.Honeydew;
+            this.guna2TileButton6.FillColor = System.Drawing.Color.Transparent;
             this.guna2TileButton6.Font = new System.Drawing.Font("Segoe UI", 12F);
             this.guna2TileButton6.ForeColor = System.Drawing.Color.Black;
             this.guna2TileButton6.HoverState.Parent = this.guna2TileButton6;
@@ -312,10 +324,11 @@
             // 
             // guna2TileButton9
             // 
+            this.guna2TileButton9.BackColor = System.Drawing.Color.Transparent;
             this.guna2TileButton9.CheckedState.Parent = this.guna2TileButton9;
             this.guna2TileButton9.CustomImages.Parent = this.guna2TileButton9;
             this.guna2TileButton9.Dock = System.Windows.Forms.DockStyle.Top;
-            this.guna2TileButton9.FillColor = System.Drawing.Color.Honeydew;
+            this.guna2TileButton9.FillColor = System.Drawing.Color.Transparent;
             this.guna2TileButton9.Font = new System.Drawing.Font("Segoe UI", 12F);
             this.guna2TileButton9.ForeColor = System.Drawing.Color.Black;
             this.guna2TileButton9.HoverState.Parent = this.guna2TileButton9;
@@ -349,20 +362,18 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(982, 887);
             this.Controls.Add(this.mainpanel);
-            this.Controls.Add(this.guna2GradientPanel1);
+            this.Controls.Add(this.sidebar);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Name = "MainPage";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "MainPage";
             this.Load += new System.EventHandler(this.MainPage_Load);
-            this.guna2GradientPanel1.ResumeLayout(false);
+            this.sidebar.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
 
         #endregion
-
-        private Guna.UI2.WinForms.Guna2GradientPanel guna2GradientPanel1;
         private Guna.UI2.WinForms.Guna2TileButton guna2TileButton1;
         private Guna.UI2.WinForms.Guna2TileButton guna2TileButton2;
         private Guna.UI2.WinForms.Guna2TileButton guna2TileButton12;
@@ -376,5 +387,6 @@
         private Guna.UI2.WinForms.Guna2TileButton guna2TileButton4;
         private Guna.UI2.WinForms.Guna2TileButton guna2TileButton3;
         private Guna.UI2.WinForms.Guna2Panel mainpanel;
+        public Guna.UI2.WinForms.Guna2GradientPanel sidebar;
     }
 }

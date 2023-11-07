@@ -2,11 +2,13 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Win32Interop.Enums;
 
 namespace HelloWorldSolutionIMS
 {
@@ -17,8 +19,41 @@ namespace HelloWorldSolutionIMS
             InitializeComponent();
         }
 
+       static Color selectedColor = Color.White;
         private void MainPage_Load(object sender, EventArgs e)
         {
+            try
+            {
+                MainClass.con.Open();
+                SqlCommand cmd = new SqlCommand("SELECT Color FROM SideBarColor", MainClass.con);
+
+                SqlDataReader reader = cmd.ExecuteReader();
+                // Read color value from the database
+               if(reader.Read())
+                {
+                    string colorString = reader["Color"].ToString();
+                    Color color = ColorTranslator.FromHtml(colorString);
+                    sidebar.BackColor = color;
+
+                }
+                else
+                {
+                    sidebar.BackColor = Color.White;
+                  
+                }
+                
+                // Convert color from string to Color
+                reader.Close();
+                MainClass.con.Close();
+
+            }
+            catch (Exception ex)
+            {
+                MainClass.con.Close();
+                MessageBox.Show(ex.Message);
+
+            }
+           
             int w = 1200;
             int h = 737;
             //this.Location = new Point(0, 0);
