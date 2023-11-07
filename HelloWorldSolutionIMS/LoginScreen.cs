@@ -115,10 +115,37 @@ namespace HelloWorldSolutionIMS
         }
         private void LoginScreen_Load(object sender, EventArgs e)
         {
-            //int w =1200;
-            //int h = 737;
-            //this.Location = new Point(0, 0);
-            //this.Size = new Size(w, h);
+            try
+            {
+                MainClass.con.Open();
+                SqlCommand cmd = new SqlCommand("SELECT Color FROM SideBarColor", MainClass.con);
+
+                SqlDataReader reader = cmd.ExecuteReader();
+                // Read color value from the database
+                if (reader.Read())
+                {
+                    string colorString = reader["Color"].ToString();
+                    Color color = ColorTranslator.FromHtml(colorString);
+                    loginpanel.BackColor = color;
+
+                }
+                else
+                {
+                    loginpanel.BackColor = Color.White;
+
+                }
+
+                // Convert color from string to Color
+                reader.Close();
+                MainClass.con.Close();
+
+            }
+            catch (Exception ex)
+            {
+                MainClass.con.Close();
+                MessageBox.Show(ex.Message);
+
+            }
 
             Start();
             string path = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);

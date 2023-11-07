@@ -35,7 +35,7 @@ namespace HelloWorldSolutionIMS
             this.label7 = new System.Windows.Forms.Label();
             this.welcome = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
-            this.panel1 = new System.Windows.Forms.Panel();
+            this.loginpanel = new System.Windows.Forms.Panel();
             this.liscense = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
@@ -49,7 +49,7 @@ namespace HelloWorldSolutionIMS
             this.companyname = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.panel1.SuspendLayout();
+            this.loginpanel.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
@@ -166,32 +166,32 @@ namespace HelloWorldSolutionIMS
             this.label6.TabIndex = 1;
             this.label6.Text = "Username";
             // 
-            // panel1
+            // loginpanel
             // 
-            this.panel1.BackColor = System.Drawing.Color.MediumSeaGreen;
-            this.panel1.Controls.Add(this.liscense);
-            this.panel1.Controls.Add(this.label2);
-            this.panel1.Controls.Add(this.label6);
-            this.panel1.Controls.Add(this.tableLayoutPanel1);
-            this.panel1.Controls.Add(this.label11);
-            this.panel1.Controls.Add(this.label10);
-            this.panel1.Controls.Add(this.trade);
-            this.panel1.Controls.Add(this.email);
-            this.panel1.Controls.Add(this.landline);
-            this.panel1.Controls.Add(this.branch);
-            this.panel1.Controls.Add(this.companyname);
-            this.panel1.Controls.Add(this.label1);
-            this.panel1.Controls.Add(this.label7);
-            this.panel1.Controls.Add(this.btnLogin);
-            this.panel1.Controls.Add(this.pictureBox1);
-            this.panel1.Controls.Add(this.welcome);
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel1.ForeColor = System.Drawing.Color.White;
-            this.panel1.Location = new System.Drawing.Point(0, 0);
-            this.panel1.Margin = new System.Windows.Forms.Padding(4);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1168, 690);
-            this.panel1.TabIndex = 0;
+            this.loginpanel.BackColor = System.Drawing.Color.MediumSeaGreen;
+            this.loginpanel.Controls.Add(this.liscense);
+            this.loginpanel.Controls.Add(this.label2);
+            this.loginpanel.Controls.Add(this.label6);
+            this.loginpanel.Controls.Add(this.tableLayoutPanel1);
+            this.loginpanel.Controls.Add(this.label11);
+            this.loginpanel.Controls.Add(this.label10);
+            this.loginpanel.Controls.Add(this.trade);
+            this.loginpanel.Controls.Add(this.email);
+            this.loginpanel.Controls.Add(this.landline);
+            this.loginpanel.Controls.Add(this.branch);
+            this.loginpanel.Controls.Add(this.companyname);
+            this.loginpanel.Controls.Add(this.label1);
+            this.loginpanel.Controls.Add(this.label7);
+            this.loginpanel.Controls.Add(this.btnLogin);
+            this.loginpanel.Controls.Add(this.pictureBox1);
+            this.loginpanel.Controls.Add(this.welcome);
+            this.loginpanel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.loginpanel.ForeColor = System.Drawing.Color.White;
+            this.loginpanel.Location = new System.Drawing.Point(0, 0);
+            this.loginpanel.Margin = new System.Windows.Forms.Padding(4);
+            this.loginpanel.Name = "loginpanel";
+            this.loginpanel.Size = new System.Drawing.Size(1168, 690);
+            this.loginpanel.TabIndex = 0;
             // 
             // liscense
             // 
@@ -374,7 +374,7 @@ namespace HelloWorldSolutionIMS
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1168, 690);
-            this.Controls.Add(this.panel1);
+            this.Controls.Add(this.loginpanel);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Margin = new System.Windows.Forms.Padding(4);
             this.MaximizeBox = false;
@@ -383,8 +383,8 @@ namespace HelloWorldSolutionIMS
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Diet Planner - Login";
             this.Load += new System.EventHandler(this.LoginScreen_Load);
-            this.panel1.ResumeLayout(false);
-            this.panel1.PerformLayout();
+            this.loginpanel.ResumeLayout(false);
+            this.loginpanel.PerformLayout();
             this.tableLayoutPanel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
@@ -393,7 +393,7 @@ namespace HelloWorldSolutionIMS
 
         #endregion
 
-        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Panel loginpanel;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label welcome;

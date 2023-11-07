@@ -910,5 +910,30 @@ namespace HelloWorldSolutionIMS
 
             Application.Restart();
         }
+
+        private void mobile_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
+            {
+                e.Handled = true; // Ignore the keypress if it's not a number or a control character
+            }
+
+            if (!char.IsControl(e.KeyChar) && char.IsDigit(e.KeyChar))
+            {
+                string text = mobile.Text + e.KeyChar;
+                if (!int.TryParse(text, out int number) || text.Length > 10 || (text.Length == 1 && e.KeyChar != '0'))
+                {
+                    e.Handled = true; // Ensure the text remains an integer, doesn't exceed 10 digits, and starts with 0
+                }
+            }
+        }
+
+        private void intlock(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
+            {
+                e.Handled = true; // Ignore the keypress if it's not a number or a control character
+            }
+        }
     }
 }
